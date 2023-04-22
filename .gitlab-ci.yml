@@ -12,7 +12,7 @@ stages:
       gcc
       ccache
       gettext
-      ctk-doc
+      gtk-doc
       meson
       ninja-build
       redhat-rpm-config

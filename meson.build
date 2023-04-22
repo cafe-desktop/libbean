@@ -65,7 +65,7 @@ pkglibdir = join_paths(libdir, package_string)
 pkgdatadir = join_paths(datadir, package_string)
 
 girdir = join_paths(datadir, 'gir-1.0')
-gtkdocdir = join_paths(datadir, 'ctk-doc')
+gtkdocdir = join_paths(datadir, 'gtk-doc')
 iconsdir = join_paths(datadir, 'icons')
 pkgconfigdir = join_paths(libdir, 'pkgconfig')
 typelibdir = join_paths(libdir, 'girepository-1.0')
@@ -106,7 +106,7 @@ gio_dep = dependency('gio-2.0', version: glib_req)
 introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req)
 ctk_dep = dependency('ctk+-3.0', version: ctk_req, required: false)
 
-gtk_doc_dep = dependency('ctk-doc', version: gtk_doc_req, required: false)
+gtk_doc_dep = dependency('gtk-doc', version: gtk_doc_req, required: false)
 gladeui_dep = dependency('gladeui-2.0', required: false)
 
 # From python 3.8 we neeed python3-embed
