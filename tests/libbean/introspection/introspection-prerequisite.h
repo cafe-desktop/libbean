@@ -39,11 +39,11 @@ typedef struct _IntrospectionPrerequisite         IntrospectionPrerequisite;
 typedef struct _IntrospectionPrerequisiteClass    IntrospectionPrerequisiteClass;
 
 struct _IntrospectionPrerequisite {
-  PeasExtensionBase parent;
+  BeanExtensionBase parent;
 };
 
 struct _IntrospectionPrerequisiteClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 /*

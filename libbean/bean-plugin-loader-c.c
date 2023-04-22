@@ -35,9 +35,9 @@ typedef struct {
   GMutex lock;
 
   GHashTable *loaded_plugins;
-} PeasPluginLoaderCPrivate;
+} BeanPluginLoaderCPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasPluginLoaderC,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderC,
                             bean_plugin_loader_c,
                             PEAS_TYPE_PLUGIN_LOADER)
 
@@ -48,11 +48,11 @@ static GQuark quark_extension_type = 0;
 static const gchar *intern_plugin_info = NULL;
 
 static gboolean
-bean_plugin_loader_c_load (PeasPluginLoader *loader,
-                           PeasPluginInfo   *info)
+bean_plugin_loader_c_load (BeanPluginLoader *loader,
+                           BeanPluginInfo   *info)
 {
-  PeasPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (loader);
-  PeasPluginLoaderCPrivate *priv = GET_PRIV (cloader);
+  BeanPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (loader);
+  BeanPluginLoaderCPrivate *priv = GET_PRIV (cloader);
 
   g_mutex_lock (&priv->lock);
 
@@ -93,8 +93,8 @@ bean_plugin_loader_c_load (PeasPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_c_unload (PeasPluginLoader *loader,
-                             PeasPluginInfo   *info)
+bean_plugin_loader_c_unload (BeanPluginLoader *loader,
+                             BeanPluginInfo   *info)
 {
   /* Don't bother unloading the plugin's
    * GTypeModule as it is always resident
@@ -103,16 +103,16 @@ bean_plugin_loader_c_unload (PeasPluginLoader *loader,
 }
 
 static gboolean
-bean_plugin_loader_c_provides_extension  (PeasPluginLoader *loader,
-                                          PeasPluginInfo   *info,
+bean_plugin_loader_c_provides_extension  (BeanPluginLoader *loader,
+                                          BeanPluginInfo   *info,
                                           GType             exten_type)
 {
   return bean_object_module_provides_object (info->loader_data, exten_type);
 }
 
-static PeasExtension *
-bean_plugin_loader_c_create_extension (PeasPluginLoader *loader,
-                                       PeasPluginInfo   *info,
+static BeanExtension *
+bean_plugin_loader_c_create_extension (BeanPluginLoader *loader,
+                                       BeanPluginInfo   *info,
                                        GType             exten_type,
                                        guint             n_parameters,
                                        GParameter       *parameters)
@@ -121,7 +121,7 @@ bean_plugin_loader_c_create_extension (PeasPluginLoader *loader,
   gpointer instance;
 
   /* We want to add a "plugin-info" property so we can pass it to
-   * the extension if it inherits from PeasExtensionBase. No need to
+   * the extension if it inherits from BeanExtensionBase. No need to
    * actually "duplicate" the GValues, a memcpy is sufficient as the
    * source GValues are longer lived than our local copy.
    */
@@ -130,7 +130,7 @@ bean_plugin_loader_c_create_extension (PeasPluginLoader *loader,
 
   /* Initialize our additional property.
    * If the instance does not have a plugin-info property
-   * then PeasObjectModule will remove the property.
+   * then BeanObjectModule will remove the property.
    */
   exten_parameters[n_parameters].name = intern_plugin_info;
   memset (&exten_parameters[n_parameters].value, 0, sizeof (GValue));
@@ -160,13 +160,13 @@ bean_plugin_loader_c_create_extension (PeasPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_c_init (PeasPluginLoaderC *cloader)
+bean_plugin_loader_c_init (BeanPluginLoaderC *cloader)
 {
-  PeasPluginLoaderCPrivate *priv = GET_PRIV (cloader);
+  BeanPluginLoaderCPrivate *priv = GET_PRIV (cloader);
 
   g_mutex_init (&priv->lock);
 
-  /* loaded_plugins maps PeasPluginInfo:filename to a PeasObjectModule */
+  /* loaded_plugins maps BeanPluginInfo:filename to a BeanObjectModule */
   priv->loaded_plugins = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                 g_free, NULL);
 }
@@ -174,8 +174,8 @@ bean_plugin_loader_c_init (PeasPluginLoaderC *cloader)
 static void
 bean_plugin_loader_c_finalize (GObject *object)
 {
-  PeasPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (object);
-  PeasPluginLoaderCPrivate *priv = GET_PRIV (cloader);
+  BeanPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (object);
+  BeanPluginLoaderCPrivate *priv = GET_PRIV (cloader);
 
   g_mutex_clear (&priv->lock);
 
@@ -185,10 +185,10 @@ bean_plugin_loader_c_finalize (GObject *object)
 }
 
 static void
-bean_plugin_loader_c_class_init (PeasPluginLoaderCClass *klass)
+bean_plugin_loader_c_class_init (BeanPluginLoaderCClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  PeasPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
+  BeanPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
 
   quark_extension_type = g_quark_from_static_string ("bean-extension-type");
   intern_plugin_info = g_intern_static_string ("plugin-info");
@@ -204,11 +204,11 @@ bean_plugin_loader_c_class_init (PeasPluginLoaderCClass *klass)
 /*
  * bean_plugin_loader_c_new:
  *
- * Return a new instance of #PeasPluginLoaderC.
+ * Return a new instance of #BeanPluginLoaderC.
  *
- * Returns: a new instance of #PeasPluginLoaderC.
+ * Returns: a new instance of #BeanPluginLoaderC.
  */
-PeasPluginLoader *
+BeanPluginLoader *
 bean_plugin_loader_c_new (void)
 {
   return PEAS_PLUGIN_LOADER (g_object_new (PEAS_TYPE_PLUGIN_LOADER_C, NULL));

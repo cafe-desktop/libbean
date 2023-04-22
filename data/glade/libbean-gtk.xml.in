@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glade-catalog version="1.0" supports="gtkbuilder" name="libbean-gtk" library="bean-gtk-1.0" domain="@GETTEXT_PACKAGE@" depends="gtk+" book="libbean">
   <glade-widget-classes>
-    <glade-widget-class name="PeasGtkPluginManager" title="Plugin Manager" generic-name="pluginmanager">
+    <glade-widget-class name="BeanGtkPluginManager" title="Plugin Manager" generic-name="pluginmanager">
       <properties>
-        <!-- Translators: What PeasGtkPluginManagerView to use -->
-        <property id="view" name="View" create-type="PeasGtkPluginManagerView" query="False" />
+        <!-- Translators: What BeanGtkPluginManagerView to use -->
+        <property id="view" name="View" create-type="BeanGtkPluginManagerView" query="False" />
 
         <!-- Disable GtkBox properties that should never be modified -->
         <property id="homogeneous" disabled="True" />
@@ -14,7 +14,7 @@
       </properties>
     </glade-widget-class>
 
-    <glade-widget-class name="PeasGtkPluginManagerView" title="Plugin Manager View" generic-name="pluginmanagerview">
+    <glade-widget-class name="BeanGtkPluginManagerView" title="Plugin Manager View" generic-name="pluginmanagerview">
       <properties>
         <!-- Translators: Whether builtin plugins should appear in the view (property name) -->
         <property id="show-builtin" name="Show Builtin" default="False" />
@@ -29,8 +29,8 @@
     </glade-widget-class>
   </glade-widget-classes>
 
-  <glade-widget-group name="PeasGtk" title="Peas Gtk">
-    <glade-widget-class-ref name="PeasGtkPluginManager" />
-    <glade-widget-class-ref name="PeasGtkPluginManagerView" />
+  <glade-widget-group name="BeanGtk" title="Bean Gtk">
+    <glade-widget-class-ref name="BeanGtkPluginManager" />
+    <glade-widget-class-ref name="BeanGtkPluginManagerView" />
   </glade-widget-group>
 </glade-catalog>

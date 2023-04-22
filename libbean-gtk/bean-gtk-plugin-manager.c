@@ -45,7 +45,7 @@
  * SECTION:bean-gtk-plugin-manager
  * @short_description: Management GUI for plugins.
  *
- * The #PeasGtkPluginManager is a widget that can be used to manage plugins,
+ * The #BeanGtkPluginManager is a widget that can be used to manage plugins,
  * i.e. load or unload them, and see some pieces of information.
  *
  * <inlinegraphic fileref="bean-gtk-plugin-manager.png" format="PNG" />
@@ -57,8 +57,8 @@
  *
  **/
 
-struct _PeasGtkPluginManagerPrivate {
-  PeasEngine *engine;
+struct _BeanGtkPluginManagerPrivate {
+  BeanEngine *engine;
 
   GtkWidget *sw;
   GtkWidget *view;
@@ -79,7 +79,7 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasGtkPluginManager,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkPluginManager,
                             bean_gtk_plugin_manager,
                             GTK_TYPE_BOX)
 
@@ -106,10 +106,10 @@ get_toplevel (GtkWidget *widget)
 }
 
 static gboolean
-plugin_is_configurable (PeasGtkPluginManager *pm,
-                        PeasPluginInfo       *info)
+plugin_is_configurable (BeanGtkPluginManager *pm,
+                        BeanPluginInfo       *info)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   if (info == NULL || !bean_plugin_info_is_loaded (info))
     return FALSE;
@@ -119,10 +119,10 @@ plugin_is_configurable (PeasGtkPluginManager *pm,
 }
 
 static void
-update_button_sensitivity (PeasGtkPluginManager *pm,
-                           PeasPluginInfo       *info)
+update_button_sensitivity (BeanGtkPluginManager *pm,
+                           BeanPluginInfo       *info)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   gtk_widget_set_sensitive (priv->about_button, info != NULL);
   gtk_widget_set_sensitive (priv->configure_button,
@@ -131,11 +131,11 @@ update_button_sensitivity (PeasGtkPluginManager *pm,
 
 static void
 show_about_cb (GtkWidget            *widget,
-               PeasGtkPluginManager *pm)
+               BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
-  PeasGtkPluginManagerView *view;
-  PeasPluginInfo *info;
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerView *view;
+  BeanPluginInfo *info;
   GtkWindow *toplevel;
   gboolean modal;
 
@@ -177,7 +177,7 @@ show_about_cb (GtkWidget            *widget,
 
 static void
 help_button_cb (GtkWidget      *button,
-                PeasPluginInfo *info)
+                BeanPluginInfo *info)
 {
   const gchar *help_uri;
 #ifndef OS_OSX
@@ -222,12 +222,12 @@ help_button_cb (GtkWidget      *button,
 
 static void
 show_configure_cb (GtkWidget            *widget,
-                   PeasGtkPluginManager *pm)
+                   BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
-  PeasGtkPluginManagerView *view;
-  PeasPluginInfo *info;
-  PeasExtension *exten;
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerView *view;
+  BeanPluginInfo *info;
+  BeanExtension *exten;
   GtkWidget *conf_widget = NULL;
   GtkWidget *conf_dlg;
   GtkWidget *vbox;
@@ -279,13 +279,13 @@ show_configure_cb (GtkWidget            *widget,
 }
 
 static void
-plugin_loaded_toggled_cb (PeasEngine           *engine,
-                          PeasPluginInfo       *info,
-                          PeasGtkPluginManager *pm)
+plugin_loaded_toggled_cb (BeanEngine           *engine,
+                          BeanPluginInfo       *info,
+                          BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
-  PeasGtkPluginManagerView *view;
-  PeasPluginInfo *selected;
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerView *view;
+  BeanPluginInfo *selected;
 
   view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
   selected = bean_gtk_plugin_manager_view_get_selected_plugin (view);
@@ -295,11 +295,11 @@ plugin_loaded_toggled_cb (PeasEngine           *engine,
 }
 
 static void
-selection_changed_cb (PeasGtkPluginManager *pm)
+selection_changed_cb (BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
-  PeasGtkPluginManagerView *view;
-  PeasPluginInfo *info;
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerView *view;
+  BeanPluginInfo *info;
 
   view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
   info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
@@ -308,11 +308,11 @@ selection_changed_cb (PeasGtkPluginManager *pm)
 }
 
 static void
-populate_popup_cb (PeasGtkPluginManagerView *view,
+populate_popup_cb (BeanGtkPluginManagerView *view,
                    GtkMenu                  *menu,
-                   PeasGtkPluginManager     *pm)
+                   BeanGtkPluginManager     *pm)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GtkWidget *item;
 
   info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
@@ -331,19 +331,19 @@ populate_popup_cb (PeasGtkPluginManagerView *view,
 }
 
 static void
-bean_gtk_plugin_manager_init (PeasGtkPluginManager *pm)
+bean_gtk_plugin_manager_init (BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
   GtkWidget *toolbar;
   GtkStyleContext *context;
   GtkToolItem *toolitem;
   GtkWidget *toolbar_box;
   GtkWidget *item_box;
 
-  /* If we are using a PeasGtkPluginManager, we know for sure we will be using
+  /* If we are using a BeanGtkPluginManager, we know for sure we will be using
      libbean-gtk, so let's load the typelib for it here. */
   g_irepository_require (g_irepository_get_default (),
-                         "PeasGtk", "1.0", 0, NULL);
+                         "BeanGtk", "1.0", 0, NULL);
 
   gtk_orientable_set_orientation (GTK_ORIENTABLE (pm),
                                   GTK_ORIENTATION_VERTICAL);
@@ -407,8 +407,8 @@ bean_gtk_plugin_manager_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  PeasGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
     {
@@ -430,8 +430,8 @@ bean_gtk_plugin_manager_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  PeasGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
     {
@@ -450,8 +450,8 @@ bean_gtk_plugin_manager_get_property (GObject    *object,
 static void
 bean_gtk_plugin_manager_constructed (GObject *object)
 {
-  PeasGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
   GtkTreeSelection *selection;
 
   if (priv->engine == NULL)
@@ -469,7 +469,7 @@ bean_gtk_plugin_manager_constructed (GObject *object)
    */
   if (priv->view != NULL)
     {
-      PeasEngine *engine;
+      BeanEngine *engine;
 
       g_object_get (priv->view,
                     "engine", &engine,
@@ -525,8 +525,8 @@ bean_gtk_plugin_manager_constructed (GObject *object)
 static void
 bean_gtk_plugin_manager_dispose (GObject *object)
 {
-  PeasGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   g_clear_object (&priv->engine);
   g_clear_pointer (&priv->about, gtk_widget_destroy);
@@ -535,7 +535,7 @@ bean_gtk_plugin_manager_dispose (GObject *object)
 }
 
 static void
-bean_gtk_plugin_manager_class_init (PeasGtkPluginManagerClass *klass)
+bean_gtk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -545,23 +545,23 @@ bean_gtk_plugin_manager_class_init (PeasGtkPluginManagerClass *klass)
   object_class->dispose = bean_gtk_plugin_manager_dispose;
 
   /**
-   * PeasGtkPluginManager:engine:
+   * BeanGtkPluginManager:engine:
    *
-   * The #PeasEngine this manager is attached to.
+   * The #BeanEngine this manager is attached to.
    */
   properties[PROP_ENGINE] =
     g_param_spec_object ("engine",
                          "engine",
-                         "The PeasEngine this manager is attached to",
+                         "The BeanEngine this manager is attached to",
                          PEAS_TYPE_ENGINE,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
 
   /**
-   * PeasGtkPluginManager:view:
+   * BeanGtkPluginManager:view:
    *
-   * The #PeasGtkPluginManagerView shown in the #PeasGtkPluginManager.
+   * The #BeanGtkPluginManagerView shown in the #BeanGtkPluginManager.
    */
   properties[PROP_VIEW] =
     g_param_spec_object ("view",
@@ -577,16 +577,16 @@ bean_gtk_plugin_manager_class_init (PeasGtkPluginManagerClass *klass)
 
 /**
  * bean_gtk_plugin_manager_new:
- * @engine: (allow-none): A #PeasEngine, or %NULL.
+ * @engine: (allow-none): A #BeanEngine, or %NULL.
  *
- * Creates a new plugin manager for the given #PeasEngine.
+ * Creates a new plugin manager for the given #BeanEngine.
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Returns: the new #PeasGtkPluginManager.
+ * Returns: the new #BeanGtkPluginManager.
  */
 GtkWidget *
-bean_gtk_plugin_manager_new (PeasEngine *engine)
+bean_gtk_plugin_manager_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
 
@@ -597,16 +597,16 @@ bean_gtk_plugin_manager_new (PeasEngine *engine)
 
 /**
  * bean_gtk_plugin_manager_get_view:
- * @pm: A #PeasGtkPluginManager.
+ * @pm: A #BeanGtkPluginManager.
  *
- * Returns the #PeasGtkPluginManagerView of @pm.
+ * Returns the #BeanGtkPluginManagerView of @pm.
  *
  * Returns: (transfer none): the #GtkTreeView of @pm.
  */
 GtkWidget *
-bean_gtk_plugin_manager_get_view (PeasGtkPluginManager *pm)
+bean_gtk_plugin_manager_get_view (BeanGtkPluginManager *pm)
 {
-  PeasGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
+  BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   g_return_val_if_fail (PEAS_GTK_IS_PLUGIN_MANAGER (pm), NULL);
 

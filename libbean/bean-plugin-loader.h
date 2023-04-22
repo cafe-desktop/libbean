@@ -30,40 +30,40 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_PLUGIN_LOADER                (bean_plugin_loader_get_type ())
-#define PEAS_PLUGIN_LOADER(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER, PeasPluginLoader))
-#define PEAS_PLUGIN_LOADER_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_PLUGIN_LOADER, PeasPluginLoaderClass))
+#define PEAS_PLUGIN_LOADER(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER, BeanPluginLoader))
+#define PEAS_PLUGIN_LOADER_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_PLUGIN_LOADER, BeanPluginLoaderClass))
 #define PEAS_IS_PLUGIN_LOADER(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_PLUGIN_LOADER))
 #define PEAS_IS_PLUGIN_LOADER_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_PLUGIN_LOADER))
-#define PEAS_PLUGIN_LOADER_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER, PeasPluginLoaderClass))
+#define PEAS_PLUGIN_LOADER_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER, BeanPluginLoaderClass))
 
-typedef struct _PeasPluginLoader      PeasPluginLoader;
-typedef struct _PeasPluginLoaderClass PeasPluginLoaderClass;
+typedef struct _BeanPluginLoader      BeanPluginLoader;
+typedef struct _BeanPluginLoaderClass BeanPluginLoaderClass;
 
-struct _PeasPluginLoader {
+struct _BeanPluginLoader {
   GObject parent;
 };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-struct _PeasPluginLoaderClass {
+struct _BeanPluginLoaderClass {
   GObjectClass parent;
 
-  gboolean       (*initialize)            (PeasPluginLoader *loader);
-  gboolean       (*is_global)             (PeasPluginLoader *loader);
+  gboolean       (*initialize)            (BeanPluginLoader *loader);
+  gboolean       (*is_global)             (BeanPluginLoader *loader);
 
-  gboolean       (*load)                  (PeasPluginLoader *loader,
-                                           PeasPluginInfo   *info);
-  void           (*unload)                (PeasPluginLoader *loader,
-                                           PeasPluginInfo   *info);
-  gboolean       (*provides_extension)    (PeasPluginLoader *loader,
-                                           PeasPluginInfo   *info,
+  gboolean       (*load)                  (BeanPluginLoader *loader,
+                                           BeanPluginInfo   *info);
+  void           (*unload)                (BeanPluginLoader *loader,
+                                           BeanPluginInfo   *info);
+  gboolean       (*provides_extension)    (BeanPluginLoader *loader,
+                                           BeanPluginInfo   *info,
                                            GType             ext_type);
-  PeasExtension *(*create_extension)      (PeasPluginLoader *loader,
-                                           PeasPluginInfo   *info,
+  BeanExtension *(*create_extension)      (BeanPluginLoader *loader,
+                                           BeanPluginInfo   *info,
                                            GType             ext_type,
                                            guint             n_parameters,
                                            GParameter       *parameters);
 
-  void           (*garbage_collect)       (PeasPluginLoader *loader);
+  void           (*garbage_collect)       (BeanPluginLoader *loader);
 };
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -71,31 +71,31 @@ PEAS_AVAILABLE_IN_ALL
 GType         bean_plugin_loader_get_type             (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_loader_initialize           (PeasPluginLoader *loader);
+gboolean      bean_plugin_loader_initialize           (BeanPluginLoader *loader);
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_loader_is_global            (PeasPluginLoader *loader);
+gboolean      bean_plugin_loader_is_global            (BeanPluginLoader *loader);
 
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_loader_load                 (PeasPluginLoader *loader,
-                                                       PeasPluginInfo   *info);
+gboolean      bean_plugin_loader_load                 (BeanPluginLoader *loader,
+                                                       BeanPluginInfo   *info);
 PEAS_AVAILABLE_IN_ALL
-void          bean_plugin_loader_unload               (PeasPluginLoader *loader,
-                                                       PeasPluginInfo   *info);
+void          bean_plugin_loader_unload               (BeanPluginLoader *loader,
+                                                       BeanPluginInfo   *info);
 
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_loader_provides_extension   (PeasPluginLoader *loader,
-                                                       PeasPluginInfo   *info,
+gboolean      bean_plugin_loader_provides_extension   (BeanPluginLoader *loader,
+                                                       BeanPluginInfo   *info,
                                                        GType             ext_type);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 PEAS_AVAILABLE_IN_ALL
-PeasExtension *bean_plugin_loader_create_extension    (PeasPluginLoader *loader,
-                                                       PeasPluginInfo   *info,
+BeanExtension *bean_plugin_loader_create_extension    (BeanPluginLoader *loader,
+                                                       BeanPluginInfo   *info,
                                                        GType             ext_type,
                                                        guint             n_parameters,
                                                        GParameter       *parameters);
 G_GNUC_END_IGNORE_DEPRECATIONS
 PEAS_AVAILABLE_IN_ALL
-void          bean_plugin_loader_garbage_collect      (PeasPluginLoader *loader);
+void          bean_plugin_loader_garbage_collect      (BeanPluginLoader *loader);
 
 G_END_DECLS
 

@@ -26,15 +26,15 @@
 /**
  * SECTION:bean-activatable
  * @short_description: Interface for activatable plugins.
- * @see_also: #PeasExtensionSet
+ * @see_also: #BeanExtensionSet
  *
- * #PeasActivatable is an interface which should be implemented by plugins
+ * #BeanActivatable is an interface which should be implemented by plugins
  * that should be activated on an object of a certain type (depending on the
  * application). For instance, in a typical windowed application,
- * #PeasActivatable plugin instances could be bound to individual toplevel
+ * #BeanActivatable plugin instances could be bound to individual toplevel
  * windows.
  *
- * It is typical to use #PeasActivatable along with #PeasExtensionSet in order
+ * It is typical to use #BeanActivatable along with #BeanExtensionSet in order
  * to activate and deactivate extensions automatically when plugins are loaded
  * or unloaded.
  *
@@ -43,16 +43,16 @@
  * %GeditDocumentActivatable interfaces.
  **/
 
-G_DEFINE_INTERFACE(PeasActivatable, bean_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeanActivatable, bean_activatable, G_TYPE_OBJECT)
 
 static void
-bean_activatable_default_init (PeasActivatableInterface *iface)
+bean_activatable_default_init (BeanActivatableInterface *iface)
 {
   /**
-   * PeasActivatable:object:
+   * BeanActivatable:object:
    *
    * The object property contains the targetted object for this
-   * #PeasActivatable instance, for example a toplevel window in a typical
+   * #BeanActivatable instance, for example a toplevel window in a typical
    * windowed application. It is set at construction time and won't change.
    */
   g_object_interface_install_property (iface,
@@ -67,7 +67,7 @@ bean_activatable_default_init (PeasActivatableInterface *iface)
 
 /**
  * bean_activatable_activate:
- * @activatable: A #PeasActivatable.
+ * @activatable: A #BeanActivatable.
  *
  * Activates the extension on the targetted object.
  *
@@ -75,9 +75,9 @@ bean_activatable_default_init (PeasActivatableInterface *iface)
  * where it makes sense.
  */
 void
-bean_activatable_activate (PeasActivatable *activatable)
+bean_activatable_activate (BeanActivatable *activatable)
 {
-  PeasActivatableInterface *iface;
+  BeanActivatableInterface *iface;
 
   g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
 
@@ -89,7 +89,7 @@ bean_activatable_activate (PeasActivatable *activatable)
 
 /**
  * bean_activatable_deactivate:
- * @activatable: A #PeasActivatable.
+ * @activatable: A #BeanActivatable.
  *
  * Deactivates the extension on the targetted object.
  *
@@ -98,9 +98,9 @@ bean_activatable_activate (PeasActivatable *activatable)
  * and without any more effect on the host application.
  */
 void
-bean_activatable_deactivate (PeasActivatable *activatable)
+bean_activatable_deactivate (BeanActivatable *activatable)
 {
-  PeasActivatableInterface *iface;
+  BeanActivatableInterface *iface;
 
   g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
 
@@ -112,15 +112,15 @@ bean_activatable_deactivate (PeasActivatable *activatable)
 
 /**
  * bean_activatable_update_state:
- * @activatable: A #PeasActivatable.
+ * @activatable: A #BeanActivatable.
  *
  * Triggers an update of the extension internal state to take into account
  * state changes in the targetted object, due to some event or user action.
  */
 void
-bean_activatable_update_state (PeasActivatable *activatable)
+bean_activatable_update_state (BeanActivatable *activatable)
 {
-  PeasActivatableInterface *iface;
+  BeanActivatableInterface *iface;
 
   g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
 

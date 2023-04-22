@@ -167,8 +167,8 @@ msgstr "Voorkeuren"
 #~ msgid "Show Builtin"
 #~ msgstr "Ingebouwde plug-ins tonen"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Configureren"

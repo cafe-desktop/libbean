@@ -37,15 +37,15 @@ typedef struct _TestingHasDepPlugin         TestingHasDepPlugin;
 typedef struct _TestingHasDepPluginClass    TestingHasDepPluginClass;
 
 struct _TestingHasDepPlugin {
-  PeasExtensionBase parent_instance;
+  BeanExtensionBase parent_instance;
 };
 
 struct _TestingHasDepPluginClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 GType                 testing_has_dep_plugin_get_type (void) G_GNUC_CONST;
-G_MODULE_EXPORT void  bean_register_types             (PeasObjectModule *module);
+G_MODULE_EXPORT void  bean_register_types             (BeanObjectModule *module);
 
 G_END_DECLS
 

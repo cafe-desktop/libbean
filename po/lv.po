@@ -173,5 +173,5 @@ msgstr "Iestatījumi"
 #~ msgid "Show Builtin"
 #~ msgstr "Rādīt iebūvētos"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"

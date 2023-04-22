@@ -165,7 +165,7 @@ msgstr "Поставке"
 #~ msgid "Show Builtin"
 #~ msgstr "Прикажи уграђенe"
 
-#~ msgid "Peas Gtk"
+#~ msgid "Bean Gtk"
 #~ msgstr "Грашкo Гтк"
 
 #~ msgid "C_onfigure"

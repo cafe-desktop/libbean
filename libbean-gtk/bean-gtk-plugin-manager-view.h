@@ -34,41 +34,41 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_gtk_plugin_manager_view_get_type())
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, PeasGtkPluginManagerView))
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, PeasGtkPluginManagerViewClass))
+#define PEAS_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerView))
+#define PEAS_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, PeasGtkPluginManagerViewClass))
+#define PEAS_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
 
-typedef struct _PeasGtkPluginManagerView        PeasGtkPluginManagerView;
-typedef struct _PeasGtkPluginManagerViewClass   PeasGtkPluginManagerViewClass;
-typedef struct _PeasGtkPluginManagerViewPrivate PeasGtkPluginManagerViewPrivate;
+typedef struct _BeanGtkPluginManagerView        BeanGtkPluginManagerView;
+typedef struct _BeanGtkPluginManagerViewClass   BeanGtkPluginManagerViewClass;
+typedef struct _BeanGtkPluginManagerViewPrivate BeanGtkPluginManagerViewPrivate;
 
 /**
- * PeasGtkPluginManagerView:
+ * BeanGtkPluginManagerView:
  *
- * The #PeasGtkPluginManagerView structure contains only private data
+ * The #BeanGtkPluginManagerView structure contains only private data
  * and should only be accessed using the provided API.
  */
-struct _PeasGtkPluginManagerView {
+struct _BeanGtkPluginManagerView {
   GtkTreeView parent;
 
   /*< private > */
-  PeasGtkPluginManagerViewPrivate *priv;
+  BeanGtkPluginManagerViewPrivate *priv;
 };
 
 /**
- * PeasGtkPluginManagerViewClass:
+ * BeanGtkPluginManagerViewClass:
  * @parent_class: The parent class.
  * @populate_popup: Signal class handler for the
- *                  #PeasGtkPluginManagerView::populate-popup signal.
+ *                  #BeanGtkPluginManagerView::populate-popup signal.
  *
- * The class structure for #PeasGtkPluginManagerView.
+ * The class structure for #BeanGtkPluginManagerView.
  */
-struct _PeasGtkPluginManagerViewClass {
+struct _BeanGtkPluginManagerViewClass {
   GtkTreeViewClass parent_class;
 
-  void  (*populate_popup)   (PeasGtkPluginManagerView *view,
+  void  (*populate_popup)   (BeanGtkPluginManagerView *view,
                              GtkMenu                  *menu);
 
   /*< private >*/
@@ -78,21 +78,21 @@ struct _PeasGtkPluginManagerViewClass {
 PEAS_AVAILABLE_IN_ALL
 GType           bean_gtk_plugin_manager_view_get_type             (void) G_GNUC_CONST;
 PEAS_AVAILABLE_IN_ALL
-GtkWidget      *bean_gtk_plugin_manager_view_new                  (PeasEngine               *engine);
+GtkWidget      *bean_gtk_plugin_manager_view_new                  (BeanEngine               *engine);
 
 #ifndef PEAS_DISABLE_DEPRECATED
 PEAS_AVAILABLE_IN_ALL
-void            bean_gtk_plugin_manager_view_set_show_builtin     (PeasGtkPluginManagerView *view,
+void            bean_gtk_plugin_manager_view_set_show_builtin     (BeanGtkPluginManagerView *view,
                                                                    gboolean                  show_builtin);
 PEAS_AVAILABLE_IN_ALL
-gboolean        bean_gtk_plugin_manager_view_get_show_builtin     (PeasGtkPluginManagerView *view);
+gboolean        bean_gtk_plugin_manager_view_get_show_builtin     (BeanGtkPluginManagerView *view);
 #endif
 
 PEAS_AVAILABLE_IN_ALL
-void            bean_gtk_plugin_manager_view_set_selected_plugin  (PeasGtkPluginManagerView *view,
-                                                                   PeasPluginInfo           *info);
+void            bean_gtk_plugin_manager_view_set_selected_plugin  (BeanGtkPluginManagerView *view,
+                                                                   BeanPluginInfo           *info);
 PEAS_AVAILABLE_IN_ALL
-PeasPluginInfo *bean_gtk_plugin_manager_view_get_selected_plugin  (PeasGtkPluginManagerView *view);
+BeanPluginInfo *bean_gtk_plugin_manager_view_get_selected_plugin  (BeanGtkPluginManagerView *view);
 
 G_END_DECLS
 

@@ -34,12 +34,12 @@ G_BEGIN_DECLS
 #ifndef __GI_SCANNER__
 #if GLIB_CHECK_VERSION (2, 44, 0)
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasActivatable, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasEngine, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasExtension, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasExtensionBase, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasExtensionSet, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasObjectModule, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanActivatable, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanEngine, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanExtension, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanExtensionBase, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanExtensionSet, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanObjectModule, g_object_unref)
 
 #endif /* GLIB_CHECK_VERSION (2, 44, 0) */
 #endif /* __GI_SCANNER__ */

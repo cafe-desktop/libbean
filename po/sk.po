@@ -174,5 +174,5 @@ msgstr "Nastavenia"
 #~ msgstr "Zobraziť vstavané"
 
 # widget group title
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"

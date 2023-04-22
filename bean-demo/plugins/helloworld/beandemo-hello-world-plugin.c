@@ -34,9 +34,9 @@
 #include "beandemo-hello-world-plugin.h"
 #include "beandemo-hello-world-configurable.h"
 
-static void bean_activatable_iface_init     (PeasActivatableInterface    *iface);
+static void bean_activatable_iface_init     (BeanActivatableInterface    *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PeasDemoHelloWorldPlugin,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldPlugin,
                                 beandemo_hello_world_plugin,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
@@ -54,7 +54,7 @@ beandemo_hello_world_plugin_set_property (GObject      *object,
                                           const GValue *value,
                                           GParamSpec   *pspec)
 {
-  PeasDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
+  BeanDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
 
   switch (prop_id)
     {
@@ -74,7 +74,7 @@ beandemo_hello_world_plugin_get_property (GObject    *object,
                                           GValue     *value,
                                           GParamSpec *pspec)
 {
-  PeasDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
+  BeanDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
 
   switch (prop_id)
     {
@@ -90,7 +90,7 @@ beandemo_hello_world_plugin_get_property (GObject    *object,
 
 
 static void
-beandemo_hello_world_plugin_init (PeasDemoHelloWorldPlugin *plugin)
+beandemo_hello_world_plugin_init (BeanDemoHelloWorldPlugin *plugin)
 {
   g_debug ("%s", G_STRFUNC);
 }
@@ -98,7 +98,7 @@ beandemo_hello_world_plugin_init (PeasDemoHelloWorldPlugin *plugin)
 static void
 beandemo_hello_world_plugin_finalize (GObject *object)
 {
-  PeasDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
+  BeanDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (object);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -115,9 +115,9 @@ get_box (GtkWidget *window)
 }
 
 static void
-beandemo_hello_world_plugin_activate (PeasActivatable *activatable)
+beandemo_hello_world_plugin_activate (BeanActivatable *activatable)
 {
-  PeasDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (activatable);
+  BeanDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -128,9 +128,9 @@ beandemo_hello_world_plugin_activate (PeasActivatable *activatable)
 }
 
 static void
-beandemo_hello_world_plugin_deactivate (PeasActivatable *activatable)
+beandemo_hello_world_plugin_deactivate (BeanActivatable *activatable)
 {
-  PeasDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (activatable);
+  BeanDemoHelloWorldPlugin *plugin = PEASDEMO_HELLO_WORLD_PLUGIN (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -138,7 +138,7 @@ beandemo_hello_world_plugin_deactivate (PeasActivatable *activatable)
 }
 
 static void
-beandemo_hello_world_plugin_class_init (PeasDemoHelloWorldPluginClass *klass)
+beandemo_hello_world_plugin_class_init (BeanDemoHelloWorldPluginClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -150,19 +150,19 @@ beandemo_hello_world_plugin_class_init (PeasDemoHelloWorldPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
   iface->activate = beandemo_hello_world_plugin_activate;
   iface->deactivate = beandemo_hello_world_plugin_deactivate;
 }
 
 static void
-beandemo_hello_world_plugin_class_finalize (PeasDemoHelloWorldPluginClass *klass)
+beandemo_hello_world_plugin_class_finalize (BeanDemoHelloWorldPluginClass *klass)
 {
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   beandemo_hello_world_plugin_register_type (G_TYPE_MODULE (module));
   beandemo_hello_world_configurable_register (G_TYPE_MODULE (module));

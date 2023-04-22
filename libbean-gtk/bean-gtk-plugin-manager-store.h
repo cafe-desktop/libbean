@@ -41,53 +41,53 @@ typedef enum {
   PEAS_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN,
   PEAS_GTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN,
   PEAS_GTK_PLUGIN_MANAGER_STORE_N_COLUMNS
-} PeasGtkPluginManagerStoreColumns;
+} BeanGtkPluginManagerStoreColumns;
 
 /*
  * Type checking and casting macros
  */
 #define PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE            (bean_gtk_plugin_manager_store_get_type())
-#define PEAS_GTK_PLUGIN_MANAGER_STORE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, PeasGtkPluginManagerStore))
-#define PEAS_GTK_PLUGIN_MANAGER_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, PeasGtkPluginManagerStoreClass))
+#define PEAS_GTK_PLUGIN_MANAGER_STORE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStore))
+#define PEAS_GTK_PLUGIN_MANAGER_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStoreClass))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_STORE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_STORE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE))
-#define PEAS_GTK_PLUGIN_MANAGER_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, PeasGtkPluginManagerStoreClass))
+#define PEAS_GTK_PLUGIN_MANAGER_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStoreClass))
 
-typedef struct _PeasGtkPluginManagerStore         PeasGtkPluginManagerStore;
-typedef struct _PeasGtkPluginManagerStoreClass    PeasGtkPluginManagerStoreClass;
+typedef struct _BeanGtkPluginManagerStore         BeanGtkPluginManagerStore;
+typedef struct _BeanGtkPluginManagerStoreClass    BeanGtkPluginManagerStoreClass;
 
-struct _PeasGtkPluginManagerStore {
+struct _BeanGtkPluginManagerStore {
   GtkListStore parent;
 };
 
-struct _PeasGtkPluginManagerStoreClass {
+struct _BeanGtkPluginManagerStoreClass {
   GtkListStoreClass parent_class;
 };
 
 GType                       bean_gtk_plugin_manager_store_get_type              (void) G_GNUC_CONST;
-PeasGtkPluginManagerStore  *bean_gtk_plugin_manager_store_new                   (PeasEngine                *engine);
+BeanGtkPluginManagerStore  *bean_gtk_plugin_manager_store_new                   (BeanEngine                *engine);
 
-void                        bean_gtk_plugin_manager_store_reload                (PeasGtkPluginManagerStore *store);
+void                        bean_gtk_plugin_manager_store_reload                (BeanGtkPluginManagerStore *store);
 
-void                        bean_gtk_plugin_manager_store_set_enabled           (PeasGtkPluginManagerStore *store,
+void                        bean_gtk_plugin_manager_store_set_enabled           (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter,
                                                                                  gboolean                   enabled);
-gboolean                    bean_gtk_plugin_manager_store_get_enabled           (PeasGtkPluginManagerStore *store,
+gboolean                    bean_gtk_plugin_manager_store_get_enabled           (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
-void                        bean_gtk_plugin_manager_store_set_all_enabled       (PeasGtkPluginManagerStore *store,
+void                        bean_gtk_plugin_manager_store_set_all_enabled       (BeanGtkPluginManagerStore *store,
                                                                                  gboolean                  enabled);
-void                        bean_gtk_plugin_manager_store_toggle_enabled        (PeasGtkPluginManagerStore *store,
+void                        bean_gtk_plugin_manager_store_toggle_enabled        (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-gboolean                    bean_gtk_plugin_manager_store_can_enable            (PeasGtkPluginManagerStore *store,
+gboolean                    bean_gtk_plugin_manager_store_can_enable            (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-PeasPluginInfo             *bean_gtk_plugin_manager_store_get_plugin            (PeasGtkPluginManagerStore *store,
+BeanPluginInfo             *bean_gtk_plugin_manager_store_get_plugin            (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-gboolean                    bean_gtk_plugin_manager_store_get_iter_from_plugin  (PeasGtkPluginManagerStore *store,
+gboolean                    bean_gtk_plugin_manager_store_get_iter_from_plugin  (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter,
-                                                                                 const PeasPluginInfo      *info);
+                                                                                 const BeanPluginInfo      *info);
 G_END_DECLS
 
 #endif /* __PEAS_GTK_PLUGIN_MANAGER_STORE_H__  */

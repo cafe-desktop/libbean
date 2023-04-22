@@ -20,7 +20,7 @@ local package = require 'package'
 
 local lgi = require 'lgi'
 local GObject = lgi.GObject
-local Peas = lgi.Peas
+local Bean = lgi.Bean
 
 
 local Hooks = {}
@@ -146,8 +146,8 @@ function Hooks:setup_extension(exten, info)
     local wrapped_exten = GObject.Object(exten, false)
     check_native(exten, wrapped_exten, 'extension')
 
-    local wrapped_info = Peas.PluginInfo(info, false)
-    check_native(info, wrapped_info, 'PeasPluginInfo')
+    local wrapped_info = Bean.PluginInfo(info, false)
+    check_native(info, wrapped_info, 'BeanPluginInfo')
 
     wrapped_exten.priv.plugin_info = wrapped_info
 end

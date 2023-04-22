@@ -38,7 +38,7 @@ introspection_base_default_init (IntrospectionBaseInterface *iface)
  *
  * Returns: (transfer none):
  */
-const PeasPluginInfo *
+const BeanPluginInfo *
 introspection_base_get_plugin_info (IntrospectionBase *base)
 {
   IntrospectionBaseInterface *iface;

@@ -28,28 +28,28 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_PLUGIN_LOADER_LUA             (bean_plugin_loader_lua_get_type ())
-#define PEAS_PLUGIN_LOADER_LUA(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, PeasPluginLoaderLua))
-#define PEAS_PLUGIN_LOADER_LUA_CONST(obj)       (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, PeasPluginLoaderLua const))
-#define PEAS_PLUGIN_LOADER_LUA_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_LUA, PeasPluginLoaderLuaClass))
+#define PEAS_PLUGIN_LOADER_LUA(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, BeanPluginLoaderLua))
+#define PEAS_PLUGIN_LOADER_LUA_CONST(obj)       (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, BeanPluginLoaderLua const))
+#define PEAS_PLUGIN_LOADER_LUA_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_LUA, BeanPluginLoaderLuaClass))
 #define PEAS_IS_PLUGIN_LOADER_LUA(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA))
 #define PEAS_IS_PLUGIN_LOADER_LUA_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_PLUGIN_LOADER_LUA))
-#define PEAS_PLUGIN_LOADER_LUA_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, PeasPluginLoaderLuaClass))
+#define PEAS_PLUGIN_LOADER_LUA_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_LUA, BeanPluginLoaderLuaClass))
 
-typedef struct _PeasPluginLoaderLua         PeasPluginLoaderLua;
-typedef struct _PeasPluginLoaderLuaClass    PeasPluginLoaderLuaClass;
+typedef struct _BeanPluginLoaderLua         BeanPluginLoaderLua;
+typedef struct _BeanPluginLoaderLuaClass    BeanPluginLoaderLuaClass;
 
-struct _PeasPluginLoaderLua {
-  PeasPluginLoader parent;
+struct _BeanPluginLoaderLua {
+  BeanPluginLoader parent;
 };
 
-struct _PeasPluginLoaderLuaClass {
-  PeasPluginLoaderClass parent_class;
+struct _BeanPluginLoaderLuaClass {
+  BeanPluginLoaderClass parent_class;
 };
 
 GType                    bean_plugin_loader_lua_get_type  (void) G_GNUC_CONST;
 
 /* All the loaders must implement this function */
-G_MODULE_EXPORT void     bean_register_types              (PeasObjectModule *module);
+G_MODULE_EXPORT void     bean_register_types              (BeanObjectModule *module);
 
 G_END_DECLS
 

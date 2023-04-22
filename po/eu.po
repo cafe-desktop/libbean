@@ -163,8 +163,8 @@ msgstr "Hobespenak"
 #~ msgid "Show Builtin"
 #~ msgstr "Erakutsi barnekoak"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Konfiguratu"

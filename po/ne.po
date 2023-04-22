@@ -23,7 +23,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "प्लगइन प्रबन्धक"
 
-#. Translators: What PeasGtkPluginManagerView to use
+#. Translators: What BeanGtkPluginManagerView to use
 #: ../data/glade/libbean-gtk.xml.in.h:3
 msgid "View"
 msgstr "दृश्य"
@@ -40,7 +40,7 @@ msgstr "ब्युल्टइन वस्तु"
 
 #: ../data/glade/libbean-gtk.xml.in.h:7
 #, fuzzy
-msgid "Peas Gtk"
+msgid "Bean Gtk"
 msgstr "gtk-doc"
 
 #: ../libbean/bean-engine.c:856

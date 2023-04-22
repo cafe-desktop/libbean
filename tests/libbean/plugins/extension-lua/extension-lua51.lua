@@ -19,7 +19,7 @@ local lgi = require 'lgi'
 
 local GObject = lgi.GObject
 local Introspection = lgi.Introspection
-local Peas = lgi.Peas
+local Bean = lgi.Bean
 
 
 local ExtensionLuaAbstract =
@@ -28,7 +28,7 @@ local ExtensionLuaAbstract =
 
 local ExtensionLuaPlugin =
     Introspection.Prerequisite:derive('ExtensionLuaPlugin', {
-                                      Peas.Activatable,
+                                      Bean.Activatable,
                                       Introspection.Base,
                                       Introspection.Callable,
                                       Introspection.HasPrerequisite })

@@ -23,7 +23,7 @@
 
 #include "bean-plugin-loader.h"
 
-G_DEFINE_ABSTRACT_TYPE (PeasPluginLoader, bean_plugin_loader, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (BeanPluginLoader, bean_plugin_loader, G_TYPE_OBJECT)
 
 static void
 bean_plugin_loader_finalize (GObject *object)
@@ -34,12 +34,12 @@ bean_plugin_loader_finalize (GObject *object)
 }
 
 static void
-bean_plugin_loader_init (PeasPluginLoader *loader)
+bean_plugin_loader_init (BeanPluginLoader *loader)
 {
 }
 
 static void
-bean_plugin_loader_class_init (PeasPluginLoaderClass *klass)
+bean_plugin_loader_class_init (BeanPluginLoaderClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -47,9 +47,9 @@ bean_plugin_loader_class_init (PeasPluginLoaderClass *klass)
 }
 
 gboolean
-bean_plugin_loader_initialize (PeasPluginLoader *loader)
+bean_plugin_loader_initialize (BeanPluginLoader *loader)
 {
-  PeasPluginLoaderClass *klass;
+  BeanPluginLoaderClass *klass;
 
   g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
 
@@ -68,9 +68,9 @@ bean_plugin_loader_initialize (PeasPluginLoader *loader)
 }
 
 gboolean
-bean_plugin_loader_is_global (PeasPluginLoader *loader)
+bean_plugin_loader_is_global (BeanPluginLoader *loader)
 {
-  PeasPluginLoaderClass *klass;
+  BeanPluginLoaderClass *klass;
 
   g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
 
@@ -83,8 +83,8 @@ bean_plugin_loader_is_global (PeasPluginLoader *loader)
 }
 
 gboolean
-bean_plugin_loader_load (PeasPluginLoader *loader,
-                         PeasPluginInfo   *info)
+bean_plugin_loader_load (BeanPluginLoader *loader,
+                         BeanPluginInfo   *info)
 {
 
   g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
@@ -93,8 +93,8 @@ bean_plugin_loader_load (PeasPluginLoader *loader,
 }
 
 void
-bean_plugin_loader_unload (PeasPluginLoader *loader,
-                           PeasPluginInfo   *info)
+bean_plugin_loader_unload (BeanPluginLoader *loader,
+                           BeanPluginInfo   *info)
 {
   g_return_if_fail (PEAS_IS_PLUGIN_LOADER (loader));
 
@@ -102,11 +102,11 @@ bean_plugin_loader_unload (PeasPluginLoader *loader,
 }
 
 gboolean
-bean_plugin_loader_provides_extension (PeasPluginLoader *loader,
-                                       PeasPluginInfo   *info,
+bean_plugin_loader_provides_extension (BeanPluginLoader *loader,
+                                       BeanPluginInfo   *info,
                                        GType             ext_type)
 {
-  PeasPluginLoaderClass *klass;
+  BeanPluginLoaderClass *klass;
 
   g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
 
@@ -114,14 +114,14 @@ bean_plugin_loader_provides_extension (PeasPluginLoader *loader,
   return klass->provides_extension (loader, info, ext_type);
 }
 
-PeasExtension *
-bean_plugin_loader_create_extension (PeasPluginLoader *loader,
-                                     PeasPluginInfo   *info,
+BeanExtension *
+bean_plugin_loader_create_extension (BeanPluginLoader *loader,
+                                     BeanPluginInfo   *info,
                                      GType             ext_type,
                                      guint             n_parameters,
                                      GParameter       *parameters)
 {
-  PeasPluginLoaderClass *klass;
+  BeanPluginLoaderClass *klass;
 
   g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), NULL);
 
@@ -131,9 +131,9 @@ bean_plugin_loader_create_extension (PeasPluginLoader *loader,
 }
 
 void
-bean_plugin_loader_garbage_collect (PeasPluginLoader *loader)
+bean_plugin_loader_garbage_collect (BeanPluginLoader *loader)
 {
-  PeasPluginLoaderClass *klass;
+  BeanPluginLoaderClass *klass;
 
   g_return_if_fail (PEAS_IS_PLUGIN_LOADER (loader));
 

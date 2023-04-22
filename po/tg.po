@@ -36,7 +36,7 @@ msgid "Show Builtin"
 msgstr "Намоиши дарунсохт"
 
 #: ../data/glade/libbean-gtk.xml.in.h:6
-msgid "Peas Gtk"
+msgid "Bean Gtk"
 msgstr "Нахӯди Gtk"
 
 #: ../libbean/bean-engine.c:818

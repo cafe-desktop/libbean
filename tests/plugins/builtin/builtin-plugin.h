@@ -37,15 +37,15 @@ typedef struct _TestingBuiltinPlugin         TestingBuiltinPlugin;
 typedef struct _TestingBuiltinPluginClass    TestingBuiltinPluginClass;
 
 struct _TestingBuiltinPlugin {
-  PeasExtensionBase parent_instance;
+  BeanExtensionBase parent_instance;
 };
 
 struct _TestingBuiltinPluginClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 GType                 testing_builtin_plugin_get_type (void) G_GNUC_CONST;
-G_MODULE_EXPORT void  bean_register_types             (PeasObjectModule *module);
+G_MODULE_EXPORT void  bean_register_types             (BeanObjectModule *module);
 
 G_END_DECLS
 

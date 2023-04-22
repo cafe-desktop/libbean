@@ -70,7 +70,7 @@ testing_extension_c_plugin_init (TestingExtensionCPlugin *plugin)
 {
 }
 
-static const PeasPluginInfo *
+static const BeanPluginInfo *
 testing_extension_c_plugin_get_plugin_info (IntrospectionBase *base)
 {
   return bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
@@ -79,7 +79,7 @@ testing_extension_c_plugin_get_plugin_info (IntrospectionBase *base)
 static GSettings *
 testing_extension_c_plugin_get_settings (IntrospectionBase *base)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
 
@@ -175,7 +175,7 @@ testing_extension_c_plugin_class_finalize (TestingExtensionCPluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   testing_extension_c_abstract_register (G_TYPE_MODULE (module));
   testing_extension_c_plugin_register_type (G_TYPE_MODULE (module));

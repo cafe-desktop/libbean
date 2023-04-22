@@ -31,37 +31,37 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define PEAS_GTK_TYPE_PLUGIN_MANAGER            (bean_gtk_plugin_manager_get_type())
-#define PEAS_GTK_PLUGIN_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER, PeasGtkPluginManager))
-#define PEAS_GTK_PLUGIN_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER, PeasGtkPluginManagerClass))
+#define PEAS_GTK_PLUGIN_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManager))
+#define PEAS_GTK_PLUGIN_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManagerClass))
 #define PEAS_GTK_IS_PLUGIN_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER))
-#define PEAS_GTK_PLUGIN_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER, PeasGtkPluginManagerClass))
+#define PEAS_GTK_PLUGIN_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManagerClass))
 
-typedef struct _PeasGtkPluginManager        PeasGtkPluginManager;
-typedef struct _PeasGtkPluginManagerClass   PeasGtkPluginManagerClass;
-typedef struct _PeasGtkPluginManagerPrivate PeasGtkPluginManagerPrivate;
+typedef struct _BeanGtkPluginManager        BeanGtkPluginManager;
+typedef struct _BeanGtkPluginManagerClass   BeanGtkPluginManagerClass;
+typedef struct _BeanGtkPluginManagerPrivate BeanGtkPluginManagerPrivate;
 
 /**
- * PeasGtkPluginManager:
+ * BeanGtkPluginManager:
  *
- * The #PeasGtkPluginManager structure contains only private data
+ * The #BeanGtkPluginManager structure contains only private data
  * and should only be accessed using the provided API.
  */
-struct _PeasGtkPluginManager
+struct _BeanGtkPluginManager
 {
   GtkBox box;
 
   /*< private > */
-  PeasGtkPluginManagerPrivate *priv;
+  BeanGtkPluginManagerPrivate *priv;
 };
 
 /**
- * PeasGtkPluginManagerClass:
+ * BeanGtkPluginManagerClass:
  * @parent_class: The parent class.
  *
- * The class structure for #PeasGtkPluginManager.
+ * The class structure for #BeanGtkPluginManager.
  */
-struct _PeasGtkPluginManagerClass
+struct _BeanGtkPluginManagerClass
 {
   GtkBoxClass parent_class;
 
@@ -72,10 +72,10 @@ struct _PeasGtkPluginManagerClass
 PEAS_AVAILABLE_IN_ALL
 GType       bean_gtk_plugin_manager_get_type  (void)  G_GNUC_CONST;
 PEAS_AVAILABLE_IN_ALL
-GtkWidget  *bean_gtk_plugin_manager_new       (PeasEngine           *engine);
+GtkWidget  *bean_gtk_plugin_manager_new       (BeanEngine           *engine);
 
 PEAS_AVAILABLE_IN_ALL
-GtkWidget  *bean_gtk_plugin_manager_get_view  (PeasGtkPluginManager *pm);
+GtkWidget  *bean_gtk_plugin_manager_get_view  (BeanGtkPluginManager *pm);
 
 G_END_DECLS
 

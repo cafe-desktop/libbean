@@ -34,7 +34,7 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
 };
 
 /* Have dependencies before the plugin that requires them */
@@ -43,30 +43,30 @@ static const gchar *loadable_plugins[] = {
 };
 
 static void
-extension_added_cb (PeasExtensionSet *extension_set,
-                    PeasPluginInfo   *info,
-                    PeasExtension    *extension,
+extension_added_cb (BeanExtensionSet *extension_set,
+                    BeanPluginInfo   *info,
+                    BeanExtension    *extension,
                     gint             *active)
 {
   ++(*active);
 }
 
 static void
-extension_removed_cb (PeasExtensionSet *extension_set,
-                      PeasPluginInfo   *info,
-                      PeasExtension    *extension,
+extension_removed_cb (BeanExtensionSet *extension_set,
+                      BeanPluginInfo   *info,
+                      BeanExtension    *extension,
                       gint             *active)
 {
   --(*active);
 }
 
-static PeasExtensionSet *
-testing_extension_set_new (PeasEngine *engine,
+static BeanExtensionSet *
+testing_extension_set_new (BeanEngine *engine,
                            gint       *active)
 {
   gint i;
-  PeasPluginInfo *info;
-  PeasExtensionSet *extension_set;
+  BeanPluginInfo *info;
+  BeanExtensionSet *extension_set;
 
   extension_set = bean_extension_set_new (engine,
                                           PEAS_TYPE_ACTIVATABLE,
@@ -93,7 +93,7 @@ testing_extension_set_new (PeasEngine *engine,
                     active);
 
   bean_extension_set_foreach (extension_set,
-                              (PeasExtensionSetForeachFunc) extension_added_cb,
+                              (BeanExtensionSetForeachFunc) extension_added_cb,
                               active);
 
   for (i = 0; i < G_N_ELEMENTS (loadable_plugins); ++i)
@@ -104,7 +104,7 @@ testing_extension_set_new (PeasEngine *engine,
       g_assert (bean_engine_load_plugin (engine, info));
     }
 
-  /* Load a plugin that does not provide a PeasActivatable */
+  /* Load a plugin that does not provide a BeanActivatable */
   info = bean_engine_get_plugin_info (engine, "extension-c");
   g_assert (bean_engine_load_plugin (engine, info));
 
@@ -131,13 +131,13 @@ static void
 test_runner (TestFixture   *fixture,
              gconstpointer  data)
 {
-  ((void (*) (PeasEngine *engine)) data) (fixture->engine);
+  ((void (*) (BeanEngine *engine)) data) (fixture->engine);
 }
 
 static void
-test_extension_set_create_valid (PeasEngine *engine)
+test_extension_set_create_valid (BeanEngine *engine)
 {
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   extension_set = bean_extension_set_new (engine,
                                           PEAS_TYPE_ACTIVATABLE,
@@ -148,19 +148,19 @@ test_extension_set_create_valid (PeasEngine *engine)
 }
 
 static void
-valid_extension_added_cb (PeasExtensionSet *extension_set,
-                          PeasPluginInfo   *info,
-                          PeasExtension    *extension,
+valid_extension_added_cb (BeanExtensionSet *extension_set,
+                          BeanPluginInfo   *info,
+                          BeanExtension    *extension,
                           GObject          **obj_ptr)
 {
   g_object_get (PEAS_ACTIVATABLE (extension), "object", obj_ptr, NULL);
 }
 
 static void
-test_extension_set_create_valid_with_properties (PeasEngine *engine)
+test_extension_set_create_valid_with_properties (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
-  PeasExtensionSet *extension_set;
+  BeanPluginInfo *info;
+  BeanExtensionSet *extension_set;
   GValue prop_value = G_VALUE_INIT;
   GObject *obj, *obj_cmp;
   const gchar *prop_names[1] = { "object" };
@@ -190,12 +190,12 @@ test_extension_set_create_valid_with_properties (PeasEngine *engine)
 
 
 static void
-test_extension_set_create_invalid (PeasEngine *engine)
+test_extension_set_create_invalid (BeanEngine *engine)
 {
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   testing_util_push_log_hook ("*assertion*G_TYPE_IS_INTERFACE*failed");
-  testing_util_push_log_hook ("*type 'PeasActivatable' has no property named 'invalid-property'");
+  testing_util_push_log_hook ("*type 'BeanActivatable' has no property named 'invalid-property'");
 
   /* Invalid GType */
   extension_set = bean_extension_set_new (engine, G_TYPE_INVALID, NULL);
@@ -216,9 +216,9 @@ test_extension_set_create_invalid (PeasEngine *engine)
 }
 
 static void
-test_extension_set_create_invalid_with_properties (PeasEngine *engine)
+test_extension_set_create_invalid_with_properties (BeanEngine *engine)
 {
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
   GValue prop_values[2] = { G_VALUE_INIT };
   const gchar *prop_names[2] = { "object", NULL };
   const gchar *prop_names_not_exist[1] = { "aleb" };
@@ -272,10 +272,10 @@ test_extension_set_create_invalid_with_properties (PeasEngine *engine)
 
 
 static void
-test_extension_set_extension_added (PeasEngine *engine)
+test_extension_set_extension_added (BeanEngine *engine)
 {
   gint active;
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   /* This will check that an extension is added
    * as plugins are loaded and cause active to
@@ -292,15 +292,15 @@ test_extension_set_extension_added (PeasEngine *engine)
 }
 
 static void
-test_extension_set_extension_removed (PeasEngine *engine)
+test_extension_set_extension_removed (BeanEngine *engine)
 {
   gint i, active;
-  PeasPluginInfo *info;
-  PeasExtensionSet *extension_set;
+  BeanPluginInfo *info;
+  BeanExtensionSet *extension_set;
 
   extension_set = testing_extension_set_new (engine, &active);
 
-  /* Unload the plugin that does not provide a PeasActivatable */
+  /* Unload the plugin that does not provide a BeanActivatable */
   info = bean_engine_get_plugin_info (engine, "extension-c");
   g_assert (bean_engine_unload_plugin (engine, info));
 
@@ -320,11 +320,11 @@ test_extension_set_extension_removed (PeasEngine *engine)
 }
 
 static void
-test_extension_set_get_extension (PeasEngine *engine)
+test_extension_set_get_extension (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
-  PeasExtension *extension;
-  PeasExtensionSet *extension_set;
+  BeanPluginInfo *info;
+  BeanExtension *extension;
+  BeanExtensionSet *extension_set;
 
   extension_set = testing_extension_set_new (engine, NULL);
   info = bean_engine_get_plugin_info (engine, loadable_plugins[0]);
@@ -343,9 +343,9 @@ test_extension_set_get_extension (PeasEngine *engine)
 }
 
 static void
-test_extension_set_call_valid (PeasEngine *engine)
+test_extension_set_call_valid (BeanEngine *engine)
 {
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   extension_set = testing_extension_set_new (engine, NULL);
 
@@ -355,11 +355,11 @@ test_extension_set_call_valid (PeasEngine *engine)
 }
 
 static void
-test_extension_set_call_invalid (PeasEngine *engine)
+test_extension_set_call_invalid (BeanEngine *engine)
 {
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
-  testing_util_push_log_hook ("Method 'PeasActivatable.invalid' was not found");
+  testing_util_push_log_hook ("Method 'BeanActivatable.invalid' was not found");
 
   extension_set = testing_extension_set_new (engine, NULL);
 
@@ -369,15 +369,15 @@ test_extension_set_call_invalid (PeasEngine *engine)
 }
 
 static void
-test_extension_set_foreach (PeasEngine *engine)
+test_extension_set_foreach (BeanEngine *engine)
 {
   gint count = 0;
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   extension_set = testing_extension_set_new (engine, NULL);
 
   bean_extension_set_foreach (extension_set,
-                              (PeasExtensionSetForeachFunc) extension_added_cb,
+                              (BeanExtensionSetForeachFunc) extension_added_cb,
                               &count);
 
   g_assert_cmpint (count, ==, G_N_ELEMENTS (loadable_plugins));
@@ -386,9 +386,9 @@ test_extension_set_foreach (PeasEngine *engine)
 }
 
 static void
-ordering_cb (PeasExtensionSet  *set,
-             PeasPluginInfo    *info,
-             PeasExtension     *extension,
+ordering_cb (BeanExtensionSet  *set,
+             BeanPluginInfo    *info,
+             BeanExtension     *extension,
              GList            **order)
 {
   const gchar *order_module_name = (const gchar *) (*order)->data;
@@ -399,12 +399,12 @@ ordering_cb (PeasExtensionSet  *set,
 }
 
 static void
-test_extension_set_ordering (PeasEngine *engine)
+test_extension_set_ordering (BeanEngine *engine)
 {
   guint i;
   GList *foreach_order = NULL;
   GList *dispose_order = NULL;
-  PeasExtensionSet *extension_set;
+  BeanExtensionSet *extension_set;
 
   for (i = 0; i < G_N_ELEMENTS (loadable_plugins); ++i)
     {
@@ -418,7 +418,7 @@ test_extension_set_ordering (PeasEngine *engine)
   extension_set = testing_extension_set_new (engine, NULL);
 
   bean_extension_set_foreach (extension_set,
-                              (PeasExtensionSetForeachFunc) ordering_cb,
+                              (BeanExtensionSetForeachFunc) ordering_cb,
                               &foreach_order);
   g_assert (foreach_order == NULL);
 

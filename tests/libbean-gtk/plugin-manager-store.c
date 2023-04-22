@@ -35,9 +35,9 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
   GtkTreeModel *model;
-  PeasGtkPluginManagerStore *store;
+  BeanGtkPluginManagerStore *store;
 };
 
 static void
@@ -69,7 +69,7 @@ static void
 test_gtk_plugin_manager_store_sorted (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info1, *info2;
+  BeanPluginInfo *info1, *info2;
 
   /* TODO: add a plugin that would cause this to assert if strcmp() was used */
 
@@ -92,7 +92,7 @@ static void
 test_gtk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
   info = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
@@ -108,7 +108,7 @@ static void
 test_gtk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   test_gtk_plugin_manager_store_plugin_loaded (fixture);
 
@@ -122,7 +122,7 @@ test_gtk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
 
 static void
 verify_model (TestFixture    *fixture,
-              PeasPluginInfo *info,
+              BeanPluginInfo *info,
               gboolean        can_enable,
               const gchar    *icon_name,
               GType           icon_type,
@@ -194,7 +194,7 @@ verify_model (TestFixture    *fixture,
 static void
 test_gtk_plugin_manager_store_verify_loadable (TestFixture *fixture)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (fixture->engine, "loadable");
 
@@ -205,7 +205,7 @@ test_gtk_plugin_manager_store_verify_loadable (TestFixture *fixture)
 static void
 test_gtk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
@@ -223,7 +223,7 @@ test_gtk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
 static void
 test_gtk_plugin_manager_store_verify_builtin (TestFixture *fixture)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (fixture->engine, "builtin");
 
@@ -240,7 +240,7 @@ static void
 test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   gchar *model_info;
 
   /* Has description */
@@ -273,7 +273,7 @@ verify_icon (TestFixture *fixture,
              const gchar *icon_name,
              GType        icon_type)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (fixture->engine, plugin_name);
 
@@ -318,7 +318,7 @@ test_gtk_plugin_manager_store_invalid_stock_icon (TestFixture *fixture)
 static void
 test_gtk_plugin_manager_store_hidden (TestFixture *fixture)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GtkTreeIter iter;
 
   info = bean_engine_get_plugin_info (fixture->engine, "hidden");

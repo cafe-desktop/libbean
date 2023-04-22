@@ -58,7 +58,7 @@ static void
 engine_private_notify (gpointer value)
 {
   if (value != NULL)
-    g_error ("A PeasEngine was not freed!");
+    g_error ("A BeanEngine was not freed!");
 }
 
 static void
@@ -209,7 +209,7 @@ testing_util_init (void)
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/libbean",
-                                 "Peas", "1.0", 0, &error);
+                                 "Bean", "1.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;
@@ -217,16 +217,16 @@ testing_util_init (void)
 
 static void
 engine_weak_notify (gpointer    unused,
-                    PeasEngine *engine)
+                    BeanEngine *engine)
 {
   /* Cannot use NULL because testing_util_engine_free() must be called */
   g_private_set (&engine_key, DEAD_ENGINE);
 }
 
-PeasEngine *
+BeanEngine *
 testing_util_engine_new_full (gboolean nonglobal_loaders)
 {
-  PeasEngine *engine;
+  BeanEngine *engine;
 
   g_assert (initialized);
 
@@ -266,7 +266,7 @@ testing_util_engine_new_full (gboolean nonglobal_loaders)
 }
 
 void
-testing_util_engine_free (PeasEngine *engine)
+testing_util_engine_free (BeanEngine *engine)
 {
   /* In case a test needs to free the engine */
   if (g_private_get (&engine_key) != DEAD_ENGINE)

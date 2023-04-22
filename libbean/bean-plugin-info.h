@@ -30,19 +30,19 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_PLUGIN_INFO   (bean_plugin_info_get_type ())
-#define PEAS_PLUGIN_INFO(obj)   ((PeasPluginInfo *) (obj))
+#define PEAS_PLUGIN_INFO(obj)   ((BeanPluginInfo *) (obj))
 
 /**
  * PEAS_PLUGIN_INFO_ERROR:
  *
- * Error domain for PeasPluginInfo. Errors in this domain will
- * be from the PeasPluginInfoError enumeration. See #GError for
+ * Error domain for BeanPluginInfo. Errors in this domain will
+ * be from the BeanPluginInfoError enumeration. See #GError for
  * more information on error domains.
  */
 #define PEAS_PLUGIN_INFO_ERROR bean_plugin_info_error_quark ()
 
 /**
- * PeasPluginInfoError:
+ * BeanPluginInfoError:
  * @PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED:
  *      The plugin failed to load.
  * @PEAS_PLUGIN_INFO_ERROR_LOADER_NOT_FOUND:
@@ -60,15 +60,15 @@ typedef enum {
   PEAS_PLUGIN_INFO_ERROR_LOADER_NOT_FOUND,
   PEAS_PLUGIN_INFO_ERROR_DEP_NOT_FOUND,
   PEAS_PLUGIN_INFO_ERROR_DEP_LOADING_FAILED
-} PeasPluginInfoError;
+} BeanPluginInfoError;
 
 /**
- * PeasPluginInfo:
+ * BeanPluginInfo:
  *
- * The #PeasPluginInfo structure contains only private data and should only
+ * The #BeanPluginInfo structure contains only private data and should only
  * be accessed using the provided API.
  */
-typedef struct _PeasPluginInfo PeasPluginInfo;
+typedef struct _BeanPluginInfo BeanPluginInfo;
 
 PEAS_AVAILABLE_IN_ALL
 GType         bean_plugin_info_get_type         (void) G_GNUC_CONST;
@@ -76,49 +76,49 @@ PEAS_AVAILABLE_IN_ALL
 GQuark        bean_plugin_info_error_quark      (void);
 
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_info_is_loaded        (const PeasPluginInfo *info);
+gboolean      bean_plugin_info_is_loaded        (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_info_is_available     (const PeasPluginInfo *info,
+gboolean      bean_plugin_info_is_available     (const BeanPluginInfo *info,
                                                  GError               **error);
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_info_is_builtin       (const PeasPluginInfo *info);
+gboolean      bean_plugin_info_is_builtin       (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_info_is_hidden        (const PeasPluginInfo *info);
+gboolean      bean_plugin_info_is_hidden        (const BeanPluginInfo *info);
 
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_module_name  (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_module_name  (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_module_dir   (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_module_dir   (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_data_dir     (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_data_dir     (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-GSettings    *bean_plugin_info_get_settings     (const PeasPluginInfo *info,
+GSettings    *bean_plugin_info_get_settings     (const BeanPluginInfo *info,
                                                  const gchar          *schema_id);
 PEAS_AVAILABLE_IN_ALL
-const gchar **bean_plugin_info_get_dependencies (const PeasPluginInfo *info);
+const gchar **bean_plugin_info_get_dependencies (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-gboolean      bean_plugin_info_has_dependency   (const PeasPluginInfo *info,
+gboolean      bean_plugin_info_has_dependency   (const BeanPluginInfo *info,
                                                  const gchar          *module_name);
 
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_name         (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_name         (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_description  (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_description  (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_icon_name    (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_icon_name    (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar **bean_plugin_info_get_authors      (const PeasPluginInfo *info);
+const gchar **bean_plugin_info_get_authors      (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_website      (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_website      (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_copyright    (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_copyright    (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_version      (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_version      (const BeanPluginInfo *info);
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_help_uri     (const PeasPluginInfo *info);
+const gchar  *bean_plugin_info_get_help_uri     (const BeanPluginInfo *info);
 
 PEAS_AVAILABLE_IN_ALL
-const gchar  *bean_plugin_info_get_external_data (const PeasPluginInfo *info,
+const gchar  *bean_plugin_info_get_external_data (const BeanPluginInfo *info,
                                                   const gchar          *key);
 
 G_END_DECLS

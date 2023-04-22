@@ -46,10 +46,10 @@
 
 
 static void
-test_extension_py_instance_refcount (PeasEngine     *engine,
-                                     PeasPluginInfo *info)
+test_extension_py_instance_refcount (BeanEngine     *engine,
+                                     BeanPluginInfo *info)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
 
   extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_BASE,
@@ -66,10 +66,10 @@ test_extension_py_instance_refcount (PeasEngine     *engine,
 }
 
 static void
-test_extension_py_activatable_subject_refcount (PeasEngine     *engine,
-                                                PeasPluginInfo *info)
+test_extension_py_activatable_subject_refcount (BeanEngine     *engine,
+                                                BeanPluginInfo *info)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
   GObject *object;
   PyObject *wrapper;
 
@@ -107,9 +107,9 @@ test_extension_py_activatable_subject_refcount (PeasEngine     *engine,
 }
 
 static void
-test_extension_py_nonexistent (PeasEngine *engine)
+test_extension_py_nonexistent (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Error importing plugin 'extension-"
                               PY_LOADER_STR "-nonexistent'*");
@@ -135,7 +135,7 @@ test_extension_py_already_initialized (void)
 static void
 test_extension_py_already_initialized_subprocess (void)
 {
-  PeasEngine *engine;
+  BeanEngine *engine;
   PyObject *module, *dict, *pyengine, *result;
 
   /* Check that python has not been initialized yet */
@@ -198,13 +198,13 @@ test_extension_py_mixed_python (void)
 static void
 test_extension_py_mixed_python_subprocess (void)
 {
-  PeasEngine *engine;
-  PeasPluginInfo *info;
+  BeanEngine *engine;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("*mix incompatible Python versions*");
   testing_util_push_log_hook ("*check the installation*");
   testing_util_push_log_hook ("*'" ALT_PY_LOADER_STR
-                              "' is not a valid PeasPluginLoader*");
+                              "' is not a valid BeanPluginLoader*");
 
   g_setenv ("PEAS_ALLOW_CONFLICTING_LOADERS", "1", TRUE);
 

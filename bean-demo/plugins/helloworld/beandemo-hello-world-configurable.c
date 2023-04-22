@@ -33,9 +33,9 @@
 
 #include "beandemo-hello-world-configurable.h"
 
-static void bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PeasDemoHelloWorldConfigurable,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
                                 beandemo_hello_world_configurable,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
@@ -43,13 +43,13 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (PeasDemoHelloWorldConfigurable,
                                                                bean_gtk_configurable_iface_init))
 
 static void
-beandemo_hello_world_configurable_init (PeasDemoHelloWorldConfigurable *plugin)
+beandemo_hello_world_configurable_init (BeanDemoHelloWorldConfigurable *plugin)
 {
   g_debug ("%s", G_STRFUNC);
 }
 
 static GtkWidget *
-beandemo_hello_world_configurable_create_configure_widget (PeasGtkConfigurable *configurable)
+beandemo_hello_world_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
 {
   g_debug ("%s", G_STRFUNC);
 
@@ -57,18 +57,18 @@ beandemo_hello_world_configurable_create_configure_widget (PeasGtkConfigurable *
 }
 
 static void
-beandemo_hello_world_configurable_class_init (PeasDemoHelloWorldConfigurableClass *klass)
+beandemo_hello_world_configurable_class_init (BeanDemoHelloWorldConfigurableClass *klass)
 {
 }
 
 static void
-bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = beandemo_hello_world_configurable_create_configure_widget;
 }
 
 static void
-beandemo_hello_world_configurable_class_finalize (PeasDemoHelloWorldConfigurableClass *klass)
+beandemo_hello_world_configurable_class_finalize (BeanDemoHelloWorldConfigurableClass *klass)
 {
 }
 

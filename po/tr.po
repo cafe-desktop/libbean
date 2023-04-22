@@ -170,8 +170,8 @@ msgstr "Tercihler"
 #~ msgid "Show Builtin"
 #~ msgstr "Yerleşik Eklentileri Göster"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Yapılandır"

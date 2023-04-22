@@ -32,10 +32,10 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
   GtkWidget *window;
-  PeasGtkPluginManager *manager;
-  PeasGtkPluginManagerView *view;
+  BeanGtkPluginManager *manager;
+  BeanGtkPluginManagerView *view;
   GtkTreeSelection *selection;
   GtkTreeModel *model;
   GtkWidget *about_button;
@@ -130,7 +130,7 @@ static void
 test_gtk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
@@ -158,7 +158,7 @@ static void
 test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
@@ -207,7 +207,7 @@ static void
 test_gtk_plugin_manager_plugin_loaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
@@ -223,7 +223,7 @@ static void
 test_gtk_plugin_manager_plugin_unloaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   test_gtk_plugin_manager_plugin_loaded (fixture);
 
@@ -241,7 +241,7 @@ test_gtk_plugin_manager_about_dialog (TestFixture *fixture)
   gint i;
   GtkTreeIter iter;
   GtkWidget *window;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   const gchar **authors_plugin;
   const gchar * const *authors_dialog;
 
@@ -288,7 +288,7 @@ test_gtk_plugin_manager_configure_dialog (TestFixture *fixture)
 {
   GtkTreeIter iter;
   GtkWidget *window;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GList *list;
   GList *list_it;
   GtkWidget *content;
@@ -344,15 +344,15 @@ test_gtk_plugin_manager_gtkbuilder (void)
 {
   GtkBuilder *builder;
   GError *error = NULL;
-  PeasGtkPluginManager *manager;
-  PeasGtkPluginManagerView *view;
+  BeanGtkPluginManager *manager;
+  BeanGtkPluginManagerView *view;
   static const gchar *gtkbuilder_string =
     "<?xml version='1.0' encoding='UTF-8'?>\n"
     "<interface>\n"
-    "<object class='PeasGtkPluginManagerView' id='view'>\n"
+    "<object class='BeanGtkPluginManagerView' id='view'>\n"
     "  <property name='show-builtin'>True</property>\n"
     "</object>\n"
-    "<object class='PeasGtkPluginManager' id='manager'>\n"
+    "<object class='BeanGtkPluginManager' id='manager'>\n"
     "  <property name='view'>view</property>\n"
     "</object>\n"
     "</interface>";

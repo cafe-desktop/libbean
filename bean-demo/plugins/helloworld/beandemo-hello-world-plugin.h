@@ -28,28 +28,28 @@
 G_BEGIN_DECLS
 
 #define PEASDEMO_TYPE_HELLO_WORLD_PLUGIN         (beandemo_hello_world_plugin_get_type ())
-#define PEASDEMO_HELLO_WORLD_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, PeasDemoHelloWorldPlugin))
-#define PEASDEMO_HELLO_WORLD_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, PeasDemoHelloWorldPlugin))
+#define PEASDEMO_HELLO_WORLD_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
+#define PEASDEMO_HELLO_WORLD_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
 #define PEASDEMO_IS_HELLO_WORLD_PLUGIN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN))
 #define PEASDEMO_IS_HELLO_WORLD_PLUGIN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN))
-#define PEASDEMO_HELLO_WORLD_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, PeasDemoHelloWorldPluginClass))
+#define PEASDEMO_HELLO_WORLD_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPluginClass))
 
-typedef struct _PeasDemoHelloWorldPlugin       PeasDemoHelloWorldPlugin;
-typedef struct _PeasDemoHelloWorldPluginClass  PeasDemoHelloWorldPluginClass;
+typedef struct _BeanDemoHelloWorldPlugin       BeanDemoHelloWorldPlugin;
+typedef struct _BeanDemoHelloWorldPluginClass  BeanDemoHelloWorldPluginClass;
 
-struct _PeasDemoHelloWorldPlugin {
-  PeasExtensionBase parent_instance;
+struct _BeanDemoHelloWorldPlugin {
+  BeanExtensionBase parent_instance;
 
   GtkWidget *window;
   GtkWidget *label;
 };
 
-struct _PeasDemoHelloWorldPluginClass {
-  PeasExtensionBaseClass parent_class;
+struct _BeanDemoHelloWorldPluginClass {
+  BeanExtensionBaseClass parent_class;
 };
 
 GType                 beandemo_hello_world_plugin_get_type        (void) G_GNUC_CONST;
-G_MODULE_EXPORT void  bean_register_types                         (PeasObjectModule *module);
+G_MODULE_EXPORT void  bean_register_types                         (BeanObjectModule *module);
 
 G_END_DECLS
 

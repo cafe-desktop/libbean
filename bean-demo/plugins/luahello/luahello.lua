@@ -19,12 +19,12 @@ local lgi = require 'lgi'
 
 local GObject = lgi.GObject
 local Gtk = lgi.Gtk
-local Peas = lgi.Peas
-local PeasGtk = lgi.PeasGtk
+local Bean = lgi.Bean
+local BeanGtk = lgi.BeanGtk
 
 
 local LuaHelloPlugin = GObject.Object:derive('LuaHelloPlugin', {
-    Peas.Activatable
+    Bean.Activatable
 })
 
 LuaHelloPlugin._property.object =
@@ -55,7 +55,7 @@ end
 
 
 local LuaHelloConfigurable = GObject.Object:derive('LuaHelloConfigurable', {
-    PeasGtk.Configurable
+    BeanGtk.Configurable
 })
 
 function LuaHelloConfigurable:do_create_configure_widget()

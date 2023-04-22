@@ -164,5 +164,5 @@ msgstr "Inställningar"
 #~ msgid "Show Builtin"
 #~ msgstr "Visa inbyggda"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"

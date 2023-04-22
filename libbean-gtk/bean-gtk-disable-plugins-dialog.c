@@ -33,9 +33,9 @@ enum {
 };
 
 typedef struct {
-  PeasPluginInfo *plugin_info;
+  BeanPluginInfo *plugin_info;
   GList *dep_plugins;
-} PeasGtkDisablePluginsDialogPrivate;
+} BeanGtkDisablePluginsDialogPrivate;
 
 /* Properties */
 enum {
@@ -47,7 +47,7 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasGtkDisablePluginsDialog,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkDisablePluginsDialog,
                             bean_gtk_disable_plugins_dialog,
                             GTK_TYPE_MESSAGE_DIALOG)
 
@@ -80,9 +80,9 @@ model_name_sort_func (GtkListStore *store,
 }
 
 static void
-build_multiple_dependent_plugins (PeasGtkDisablePluginsDialog *dialog)
+build_multiple_dependent_plugins (BeanGtkDisablePluginsDialog *dialog)
 {
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
   gchar *message;
   GtkWidget *message_area;
   GtkWidget *sw;
@@ -124,7 +124,7 @@ build_multiple_dependent_plugins (PeasGtkDisablePluginsDialog *dialog)
   for (dep_plugin = priv->dep_plugins; dep_plugin != NULL;
        dep_plugin = dep_plugin->next)
     {
-      PeasPluginInfo *plugin = (PeasPluginInfo *) dep_plugin->data;
+      BeanPluginInfo *plugin = (BeanPluginInfo *) dep_plugin->data;
       GtkTreeIter iter;
 
       gtk_list_store_append (store, &iter);
@@ -152,9 +152,9 @@ build_multiple_dependent_plugins (PeasGtkDisablePluginsDialog *dialog)
 }
 
 static void
-build_single_dependent_plugin (PeasGtkDisablePluginsDialog *dialog)
+build_single_dependent_plugin (BeanGtkDisablePluginsDialog *dialog)
 {
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
   gchar *message;
 
   message = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
@@ -174,7 +174,7 @@ build_single_dependent_plugin (PeasGtkDisablePluginsDialog *dialog)
 }
 
 static void
-bean_gtk_disable_plugins_dialog_init (PeasGtkDisablePluginsDialog *dialog)
+bean_gtk_disable_plugins_dialog_init (BeanGtkDisablePluginsDialog *dialog)
 {
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
@@ -190,8 +190,8 @@ bean_gtk_disable_plugins_dialog_set_property (GObject      *object,
                                               const GValue *value,
                                               GParamSpec   *pspec)
 {
-  PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
     {
@@ -213,8 +213,8 @@ bean_gtk_disable_plugins_dialog_get_property (GObject    *object,
                                               GValue     *value,
                                               GParamSpec *pspec)
 {
-  PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
     {
@@ -233,8 +233,8 @@ bean_gtk_disable_plugins_dialog_get_property (GObject    *object,
 static void
 bean_gtk_disable_plugins_dialog_constructed (GObject *object)
 {
-  PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   if (priv->dep_plugins->next == NULL)
     build_single_dependent_plugin (dialog);
@@ -247,8 +247,8 @@ bean_gtk_disable_plugins_dialog_constructed (GObject *object)
 static void
 bean_gtk_disable_plugins_dialog_finalize (GObject *object)
 {
-  PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
-  PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   g_list_free (priv->dep_plugins);
 
@@ -256,7 +256,7 @@ bean_gtk_disable_plugins_dialog_finalize (GObject *object)
 }
 
 static void
-bean_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *klass)
+bean_gtk_disable_plugins_dialog_class_init (BeanGtkDisablePluginsDialogClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -287,17 +287,17 @@ bean_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *kl
 /*
  * bean_gtk_disable_plugins_dialog_new:
  * @parent: transient window.
- * @info: the #PeasPluginInfo being disabled.
- * @dep_plugins: (transfer container) (element-type Peas.PluginInfo):
+ * @info: the #BeanPluginInfo being disabled.
+ * @dep_plugins: (transfer container) (element-type Bean.PluginInfo):
  *  list of plugins that are dependent on @info.
  *
- * Creates a new #PeasGtkDisablePluginsDialog.
+ * Creates a new #BeanGtkDisablePluginsDialog.
  *
- * Returns: the new #PeasGtkDisablePluginsDialog.
+ * Returns: the new #BeanGtkDisablePluginsDialog.
  */
 GtkWidget  *
 bean_gtk_disable_plugins_dialog_new (GtkWindow      *parent,
-                                     PeasPluginInfo *info,
+                                     BeanPluginInfo *info,
                                      GList          *dep_plugins)
 {
   return GTK_WIDGET (g_object_new (PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG,

@@ -28,11 +28,11 @@
 /**
  * SECTION:bean-extension-base
  * @short_description: Base class for C extensions.
- * @see_also: #PeasPluginInfo
+ * @see_also: #BeanPluginInfo
  *
- * #PeasExtensionBase can optionally be used as a base class for the extensions
+ * #BeanExtensionBase can optionally be used as a base class for the extensions
  * of your plugin. By inheriting from it, you will make your extension able to
- * access the related #PeasPluginInfo, and especially the location where all
+ * access the related #BeanPluginInfo, and especially the location where all
  * the data of your plugin lives.
  *
  * Non-C extensions will usually not inherit from this class: Python
@@ -40,8 +40,8 @@
  * the same purpose.
  **/
 
-struct _PeasExtensionBasePrivate {
-  PeasPluginInfo *info;
+struct _BeanExtensionBasePrivate {
+  BeanPluginInfo *info;
 };
 
 /* properties */
@@ -54,7 +54,7 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (PeasExtensionBase,
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (BeanExtensionBase,
                                      bean_extension_base,
                                      G_TYPE_OBJECT)
 
@@ -67,7 +67,7 @@ bean_extension_base_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  PeasExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
+  BeanExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
 
   switch (prop_id)
     {
@@ -89,8 +89,8 @@ bean_extension_base_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  PeasExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
-  PeasExtensionBasePrivate *priv = GET_PRIV (extbase);
+  BeanExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
+  BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
   switch (prop_id)
     {
@@ -104,12 +104,12 @@ bean_extension_base_set_property (GObject      *object,
 }
 
 static void
-bean_extension_base_init (PeasExtensionBase *extbase)
+bean_extension_base_init (BeanExtensionBase *extbase)
 {
 }
 
 static void
-bean_extension_base_class_init (PeasExtensionBaseClass *klass)
+bean_extension_base_class_init (BeanExtensionBaseClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -117,9 +117,9 @@ bean_extension_base_class_init (PeasExtensionBaseClass *klass)
   object_class->set_property = bean_extension_base_set_property;
 
   /**
-   * PeasExtensionBase:plugin-info:
+   * BeanExtensionBase:plugin-info:
    *
-   * The #PeasPluginInfo related to the current plugin.
+   * The #BeanPluginInfo related to the current plugin.
    */
   properties[PROP_PLUGIN_INFO] =
     g_param_spec_boxed ("plugin-info",
@@ -131,7 +131,7 @@ bean_extension_base_class_init (PeasExtensionBaseClass *klass)
                         G_PARAM_STATIC_STRINGS);
 
   /**
-   * PeasExtensionBase:data-dir:
+   * BeanExtensionBase:data-dir:
    *
    * The The full path of the directory where the plugin
    * should look for its data files.
@@ -153,17 +153,17 @@ bean_extension_base_class_init (PeasExtensionBaseClass *klass)
 
 /**
  * bean_extension_base_get_plugin_info:
- * @extbase: A #PeasExtensionBase.
+ * @extbase: A #BeanExtensionBase.
  *
  * Get information relative to @extbase.
  *
- * Return value: (transfer none): the #PeasPluginInfo relative
- * to the #PeasExtensionBase.
+ * Return value: (transfer none): the #BeanPluginInfo relative
+ * to the #BeanExtensionBase.
  */
-PeasPluginInfo *
-bean_extension_base_get_plugin_info (PeasExtensionBase *extbase)
+BeanPluginInfo *
+bean_extension_base_get_plugin_info (BeanExtensionBase *extbase)
 {
-  PeasExtensionBasePrivate *priv = GET_PRIV (extbase);
+  BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
   g_return_val_if_fail (PEAS_IS_EXTENSION_BASE (extbase), NULL);
 
@@ -172,7 +172,7 @@ bean_extension_base_get_plugin_info (PeasExtensionBase *extbase)
 
 /**
  * bean_extension_base_get_data_dir:
- * @extbase: A #PeasExtensionBase.
+ * @extbase: A #BeanExtensionBase.
  *
  * Get the path of the directory where the plugin should look for
  * its data files.
@@ -181,9 +181,9 @@ bean_extension_base_get_plugin_info (PeasExtensionBase *extbase)
  * directory where the plugin should look for its data files
  */
 gchar *
-bean_extension_base_get_data_dir (PeasExtensionBase *extbase)
+bean_extension_base_get_data_dir (BeanExtensionBase *extbase)
 {
-  PeasExtensionBasePrivate *priv = GET_PRIV (extbase);
+  BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
   g_return_val_if_fail (PEAS_IS_EXTENSION_BASE (extbase), NULL);
 
