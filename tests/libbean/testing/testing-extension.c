@@ -115,7 +115,7 @@ test_extension_provides_invalid (BeanEngine     *engine,
 
 
   /* GObject but not a GInterface */
-  bean_engine_provides_extension (engine, info, PEAS_TYPE_ENGINE);
+  bean_engine_provides_extension (engine, info, BEAN_TYPE_ENGINE);
 
 
   /* Does not implement this GType */
@@ -138,7 +138,7 @@ test_extension_create_valid (BeanEngine     *engine,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
   g_assert (INTROSPECTION_IS_CALLABLE (extension));
 
   g_object_unref (extension);
@@ -155,7 +155,7 @@ test_extension_create_valid_without_properties (BeanEngine     *engine,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   0, NULL, NULL);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
   g_assert (INTROSPECTION_IS_CALLABLE (extension));
 
   g_object_unref (extension);
@@ -200,33 +200,33 @@ test_extension_create_invalid (BeanEngine     *engine,
 
   /* Invalid GType */
   extension = bean_engine_create_extension (engine, info, G_TYPE_INVALID, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
 
   /* GObject but not a GInterface */
-  extension = bean_engine_create_extension (engine, info, PEAS_TYPE_ENGINE, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  extension = bean_engine_create_extension (engine, info, BEAN_TYPE_ENGINE, NULL);
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
 
   /* Does not implement this GType */
   extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_UNIMPLEMENTED,
                                             NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Interface does not have a specified property */
   extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             "does-not-exist", "",
                                             NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Not loaded */
   g_assert (bean_engine_unload_plugin (engine, info));
   extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 }
 
 static void
@@ -252,20 +252,20 @@ test_extension_create_invalid_with_properties (BeanEngine     *engine,
   extension = bean_engine_create_extension_with_properties (engine, info,
                                                             G_TYPE_INVALID, 0,
                                                             NULL, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* GObject but not a GInterface */
   extension = bean_engine_create_extension_with_properties (engine, info,
-                                                            PEAS_TYPE_ENGINE, 0,
+                                                            BEAN_TYPE_ENGINE, 0,
                                                             NULL, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Does not implement this GType */
   extension =
     bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_UNIMPLEMENTED,
                                                   0, NULL, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Interface has a NULL property name*/
   extension =
@@ -273,7 +273,7 @@ test_extension_create_invalid_with_properties (BeanEngine     *engine,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   G_N_ELEMENTS (prop_names2),
                                                   prop_names, prop_values);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Interface has a not initialiazed GValue */
   extension =
@@ -281,7 +281,7 @@ test_extension_create_invalid_with_properties (BeanEngine     *engine,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   G_N_ELEMENTS (prop_names2),
                                                   prop_names2, prop_values2);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   /* Not loaded */
   g_assert (bean_engine_unload_plugin (engine, info));
@@ -289,7 +289,7 @@ test_extension_create_invalid_with_properties (BeanEngine     *engine,
     bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   0, NULL, NULL);
-  g_assert (!PEAS_IS_EXTENSION (extension));
+  g_assert (!BEAN_IS_EXTENSION (extension));
 
   g_value_unset (&prop_values[0]);
 
@@ -492,7 +492,7 @@ test_extension_multiple_threads_callbacks (BeanEngine     *engine,
   gint n_threads, update_count;
 
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             NULL);
 
   n_threads = run_in_multiple_threads ((GFunc) multiple_threads_callbacks_in_thread,

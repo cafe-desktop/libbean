@@ -45,7 +45,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingLoadablePlugin,
                                 G_TYPE_OBJECT,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (TestingLoadablePlugin)
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init))
 
 #define GET_PRIV(o) \
@@ -161,6 +161,6 @@ bean_register_types (BeanObjectModule *module)
   testing_loadable_plugin_register_type (G_TYPE_MODULE (module));
 
   bean_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
+                                              BEAN_TYPE_ACTIVATABLE,
                                               TESTING_TYPE_LOADABLE_PLUGIN);
 }

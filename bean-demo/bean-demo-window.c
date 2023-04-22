@@ -33,7 +33,7 @@ on_extension_added (BeanExtensionSet *set,
                     BeanExtension    *exten,
                     DemoWindow       *dw)
 {
-  bean_activatable_activate (PEAS_ACTIVATABLE (exten));
+  bean_activatable_activate (BEAN_ACTIVATABLE (exten));
 }
 
 static void
@@ -42,7 +42,7 @@ on_extension_removed (BeanExtensionSet *set,
                       BeanExtension    *exten,
                       DemoWindow       *dw)
 {
-  bean_activatable_deactivate (PEAS_ACTIVATABLE (exten));
+  bean_activatable_deactivate (BEAN_ACTIVATABLE (exten));
 }
 
 static void
@@ -60,7 +60,7 @@ demo_window_init (DemoWindow *dw)
   g_free (label);
 
   dw->exten_set = bean_extension_set_new (bean_engine_get_default (),
-                                          PEAS_TYPE_ACTIVATABLE,
+                                          BEAN_TYPE_ACTIVATABLE,
                                           "object", dw,
                                           NULL);
 

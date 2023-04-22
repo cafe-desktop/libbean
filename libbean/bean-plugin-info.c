@@ -190,7 +190,7 @@ _bean_plugin_info_new (const gchar *filename,
   if (loader == NULL || *loader == '\0')
     {
       /* Default to the C loader */
-      info->loader_id = PEAS_UTILS_C_LOADER_ID;
+      info->loader_id = BEAN_UTILS_C_LOADER_ID;
     }
   else
     {
@@ -209,7 +209,7 @@ _bean_plugin_info_new (const gchar *filename,
                                           "Embedded", NULL);
   if (info->embedded != NULL)
     {
-      if (info->loader_id != PEAS_UTILS_C_LOADER_ID)
+      if (info->loader_id != BEAN_UTILS_C_LOADER_ID)
         {
           g_warning ("Bad plugin file '%s': embedded plugins "
                      "must use the C plugin loader", filename);

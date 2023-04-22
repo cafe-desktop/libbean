@@ -49,7 +49,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderLua,
                             bean_plugin_loader_lua,
-                            PEAS_TYPE_PLUGIN_LOADER)
+                            BEAN_TYPE_PLUGIN_LOADER)
 
 #define GET_PRIV(o) \
   (bean_plugin_loader_lua_get_instance_private (o))
@@ -60,8 +60,8 @@ G_MODULE_EXPORT void
 bean_register_types (BeanObjectModule *module)
 {
   bean_object_module_register_extension_type (module,
-                                              PEAS_TYPE_PLUGIN_LOADER,
-                                              PEAS_TYPE_PLUGIN_LOADER_LUA);
+                                              BEAN_TYPE_PLUGIN_LOADER,
+                                              BEAN_TYPE_PLUGIN_LOADER_LUA);
 }
 
 static lua_State *
@@ -143,7 +143,7 @@ bean_plugin_loader_lua_provides_extension (BeanPluginLoader *loader,
                                            BeanPluginInfo   *info,
                                            GType             exten_type)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   GType the_type;
 
@@ -162,7 +162,7 @@ bean_plugin_loader_lua_create_extension (BeanPluginLoader *loader,
                                          guint             n_parameters,
                                          GParameter       *parameters)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   GType the_type;
   GObject *object = NULL;
@@ -200,7 +200,7 @@ static gboolean
 bean_plugin_loader_lua_load (BeanPluginLoader *loader,
                              BeanPluginInfo   *info)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   gboolean success = FALSE;
 
@@ -225,7 +225,7 @@ static void
 bean_plugin_loader_lua_unload (BeanPluginLoader *loader,
                                BeanPluginInfo   *info)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = priv->L;
 
@@ -247,7 +247,7 @@ bean_plugin_loader_lua_unload (BeanPluginLoader *loader,
 static void
 bean_plugin_loader_lua_garbage_collect (BeanPluginLoader *loader)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = priv->L;
 
@@ -268,7 +268,7 @@ atpanic_handler (lua_State *L)
 static gboolean
 bean_plugin_loader_lua_initialize (BeanPluginLoader *loader)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L;
 
@@ -280,7 +280,7 @@ bean_plugin_loader_lua_initialize (BeanPluginLoader *loader)
     }
 
   /* Set before any other code is run */
-  if (g_getenv ("PEAS_LUA_DEBUG") != NULL)
+  if (g_getenv ("BEAN_LUA_DEBUG") != NULL)
     lua_atpanic (L, atpanic_handler);
 
   luaL_openlibs (L);
@@ -352,7 +352,7 @@ bean_plugin_loader_lua_init (BeanPluginLoaderLua *lua_loader)
 static void
 bean_plugin_loader_lua_finalize (GObject *object)
 {
-  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (object);
+  BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (object);
   BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
 
   /* Must take the lock as Lua code will run on lua_close
@@ -371,7 +371,7 @@ static void
 bean_plugin_loader_lua_class_init (BeanPluginLoaderLuaClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  BeanPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
+  BeanPluginLoaderClass *loader_class = BEAN_PLUGIN_LOADER_CLASS (klass);
 
   quark_extension_type = g_quark_from_static_string ("bean-extension-type");
 

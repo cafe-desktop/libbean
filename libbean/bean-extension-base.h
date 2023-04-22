@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_EXTENSION_BASE_H__
-#define __PEAS_EXTENSION_BASE_H__
+#ifndef __BEAN_EXTENSION_BASE_H__
+#define __BEAN_EXTENSION_BASE_H__
 
 #include <glib-object.h>
 
@@ -32,12 +32,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_EXTENSION_BASE            (bean_extension_base_get_type())
-#define PEAS_EXTENSION_BASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBase))
-#define PEAS_EXTENSION_BASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
-#define PEAS_IS_EXTENSION_BASE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_TYPE_EXTENSION_BASE))
-#define PEAS_IS_EXTENSION_BASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_EXTENSION_BASE))
-#define PEAS_EXTENSION_BASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
+#define BEAN_TYPE_EXTENSION_BASE            (bean_extension_base_get_type())
+#define BEAN_EXTENSION_BASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_TYPE_EXTENSION_BASE, BeanExtensionBase))
+#define BEAN_EXTENSION_BASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
+#define BEAN_IS_EXTENSION_BASE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_TYPE_EXTENSION_BASE))
+#define BEAN_IS_EXTENSION_BASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), BEAN_TYPE_EXTENSION_BASE))
+#define BEAN_EXTENSION_BASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
 
 /**
  * BeanExtensionBase:
@@ -70,14 +70,14 @@ struct _BeanExtensionBaseClass {
 /*
  * Public methods
  */
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType            bean_extension_base_get_type         (void)  G_GNUC_CONST;
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanPluginInfo  *bean_extension_base_get_plugin_info  (BeanExtensionBase *extbase);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gchar           *bean_extension_base_get_data_dir     (BeanExtensionBase *extbase);
 
 G_END_DECLS
 
-#endif /* __PEAS_EXTENSION_BASE_H__ */
+#endif /* __BEAN_EXTENSION_BASE_H__ */

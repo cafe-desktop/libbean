@@ -131,14 +131,14 @@ main (int    argc,
 
   if (run_from_build_dir)
     {
-      g_debug ("Running from build directory: %s", PEAS_BUILDDIR);
+      g_debug ("Running from build directory: %s", BEAN_BUILDDIR);
 
       /* Use the uninstalled typelibs */
-      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libbean");
-      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libbean-gtk");
+      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean");
+      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean-gtk");
 
       /* Use the uninstalled plugin loaders */
-      g_setenv ("PEAS_PLUGIN_LOADERS_DIR", PEAS_BUILDDIR "/loaders", TRUE);
+      g_setenv ("BEAN_PLUGIN_LOADERS_DIR", BEAN_BUILDDIR "/loaders", TRUE);
     }
 
   engine = bean_engine_get_default ();
@@ -147,16 +147,16 @@ main (int    argc,
   g_free (plugin_dir);
 
   /* We don't care about leaking memory */
-  g_setenv ("PEAS_ALLOW_ALL_LOADERS", "1", TRUE);
+  g_setenv ("BEAN_ALLOW_ALL_LOADERS", "1", TRUE);
   bean_engine_enable_loader (engine, "lua5.1");
   bean_engine_enable_loader (engine, "python3");
 
   if (run_from_build_dir)
-    bean_engine_add_search_path (engine, PEAS_BUILDDIR "/bean-demo/plugins", NULL);
+    bean_engine_add_search_path (engine, BEAN_BUILDDIR "/bean-demo/plugins", NULL);
   else
     bean_engine_add_search_path (engine,
-                                 PEAS_LIBDIR "/bean-demo/plugins/",
-                                 PEAS_PREFIX "/share/bean-demo/plugins");
+                                 BEAN_LIBDIR "/bean-demo/plugins/",
+                                 BEAN_PREFIX "/share/bean-demo/plugins");
 
   n_windows = 0;
   main_window = create_main_window ();

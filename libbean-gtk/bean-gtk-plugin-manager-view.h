@@ -22,8 +22,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_GTK_PLUGIN_MANAGER_VIEW_H__
-#define __PEAS_GTK_PLUGIN_MANAGER_VIEW_H__
+#ifndef __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__
+#define __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__
 
 #include <gtk/gtk.h>
 #include <libbean/bean-engine.h>
@@ -33,12 +33,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_gtk_plugin_manager_view_get_type())
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerView))
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
-#define PEAS_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define PEAS_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define PEAS_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
+#define BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_gtk_plugin_manager_view_get_type())
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerView))
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
+#define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
+#define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
 
 typedef struct _BeanGtkPluginManagerView        BeanGtkPluginManagerView;
 typedef struct _BeanGtkPluginManagerViewClass   BeanGtkPluginManagerViewClass;
@@ -75,25 +75,25 @@ struct _BeanGtkPluginManagerViewClass {
   gpointer padding[8];
 };
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType           bean_gtk_plugin_manager_view_get_type             (void) G_GNUC_CONST;
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GtkWidget      *bean_gtk_plugin_manager_view_new                  (BeanEngine               *engine);
 
-#ifndef PEAS_DISABLE_DEPRECATED
-PEAS_AVAILABLE_IN_ALL
+#ifndef BEAN_DISABLE_DEPRECATED
+BEAN_AVAILABLE_IN_ALL
 void            bean_gtk_plugin_manager_view_set_show_builtin     (BeanGtkPluginManagerView *view,
                                                                    gboolean                  show_builtin);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean        bean_gtk_plugin_manager_view_get_show_builtin     (BeanGtkPluginManagerView *view);
 #endif
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void            bean_gtk_plugin_manager_view_set_selected_plugin  (BeanGtkPluginManagerView *view,
                                                                    BeanPluginInfo           *info);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanPluginInfo *bean_gtk_plugin_manager_view_get_selected_plugin  (BeanGtkPluginManagerView *view);
 
 G_END_DECLS
 
-#endif /* __PEAS_GTK_PLUGIN_MANAGER_VIEW_H__  */
+#endif /* __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__  */

@@ -37,10 +37,10 @@ static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_TYPE_EXTENDED (TestingEmbeddedPlugin,
                         testing_embedded_plugin,
-                        PEAS_TYPE_EXTENSION_BASE,
+                        BEAN_TYPE_EXTENSION_BASE,
                         0,
                         G_ADD_PRIVATE (TestingEmbeddedPlugin)
-                        G_IMPLEMENT_INTERFACE (PEAS_TYPE_ACTIVATABLE,
+                        G_IMPLEMENT_INTERFACE (BEAN_TYPE_ACTIVATABLE,
                                                bean_activatable_iface_init))
 
 #define GET_PRIV(o) \
@@ -130,6 +130,6 @@ G_MODULE_EXPORT void
 testing_embedded_plugin_register_types (BeanObjectModule *module)
 {
   bean_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
+                                              BEAN_TYPE_ACTIVATABLE,
                                               TESTING_TYPE_EMBEDDED_PLUGIN);
 }

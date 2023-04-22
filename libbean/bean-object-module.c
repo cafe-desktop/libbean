@@ -92,7 +92,7 @@ static const gchar *intern_plugin_info = NULL;
 static gboolean
 bean_object_module_load (GTypeModule *gmodule)
 {
-  BeanObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
+  BeanObjectModule *module = BEAN_OBJECT_MODULE (gmodule);
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (priv->module_name != NULL, FALSE);
@@ -170,7 +170,7 @@ bean_object_module_load (GTypeModule *gmodule)
 static void
 bean_object_module_unload (GTypeModule *gmodule)
 {
-  BeanObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
+  BeanObjectModule *module = BEAN_OBJECT_MODULE (gmodule);
   BeanObjectModulePrivate *priv = GET_PRIV (module);
   ExtensionImplementation *impls;
   guint i;
@@ -203,7 +203,7 @@ bean_object_module_init (BeanObjectModule *module)
 static void
 bean_object_module_finalize (GObject *object)
 {
-  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModule *module = BEAN_OBJECT_MODULE (object);
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_free (priv->path);
@@ -220,7 +220,7 @@ bean_object_module_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModule *module = BEAN_OBJECT_MODULE (object);
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   switch (prop_id)
@@ -252,7 +252,7 @@ bean_object_module_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModule *module = BEAN_OBJECT_MODULE (object);
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   switch (prop_id)
@@ -369,7 +369,7 @@ bean_object_module_new (const gchar *module_name,
   g_return_val_if_fail (module_name != NULL && *module_name != '\0', NULL);
   g_return_val_if_fail (path != NULL && *path != '\0', NULL);
 
-  return PEAS_OBJECT_MODULE (g_object_new (PEAS_TYPE_OBJECT_MODULE,
+  return BEAN_OBJECT_MODULE (g_object_new (BEAN_TYPE_OBJECT_MODULE,
                                            "module-name", module_name,
                                            "path", path,
                                            "resident", resident,
@@ -398,7 +398,7 @@ bean_object_module_new_full (const gchar *module_name,
   g_return_val_if_fail (module_name != NULL && *module_name != '\0', NULL);
   g_return_val_if_fail (path != NULL && *path != '\0', NULL);
 
-  return PEAS_OBJECT_MODULE (g_object_new (PEAS_TYPE_OBJECT_MODULE,
+  return BEAN_OBJECT_MODULE (g_object_new (BEAN_TYPE_OBJECT_MODULE,
                                            "module-name", module_name,
                                            "path", path,
                                            "resident", resident,
@@ -423,7 +423,7 @@ bean_object_module_new_embedded (const gchar *module_name,
   g_return_val_if_fail (module_name != NULL && *module_name != '\0', NULL);
   g_return_val_if_fail (symbol != NULL && *symbol != '\0', NULL);
 
-  return PEAS_OBJECT_MODULE (g_object_new (PEAS_TYPE_OBJECT_MODULE,
+  return BEAN_OBJECT_MODULE (g_object_new (BEAN_TYPE_OBJECT_MODULE,
                                            "module-name", module_name,
                                            "symbol", symbol,
                                            "resident", TRUE,
@@ -458,7 +458,7 @@ bean_object_module_create_object (BeanObjectModule *module,
   guint i;
   ExtensionImplementation *impls;
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
@@ -492,7 +492,7 @@ bean_object_module_provides_object (BeanObjectModule *module,
   guint i;
   ExtensionImplementation *impls;
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), FALSE);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), FALSE);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), FALSE);
 
@@ -519,7 +519,7 @@ bean_object_module_get_path (BeanObjectModule *module)
 {
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), NULL);
 
   return priv->path;
 }
@@ -537,7 +537,7 @@ bean_object_module_get_module_name (BeanObjectModule *module)
 {
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), NULL);
 
   return priv->module_name;
 }
@@ -557,7 +557,7 @@ bean_object_module_get_symbol (BeanObjectModule *module)
 {
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), NULL);
 
   return priv->symbol;
 }
@@ -575,7 +575,7 @@ bean_object_module_get_library (BeanObjectModule *module)
 {
   BeanObjectModulePrivate *priv = GET_PRIV (module);
 
-  g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
+  g_return_val_if_fail (BEAN_IS_OBJECT_MODULE (module), NULL);
 
   return priv->library;
 }
@@ -611,7 +611,7 @@ bean_object_module_register_extension_factory (BeanObjectModule *module,
   BeanObjectModulePrivate *priv = GET_PRIV (module);
   ExtensionImplementation impl = { exten_type, factory_func, user_data, destroy_func };
 
-  g_return_if_fail (PEAS_IS_OBJECT_MODULE (module));
+  g_return_if_fail (BEAN_IS_OBJECT_MODULE (module));
   g_return_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                     G_TYPE_IS_ABSTRACT (exten_type));
   g_return_if_fail (!bean_object_module_provides_object (module, exten_type));
@@ -642,7 +642,7 @@ create_gobject_from_type (guint       n_parameters,
           GParameter *info_param = &parameters[n_parameters - 1];
 
           if (info_param->name == intern_plugin_info &&
-              G_VALUE_TYPE (&info_param->value) == PEAS_TYPE_PLUGIN_INFO)
+              G_VALUE_TYPE (&info_param->value) == BEAN_TYPE_PLUGIN_INFO)
             {
               n_parameters--;
             }
@@ -671,7 +671,7 @@ bean_object_module_register_extension_type (BeanObjectModule *module,
   GObjectClass *cls;
   GParamSpec *pspec;
 
-  g_return_if_fail (PEAS_IS_OBJECT_MODULE (module));
+  g_return_if_fail (BEAN_IS_OBJECT_MODULE (module));
   g_return_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                     G_TYPE_IS_ABSTRACT (exten_type));
   g_return_if_fail (!bean_object_module_provides_object (module, exten_type));
@@ -681,7 +681,7 @@ bean_object_module_register_extension_type (BeanObjectModule *module,
   pspec = g_object_class_find_property (cls, "plugin-info");
 
   /* Avoid checking for this each time in the factory function */
-  if (pspec == NULL || pspec->value_type != PEAS_TYPE_PLUGIN_INFO)
+  if (pspec == NULL || pspec->value_type != BEAN_TYPE_PLUGIN_INFO)
     impl_type |= TYPE_MISSING_PLUGIN_INFO_PROPERTY;
 
   bean_object_module_register_extension_factory (module,

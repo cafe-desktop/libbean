@@ -19,16 +19,16 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_ENGINE_PRIV_H__
-#define __PEAS_ENGINE_PRIV_H__
+#ifndef __BEAN_ENGINE_PRIV_H__
+#define __BEAN_ENGINE_PRIV_H__
 
 #include "bean-version-macros.h"
 
 G_BEGIN_DECLS
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void _bean_engine_shutdown (void);
 
 G_END_DECLS
 
-#endif /* __PEAS_ENGINE_PRIV_H__ */
+#endif /* __BEAN_ENGINE_PRIV_H__ */

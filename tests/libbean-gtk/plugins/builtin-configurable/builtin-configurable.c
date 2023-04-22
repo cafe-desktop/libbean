@@ -36,9 +36,9 @@ static void bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *ifac
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinConfigurable,
                                 testing_builtin_configurable,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_GTK_TYPE_CONFIGURABLE,
                                                                bean_gtk_configurable_iface_init))
 
 static void
@@ -74,6 +74,6 @@ bean_register_types (BeanObjectModule *module)
   testing_builtin_configurable_register_type (G_TYPE_MODULE (module));
 
   bean_object_module_register_extension_type (module,
-                                              PEAS_GTK_TYPE_CONFIGURABLE,
+                                              BEAN_GTK_TYPE_CONFIGURABLE,
                                               TESTING_TYPE_BUILTIN_CONFIGURABLE);
 }

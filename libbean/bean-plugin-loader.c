@@ -51,9 +51,9 @@ bean_plugin_loader_initialize (BeanPluginLoader *loader)
 {
   BeanPluginLoaderClass *klass;
 
-  g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
+  g_return_val_if_fail (BEAN_IS_PLUGIN_LOADER (loader), FALSE);
 
-  klass = PEAS_PLUGIN_LOADER_GET_CLASS (loader);
+  klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
 
   /* Do this here instead of each time */
   g_return_val_if_fail (klass->load != NULL, FALSE);
@@ -72,9 +72,9 @@ bean_plugin_loader_is_global (BeanPluginLoader *loader)
 {
   BeanPluginLoaderClass *klass;
 
-  g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
+  g_return_val_if_fail (BEAN_IS_PLUGIN_LOADER (loader), FALSE);
 
-  klass = PEAS_PLUGIN_LOADER_GET_CLASS (loader);
+  klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
 
   if (klass->is_global != NULL)
     return klass->is_global (loader);
@@ -87,18 +87,18 @@ bean_plugin_loader_load (BeanPluginLoader *loader,
                          BeanPluginInfo   *info)
 {
 
-  g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
+  g_return_val_if_fail (BEAN_IS_PLUGIN_LOADER (loader), FALSE);
 
-  return PEAS_PLUGIN_LOADER_GET_CLASS (loader)->load (loader, info);
+  return BEAN_PLUGIN_LOADER_GET_CLASS (loader)->load (loader, info);
 }
 
 void
 bean_plugin_loader_unload (BeanPluginLoader *loader,
                            BeanPluginInfo   *info)
 {
-  g_return_if_fail (PEAS_IS_PLUGIN_LOADER (loader));
+  g_return_if_fail (BEAN_IS_PLUGIN_LOADER (loader));
 
-  PEAS_PLUGIN_LOADER_GET_CLASS (loader)->unload (loader, info);
+  BEAN_PLUGIN_LOADER_GET_CLASS (loader)->unload (loader, info);
 }
 
 gboolean
@@ -108,9 +108,9 @@ bean_plugin_loader_provides_extension (BeanPluginLoader *loader,
 {
   BeanPluginLoaderClass *klass;
 
-  g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), FALSE);
+  g_return_val_if_fail (BEAN_IS_PLUGIN_LOADER (loader), FALSE);
 
-  klass = PEAS_PLUGIN_LOADER_GET_CLASS (loader);
+  klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
   return klass->provides_extension (loader, info, ext_type);
 }
 
@@ -123,9 +123,9 @@ bean_plugin_loader_create_extension (BeanPluginLoader *loader,
 {
   BeanPluginLoaderClass *klass;
 
-  g_return_val_if_fail (PEAS_IS_PLUGIN_LOADER (loader), NULL);
+  g_return_val_if_fail (BEAN_IS_PLUGIN_LOADER (loader), NULL);
 
-  klass = PEAS_PLUGIN_LOADER_GET_CLASS (loader);
+  klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
   return klass->create_extension (loader, info, ext_type,
                                   n_parameters, parameters);
 }
@@ -135,9 +135,9 @@ bean_plugin_loader_garbage_collect (BeanPluginLoader *loader)
 {
   BeanPluginLoaderClass *klass;
 
-  g_return_if_fail (PEAS_IS_PLUGIN_LOADER (loader));
+  g_return_if_fail (BEAN_IS_PLUGIN_LOADER (loader));
 
-  klass = PEAS_PLUGIN_LOADER_GET_CLASS (loader);
+  klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
 
   if (klass->garbage_collect != NULL)
     klass->garbage_collect (loader);

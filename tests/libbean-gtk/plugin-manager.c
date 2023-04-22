@@ -56,8 +56,8 @@ test_setup (TestFixture   *fixture,
 {
   fixture->engine = testing_engine_new ();
   fixture->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  fixture->manager = PEAS_GTK_PLUGIN_MANAGER (bean_gtk_plugin_manager_new (NULL));
-  fixture->view = PEAS_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (fixture->manager));
+  fixture->manager = BEAN_GTK_PLUGIN_MANAGER (bean_gtk_plugin_manager_new (NULL));
+  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (fixture->manager));
   fixture->selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fixture->view));
 
   gtk_container_add (GTK_CONTAINER (fixture->window),
@@ -194,7 +194,7 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
       else
         {
           sensitive = bean_engine_provides_extension (fixture->engine, info,
-                                                      PEAS_GTK_TYPE_CONFIGURABLE);
+                                                      BEAN_GTK_TYPE_CONFIGURABLE);
         }
 
       g_assert_cmpint (gtk_widget_get_sensitive (fixture->configure_button),
@@ -362,10 +362,10 @@ test_gtk_plugin_manager_gtkbuilder (void)
   gtk_builder_add_from_string (builder, gtkbuilder_string, -1, &error);
   g_assert_no_error (error);
 
-  manager = PEAS_GTK_PLUGIN_MANAGER (gtk_builder_get_object (builder, "manager"));
-  g_assert (PEAS_GTK_IS_PLUGIN_MANAGER (manager));
+  manager = BEAN_GTK_PLUGIN_MANAGER (gtk_builder_get_object (builder, "manager"));
+  g_assert (BEAN_GTK_IS_PLUGIN_MANAGER (manager));
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (manager));
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (manager));
 
   g_assert (G_OBJECT (view) == gtk_builder_get_object (builder, "view"));
 

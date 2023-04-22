@@ -40,7 +40,7 @@ if build_gtk_widgetry == true
 endif
 
 version_xml = configuration_data()
-version_xml.set('PEAS_VERSION', version)
+version_xml.set('BEAN_VERSION', version)
 
 configure_file(
   input: 'version.xml.in',
@@ -54,7 +54,7 @@ libbean_reference_deps = [
 
 libbean_reference_scan_args = [
   '--rebuild-types',
-  '--deprecated-guards="PEAS_DISABLE_DEPRECATED"',
+  '--deprecated-guards="BEAN_DISABLE_DEPRECATED"',
   '--ignore-headers=' + ' '.join(libbean_reference_ignored_h),
 ]
 

@@ -69,7 +69,7 @@ testing_extension_set_new (BeanEngine *engine,
   BeanExtensionSet *extension_set;
 
   extension_set = bean_extension_set_new (engine,
-                                          PEAS_TYPE_ACTIVATABLE,
+                                          BEAN_TYPE_ACTIVATABLE,
                                           "object", NULL,
                                           NULL);
 
@@ -140,7 +140,7 @@ test_extension_set_create_valid (BeanEngine *engine)
   BeanExtensionSet *extension_set;
 
   extension_set = bean_extension_set_new (engine,
-                                          PEAS_TYPE_ACTIVATABLE,
+                                          BEAN_TYPE_ACTIVATABLE,
                                           "object", NULL,
                                           NULL);
 
@@ -153,7 +153,7 @@ valid_extension_added_cb (BeanExtensionSet *extension_set,
                           BeanExtension    *extension,
                           GObject          **obj_ptr)
 {
-  g_object_get (PEAS_ACTIVATABLE (extension), "object", obj_ptr, NULL);
+  g_object_get (BEAN_ACTIVATABLE (extension), "object", obj_ptr, NULL);
 }
 
 static void
@@ -170,7 +170,7 @@ test_extension_set_create_valid_with_properties (BeanEngine *engine)
   g_value_set_object (&prop_value, obj);
 
   extension_set = bean_extension_set_new_with_properties (engine,
-                                                          PEAS_TYPE_ACTIVATABLE,
+                                                          BEAN_TYPE_ACTIVATABLE,
                                                           G_N_ELEMENTS (prop_names),
                                                           prop_names,
                                                           &prop_value);
@@ -183,7 +183,7 @@ test_extension_set_create_valid_with_properties (BeanEngine *engine)
   g_assert (bean_engine_load_plugin (engine, info));
   g_assert (obj == obj_cmp);
 
-  g_assert (PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (BEAN_IS_EXTENSION_SET (extension_set));
   g_object_unref (extension_set);
   g_value_unset (&prop_value);
 }
@@ -199,20 +199,20 @@ test_extension_set_create_invalid (BeanEngine *engine)
 
   /* Invalid GType */
   extension_set = bean_extension_set_new (engine, G_TYPE_INVALID, NULL);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
 
 
   /* GObject but not a GInterface */
   extension_set = bean_extension_set_new (engine, G_TYPE_OBJECT, NULL);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
 
 
   /* Interface does not have an 'invalid-property' property */
   extension_set = bean_extension_set_new (engine,
-                                          PEAS_TYPE_ACTIVATABLE,
+                                          BEAN_TYPE_ACTIVATABLE,
                                           "invalid-property", "does-not-exist",
                                           NULL);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
 }
 
 static void
@@ -235,38 +235,38 @@ test_extension_set_create_invalid_with_properties (BeanEngine *engine)
   /* Interface has a NULL property name*/
   n_elements = G_N_ELEMENTS (prop_values);
   extension_set = bean_extension_set_new_with_properties (engine,
-                                                          PEAS_TYPE_ACTIVATABLE,
+                                                          BEAN_TYPE_ACTIVATABLE,
                                                           n_elements,
                                                           prop_names,
                                                           prop_values);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
   g_value_unset (&prop_values[0]);
 
   /* Invalid GType */
   extension_set = bean_extension_set_new_with_properties (engine,
                                                           G_TYPE_INVALID,
                                                           0, NULL, NULL);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
 
   /* Uninitialized GValue */
   n_elements = 1;
   extension_set = bean_extension_set_new_with_properties (engine,
-                                                          PEAS_TYPE_ACTIVATABLE,
+                                                          BEAN_TYPE_ACTIVATABLE,
                                                           n_elements,
                                                           prop_names,
                                                           prop_values);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
 
   /* Uninitialized GValue*/
   g_value_init (&prop_values[0], G_TYPE_POINTER);
   g_value_set_pointer (&prop_values[0], NULL);
   n_elements = G_N_ELEMENTS (prop_names_not_exist);
   extension_set = bean_extension_set_new_with_properties (engine,
-                                                          PEAS_TYPE_ACTIVATABLE,
+                                                          BEAN_TYPE_ACTIVATABLE,
                                                           n_elements,
                                                           prop_names_not_exist,
                                                           prop_values);
-  g_assert (!PEAS_IS_EXTENSION_SET (extension_set));
+  g_assert (!BEAN_IS_EXTENSION_SET (extension_set));
   g_value_unset (&prop_values[0]);
 }
 
@@ -330,7 +330,7 @@ test_extension_set_get_extension (BeanEngine *engine)
   info = bean_engine_get_plugin_info (engine, loadable_plugins[0]);
 
   extension = bean_extension_set_get_extension (extension_set, info);
-  g_assert (PEAS_IS_ACTIVATABLE (extension));
+  g_assert (BEAN_IS_ACTIVATABLE (extension));
 
   g_object_add_weak_pointer (G_OBJECT (extension),
                              (gpointer) &extension);

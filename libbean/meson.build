@@ -1,10 +1,10 @@
 libbean_srcdir = include_directories('.')
 
 version_data = configuration_data()
-version_data.set('PEAS_MAJOR_VERSION', version_major)
-version_data.set('PEAS_MINOR_VERSION', version_minor)
-version_data.set('PEAS_MICRO_VERSION', version_micro)
-version_data.set('PEAS_VERSION', meson.project_version())
+version_data.set('BEAN_MAJOR_VERSION', version_major)
+version_data.set('BEAN_MINOR_VERSION', version_minor)
+version_data.set('BEAN_MICRO_VERSION', version_micro)
+version_data.set('BEAN_VERSION', meson.project_version())
 
 bean_version_h = configure_file(
   input: 'bean-version.h.in',

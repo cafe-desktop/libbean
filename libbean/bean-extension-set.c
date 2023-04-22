@@ -72,7 +72,7 @@
  * {
  *   BeanExtensionSet *set;
  *
- *   set = bean_extension_set_new (engine, PEAS_TYPE_ACTIVATABLE,
+ *   set = bean_extension_set_new (engine, BEAN_TYPE_ACTIVATABLE,
  *                                 "object", window, NULL);
  *   bean_extension_set_foreach (set,
  *                               (BeanExtensionSetForeachFunc) on_extension_added,
@@ -158,7 +158,7 @@ bean_extension_set_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  BeanExtensionSet *set = PEAS_EXTENSION_SET (object);
+  BeanExtensionSet *set = BEAN_EXTENSION_SET (object);
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
 
   switch (prop_id)
@@ -183,7 +183,7 @@ bean_extension_set_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  BeanExtensionSet *set = PEAS_EXTENSION_SET (object);
+  BeanExtensionSet *set = BEAN_EXTENSION_SET (object);
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
 
   switch (prop_id)
@@ -270,7 +270,7 @@ bean_extension_set_init (BeanExtensionSet *set)
 static void
 bean_extension_set_constructed (GObject *object)
 {
-  BeanExtensionSet *set = PEAS_EXTENSION_SET (object);
+  BeanExtensionSet *set = BEAN_EXTENSION_SET (object);
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
   GList *plugins, *l;
 
@@ -296,7 +296,7 @@ bean_extension_set_constructed (GObject *object)
 static void
 bean_extension_set_dispose (GObject *object)
 {
-  BeanExtensionSet *set = PEAS_EXTENSION_SET (object);
+  BeanExtensionSet *set = BEAN_EXTENSION_SET (object);
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
   GList *l;
 
@@ -378,8 +378,8 @@ bean_extension_set_class_init (BeanExtensionSetClass *klass)
                   bean_cclosure_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
-                  PEAS_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  PEAS_TYPE_EXTENSION);
+                  BEAN_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  BEAN_TYPE_EXTENSION);
 
   /**
    * BeanExtensionSet::extension-removed:
@@ -406,14 +406,14 @@ bean_extension_set_class_init (BeanExtensionSetClass *klass)
                   bean_cclosure_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
-                  PEAS_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  PEAS_TYPE_EXTENSION);
+                  BEAN_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
+                  BEAN_TYPE_EXTENSION);
 
   properties[PROP_ENGINE] =
     g_param_spec_object ("engine",
                          "Engine",
                          "The BeanEngine this set is attached to",
-                         PEAS_TYPE_ENGINE,
+                         BEAN_TYPE_ENGINE,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -455,7 +455,7 @@ bean_extension_set_get_extension (BeanExtensionSet *set,
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
   GList *l;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_SET (set), NULL);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), NULL);
   g_return_val_if_fail (info != NULL, NULL);
 
   for (l = priv->extensions.head; l != NULL; l = l->next)
@@ -491,7 +491,7 @@ bean_extension_set_call (BeanExtensionSet *set,
   va_list args;
   gboolean result;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_SET (set), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   va_start (args, method_name);
@@ -525,7 +525,7 @@ bean_extension_set_call_valist (BeanExtensionSet *set,
   GIArgument *args;
   gint n_args;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_SET (set), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   callable_info = bean_gi_get_method_info (priv->exten_type, method_name);
@@ -569,10 +569,10 @@ bean_extension_set_callv (BeanExtensionSet *set,
 {
   BeanExtensionSetClass *klass;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_SET (set), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
-  klass = PEAS_EXTENSION_SET_GET_CLASS (set);
+  klass = BEAN_EXTENSION_SET_GET_CLASS (set);
   return klass->call (set, method_name, args);
 }
 
@@ -594,7 +594,7 @@ bean_extension_set_foreach (BeanExtensionSet            *set,
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
   GList *l;
 
-  g_return_if_fail (PEAS_IS_EXTENSION_SET (set));
+  g_return_if_fail (BEAN_IS_EXTENSION_SET (set));
   g_return_if_fail (func != NULL);
 
   for (l = priv->extensions.head; l != NULL; l = l->next)
@@ -631,11 +631,11 @@ bean_extension_set_newv (BeanEngine *engine,
 {
   BeanParameterArray construct_properties = { n_parameters, parameters };
 
-  g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
-  return PEAS_EXTENSION_SET (g_object_new (PEAS_TYPE_EXTENSION_SET,
+  return BEAN_EXTENSION_SET (g_object_new (BEAN_TYPE_EXTENSION_SET,
                                            "engine", engine,
                                            "extension-type", exten_type,
                                            "construct-properties", &construct_properties,
@@ -674,7 +674,7 @@ bean_extension_set_new_with_properties (BeanEngine    *engine,
   BeanParameterArray construct_properties;
   GParameter *parameters = NULL;
 
-  g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
   g_return_val_if_fail (n_properties == 0 || prop_names != NULL, NULL);
@@ -698,7 +698,7 @@ bean_extension_set_new_with_properties (BeanEngine    *engine,
   construct_properties.n_parameters = n_properties;
   construct_properties.parameters = parameters;
 
-  ret = g_object_new (PEAS_TYPE_EXTENSION_SET,
+  ret = g_object_new (BEAN_TYPE_EXTENSION_SET,
                       "engine", engine,
                       "extension-type", exten_type,
                       "construct-properties", &construct_properties,
@@ -737,7 +737,7 @@ bean_extension_set_new_valist (BeanEngine  *engine,
   guint n_parameters;
   BeanExtensionSet *set;
 
-  g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
@@ -793,7 +793,7 @@ bean_extension_set_new (BeanEngine  *engine,
   va_list var_args;
   BeanExtensionSet *set;
 
-  g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 

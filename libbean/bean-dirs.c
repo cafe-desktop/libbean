@@ -99,7 +99,7 @@ bean_dirs_get_plugin_loader_dir (const gchar *loader_name)
   gchar *lib_dir;
   gchar *loader_dir;
 
-  env_var = g_getenv ("PEAS_PLUGIN_LOADERS_DIR");
+  env_var = g_getenv ("BEAN_PLUGIN_LOADERS_DIR");
   if (env_var != NULL)
     return g_build_filename (env_var, loader_name, NULL);
 

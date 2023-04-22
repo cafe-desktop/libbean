@@ -43,7 +43,7 @@ class Hooks(object):
 
         sys.argv = [PRGNAME]
 
-        gettext.install(GETTEXT_PACKAGE, PEAS_LOCALEDIR)
+        gettext.install(GETTEXT_PACKAGE, BEAN_LOCALEDIR)
 
         self.__module_cache = {}
         self.__extension_cache = {}
@@ -152,7 +152,7 @@ class Hooks(object):
         gc.collect()
 
 
-if os.getenv('PEAS_PYTHON_PROFILE') is not None:
+if os.getenv('BEAN_PYTHON_PROFILE') is not None:
     import cProfile
     import pstats
     import threading
@@ -163,7 +163,7 @@ if os.getenv('PEAS_PYTHON_PROFILE') is not None:
         def __init__(self):
             super(Hooks, self).__init__()
 
-            sort = os.getenv('PEAS_PYTHON_PROFILE', default='time')
+            sort = os.getenv('BEAN_PYTHON_PROFILE', default='time')
             self.__stat_sort = sort.split(';')
 
             self.__stats = None

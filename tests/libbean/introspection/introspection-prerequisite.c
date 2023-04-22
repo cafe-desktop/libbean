@@ -31,7 +31,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE (IntrospectionPrerequisite,
                             introspection_prerequisite,
-                            PEAS_TYPE_EXTENSION_BASE)
+                            BEAN_TYPE_EXTENSION_BASE)
 
 #define GET_PRIV(o) \
   (introspection_prerequisite_get_instance_private (o))

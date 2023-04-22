@@ -79,9 +79,9 @@ bean_activatable_activate (BeanActivatable *activatable)
 {
   BeanActivatableInterface *iface;
 
-  g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (BEAN_IS_ACTIVATABLE (activatable));
 
-  iface = PEAS_ACTIVATABLE_GET_IFACE (activatable);
+  iface = BEAN_ACTIVATABLE_GET_IFACE (activatable);
   g_return_if_fail (iface->activate != NULL);
 
   iface->activate (activatable);
@@ -102,9 +102,9 @@ bean_activatable_deactivate (BeanActivatable *activatable)
 {
   BeanActivatableInterface *iface;
 
-  g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (BEAN_IS_ACTIVATABLE (activatable));
 
-  iface = PEAS_ACTIVATABLE_GET_IFACE (activatable);
+  iface = BEAN_ACTIVATABLE_GET_IFACE (activatable);
   g_return_if_fail (iface->deactivate != NULL);
 
   iface->deactivate (activatable);
@@ -122,9 +122,9 @@ bean_activatable_update_state (BeanActivatable *activatable)
 {
   BeanActivatableInterface *iface;
 
-  g_return_if_fail (PEAS_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (BEAN_IS_ACTIVATABLE (activatable));
 
-  iface = PEAS_ACTIVATABLE_GET_IFACE (activatable);
+  iface = BEAN_ACTIVATABLE_GET_IFACE (activatable);
   if (iface->update_state != NULL)
     iface->update_state (activatable);
 }

@@ -100,7 +100,7 @@ typedef struct _SearchPath {
 } SearchPath;
 
 struct _BeanEnginePrivate {
-  LoaderInfo loaders[PEAS_UTILS_N_LOADERS];
+  LoaderInfo loaders[BEAN_UTILS_N_LOADERS];
 
   GQueue search_paths;
   GQueue plugin_list;
@@ -118,7 +118,7 @@ static gboolean shutdown = FALSE;
 static BeanEngine *default_engine = NULL;
 
 static GMutex loaders_lock;
-static GlobalLoaderInfo loaders[PEAS_UTILS_N_LOADERS];
+static GlobalLoaderInfo loaders[BEAN_UTILS_N_LOADERS];
 
 static void bean_engine_load_plugin_real   (BeanEngine     *engine,
                                             BeanPluginInfo *info);
@@ -324,7 +324,7 @@ plugin_list_changed (BeanEngine *engine)
   GString *msg;
   GList *pos;
 
-  if (g_getenv ("PEAS_DEBUG") == NULL)
+  if (g_getenv ("BEAN_DEBUG") == NULL)
     return;
 
   msg = g_string_new ("Plugins: ");
@@ -358,7 +358,7 @@ bean_engine_rescan_plugins (BeanEngine *engine)
   GList *item;
   gboolean found = FALSE;
 
-  g_return_if_fail (PEAS_IS_ENGINE (engine));
+  g_return_if_fail (BEAN_IS_ENGINE (engine));
 
   if (priv->search_paths.length == 0)
     {
@@ -387,7 +387,7 @@ bean_engine_insert_search_path (BeanEngine  *engine,
   BeanEnginePrivate *priv = GET_PRIV (engine);
   SearchPath *sp;
 
-  g_return_if_fail (PEAS_IS_ENGINE (engine));
+  g_return_if_fail (BEAN_IS_ENGINE (engine));
   g_return_if_fail (module_dir != NULL);
 
   sp = g_slice_new (SearchPath);
@@ -502,7 +502,7 @@ bean_engine_init (BeanEngine *engine)
   g_queue_init (&priv->plugin_list);
 
   /* The C plugin loader is always enabled */
-  priv->loaders[PEAS_UTILS_C_LOADER_ID].enabled = TRUE;
+  priv->loaders[BEAN_UTILS_C_LOADER_ID].enabled = TRUE;
 }
 
 /**
@@ -520,7 +520,7 @@ bean_engine_garbage_collect (BeanEngine *engine)
   BeanEnginePrivate *priv = GET_PRIV (engine);
   gint i;
 
-  g_return_if_fail (PEAS_IS_ENGINE (engine));
+  g_return_if_fail (BEAN_IS_ENGINE (engine));
 
   for (i = 0; i < G_N_ELEMENTS (loaders); ++i)
     {
@@ -537,7 +537,7 @@ bean_engine_set_property (GObject      *object,
                           const GValue *value,
                           GParamSpec   *pspec)
 {
-  BeanEngine *engine = PEAS_ENGINE (object);
+  BeanEngine *engine = BEAN_ENGINE (object);
   BeanEnginePrivate *priv = GET_PRIV (engine);
 
   switch (prop_id)
@@ -561,7 +561,7 @@ bean_engine_get_property (GObject    *object,
                           GValue     *value,
                           GParamSpec *pspec)
 {
-  BeanEngine *engine = PEAS_ENGINE (object);
+  BeanEngine *engine = BEAN_ENGINE (object);
   BeanEnginePrivate *priv = GET_PRIV (engine);
 
   switch (prop_id)
@@ -586,7 +586,7 @@ bean_engine_get_property (GObject    *object,
 static void
 bean_engine_dispose (GObject *object)
 {
-  BeanEngine *engine = PEAS_ENGINE (object);
+  BeanEngine *engine = BEAN_ENGINE (object);
   BeanEnginePrivate *priv = GET_PRIV (engine);
   GList *item;
   gint i;
@@ -597,7 +597,7 @@ bean_engine_dispose (GObject *object)
   /* First unload all the plugins */
   for (item = priv->plugin_list.tail; item != NULL; item = item->prev)
     {
-      BeanPluginInfo *info = PEAS_PLUGIN_INFO (item->data);
+      BeanPluginInfo *info = BEAN_PLUGIN_INFO (item->data);
 
       if (bean_plugin_info_is_loaded (info))
         bean_engine_unload_plugin (engine, info);
@@ -617,7 +617,7 @@ bean_engine_dispose (GObject *object)
 static void
 bean_engine_finalize (GObject *object)
 {
-  BeanEngine *engine = PEAS_ENGINE (object);
+  BeanEngine *engine = BEAN_ENGINE (object);
   BeanEnginePrivate *priv = GET_PRIV (engine);
   GList *item;
 
@@ -743,7 +743,7 @@ bean_engine_class_init (BeanEngineClass *klass)
                   g_cclosure_marshal_VOID__BOXED,
                   G_TYPE_NONE,
                   1,
-                  PEAS_TYPE_PLUGIN_INFO |
+                  BEAN_TYPE_PLUGIN_INFO |
                   G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
@@ -767,7 +767,7 @@ bean_engine_class_init (BeanEngineClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__BOXED,
                   G_TYPE_NONE,
-                  1, PEAS_TYPE_PLUGIN_INFO |
+                  1, BEAN_TYPE_PLUGIN_INFO |
                   G_SIGNAL_TYPE_STATIC_SCOPE);
 
   g_object_class_install_properties (object_class, N_PROPERTIES, properties);
@@ -786,11 +786,11 @@ bean_engine_class_init (BeanEngineClass *klass)
   /* This cannot be done as a compile-time
    * assert, but is critical for correct behavior
    */
-  g_assert (g_strcmp0 (bean_utils_get_loader_from_id (PEAS_UTILS_C_LOADER_ID),
+  g_assert (g_strcmp0 (bean_utils_get_loader_from_id (BEAN_UTILS_C_LOADER_ID),
                        "c") == 0);
 
   /* The C plugin loader is always enabled */
-  loaders[PEAS_UTILS_C_LOADER_ID].enabled = TRUE;
+  loaders[BEAN_UTILS_C_LOADER_ID].enabled = TRUE;
 }
 
 static BeanObjectModule *
@@ -830,7 +830,7 @@ create_plugin_loader (gint loader_id)
 {
   BeanPluginLoader *loader;
 
-  if (loader_id == PEAS_UTILS_C_LOADER_ID)
+  if (loader_id == BEAN_UTILS_C_LOADER_ID)
     {
       loader = bean_plugin_loader_c_new ();
     }
@@ -842,9 +842,9 @@ create_plugin_loader (gint loader_id)
       if (module == NULL)
         return NULL;
 
-      loader = PEAS_PLUGIN_LOADER (
+      loader = BEAN_PLUGIN_LOADER (
             bean_object_module_create_object (module,
-                                              PEAS_TYPE_PLUGIN_LOADER,
+                                              BEAN_TYPE_PLUGIN_LOADER,
                                               0, NULL));
     }
 
@@ -967,7 +967,7 @@ bean_engine_enable_loader (BeanEngine  *engine,
   LoaderInfo *loader_info;
   gint loader_id;
 
-  g_return_if_fail (PEAS_IS_ENGINE (engine));
+  g_return_if_fail (BEAN_IS_ENGINE (engine));
   g_return_if_fail (loader_name != NULL && *loader_name != '\0');
 
   loader_id = bean_utils_get_loader_id (loader_name);
@@ -995,7 +995,7 @@ bean_engine_enable_loader (BeanEngine  *engine,
     }
 
   /* Some tests check for mixed versions this way */
-  if (g_getenv ("PEAS_ALLOW_CONFLICTING_LOADERS") == NULL)
+  if (g_getenv ("BEAN_ALLOW_CONFLICTING_LOADERS") == NULL)
     {
       gint i;
       const gint *loader_ids;
@@ -1045,7 +1045,7 @@ bean_engine_get_plugin_list (BeanEngine *engine)
 {
   BeanEnginePrivate *priv = GET_PRIV (engine);
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
 
   return priv->plugin_list.head;
 }
@@ -1068,7 +1068,7 @@ bean_engine_get_plugin_info (BeanEngine  *engine,
   BeanEnginePrivate *priv = GET_PRIV (engine);
   GList *l;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (plugin_name != NULL, NULL);
 
   for (l = priv->plugin_list.head; l != NULL; l = l->next)
@@ -1111,8 +1111,8 @@ bean_engine_load_plugin_real (BeanEngine     *engine,
           g_warning ("Could not find plugin '%s' for plugin '%s'",
                      dependencies[i], bean_plugin_info_get_module_name (info));
           g_set_error (&info->error,
-                       PEAS_PLUGIN_INFO_ERROR,
-                       PEAS_PLUGIN_INFO_ERROR_DEP_NOT_FOUND,
+                       BEAN_PLUGIN_INFO_ERROR,
+                       BEAN_PLUGIN_INFO_ERROR_DEP_NOT_FOUND,
                        _("Dependency “%s” was not found"),
                        dependencies[i]);
           goto error;
@@ -1121,8 +1121,8 @@ bean_engine_load_plugin_real (BeanEngine     *engine,
       if (!bean_engine_load_plugin (engine, dep_info))
         {
           g_set_error (&info->error,
-                       PEAS_PLUGIN_INFO_ERROR,
-                       PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED,
+                       BEAN_PLUGIN_INFO_ERROR,
+                       BEAN_PLUGIN_INFO_ERROR_LOADING_FAILED,
                        _("Dependency “%s” failed to load"),
                        bean_plugin_info_get_name (dep_info));
           goto error;
@@ -1135,8 +1135,8 @@ bean_engine_load_plugin_real (BeanEngine     *engine,
     {
       /* Already warned */
       g_set_error (&info->error,
-                   PEAS_PLUGIN_INFO_ERROR,
-                   PEAS_PLUGIN_INFO_ERROR_LOADER_NOT_FOUND,
+                   BEAN_PLUGIN_INFO_ERROR,
+                   BEAN_PLUGIN_INFO_ERROR_LOADER_NOT_FOUND,
                    _("Plugin loader “%s” was not found"),
                    bean_utils_get_loader_from_id (info->loader_id));
       goto error;
@@ -1147,8 +1147,8 @@ bean_engine_load_plugin_real (BeanEngine     *engine,
       g_warning ("Error loading plugin '%s'",
                  bean_plugin_info_get_module_name (info));
       g_set_error (&info->error,
-                   PEAS_PLUGIN_INFO_ERROR,
-                   PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED,
+                   BEAN_PLUGIN_INFO_ERROR,
+                   BEAN_PLUGIN_INFO_ERROR_LOADING_FAILED,
                    _("Failed to load"));
       goto error;
     }
@@ -1181,7 +1181,7 @@ gboolean
 bean_engine_load_plugin (BeanEngine     *engine,
                          BeanPluginInfo *info)
 {
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), FALSE);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
 
   if (bean_plugin_info_is_loaded (info))
@@ -1215,7 +1215,7 @@ bean_engine_unload_plugin_real (BeanEngine     *engine,
   module_name = bean_plugin_info_get_module_name (info);
   for (item = priv->plugin_list.tail; item != NULL; item = item->prev)
     {
-      BeanPluginInfo *other_info = PEAS_PLUGIN_INFO (item->data);
+      BeanPluginInfo *other_info = BEAN_PLUGIN_INFO (item->data);
 
       if (!bean_plugin_info_is_loaded (other_info))
         continue;
@@ -1255,7 +1255,7 @@ gboolean
 bean_engine_unload_plugin (BeanEngine     *engine,
                            BeanPluginInfo *info)
 {
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), FALSE);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
 
   if (!bean_plugin_info_is_loaded (info))
@@ -1287,7 +1287,7 @@ bean_engine_provides_extension (BeanEngine     *engine,
 {
   BeanPluginLoader *loader;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), FALSE);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
@@ -1330,7 +1330,7 @@ bean_engine_create_extensionv (BeanEngine     *engine,
   BeanPluginLoader *loader;
   BeanExtension *extension;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), NULL);
@@ -1386,7 +1386,7 @@ bean_engine_create_extension_with_properties (BeanEngine     *engine,
   BeanExtension *extension;
   GParameter *parameters = NULL;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), NULL);
@@ -1461,7 +1461,7 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
   BeanExtension *exten;
   guint n_parameters;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
@@ -1523,7 +1523,7 @@ bean_engine_create_extension (BeanEngine     *engine,
   va_list var_args;
   BeanExtension *exten;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
@@ -1557,7 +1557,7 @@ bean_engine_get_loaded_plugins (BeanEngine *engine)
   GArray *array;
   GList *pl;
 
-  g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
 
   array = g_array_new (TRUE, FALSE, sizeof (gchar *));
 
@@ -1613,7 +1613,7 @@ bean_engine_set_loaded_plugins (BeanEngine   *engine,
   BeanEnginePrivate *priv = GET_PRIV (engine);
   GList *pl;
 
-  g_return_if_fail (PEAS_IS_ENGINE (engine));
+  g_return_if_fail (BEAN_IS_ENGINE (engine));
 
   for (pl = priv->plugin_list.head; pl != NULL; pl = pl->next)
     {
@@ -1650,7 +1650,7 @@ bean_engine_set_loaded_plugins (BeanEngine   *engine,
 BeanEngine *
 bean_engine_new (void)
 {
-  return PEAS_ENGINE (g_object_new (PEAS_TYPE_ENGINE, NULL));
+  return BEAN_ENGINE (g_object_new (BEAN_TYPE_ENGINE, NULL));
 }
 
 /**
@@ -1671,7 +1671,7 @@ bean_engine_new (void)
 BeanEngine *
 bean_engine_new_with_nonglobal_loaders (void)
 {
-  return PEAS_ENGINE (g_object_new (PEAS_TYPE_ENGINE,
+  return BEAN_ENGINE (g_object_new (BEAN_TYPE_ENGINE,
                                     "nonglobal-loaders", TRUE,
                                     NULL));
 }

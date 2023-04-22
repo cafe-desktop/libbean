@@ -45,7 +45,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderPython,
                             bean_plugin_loader_python,
-                            PEAS_TYPE_PLUGIN_LOADER)
+                            BEAN_TYPE_PLUGIN_LOADER)
 
 #define GET_PRIV(o) \
   (bean_plugin_loader_python_get_instance_private (o))
@@ -56,8 +56,8 @@ G_MODULE_EXPORT void
 bean_register_types (BeanObjectModule *module)
 {
   bean_object_module_register_extension_type (module,
-                                              PEAS_TYPE_PLUGIN_LOADER,
-                                              PEAS_TYPE_PLUGIN_LOADER_PYTHON);
+                                              BEAN_TYPE_PLUGIN_LOADER,
+                                              BEAN_TYPE_PLUGIN_LOADER_PYTHON);
 }
 
 static GType
@@ -134,7 +134,7 @@ bean_plugin_loader_python_create_extension (BeanPluginLoader *loader,
                       GSIZE_TO_POINTER (exten_type));
 
   pyobject = pygobject_new (object);
-  pyplinfo = pyg_boxed_new (PEAS_TYPE_PLUGIN_INFO, info, TRUE, TRUE);
+  pyplinfo = pyg_boxed_new (BEAN_TYPE_PLUGIN_INFO, info, TRUE, TRUE);
 
   /* Set the plugin info as an attribute of the instance */
   if (PyObject_SetAttrString (pyobject, "plugin_info", pyplinfo) != 0)
@@ -161,7 +161,7 @@ static gboolean
 bean_plugin_loader_python_load (BeanPluginLoader *loader,
                                 BeanPluginInfo   *info)
 {
-  BeanPluginLoaderPython *pyloader = PEAS_PLUGIN_LOADER_PYTHON (loader);
+  BeanPluginLoaderPython *pyloader = BEAN_PLUGIN_LOADER_PYTHON (loader);
   BeanPluginLoaderPythonPrivate *priv = GET_PRIV (pyloader);
   const gchar *module_dir, *module_name;
   PyObject *pymodule;
@@ -188,7 +188,7 @@ static void
 bean_plugin_loader_python_unload (BeanPluginLoader *loader,
                                   BeanPluginInfo   *info)
 {
-  BeanPluginLoaderPython *pyloader = PEAS_PLUGIN_LOADER_PYTHON (loader);
+  BeanPluginLoaderPython *pyloader = BEAN_PLUGIN_LOADER_PYTHON (loader);
   BeanPluginLoaderPythonPrivate *priv = GET_PRIV (pyloader);
   PyGILState_STATE state = PyGILState_Ensure ();
 
@@ -215,7 +215,7 @@ bean_plugin_loader_python_garbage_collect (BeanPluginLoader *loader)
 static gboolean
 bean_plugin_loader_python_initialize (BeanPluginLoader *loader)
 {
-  BeanPluginLoaderPython *pyloader = PEAS_PLUGIN_LOADER_PYTHON (loader);
+  BeanPluginLoaderPython *pyloader = BEAN_PLUGIN_LOADER_PYTHON (loader);
   BeanPluginLoaderPythonPrivate *priv = GET_PRIV (pyloader);
   PyGILState_STATE state = 0;
   long hexversion;
@@ -306,7 +306,7 @@ bean_plugin_loader_python_init (BeanPluginLoaderPython *pyloader)
 static void
 bean_plugin_loader_python_finalize (GObject *object)
 {
-  BeanPluginLoaderPython *pyloader = PEAS_PLUGIN_LOADER_PYTHON (object);
+  BeanPluginLoaderPython *pyloader = BEAN_PLUGIN_LOADER_PYTHON (object);
   BeanPluginLoaderPythonPrivate *priv = GET_PRIV (pyloader);
   PyGILState_STATE state;
 
@@ -342,7 +342,7 @@ static void
 bean_plugin_loader_python_class_init (BeanPluginLoaderPythonClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  BeanPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
+  BeanPluginLoaderClass *loader_class = BEAN_PLUGIN_LOADER_CLASS (klass);
 
   quark_extension_type = g_quark_from_static_string ("bean-extension-type");
 

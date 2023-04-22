@@ -22,8 +22,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_OBJECT_MODULE_H__
-#define __PEAS_OBJECT_MODULE_H__
+#ifndef __BEAN_OBJECT_MODULE_H__
+#define __BEAN_OBJECT_MODULE_H__
 
 #include <glib-object.h>
 #include <gmodule.h>
@@ -32,12 +32,12 @@
 
 G_BEGIN_DECLS
 
-#define PEAS_TYPE_OBJECT_MODULE             (bean_object_module_get_type ())
-#define PEAS_OBJECT_MODULE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_OBJECT_MODULE, BeanObjectModule))
-#define PEAS_OBJECT_MODULE_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
-#define PEAS_IS_OBJECT_MODULE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_OBJECT_MODULE))
-#define PEAS_IS_OBJECT_MODULE_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_OBJECT_MODULE))
-#define PEAS_OBJECT_MODULE_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
+#define BEAN_TYPE_OBJECT_MODULE             (bean_object_module_get_type ())
+#define BEAN_OBJECT_MODULE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_TYPE_OBJECT_MODULE, BeanObjectModule))
+#define BEAN_OBJECT_MODULE_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), BEAN_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
+#define BEAN_IS_OBJECT_MODULE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_TYPE_OBJECT_MODULE))
+#define BEAN_IS_OBJECT_MODULE_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), BEAN_TYPE_OBJECT_MODULE))
+#define BEAN_OBJECT_MODULE_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
 
 typedef struct _BeanObjectModule         BeanObjectModule;
 typedef struct _BeanObjectModuleClass    BeanObjectModuleClass;
@@ -87,50 +87,50 @@ struct _BeanObjectModuleClass {
   gpointer padding[8];
 };
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType               bean_object_module_get_type               (void) G_GNUC_CONST;
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanObjectModule   *bean_object_module_new                    (const gchar      *module_name,
                                                                const gchar      *path,
                                                                gboolean          resident);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanObjectModule   *bean_object_module_new_full               (const gchar      *module_name,
                                                                const gchar      *path,
                                                                gboolean          resident,
                                                                gboolean          local_linkage);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanObjectModule   *bean_object_module_new_embedded           (const gchar      *module_name,
                                                                const gchar      *symbol);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GObject            *bean_object_module_create_object          (BeanObjectModule *module,
                                                                GType             exten_type,
                                                                guint             n_parameters,
                                                                GParameter       *parameters);
 G_GNUC_END_IGNORE_DEPRECATIONS
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean            bean_object_module_provides_object        (BeanObjectModule *module,
                                                                GType             exten_type);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 const gchar        *bean_object_module_get_path               (BeanObjectModule *module);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 const gchar        *bean_object_module_get_module_name        (BeanObjectModule *module);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 const gchar        *bean_object_module_get_symbol             (BeanObjectModule *module);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GModule            *bean_object_module_get_library            (BeanObjectModule *module);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void                bean_object_module_register_extension_factory
                                                               (BeanObjectModule *module,
                                                                GType             exten_type,
                                                                BeanFactoryFunc   factory_func,
                                                                gpointer          user_data,
                                                                GDestroyNotify    destroy_func);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void                bean_object_module_register_extension_type
                                                               (BeanObjectModule *module,
                                                                GType             exten_type,
@@ -138,4 +138,4 @@ void                bean_object_module_register_extension_type
 
 G_END_DECLS
 
-#endif /* __PEAS_OBJECT_MODULE_H__ */
+#endif /* __BEAN_OBJECT_MODULE_H__ */
