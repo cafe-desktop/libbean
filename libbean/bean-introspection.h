@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_INTROSPECTION_H__
-#define __PEAS_INTROSPECTION_H__
+#ifndef __BEAN_INTROSPECTION_H__
+#define __BEAN_INTROSPECTION_H__
 
 #include <glib-object.h>
 #include <girepository.h>

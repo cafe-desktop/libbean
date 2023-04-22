@@ -162,7 +162,7 @@ bean_extension_call (BeanExtension *exten,
   va_list args;
   gboolean result;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION (exten), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION (exten), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   va_start (args, method_name);
@@ -199,7 +199,7 @@ bean_extension_call_valist (BeanExtension *exten,
   gboolean ret;
   gint n_args;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION (exten), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION (exten), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   callable_info = get_method_info (exten, method_name, NULL);
@@ -251,7 +251,7 @@ bean_extension_callv (BeanExtension *exten,
   GType gtype;
   gboolean success;
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION (exten), FALSE);
+  g_return_val_if_fail (BEAN_IS_EXTENSION (exten), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   method_info = get_method_info (exten, method_name, &gtype);

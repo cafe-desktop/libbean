@@ -19,13 +19,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_UTILS_H__
-#define __PEAS_UTILS_H__
+#ifndef __BEAN_UTILS_H__
+#define __BEAN_UTILS_H__
 
 #include <glib-object.h>
 
-#define PEAS_UTILS_C_LOADER_ID  0
-#define PEAS_UTILS_N_LOADERS    4
+#define BEAN_UTILS_C_LOADER_ID  0
+#define BEAN_UTILS_N_LOADERS    4
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 gboolean     bean_utils_properties_array_to_parameter_list (GType          exten_type,
@@ -44,4 +44,4 @@ const gchar *bean_utils_get_loader_from_id                 (gint           loade
 const gchar *bean_utils_get_loader_module_from_id          (gint           loader_id) G_GNUC_CONST;
 const gint  *bean_utils_get_conflicting_loaders_from_id    (gint           loader_id) G_GNUC_CONST;
 
-#endif /* __PEAS_UTILS_H__ */
+#endif /* __BEAN_UTILS_H__ */

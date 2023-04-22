@@ -39,7 +39,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderC,
                             bean_plugin_loader_c,
-                            PEAS_TYPE_PLUGIN_LOADER)
+                            BEAN_TYPE_PLUGIN_LOADER)
 
 #define GET_PRIV(o) \
   (bean_plugin_loader_c_get_instance_private (o))
@@ -51,7 +51,7 @@ static gboolean
 bean_plugin_loader_c_load (BeanPluginLoader *loader,
                            BeanPluginInfo   *info)
 {
-  BeanPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (loader);
+  BeanPluginLoaderC *cloader = BEAN_PLUGIN_LOADER_C (loader);
   BeanPluginLoaderCPrivate *priv = GET_PRIV (cloader);
 
   g_mutex_lock (&priv->lock);
@@ -134,7 +134,7 @@ bean_plugin_loader_c_create_extension (BeanPluginLoader *loader,
    */
   exten_parameters[n_parameters].name = intern_plugin_info;
   memset (&exten_parameters[n_parameters].value, 0, sizeof (GValue));
-  g_value_init (&exten_parameters[n_parameters].value, PEAS_TYPE_PLUGIN_INFO);
+  g_value_init (&exten_parameters[n_parameters].value, BEAN_TYPE_PLUGIN_INFO);
   g_value_set_boxed (&exten_parameters[n_parameters].value, info);
 
   instance = bean_object_module_create_object (info->loader_data,
@@ -174,7 +174,7 @@ bean_plugin_loader_c_init (BeanPluginLoaderC *cloader)
 static void
 bean_plugin_loader_c_finalize (GObject *object)
 {
-  BeanPluginLoaderC *cloader = PEAS_PLUGIN_LOADER_C (object);
+  BeanPluginLoaderC *cloader = BEAN_PLUGIN_LOADER_C (object);
   BeanPluginLoaderCPrivate *priv = GET_PRIV (cloader);
 
   g_mutex_clear (&priv->lock);
@@ -188,7 +188,7 @@ static void
 bean_plugin_loader_c_class_init (BeanPluginLoaderCClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  BeanPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
+  BeanPluginLoaderClass *loader_class = BEAN_PLUGIN_LOADER_CLASS (klass);
 
   quark_extension_type = g_quark_from_static_string ("bean-extension-type");
   intern_plugin_info = g_intern_static_string ("plugin-info");
@@ -211,5 +211,5 @@ bean_plugin_loader_c_class_init (BeanPluginLoaderCClass *klass)
 BeanPluginLoader *
 bean_plugin_loader_c_new (void)
 {
-  return PEAS_PLUGIN_LOADER (g_object_new (PEAS_TYPE_PLUGIN_LOADER_C, NULL));
+  return BEAN_PLUGIN_LOADER (g_object_new (BEAN_TYPE_PLUGIN_LOADER_C, NULL));
 }

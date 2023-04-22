@@ -45,18 +45,18 @@ set_garbage_collector_state (BeanEngine     *engine,
   BeanExtension *extension;
 
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             NULL);
 
   if (start)
     {
       /* collectgarbage('restart') */
-      bean_activatable_activate (PEAS_ACTIVATABLE (extension));
+      bean_activatable_activate (BEAN_ACTIVATABLE (extension));
     }
   else
     {
       /* collectgarbage('stop') */
-      bean_activatable_deactivate (PEAS_ACTIVATABLE (extension));
+      bean_activatable_deactivate (BEAN_ACTIVATABLE (extension));
     }
 
   g_object_unref (extension);
@@ -71,11 +71,11 @@ test_extension_lua_instance_refcount (BeanEngine     *engine,
   set_garbage_collector_state (engine, info, FALSE);
 
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             NULL);
   g_object_add_weak_pointer (extension, (gpointer *) &extension);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
 
   /* The Lua wrapper created around the extension
    * object should have increased its refcount by 1.
@@ -87,7 +87,7 @@ test_extension_lua_instance_refcount (BeanEngine     *engine,
   g_assert_cmpint (G_OBJECT (extension)->ref_count, ==, 1);
 
   /* Create a new Lua wrapper around the extension */
-  bean_activatable_update_state (PEAS_ACTIVATABLE (extension));
+  bean_activatable_update_state (BEAN_ACTIVATABLE (extension));
   g_assert_cmpint (G_OBJECT (extension)->ref_count, ==, 2);
 
   /* The Lua wrapper still exists */
@@ -120,12 +120,12 @@ test_extension_lua_activatable_subject_refcount (BeanEngine     *engine,
 
   /* We pre-create the wrapper to make it easier to check reference count */
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             "object", object,
                                             NULL);
   g_object_add_weak_pointer (extension, (gpointer *) &extension);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
 
   /* The Lua wrapper created around our dummy
    * object should have increased its refcount by 1.

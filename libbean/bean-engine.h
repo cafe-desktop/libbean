@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_ENGINE_H__
-#define __PEAS_ENGINE_H__
+#ifndef __BEAN_ENGINE_H__
+#define __BEAN_ENGINE_H__
 
 #include <glib.h>
 
@@ -30,12 +30,12 @@
 
 G_BEGIN_DECLS
 
-#define PEAS_TYPE_ENGINE              (bean_engine_get_type ())
-#define PEAS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_ENGINE, BeanEngine))
-#define PEAS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_ENGINE, BeanEngineClass))
-#define PEAS_IS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_TYPE_ENGINE))
-#define PEAS_IS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_ENGINE))
-#define PEAS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_ENGINE, BeanEngineClass))
+#define BEAN_TYPE_ENGINE              (bean_engine_get_type ())
+#define BEAN_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_TYPE_ENGINE, BeanEngine))
+#define BEAN_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_TYPE_ENGINE, BeanEngineClass))
+#define BEAN_IS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_TYPE_ENGINE))
+#define BEAN_IS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), BEAN_TYPE_ENGINE))
+#define BEAN_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_TYPE_ENGINE, BeanEngineClass))
 
 typedef struct _BeanEngine         BeanEngine;
 typedef struct _BeanEngineClass    BeanEngineClass;
@@ -75,60 +75,60 @@ struct _BeanEngineClass {
   gpointer padding[8];
 };
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType             bean_engine_get_type            (void) G_GNUC_CONST;
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanEngine       *bean_engine_new                 (void);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanEngine       *bean_engine_new_with_nonglobal_loaders
                                                   (void);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanEngine       *bean_engine_get_default         (void);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_add_search_path     (BeanEngine      *engine,
                                                    const gchar     *module_dir,
                                                    const gchar     *data_dir);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_prepend_search_path (BeanEngine      *engine,
                                                    const gchar     *module_dir,
                                                    const gchar     *data_dir);
 
 /* plugin management */
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_enable_loader       (BeanEngine      *engine,
                                                    const gchar     *loader_name);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_rescan_plugins      (BeanEngine      *engine);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 const GList      *bean_engine_get_plugin_list     (BeanEngine      *engine);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gchar           **bean_engine_get_loaded_plugins  (BeanEngine      *engine);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_set_loaded_plugins  (BeanEngine      *engine,
                                                    const gchar    **plugin_names);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanPluginInfo   *bean_engine_get_plugin_info     (BeanEngine      *engine,
                                                    const gchar     *plugin_name);
 
 /* plugin loading and unloading */
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean          bean_engine_load_plugin         (BeanEngine      *engine,
                                                    BeanPluginInfo  *info);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean          bean_engine_unload_plugin       (BeanEngine      *engine,
                                                    BeanPluginInfo  *info);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_engine_garbage_collect     (BeanEngine      *engine);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean          bean_engine_provides_extension  (BeanEngine      *engine,
                                                    BeanPluginInfo  *info,
                                                    GType            extension_type);
 
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanExtension    *bean_engine_create_extensionv   (BeanEngine      *engine,
                                                    BeanPluginInfo  *info,
                                                    GType            extension_type,
@@ -136,7 +136,7 @@ BeanExtension    *bean_engine_create_extensionv   (BeanEngine      *engine,
                                                    GParameter      *parameters);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-PEAS_AVAILABLE_IN_1_24
+BEAN_AVAILABLE_IN_1_24
 BeanExtension    *bean_engine_create_extension_with_properties
                                                   (BeanEngine     *engine,
                                                    BeanPluginInfo *info,
@@ -145,14 +145,14 @@ BeanExtension    *bean_engine_create_extension_with_properties
                                                    const gchar   **prop_names,
                                                    const GValue   *prop_values);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanExtension    *bean_engine_create_extension_valist
                                                   (BeanEngine      *engine,
                                                    BeanPluginInfo  *info,
                                                    GType            extension_type,
                                                    const gchar     *first_property,
                                                    va_list          var_args);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 BeanExtension    *bean_engine_create_extension    (BeanEngine      *engine,
                                                    BeanPluginInfo  *info,
                                                    GType            extension_type,
@@ -162,4 +162,4 @@ BeanExtension    *bean_engine_create_extension    (BeanEngine      *engine,
 
 G_END_DECLS
 
-#endif /* __PEAS_ENGINE_H__ */
+#endif /* __BEAN_ENGINE_H__ */

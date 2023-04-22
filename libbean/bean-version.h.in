@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_VERSION_H__
-#define __PEAS_VERSION_H__
+#ifndef __BEAN_VERSION_H__
+#define __BEAN_VERSION_H__
 
 /**
  * SECTION:bean-version
@@ -28,55 +28,55 @@
  */
 
 /**
- * PEAS_MAJOR_VERSION:
+ * BEAN_MAJOR_VERSION:
  *
- * Bean major version component (e.g. 1 if %PEAS_VERSION is 1.2.3)
+ * Bean major version component (e.g. 1 if %BEAN_VERSION is 1.2.3)
  */
-#define PEAS_MAJOR_VERSION              (@PEAS_MAJOR_VERSION@)
+#define BEAN_MAJOR_VERSION              (@BEAN_MAJOR_VERSION@)
 
 /**
- * PEAS_MINOR_VERSION:
+ * BEAN_MINOR_VERSION:
  *
- * Bean minor version component (e.g. 2 if %PEAS_VERSION is 1.2.3)
+ * Bean minor version component (e.g. 2 if %BEAN_VERSION is 1.2.3)
  */
-#define PEAS_MINOR_VERSION              (@PEAS_MINOR_VERSION@)
+#define BEAN_MINOR_VERSION              (@BEAN_MINOR_VERSION@)
 
 /**
- * PEAS_MICRO_VERSION:
+ * BEAN_MICRO_VERSION:
  *
- * Bean micro version component (e.g. 3 if %PEAS_VERSION is 1.2.3)
+ * Bean micro version component (e.g. 3 if %BEAN_VERSION is 1.2.3)
  */
-#define PEAS_MICRO_VERSION              (@PEAS_MICRO_VERSION@)
+#define BEAN_MICRO_VERSION              (@BEAN_MICRO_VERSION@)
 
 /**
- * PEAS_VERSION
+ * BEAN_VERSION
  *
  * Bean version.
  */
-#define PEAS_VERSION                    (@PEAS_VERSION@)
+#define BEAN_VERSION                    (@BEAN_VERSION@)
 
 /**
- * PEAS_VERSION_S:
+ * BEAN_VERSION_S:
  *
  * Bean version, encoded as a string, useful for printing and
  * concatenation.
  */
-#define PEAS_VERSION_S                  "@PEAS_VERSION@"
+#define BEAN_VERSION_S                  "@BEAN_VERSION@"
 
-#define PEAS_ENCODE_VERSION(major,minor,micro) \
+#define BEAN_ENCODE_VERSION(major,minor,micro) \
         ((major) << 24 | (minor) << 16 | (micro) << 8)
 
 /**
- * PEAS_VERSION_HEX:
+ * BEAN_VERSION_HEX:
  *
  * Bean version, encoded as an hexadecimal number, useful for
  * integer comparisons.
  */
-#define PEAS_VERSION_HEX \
-        (PEAS_ENCODE_VERSION (PEAS_MAJOR_VERSION, PEAS_MINOR_VERSION, PEAS_MICRO_VERSION))
+#define BEAN_VERSION_HEX \
+        (BEAN_ENCODE_VERSION (BEAN_MAJOR_VERSION, BEAN_MINOR_VERSION, BEAN_MICRO_VERSION))
 
 /**
- * PEAS_CHECK_VERSION:
+ * BEAN_CHECK_VERSION:
  * @major: required major version
  * @minor: required minor version
  * @micro: required micro version
@@ -84,10 +84,10 @@
  * Compile-time version checking. Evaluates to %TRUE if the version
  * of bean is greater than the required one.
  */
-#define PEAS_CHECK_VERSION(major,minor,micro)   \
-        (PEAS_MAJOR_VERSION > (major) || \
-         (PEAS_MAJOR_VERSION == (major) && PEAS_MINOR_VERSION > (minor)) || \
-         (PEAS_MAJOR_VERSION == (major) && PEAS_MINOR_VERSION == (minor) && \
-          PEAS_MICRO_VERSION >= (micro)))
+#define BEAN_CHECK_VERSION(major,minor,micro)   \
+        (BEAN_MAJOR_VERSION > (major) || \
+         (BEAN_MAJOR_VERSION == (major) && BEAN_MINOR_VERSION > (minor)) || \
+         (BEAN_MAJOR_VERSION == (major) && BEAN_MINOR_VERSION == (minor) && \
+          BEAN_MICRO_VERSION >= (micro)))
 
-#endif /* __PEAS_VERSION_H__ */
+#endif /* __BEAN_VERSION_H__ */

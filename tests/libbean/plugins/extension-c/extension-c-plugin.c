@@ -73,7 +73,7 @@ testing_extension_c_plugin_init (TestingExtensionCPlugin *plugin)
 static const BeanPluginInfo *
 testing_extension_c_plugin_get_plugin_info (IntrospectionBase *base)
 {
-  return bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
+  return bean_extension_base_get_plugin_info (BEAN_EXTENSION_BASE (base));
 }
 
 static GSettings *
@@ -81,7 +81,7 @@ testing_extension_c_plugin_get_settings (IntrospectionBase *base)
 {
   BeanPluginInfo *info;
 
-  info = bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
+  info = bean_extension_base_get_plugin_info (BEAN_EXTENSION_BASE (base));
 
   return bean_plugin_info_get_settings (info, NULL);
 }

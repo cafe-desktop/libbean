@@ -36,9 +36,9 @@ static void bean_activatable_iface_init     (BeanActivatableInterface    *iface)
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoSecondTime,
                                 beandemo_second_time,
-                                PEAS_TYPE_EXTENSION_BASE,
+                                BEAN_TYPE_EXTENSION_BASE,
                                 0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_TYPE_ACTIVATABLE,
                                                                bean_activatable_iface_init))
 
 enum {
@@ -52,7 +52,7 @@ beandemo_second_time_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = BEANDEMO_SECOND_TIME (object);
 
   switch (prop_id)
     {
@@ -72,7 +72,7 @@ beandemo_second_time_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = BEANDEMO_SECOND_TIME (object);
 
   switch (prop_id)
     {
@@ -96,7 +96,7 @@ beandemo_second_time_init (BeanDemoSecondTime *plugin)
 static void
 beandemo_second_time_finalize (GObject *object)
 {
-  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = BEANDEMO_SECOND_TIME (object);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -115,7 +115,7 @@ get_box (GtkWidget *window)
 static void
 beandemo_second_time_activate (BeanActivatable *activatable)
 {
-  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
+  BeanDemoSecondTime *plugin = BEANDEMO_SECOND_TIME (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -128,7 +128,7 @@ beandemo_second_time_activate (BeanActivatable *activatable)
 static void
 beandemo_second_time_deactivate (BeanActivatable *activatable)
 {
-  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
+  BeanDemoSecondTime *plugin = BEANDEMO_SECOND_TIME (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -165,6 +165,6 @@ bean_register_types (BeanObjectModule *module)
   beandemo_second_time_register_type (G_TYPE_MODULE (module));
 
   bean_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
-                                              PEASDEMO_TYPE_SECOND_TIME);
+                                              BEAN_TYPE_ACTIVATABLE,
+                                              BEANDEMO_TYPE_SECOND_TIME);
 }

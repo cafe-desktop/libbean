@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_EXTENSION_H__
-#define __PEAS_EXTENSION_H__
+#ifndef __BEAN_EXTENSION_H__
+#define __BEAN_EXTENSION_H__
 
 #include <glib-object.h>
 #include <girepository.h>
@@ -32,9 +32,9 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_EXTENSION            (G_TYPE_OBJECT)
-#define PEAS_EXTENSION(obj)            (G_OBJECT(obj))
-#define PEAS_IS_EXTENSION(obj)         (G_IS_OBJECT(obj))
+#define BEAN_TYPE_EXTENSION            (G_TYPE_OBJECT)
+#define BEAN_EXTENSION(obj)            (G_OBJECT(obj))
+#define BEAN_IS_EXTENSION(obj)         (G_IS_OBJECT(obj))
 
 /**
  * BeanExtension:
@@ -49,23 +49,23 @@ typedef GObject BeanExtension;
  * GI to avoid hairy issues.
  */
 #ifndef __GI_SCANNER__
-#ifndef PEAS_DISABLE_DEPRECATED
-PEAS_AVAILABLE_IN_ALL
+#ifndef BEAN_DISABLE_DEPRECATED
+BEAN_AVAILABLE_IN_ALL
 GType        bean_extension_get_type        (void)  G_GNUC_CONST;
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType        bean_extension_get_extension_type
                                             (BeanExtension *exten);
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean     bean_extension_call            (BeanExtension *exten,
                                              const gchar   *method_name,
                                              ...);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean     bean_extension_call_valist     (BeanExtension *exten,
                                              const gchar   *method_name,
                                              va_list        args);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 gboolean     bean_extension_callv           (BeanExtension *exten,
                                              const gchar   *method_name,
                                              GIArgument    *args,
@@ -75,4 +75,4 @@ gboolean     bean_extension_callv           (BeanExtension *exten,
 
 G_END_DECLS
 
-#endif /* __PEAS_EXTENSION_H__ */
+#endif /* __BEAN_EXTENSION_H__ */

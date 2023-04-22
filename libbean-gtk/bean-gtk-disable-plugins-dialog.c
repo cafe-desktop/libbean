@@ -190,7 +190,7 @@ bean_gtk_disable_plugins_dialog_set_property (GObject      *object,
                                               const GValue *value,
                                               GParamSpec   *pspec)
 {
-  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
   BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
@@ -213,7 +213,7 @@ bean_gtk_disable_plugins_dialog_get_property (GObject    *object,
                                               GValue     *value,
                                               GParamSpec *pspec)
 {
-  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
   BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
@@ -233,7 +233,7 @@ bean_gtk_disable_plugins_dialog_get_property (GObject    *object,
 static void
 bean_gtk_disable_plugins_dialog_constructed (GObject *object)
 {
-  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
   BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   if (priv->dep_plugins->next == NULL)
@@ -247,7 +247,7 @@ bean_gtk_disable_plugins_dialog_constructed (GObject *object)
 static void
 bean_gtk_disable_plugins_dialog_finalize (GObject *object)
 {
-  BeanGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
   BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   g_list_free (priv->dep_plugins);
@@ -300,7 +300,7 @@ bean_gtk_disable_plugins_dialog_new (GtkWindow      *parent,
                                      BeanPluginInfo *info,
                                      GList          *dep_plugins)
 {
-  return GTK_WIDGET (g_object_new (PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG,
+  return GTK_WIDGET (g_object_new (BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG,
                                    "transient-for", parent,
                                    "plugin-info", info,
                                    "dependent-plugins", dep_plugins,

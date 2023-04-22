@@ -9,9 +9,9 @@ bean_demo_c = [
 
 bean_demo_c_args = [
   '-DHAVE_CONFIG_H',
-  '-DPEAS_BUILDDIR="@0@"'.format(builddir),
-  '-DPEAS_PREFIX="@0@"'.format(prefix),
-  '-DPEAS_LIBDIR="@0@"'.format(libdir),
+  '-DBEAN_BUILDDIR="@0@"'.format(builddir),
+  '-DBEAN_PREFIX="@0@"'.format(prefix),
+  '-DBEAN_LIBDIR="@0@"'.format(libdir),
 ]
 
 executable(

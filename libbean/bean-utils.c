@@ -38,16 +38,16 @@ static const gchar *all_plugin_loader_modules[] = {
   "cloader", "lua51loader", "pythonloader", "python3loader"
 };
 
-static const gint conflicting_plugin_loaders[PEAS_UTILS_N_LOADERS][2] = {
+static const gint conflicting_plugin_loaders[BEAN_UTILS_N_LOADERS][2] = {
   { -1, -1 }, /* c       => {}          */
   { -1, -1 }, /* lua5.1  => {}          */
   {  3, -1 }, /* python  => { python3 } */
   {  2, -1 }  /* python3 => { python  } */
 };
 
-G_STATIC_ASSERT (G_N_ELEMENTS (all_plugin_loaders) == PEAS_UTILS_N_LOADERS);
-G_STATIC_ASSERT (G_N_ELEMENTS (all_plugin_loader_modules) == PEAS_UTILS_N_LOADERS);
-G_STATIC_ASSERT (G_N_ELEMENTS (conflicting_plugin_loaders) == PEAS_UTILS_N_LOADERS);
+G_STATIC_ASSERT (G_N_ELEMENTS (all_plugin_loaders) == BEAN_UTILS_N_LOADERS);
+G_STATIC_ASSERT (G_N_ELEMENTS (all_plugin_loader_modules) == BEAN_UTILS_N_LOADERS);
+G_STATIC_ASSERT (G_N_ELEMENTS (conflicting_plugin_loaders) == BEAN_UTILS_N_LOADERS);
 
 static
 G_DEFINE_QUARK (bean-extension-base-class-and-interfaces-cache,
@@ -336,7 +336,7 @@ const gchar *
 bean_utils_get_loader_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
-  g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);
+  g_return_val_if_fail (loader_id < BEAN_UTILS_N_LOADERS, NULL);
 
   return all_plugin_loaders[loader_id];
 }
@@ -345,7 +345,7 @@ const gchar *
 bean_utils_get_loader_module_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
-  g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);
+  g_return_val_if_fail (loader_id < BEAN_UTILS_N_LOADERS, NULL);
 
   return all_plugin_loader_modules[loader_id];
 }
@@ -354,7 +354,7 @@ const gint *
 bean_utils_get_conflicting_loaders_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
-  g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);
+  g_return_val_if_fail (loader_id < BEAN_UTILS_N_LOADERS, NULL);
 
   return conflicting_plugin_loaders[loader_id];
 }

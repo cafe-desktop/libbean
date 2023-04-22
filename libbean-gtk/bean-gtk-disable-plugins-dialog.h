@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_GTK_DISABLE_PLUGINS_DIALOG_H__
-#define __PEAS_GTK_DISABLE_PLUGINS_DIALOG_H__
+#ifndef __BEAN_GTK_DISABLE_PLUGINS_DIALOG_H__
+#define __BEAN_GTK_DISABLE_PLUGINS_DIALOG_H__
 
 #include <gtk/gtk.h>
 #include <libbean/bean-plugin-info.h>
@@ -30,12 +30,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG            (bean_gtk_disable_plugins_dialog_get_type())
-#define PEAS_GTK_DISABLE_PLUGINS_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialog))
-#define PEAS_GTK_DISABLE_PLUGINS_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialogClass))
-#define PEAS_GTK_IS_DISABLE_PLUGINS_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG))
-#define PEAS_GTK_IS_DISABLE_PLUGINS_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG))
-#define PEAS_GTK_DISABLE_PLUGINS_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialogClass))
+#define BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG            (bean_gtk_disable_plugins_dialog_get_type())
+#define BEAN_GTK_DISABLE_PLUGINS_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialog))
+#define BEAN_GTK_DISABLE_PLUGINS_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialogClass))
+#define BEAN_GTK_IS_DISABLE_PLUGINS_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG))
+#define BEAN_GTK_IS_DISABLE_PLUGINS_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG))
+#define BEAN_GTK_DISABLE_PLUGINS_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG, BeanGtkDisablePluginsDialogClass))
 
 typedef struct _BeanGtkDisablePluginsDialog         BeanGtkDisablePluginsDialog;
 typedef struct _BeanGtkDisablePluginsDialogClass    BeanGtkDisablePluginsDialogClass;
@@ -56,4 +56,4 @@ GtkWidget *bean_gtk_disable_plugins_dialog_new      (GtkWindow      *parent,
 
 G_END_DECLS
 
-#endif /* __PEAS_GTK_DISABLE_PLUGINS_DIALOG_H__  */
+#endif /* __BEAN_GTK_DISABLE_PLUGINS_DIALOG_H__  */

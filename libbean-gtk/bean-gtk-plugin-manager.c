@@ -115,7 +115,7 @@ plugin_is_configurable (BeanGtkPluginManager *pm,
     return FALSE;
 
   return bean_engine_provides_extension (priv->engine, info,
-                                         PEAS_GTK_TYPE_CONFIGURABLE);
+                                         BEAN_GTK_TYPE_CONFIGURABLE);
 }
 
 static void
@@ -139,7 +139,7 @@ show_about_cb (GtkWidget            *widget,
   GtkWindow *toplevel;
   gboolean modal;
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
 
   info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
   g_return_if_fail (info != NULL);
@@ -232,15 +232,15 @@ show_configure_cb (GtkWidget            *widget,
   GtkWidget *conf_dlg;
   GtkWidget *vbox;
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
 
   info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
   g_return_if_fail (info != NULL);
 
-  exten = bean_engine_create_extension (priv->engine, info, PEAS_GTK_TYPE_CONFIGURABLE, NULL);
-  g_return_if_fail (PEAS_IS_EXTENSION (exten));
+  exten = bean_engine_create_extension (priv->engine, info, BEAN_GTK_TYPE_CONFIGURABLE, NULL);
+  g_return_if_fail (BEAN_IS_EXTENSION (exten));
 
-  conf_widget = bean_gtk_configurable_create_configure_widget (PEAS_GTK_CONFIGURABLE (exten));
+  conf_widget = bean_gtk_configurable_create_configure_widget (BEAN_GTK_CONFIGURABLE (exten));
   g_object_unref (exten);
 
   g_return_if_fail (GTK_IS_WIDGET (conf_widget));
@@ -287,7 +287,7 @@ plugin_loaded_toggled_cb (BeanEngine           *engine,
   BeanGtkPluginManagerView *view;
   BeanPluginInfo *selected;
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
   selected = bean_gtk_plugin_manager_view_get_selected_plugin (view);
 
   if (selected == info)
@@ -301,7 +301,7 @@ selection_changed_cb (BeanGtkPluginManager *pm)
   BeanGtkPluginManagerView *view;
   BeanPluginInfo *info;
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
   info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
 
   update_button_sensitivity (pm, info);
@@ -407,7 +407,7 @@ bean_gtk_plugin_manager_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
   BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
@@ -430,7 +430,7 @@ bean_gtk_plugin_manager_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
   BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
@@ -450,7 +450,7 @@ bean_gtk_plugin_manager_get_property (GObject    *object,
 static void
 bean_gtk_plugin_manager_constructed (GObject *object)
 {
-  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
   BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
   GtkTreeSelection *selection;
 
@@ -525,7 +525,7 @@ bean_gtk_plugin_manager_constructed (GObject *object)
 static void
 bean_gtk_plugin_manager_dispose (GObject *object)
 {
-  BeanGtkPluginManager *pm = PEAS_GTK_PLUGIN_MANAGER (object);
+  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
   BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
   g_clear_object (&priv->engine);
@@ -553,7 +553,7 @@ bean_gtk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
     g_param_spec_object ("engine",
                          "engine",
                          "The BeanEngine this manager is attached to",
-                         PEAS_TYPE_ENGINE,
+                         BEAN_TYPE_ENGINE,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -567,7 +567,7 @@ bean_gtk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
     g_param_spec_object ("view",
                          "view",
                          "The view shown in the manager",
-                         PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW,
+                         BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -588,9 +588,9 @@ bean_gtk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
 GtkWidget *
 bean_gtk_plugin_manager_new (BeanEngine *engine)
 {
-  g_return_val_if_fail (engine == NULL || PEAS_IS_ENGINE (engine), NULL);
+  g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
 
-  return GTK_WIDGET (g_object_new (PEAS_GTK_TYPE_PLUGIN_MANAGER,
+  return GTK_WIDGET (g_object_new (BEAN_GTK_TYPE_PLUGIN_MANAGER,
                                    "engine", engine,
                                    NULL));
 }
@@ -608,7 +608,7 @@ bean_gtk_plugin_manager_get_view (BeanGtkPluginManager *pm)
 {
   BeanGtkPluginManagerPrivate *priv = bean_gtk_plugin_manager_get_instance_private (pm);
 
-  g_return_val_if_fail (PEAS_GTK_IS_PLUGIN_MANAGER (pm), NULL);
+  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER (pm), NULL);
 
   return priv->view;
 }

@@ -129,7 +129,7 @@ bean_python_internal_setup (gboolean already_initialized)
   goto_error_if_failed (PyModule_AddStringMacro (internal_module,
                                                  GETTEXT_PACKAGE) == 0);
   goto_error_if_failed (PyModule_AddStringMacro (internal_module,
-                                                 PEAS_LOCALEDIR) == 0);
+                                                 BEAN_LOCALEDIR) == 0);
 
   globals = PyModule_GetDict (internal_module);
   result = PyEval_EvalCode ((gpointer) code, globals, globals);

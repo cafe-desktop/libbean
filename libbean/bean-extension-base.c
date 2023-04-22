@@ -67,7 +67,7 @@ bean_extension_base_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  BeanExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
+  BeanExtensionBase *extbase = BEAN_EXTENSION_BASE (object);
 
   switch (prop_id)
     {
@@ -89,7 +89,7 @@ bean_extension_base_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  BeanExtensionBase *extbase = PEAS_EXTENSION_BASE (object);
+  BeanExtensionBase *extbase = BEAN_EXTENSION_BASE (object);
   BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
   switch (prop_id)
@@ -125,7 +125,7 @@ bean_extension_base_class_init (BeanExtensionBaseClass *klass)
     g_param_spec_boxed ("plugin-info",
                         "Plugin Information",
                         "Information related to the current plugin",
-                        PEAS_TYPE_PLUGIN_INFO,
+                        BEAN_TYPE_PLUGIN_INFO,
                         G_PARAM_READWRITE |
                         G_PARAM_CONSTRUCT_ONLY |
                         G_PARAM_STATIC_STRINGS);
@@ -165,7 +165,7 @@ bean_extension_base_get_plugin_info (BeanExtensionBase *extbase)
 {
   BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_BASE (extbase), NULL);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_BASE (extbase), NULL);
 
   return priv->info;
 }
@@ -185,7 +185,7 @@ bean_extension_base_get_data_dir (BeanExtensionBase *extbase)
 {
   BeanExtensionBasePrivate *priv = GET_PRIV (extbase);
 
-  g_return_val_if_fail (PEAS_IS_EXTENSION_BASE (extbase), NULL);
+  g_return_val_if_fail (BEAN_IS_EXTENSION_BASE (extbase), NULL);
 
   return g_strdup (bean_plugin_info_get_data_dir (priv->info));
 }

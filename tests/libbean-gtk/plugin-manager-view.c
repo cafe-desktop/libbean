@@ -65,7 +65,7 @@ test_setup (TestFixture   *fixture,
 {
   fixture->engine = testing_engine_new ();
   fixture->tree_view = GTK_TREE_VIEW (bean_gtk_plugin_manager_view_new (NULL));
-  fixture->view = PEAS_GTK_PLUGIN_MANAGER_VIEW (fixture->tree_view);
+  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (fixture->tree_view);
   fixture->selection = gtk_tree_view_get_selection (fixture->tree_view);
 
   g_signal_connect (fixture->view,

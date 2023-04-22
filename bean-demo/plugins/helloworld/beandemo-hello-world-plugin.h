@@ -19,20 +19,20 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEASDEMO_HELLO_WORLD_PLUGIN_H__
-#define __PEASDEMO_HELLO_WORLD_PLUGIN_H__
+#ifndef __BEANDEMO_HELLO_WORLD_PLUGIN_H__
+#define __BEANDEMO_HELLO_WORLD_PLUGIN_H__
 
 #include <gtk/gtk.h>
 #include <libbean/bean.h>
 
 G_BEGIN_DECLS
 
-#define PEASDEMO_TYPE_HELLO_WORLD_PLUGIN         (beandemo_hello_world_plugin_get_type ())
-#define PEASDEMO_HELLO_WORLD_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
-#define PEASDEMO_HELLO_WORLD_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
-#define PEASDEMO_IS_HELLO_WORLD_PLUGIN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN))
-#define PEASDEMO_IS_HELLO_WORLD_PLUGIN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN))
-#define PEASDEMO_HELLO_WORLD_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), PEASDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPluginClass))
+#define BEANDEMO_TYPE_HELLO_WORLD_PLUGIN         (beandemo_hello_world_plugin_get_type ())
+#define BEANDEMO_HELLO_WORLD_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), BEANDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
+#define BEANDEMO_HELLO_WORLD_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), BEANDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPlugin))
+#define BEANDEMO_IS_HELLO_WORLD_PLUGIN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), BEANDEMO_TYPE_HELLO_WORLD_PLUGIN))
+#define BEANDEMO_IS_HELLO_WORLD_PLUGIN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), BEANDEMO_TYPE_HELLO_WORLD_PLUGIN))
+#define BEANDEMO_HELLO_WORLD_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), BEANDEMO_TYPE_HELLO_WORLD_PLUGIN, BeanDemoHelloWorldPluginClass))
 
 typedef struct _BeanDemoHelloWorldPlugin       BeanDemoHelloWorldPlugin;
 typedef struct _BeanDemoHelloWorldPluginClass  BeanDemoHelloWorldPluginClass;
@@ -53,4 +53,4 @@ G_MODULE_EXPORT void  bean_register_types                         (BeanObjectMod
 
 G_END_DECLS
 
-#endif /* __PEASDEMO_HELLO_WORLD_PLUGIN_H__ */
+#endif /* __BEANDEMO_HELLO_WORLD_PLUGIN_H__ */

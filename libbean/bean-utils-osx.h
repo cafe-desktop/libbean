@@ -20,8 +20,8 @@
  *
  * Author: Tom Schoonjans <Tom.Schoonjans@gmail.com>
  */
-#ifndef __PEAS_UTILS_OSX_H__
-#define __PEAS_UTILS_OSX_H__
+#ifndef __BEAN_UTILS_OSX_H__
+#define __BEAN_UTILS_OSX_H__
 
 #include <glib.h>
 
@@ -37,5 +37,5 @@ void   bean_open_url_osx                      (const gchar *uri);
 
 G_END_DECLS
 
-#endif /* __PEAS_UTILS_OSX_H__ */
+#endif /* __BEAN_UTILS_OSX_H__ */
 

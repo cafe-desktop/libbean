@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_I18N_PRIV_H__
-#define __PEAS_I18N_PRIV_H__
+#ifndef __BEAN_I18N_PRIV_H__
+#define __BEAN_I18N_PRIV_H__
 
 #include <glib.h>
 
@@ -29,4 +29,4 @@ G_BEGIN_DECLS
 
 G_END_DECLS
 
-#endif /* __PEAS_I18N_PRIV_H__ */
+#endif /* __BEAN_I18N_PRIV_H__ */

@@ -110,13 +110,13 @@ test_engine_get_default (void)
   /* Check that the default engine is the newly created engine
    * even when bean_engine_get_default() is called during init().
    */
-  the_type = g_type_register_static_simple (PEAS_TYPE_ENGINE,
+  the_type = g_type_register_static_simple (BEAN_TYPE_ENGINE,
                                             "TestEngineGetDefault",
                                             sizeof (BeanEngineClass), NULL,
                                             sizeof (BeanEngine),
                                             (GInstanceInitFunc) bean_engine_get_default,
                                             0);
-  test_engine = PEAS_ENGINE (g_object_new (the_type, NULL));
+  test_engine = BEAN_ENGINE (g_object_new (the_type, NULL));
 
   g_assert (bean_engine_get_default () == test_engine);
 
@@ -176,8 +176,8 @@ test_engine_load_plugin_with_nonexistent_dep (BeanEngine *engine)
   g_assert (!bean_engine_load_plugin (engine, info));
   g_assert (!bean_plugin_info_is_loaded (info));
   g_assert (!bean_plugin_info_is_available (info, &error));
-  g_assert_error (error, PEAS_PLUGIN_INFO_ERROR,
-                  PEAS_PLUGIN_INFO_ERROR_DEP_NOT_FOUND);
+  g_assert_error (error, BEAN_PLUGIN_INFO_ERROR,
+                  BEAN_PLUGIN_INFO_ERROR_DEP_NOT_FOUND);
 
   g_error_free (error);
 }
@@ -256,8 +256,8 @@ test_engine_not_loadable_plugin (BeanEngine *engine)
   g_assert (!bean_engine_load_plugin (engine, info));
   g_assert (!bean_plugin_info_is_loaded (info));
   g_assert (!bean_plugin_info_is_available (info, &error));
-  g_assert_error (error, PEAS_PLUGIN_INFO_ERROR,
-                  PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED);
+  g_assert_error (error, BEAN_PLUGIN_INFO_ERROR,
+                  BEAN_PLUGIN_INFO_ERROR_LOADING_FAILED);
 
   g_error_free (error);
 }

@@ -138,11 +138,11 @@ verify_model (TestFixture    *fixture,
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     &model_can_enable,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     &model_icon_gicon,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  &model_icon_stock_id,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   &model_icon_visible,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, &model_info_sensitive,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     &model_can_enable,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     &model_icon_gicon,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  &model_icon_stock_id,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   &model_icon_visible,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, &model_info_sensitive,
     -1);
 
   g_assert_cmpint (model_can_enable, ==, can_enable);
@@ -249,7 +249,7 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Configurable</b>\nA plugin "
                                    "that can be loaded and configured.");
@@ -261,7 +261,7 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
-    PEAS_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
+    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Min Info</b>");
   g_free (model_info);

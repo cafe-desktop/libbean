@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_PYTHON_INTERNAL_H__
-#define __PEAS_PYTHON_INTERNAL_H__
+#ifndef __BEAN_PYTHON_INTERNAL_H__
+#define __BEAN_PYTHON_INTERNAL_H__
 
 #include <glib.h>
 
@@ -42,4 +42,4 @@ PyObject *bean_python_internal_call     (const gchar  *name,
 
 G_END_DECLS
 
-#endif /* __PEAS_PYTHON_INTERNAL_H__ */
+#endif /* __BEAN_PYTHON_INTERNAL_H__ */

@@ -37,7 +37,7 @@ debug_log_handler (const gchar    *log_domain,
 void
 bean_debug_init (void)
 {
-  if (g_getenv ("PEAS_DEBUG") == NULL)
+  if (g_getenv ("BEAN_DEBUG") == NULL)
     {
       g_log_set_handler (G_LOG_DOMAIN,
                          G_LOG_LEVEL_DEBUG,

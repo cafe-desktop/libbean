@@ -20,8 +20,8 @@
  */
 
 
-#ifndef __PEAS_DIRS_H__
-#define __PEAS_DIRS_H__
+#ifndef __BEAN_DIRS_H__
+#define __BEAN_DIRS_H__
 
 #include <glib.h>
 
@@ -34,4 +34,4 @@ gchar  *bean_dirs_get_locale_dir        (void);
 
 G_END_DECLS
 
-#endif /* __PEAS_DIRS_H__ */
+#endif /* __BEAN_DIRS_H__ */

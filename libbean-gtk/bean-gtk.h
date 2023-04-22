@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_GTK_H__
-#define __PEAS_GTK_H__
+#ifndef __BEAN_GTK_H__
+#define __BEAN_GTK_H__
 
 #include "bean-gtk-autocleanups.h"
 #include "bean-gtk-configurable.h"

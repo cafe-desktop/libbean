@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_PLUGIN_INFO_PRIV_H__
-#define __PEAS_PLUGIN_INFO_PRIV_H__
+#ifndef __BEAN_PLUGIN_INFO_PRIV_H__
+#define __BEAN_PLUGIN_INFO_PRIV_H__
 
 #include "bean-plugin-info.h"
 
@@ -73,4 +73,4 @@ BeanPluginInfo *_bean_plugin_info_ref   (BeanPluginInfo *info);
 void            _bean_plugin_info_unref (BeanPluginInfo *info);
 
 
-#endif /* __PEAS_PLUGIN_INFO_PRIV_H__ */
+#endif /* __BEAN_PLUGIN_INFO_PRIV_H__ */

@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_LUA_INTERNAL_H__
-#define __PEAS_LUA_INTERNAL_H__
+#ifndef __BEAN_LUA_INTERNAL_H__
+#define __BEAN_LUA_INTERNAL_H__
 
 #include <glib.h>
 #include <lua.h>
@@ -37,4 +37,4 @@ gboolean  bean_lua_internal_call     (lua_State   *L,
 
 G_END_DECLS
 
-#endif /* __PEAS_LUA_INTERNAL_H__ */
+#endif /* __BEAN_LUA_INTERNAL_H__ */

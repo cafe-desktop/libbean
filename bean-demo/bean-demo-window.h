@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_DEMO_WINDOW_H__
-#define __PEAS_DEMO_WINDOW_H__
+#ifndef __BEAN_DEMO_WINDOW_H__
+#define __BEAN_DEMO_WINDOW_H__
 
 #include <gtk/gtk.h>
 #include <libbean/bean.h>

@@ -66,7 +66,7 @@ test_extension_c_embedded (BeanEngine *engine)
   g_assert (bean_plugin_info_is_loaded (info));
 
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             NULL);
 
   g_assert (TESTING_IS_EMBEDDED_PLUGIN (extension));
@@ -98,7 +98,7 @@ test_extension_c_instance_refcount (BeanEngine     *engine,
                                             INTROSPECTION_TYPE_BASE,
                                             NULL);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
 
   /* The refcount of the returned object should be 1:
    *  - one ref for the BeanExtension
@@ -136,11 +136,11 @@ test_extension_c_local_linkage (BeanEngine     *engine,
                                               INTROSPECTION_TYPE_BASE,
                                               NULL);
   loadable_extension = bean_engine_create_extension (engine, loadable_info,
-                                                     PEAS_TYPE_ACTIVATABLE,
+                                                     BEAN_TYPE_ACTIVATABLE,
                                                      NULL);
 
-  g_assert (PEAS_IS_EXTENSION (c_extension));
-  g_assert (PEAS_IS_EXTENSION (loadable_extension));
+  g_assert (BEAN_IS_EXTENSION (c_extension));
+  g_assert (BEAN_IS_EXTENSION (loadable_extension));
   g_assert (c_extension != loadable_extension);
 
   g_object_get (c_extension,

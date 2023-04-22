@@ -55,7 +55,7 @@ test_extension_py_instance_refcount (BeanEngine     *engine,
                                             INTROSPECTION_TYPE_BASE,
                                             NULL);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
 
   g_object_add_weak_pointer (extension, (gpointer *) &extension);
 
@@ -81,11 +81,11 @@ test_extension_py_activatable_subject_refcount (BeanEngine     *engine,
 
   /* we pre-create the wrapper to make it easier to check reference count */
   extension = bean_engine_create_extension (engine, info,
-                                            PEAS_TYPE_ACTIVATABLE,
+                                            BEAN_TYPE_ACTIVATABLE,
                                             "object", object,
                                             NULL);
 
-  g_assert (PEAS_IS_EXTENSION (extension));
+  g_assert (BEAN_IS_EXTENSION (extension));
 
   /* The python wrapper created around our dummy object should have increased
    * its refcount by 1.
@@ -186,7 +186,7 @@ test_extension_py_mixed_python (void)
    * the linker to spew warnings, i.e. on OpenBSD, so
    * only inherit standard error when debugging
    */
-  if (g_getenv ("PEAS_DEBUG") != NULL)
+  if (g_getenv ("BEAN_DEBUG") != NULL)
     flags |= G_TEST_SUBPROCESS_INHERIT_STDERR;
 
   g_test_trap_subprocess (EXTENSION_TEST_NAME (PY_LOADER,
@@ -206,7 +206,7 @@ test_extension_py_mixed_python_subprocess (void)
   testing_util_push_log_hook ("*'" ALT_PY_LOADER_STR
                               "' is not a valid BeanPluginLoader*");
 
-  g_setenv ("PEAS_ALLOW_CONFLICTING_LOADERS", "1", TRUE);
+  g_setenv ("BEAN_ALLOW_CONFLICTING_LOADERS", "1", TRUE);
 
   engine = testing_engine_new ();
   bean_engine_enable_loader (engine, ALT_PY_LOADER_STR);

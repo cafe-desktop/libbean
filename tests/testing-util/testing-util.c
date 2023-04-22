@@ -180,7 +180,7 @@ testing_util_envars (void)
   /* Prevent python from generating compiled files, they break distcheck */
   g_setenv ("PYTHONDONTWRITEBYTECODE", "yes", TRUE);
 
-  g_setenv ("PEAS_PLUGIN_LOADERS_DIR", BUILDDIR "/loaders", TRUE);
+  g_setenv ("BEAN_PLUGIN_LOADERS_DIR", BUILDDIR "/loaders", TRUE);
 }
 
 void

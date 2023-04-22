@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_ACTIVATABLE_H__
-#define __PEAS_ACTIVATABLE_H__
+#ifndef __BEAN_ACTIVATABLE_H__
+#define __BEAN_ACTIVATABLE_H__
 
 #include <glib-object.h>
 
@@ -31,11 +31,11 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_ACTIVATABLE             (bean_activatable_get_type ())
-#define PEAS_ACTIVATABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatable))
-#define PEAS_ACTIVATABLE_IFACE(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatableInterface))
-#define PEAS_IS_ACTIVATABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_ACTIVATABLE))
-#define PEAS_ACTIVATABLE_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatableInterface))
+#define BEAN_TYPE_ACTIVATABLE             (bean_activatable_get_type ())
+#define BEAN_ACTIVATABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_TYPE_ACTIVATABLE, BeanActivatable))
+#define BEAN_ACTIVATABLE_IFACE(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_TYPE_ACTIVATABLE, BeanActivatableInterface))
+#define BEAN_IS_ACTIVATABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_TYPE_ACTIVATABLE))
+#define BEAN_ACTIVATABLE_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), BEAN_TYPE_ACTIVATABLE, BeanActivatableInterface))
 
 /**
  * BeanActivatable:
@@ -67,16 +67,16 @@ struct _BeanActivatableInterface {
 /*
  * Public methods
  */
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 GType             bean_activatable_get_type       (void)  G_GNUC_CONST;
 
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_activatable_activate       (BeanActivatable *activatable);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_activatable_deactivate     (BeanActivatable *activatable);
-PEAS_AVAILABLE_IN_ALL
+BEAN_AVAILABLE_IN_ALL
 void              bean_activatable_update_state   (BeanActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* __PEAS_ACTIVATABLE_H__ */
+#endif /* __BEAN_ACTIVATABLE_H__ */

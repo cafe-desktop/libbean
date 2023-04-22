@@ -20,8 +20,8 @@
  */
 
 
-#ifndef __PEAS_DEBUG_H__
-#define __PEAS_DEBUG_H__
+#ifndef __BEAN_DEBUG_H__
+#define __BEAN_DEBUG_H__
 
 #include <glib.h>
 
@@ -31,4 +31,4 @@ void  bean_debug_init (void);
 
 G_END_DECLS
 
-#endif /* __PEAS_DEBUG_H__ */
+#endif /* __BEAN_DEBUG_H__ */

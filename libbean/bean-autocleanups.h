@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __PEAS_AUTOCLEANUPS_H__
-#define __PEAS_AUTOCLEANUPS_H__
+#ifndef __BEAN_AUTOCLEANUPS_H__
+#define __BEAN_AUTOCLEANUPS_H__
 
 #include "bean-activatable.h"
 #include "bean-engine.h"
@@ -46,4 +46,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanObjectModule, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __PEAS_AUTOCLEANUPS_H__ */
+#endif /* __BEAN_AUTOCLEANUPS_H__ */
