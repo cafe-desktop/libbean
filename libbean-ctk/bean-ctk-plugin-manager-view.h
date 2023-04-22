@@ -22,8 +22,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__
-#define __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__
+#ifndef __BEAN_CTK_PLUGIN_MANAGER_VIEW_H__
+#define __BEAN_CTK_PLUGIN_MANAGER_VIEW_H__
 
 #include <ctk/ctk.h>
 #include <libbean/bean-engine.h>
@@ -33,12 +33,12 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_ctk_plugin_manager_view_get_type())
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerView))
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
-#define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
+#define BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_ctk_plugin_manager_view_get_type())
+#define BEAN_CTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerView))
+#define BEAN_CTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
+#define BEAN_CTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW))
+#define BEAN_CTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW))
+#define BEAN_CTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
 
 typedef struct _BeanCtkPluginManagerView        BeanCtkPluginManagerView;
 typedef struct _BeanCtkPluginManagerViewClass   BeanCtkPluginManagerViewClass;
@@ -96,4 +96,4 @@ BeanPluginInfo *bean_ctk_plugin_manager_view_get_selected_plugin  (BeanCtkPlugin
 
 G_END_DECLS
 
-#endif /* __BEAN_GTK_PLUGIN_MANAGER_VIEW_H__  */
+#endif /* __BEAN_CTK_PLUGIN_MANAGER_VIEW_H__  */

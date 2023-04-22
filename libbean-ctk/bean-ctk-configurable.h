@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __BEAN_GTK_CONFIGURABLE_H__
-#define __BEAN_GTK_CONFIGURABLE_H__
+#ifndef __BEAN_CTK_CONFIGURABLE_H__
+#define __BEAN_CTK_CONFIGURABLE_H__
 
 #include <ctk/ctk.h>
 #include <libbean/bean.h>
@@ -30,11 +30,11 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define BEAN_GTK_TYPE_CONFIGURABLE            (bean_ctk_configurable_get_type ())
-#define BEAN_GTK_CONFIGURABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurable))
-#define BEAN_GTK_CONFIGURABLE_IFACE(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
-#define BEAN_GTK_IS_CONFIGURABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_GTK_TYPE_CONFIGURABLE))
-#define BEAN_GTK_CONFIGURABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
+#define BEAN_CTK_TYPE_CONFIGURABLE            (bean_ctk_configurable_get_type ())
+#define BEAN_CTK_CONFIGURABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_CTK_TYPE_CONFIGURABLE, BeanCtkConfigurable))
+#define BEAN_CTK_CONFIGURABLE_IFACE(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_CTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
+#define BEAN_CTK_IS_CONFIGURABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_CTK_TYPE_CONFIGURABLE))
+#define BEAN_CTK_CONFIGURABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), BEAN_CTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
 
 /**
  * BeanCtkConfigurable:
@@ -65,4 +65,4 @@ CtkWidget  *bean_ctk_configurable_create_configure_widget (BeanCtkConfigurable  
 
 G_END_DECLS
 
-#endif /* __BEAN_GTK_PLUGIN_MANAGER_H__  */
+#endif /* __BEAN_CTK_PLUGIN_MANAGER_H__  */

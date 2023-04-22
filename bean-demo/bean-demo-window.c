@@ -25,7 +25,7 @@
 
 #include "bean-demo-window.h"
 
-G_DEFINE_TYPE (DemoWindow, demo_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (DemoWindow, demo_window, CTK_TYPE_WINDOW)
 
 static void
 on_extension_added (BeanExtensionSet *set,
@@ -51,12 +51,12 @@ demo_window_init (DemoWindow *dw)
   DemoWindowClass *klass = DEMO_WINDOW_GET_CLASS (dw);
   gchar *label;
 
-  dw->box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_box_set_homogeneous (GTK_BOX (dw->box), TRUE);
-  ctk_container_add (GTK_CONTAINER (dw), dw->box);
+  dw->box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_box_set_homogeneous (CTK_BOX (dw->box), TRUE);
+  ctk_container_add (CTK_CONTAINER (dw), dw->box);
 
   label = g_strdup_printf ("Bean Window %d", ++(klass->n_windows));
-  ctk_window_set_title (GTK_WINDOW (dw), label);
+  ctk_window_set_title (CTK_WINDOW (dw), label);
   g_free (label);
 
   dw->exten_set = bean_extension_set_new (bean_engine_get_default (),
@@ -95,5 +95,5 @@ demo_window_class_init (DemoWindowClass *klass)
 CtkWidget *
 demo_window_new (void)
 {
-  return GTK_WIDGET (g_object_new (DEMO_TYPE_WINDOW, NULL));
+  return CTK_WIDGET (g_object_new (DEMO_TYPE_WINDOW, NULL));
 }

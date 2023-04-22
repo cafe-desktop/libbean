@@ -81,7 +81,7 @@ static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManager,
                             bean_ctk_plugin_manager,
-                            GTK_TYPE_BOX)
+                            CTK_TYPE_BOX)
 
 static CtkWindow *
 get_toplevel (CtkWidget *widget)
@@ -89,7 +89,7 @@ get_toplevel (CtkWidget *widget)
   CtkWindow *toplevel;
 
   toplevel = (CtkWindow *) ctk_widget_get_toplevel (widget);
-  if (!GTK_IS_WINDOW (toplevel))
+  if (!CTK_IS_WINDOW (toplevel))
     return NULL;
 
   /* Make sure the window always has a window group */
@@ -115,7 +115,7 @@ plugin_is_configurable (BeanCtkPluginManager *pm,
     return FALSE;
 
   return bean_engine_provides_extension (priv->engine, info,
-                                         BEAN_GTK_TYPE_CONFIGURABLE);
+                                         BEAN_CTK_TYPE_CONFIGURABLE);
 }
 
 static void
@@ -139,18 +139,18 @@ show_about_cb (CtkWidget            *widget,
   CtkWindow *toplevel;
   gboolean modal;
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_CTK_PLUGIN_MANAGER_VIEW (priv->view);
 
   info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
   g_return_if_fail (info != NULL);
 
-  toplevel = get_toplevel (GTK_WIDGET (pm));
+  toplevel = get_toplevel (CTK_WIDGET (pm));
   modal = toplevel == NULL ? FALSE : ctk_window_get_modal (toplevel);
 
   /* If there is another about dialog already open destroy it */
   g_clear_pointer (&priv->about, ctk_widget_destroy);
 
-  priv->about = GTK_WIDGET (g_object_new (GTK_TYPE_ABOUT_DIALOG,
+  priv->about = CTK_WIDGET (g_object_new (CTK_TYPE_ABOUT_DIALOG,
                                           "program-name", bean_plugin_info_get_name (info),
                                           "copyright", bean_plugin_info_get_copyright (info),
                                           "authors", bean_plugin_info_get_authors (info),
@@ -200,13 +200,13 @@ help_button_cb (CtkWidget      *button,
   g_debug ("Failed to show help URI: '%s'", help_uri);
 
   error_dlg = ctk_message_dialog_new (get_toplevel (button),
-                                      GTK_DIALOG_MODAL |
-                                      GTK_DIALOG_DESTROY_WITH_PARENT,
-                                      GTK_MESSAGE_ERROR,
-                                      GTK_BUTTONS_CLOSE,
+                                      CTK_DIALOG_MODAL |
+                                      CTK_DIALOG_DESTROY_WITH_PARENT,
+                                      CTK_MESSAGE_ERROR,
+                                      CTK_BUTTONS_CLOSE,
                                       _("There was an error displaying the help."));
 
-  ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (error_dlg),
+  ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (error_dlg),
                                             "%s", error->message);
 
   g_signal_connect (error_dlg,
@@ -232,37 +232,37 @@ show_configure_cb (CtkWidget            *widget,
   CtkWidget *conf_dlg;
   CtkWidget *vbox;
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_CTK_PLUGIN_MANAGER_VIEW (priv->view);
 
   info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
   g_return_if_fail (info != NULL);
 
-  exten = bean_engine_create_extension (priv->engine, info, BEAN_GTK_TYPE_CONFIGURABLE, NULL);
+  exten = bean_engine_create_extension (priv->engine, info, BEAN_CTK_TYPE_CONFIGURABLE, NULL);
   g_return_if_fail (BEAN_IS_EXTENSION (exten));
 
-  conf_widget = bean_ctk_configurable_create_configure_widget (BEAN_GTK_CONFIGURABLE (exten));
+  conf_widget = bean_ctk_configurable_create_configure_widget (BEAN_CTK_CONFIGURABLE (exten));
   g_object_unref (exten);
 
-  g_return_if_fail (GTK_IS_WIDGET (conf_widget));
+  g_return_if_fail (CTK_IS_WIDGET (conf_widget));
   g_return_if_fail (!ctk_widget_is_toplevel (conf_widget));
 
   conf_dlg = ctk_dialog_new_with_buttons (bean_plugin_info_get_name (info),
-                                          get_toplevel (GTK_WIDGET (pm)),
-                                          GTK_DIALOG_MODAL |
-                                          GTK_DIALOG_DESTROY_WITH_PARENT,
+                                          get_toplevel (CTK_WIDGET (pm)),
+                                          CTK_DIALOG_MODAL |
+                                          CTK_DIALOG_DESTROY_WITH_PARENT,
                                           _("_Close"),
-                                          GTK_RESPONSE_CLOSE,
+                                          CTK_RESPONSE_CLOSE,
                                           NULL);
 
-  vbox = ctk_dialog_get_content_area (GTK_DIALOG (conf_dlg));
-  ctk_box_pack_start (GTK_BOX (vbox), conf_widget, TRUE, TRUE, 0);
+  vbox = ctk_dialog_get_content_area (CTK_DIALOG (conf_dlg));
+  ctk_box_pack_start (CTK_BOX (vbox), conf_widget, TRUE, TRUE, 0);
 
   if (bean_plugin_info_get_help_uri (info) != NULL)
     {
       CtkWidget *help_button;
 
-      help_button = ctk_dialog_add_button (GTK_DIALOG (conf_dlg),
-                                           _("_Help"), GTK_RESPONSE_HELP);
+      help_button = ctk_dialog_add_button (CTK_DIALOG (conf_dlg),
+                                           _("_Help"), CTK_RESPONSE_HELP);
 
       g_signal_connect (help_button,
                         "clicked",
@@ -287,7 +287,7 @@ plugin_loaded_toggled_cb (BeanEngine           *engine,
   BeanCtkPluginManagerView *view;
   BeanPluginInfo *selected;
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_CTK_PLUGIN_MANAGER_VIEW (priv->view);
   selected = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
   if (selected == info)
@@ -301,7 +301,7 @@ selection_changed_cb (BeanCtkPluginManager *pm)
   BeanCtkPluginManagerView *view;
   BeanPluginInfo *info;
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
+  view = BEAN_CTK_PLUGIN_MANAGER_VIEW (priv->view);
   info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
   update_button_sensitivity (pm, info);
@@ -323,11 +323,11 @@ populate_popup_cb (BeanCtkPluginManagerView *view,
   item = ctk_check_menu_item_new_with_mnemonic (_("Pr_eferences"));
   g_signal_connect (item, "activate", G_CALLBACK (show_configure_cb), pm);
   ctk_widget_set_sensitive (item, plugin_is_configurable (pm, info));
-  ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), item);
 
   item = ctk_check_menu_item_new_with_mnemonic (_("_About"));
   g_signal_connect (item, "activate", G_CALLBACK (show_about_cb), pm);
-  ctk_menu_shell_prepend (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_prepend (CTK_MENU_SHELL (menu), item);
 }
 
 static void
@@ -345,51 +345,51 @@ bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
   g_irepository_require (g_irepository_get_default (),
                          "BeanCtk", "1.0", 0, NULL);
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (pm),
-                                  GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (pm),
+                                  CTK_ORIENTATION_VERTICAL);
 
   priv->sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->sw),
-                                  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (priv->sw),
-                                       GTK_SHADOW_IN);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (priv->sw),
+                                  CTK_POLICY_AUTOMATIC, CTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (priv->sw),
+                                       CTK_SHADOW_IN);
   context = ctk_widget_get_style_context (priv->sw);
-  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_BOTTOM);
-  ctk_box_pack_start (GTK_BOX (pm), priv->sw, TRUE, TRUE, 0);
+  ctk_style_context_set_junction_sides (context, CTK_JUNCTION_BOTTOM);
+  ctk_box_pack_start (CTK_BOX (pm), priv->sw, TRUE, TRUE, 0);
 
   toolbar = ctk_toolbar_new ();
-  ctk_toolbar_set_icon_size (GTK_TOOLBAR (toolbar), GTK_ICON_SIZE_MENU);
+  ctk_toolbar_set_icon_size (CTK_TOOLBAR (toolbar), CTK_ICON_SIZE_MENU);
   context = ctk_widget_get_style_context (toolbar);
-  ctk_style_context_set_junction_sides (context, GTK_JUNCTION_TOP);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_INLINE_TOOLBAR);
-  ctk_box_pack_start (GTK_BOX (pm), toolbar, FALSE, FALSE, 0);
+  ctk_style_context_set_junction_sides (context, CTK_JUNCTION_TOP);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_INLINE_TOOLBAR);
+  ctk_box_pack_start (CTK_BOX (pm), toolbar, FALSE, FALSE, 0);
 
   toolitem = ctk_tool_item_new ();
   ctk_tool_item_set_expand (toolitem, TRUE);
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), toolitem, -1);
 
   /* this box is needed to get the items at the end of the toolbar */
-  toolbar_box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-  ctk_container_add (GTK_CONTAINER (toolitem), toolbar_box);
+  toolbar_box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
+  ctk_container_add (CTK_CONTAINER (toolitem), toolbar_box);
 
   /* we need another box to disable css grouping */
-  item_box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_end (GTK_BOX (toolbar_box), item_box, FALSE, FALSE, 0);
+  item_box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_end (CTK_BOX (toolbar_box), item_box, FALSE, FALSE, 0);
 
   priv->about_button = ctk_button_new_with_mnemonic (_("_About"));
-  ctk_box_pack_start (GTK_BOX (item_box), priv->about_button,
+  ctk_box_pack_start (CTK_BOX (item_box), priv->about_button,
                       FALSE, FALSE, 0);
 
   /* we need another box to disable css grouping */
-  item_box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_box_pack_end (GTK_BOX (toolbar_box), item_box, FALSE, FALSE, 0);
+  item_box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_box_pack_end (CTK_BOX (toolbar_box), item_box, FALSE, FALSE, 0);
 
   priv->configure_button = ctk_button_new_with_mnemonic (_("_Preferences"));
-  ctk_box_pack_start (GTK_BOX (item_box), priv->configure_button,
+  ctk_box_pack_start (CTK_BOX (item_box), priv->configure_button,
                       FALSE, FALSE, 0);
 
   /* setup a window of a sane size. */
-  ctk_widget_set_size_request (GTK_WIDGET (priv->sw), 270, 100);
+  ctk_widget_set_size_request (CTK_WIDGET (priv->sw), 270, 100);
 
   g_signal_connect (priv->about_button,
                     "clicked",
@@ -407,7 +407,7 @@ bean_ctk_plugin_manager_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManager *pm = BEAN_CTK_PLUGIN_MANAGER (object);
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
@@ -430,7 +430,7 @@ bean_ctk_plugin_manager_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManager *pm = BEAN_CTK_PLUGIN_MANAGER (object);
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
@@ -450,7 +450,7 @@ bean_ctk_plugin_manager_get_property (GObject    *object,
 static void
 bean_ctk_plugin_manager_constructed (GObject *object)
 {
-  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManager *pm = BEAN_CTK_PLUGIN_MANAGER (object);
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
   CtkTreeSelection *selection;
 
@@ -486,9 +486,9 @@ bean_ctk_plugin_manager_constructed (GObject *object)
   if (priv->view == NULL)
     priv->view = bean_ctk_plugin_manager_view_new (priv->engine);
 
-  ctk_container_add (GTK_CONTAINER (priv->sw), priv->view);
+  ctk_container_add (CTK_CONTAINER (priv->sw), priv->view);
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->view));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->view));
 
   g_signal_connect_object (selection,
                            "changed",
@@ -525,7 +525,7 @@ bean_ctk_plugin_manager_constructed (GObject *object)
 static void
 bean_ctk_plugin_manager_dispose (GObject *object)
 {
-  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManager *pm = BEAN_CTK_PLUGIN_MANAGER (object);
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   g_clear_object (&priv->engine);
@@ -567,7 +567,7 @@ bean_ctk_plugin_manager_class_init (BeanCtkPluginManagerClass *klass)
     g_param_spec_object ("view",
                          "view",
                          "The view shown in the manager",
-                         BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW,
+                         BEAN_CTK_TYPE_PLUGIN_MANAGER_VIEW,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -590,7 +590,7 @@ bean_ctk_plugin_manager_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
 
-  return GTK_WIDGET (g_object_new (BEAN_GTK_TYPE_PLUGIN_MANAGER,
+  return CTK_WIDGET (g_object_new (BEAN_CTK_TYPE_PLUGIN_MANAGER,
                                    "engine", engine,
                                    NULL));
 }
@@ -608,7 +608,7 @@ bean_ctk_plugin_manager_get_view (BeanCtkPluginManager *pm)
 {
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
-  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER (pm), NULL);
+  g_return_val_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER (pm), NULL);
 
   return priv->view;
 }

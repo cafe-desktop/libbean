@@ -284,7 +284,7 @@ Overview of Changes in libbean 1.12.0
 
 * Add easy python profiling support
 * Disable GLib diagnostics in tests
-* Fix various deprecation warning from GTK+
+* Fix various deprecation warning from CTK+
 * Check return values from Python API
 * [osx] Check for bundle before resource path
 * Improved dependency-less support for OS X

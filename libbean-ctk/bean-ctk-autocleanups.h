@@ -20,8 +20,8 @@
  */
 
 
-#ifndef __BEAN_GTK_AUTOCLEANUPS_H__
-#define __BEAN_GTK_AUTOCLEANUPS_H__
+#ifndef __BEAN_CTK_AUTOCLEANUPS_H__
+#define __BEAN_CTK_AUTOCLEANUPS_H__
 
 #include "bean-ctk-configurable.h"
 #include "bean-ctk-plugin-manager.h"
@@ -41,4 +41,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanCtkPluginManagerView, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __BEAN_GTK_AUTOCLEANUPS_H__ */
+#endif /* __BEAN_CTK_AUTOCLEANUPS_H__ */
