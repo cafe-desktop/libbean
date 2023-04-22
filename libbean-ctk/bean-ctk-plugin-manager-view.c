@@ -516,8 +516,8 @@ show_popup_menu (CtkTreeView              *tree_view,
       ctk_menu_popup_at_rect (CTK_MENU (priv->popup_menu),
                               ctk_widget_get_window (CTK_WIDGET (view)),
                               &cell_area,
-                              GDK_GRAVITY_SOUTH_WEST,
-                              GDK_GRAVITY_NORTH_WEST,
+                              CDK_GRAVITY_SOUTH_WEST,
+                              CDK_GRAVITY_NORTH_WEST,
                               (const CdkEvent *)event);
 
 #else
@@ -636,7 +636,7 @@ bean_ctk_plugin_manager_view_button_press_event (CtkWidget      *tree_view,
   /* The selection must by updated */
   handled = widget_class->button_press_event (tree_view, event);
 
-  if (event->type != GDK_BUTTON_PRESS || event->button != 3 || !handled)
+  if (event->type != CDK_BUTTON_PRESS || event->button != 3 || !handled)
     return handled;
 
   return show_popup_menu (CTK_TREE_VIEW (tree_view), view, event);

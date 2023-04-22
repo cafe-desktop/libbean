@@ -193,7 +193,7 @@ help_button_cb (CtkWidget      *button,
   bean_open_url_osx (help_uri);
 #else
 
-  ctk_show_uri_on_window (get_toplevel (button), help_uri, GDK_CURRENT_TIME, &error);
+  ctk_show_uri_on_window (get_toplevel (button), help_uri, CDK_CURRENT_TIME, &error);
   if (error == NULL)
     return;
 
