@@ -6,7 +6,7 @@ icon_sizes = [
 
 foreach size: icon_sizes
   install_data(
-    join_paths(size, 'libpeas-plugin.png'),
+    join_paths(size, 'libbean-plugin.png'),
     install_dir: join_paths(
       iconsdir,
       'hicolor',
@@ -17,7 +17,7 @@ foreach size: icon_sizes
 endforeach
 
 install_data(
-  join_paths('scalable', 'libpeas-plugin.svg'),
+  join_paths('scalable', 'libbean-plugin.svg'),
   install_dir: join_paths(
     iconsdir,
     'hicolor',

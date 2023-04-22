@@ -1,15 +1,15 @@
 /*
- * peas-plugin-loader-c.h
- * This file is part of libpeas
+ * bean-plugin-loader-c.h
+ * This file is part of libbean
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -22,11 +22,11 @@
 #ifndef __PEAS_PLUGIN_LOADER_C_H__
 #define __PEAS_PLUGIN_LOADER_C_H__
 
-#include "peas-plugin-loader.h"
+#include "bean-plugin-loader.h"
 
 G_BEGIN_DECLS
 
-#define PEAS_TYPE_PLUGIN_LOADER_C            (peas_plugin_loader_c_get_type ())
+#define PEAS_TYPE_PLUGIN_LOADER_C            (bean_plugin_loader_c_get_type ())
 #define PEAS_PLUGIN_LOADER_C(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_C, PeasPluginLoaderC))
 #define PEAS_PLUGIN_LOADER_C_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_C, PeasPluginLoaderCClass))
 #define PEAS_IS_PLUGIN_LOADER_C(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_PLUGIN_LOADER_C))
@@ -44,8 +44,8 @@ struct _PeasPluginLoaderCClass {
   PeasPluginLoaderClass parent_class;
 };
 
-GType             peas_plugin_loader_c_get_type    (void) G_GNUC_CONST;
-PeasPluginLoader *peas_plugin_loader_c_new         (void);
+GType             bean_plugin_loader_c_get_type    (void) G_GNUC_CONST;
+PeasPluginLoader *bean_plugin_loader_c_new         (void);
 
 G_END_DECLS
 

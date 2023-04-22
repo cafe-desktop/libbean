@@ -7,18 +7,18 @@ pygobject_version_minor = pygobject_version_arr[1].to_int()
 pygobject_version_micro = pygobject_version_arr[2].to_int()
 
 python2_loader_c = files(
-  'peas-plugin-loader-python.c',
-  'peas-python-internal.c',
+  'bean-plugin-loader-python.c',
+  'bean-python-internal.c',
 )
 
 python2_loader_res = gnome.compile_resources(
-  'peas-python-resources',
-  'peas-python.gresource.xml',
+  'bean-python-resources',
+  'bean-python.gresource.xml',
   export: true,
 )
 
 python2_loader_deps = [
-  libpeas_dep,
+  libbean_dep,
   python2_dep,
   pygobject_dep,
 ]

@@ -1,18 +1,18 @@
 /*
- * peas-plugin-manager-view.h
- * This file is part of libpeas
+ * bean-plugin-manager-view.h
+ * This file is part of libbean
  *
  * Copyright (C) 2002 Paolo Maggi and James Willcox
  * Copyright (C) 2003-2006 Paolo Maggi, Paolo Borelli
  * Copyright (C) 2007-2009 Paolo Maggi, Paolo Borelli, Steve Frécinaux
  * Copyright (C) 2010 Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -26,14 +26,14 @@
 #define __PEAS_GTK_PLUGIN_MANAGER_VIEW_H__
 
 #include <gtk/gtk.h>
-#include <libpeas/peas-engine.h>
+#include <libbean/bean-engine.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW             (peas_gtk_plugin_manager_view_get_type())
+#define PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_gtk_plugin_manager_view_get_type())
 #define PEAS_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, PeasGtkPluginManagerView))
 #define PEAS_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW, PeasGtkPluginManagerViewClass))
 #define PEAS_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER_VIEW))
@@ -76,23 +76,23 @@ struct _PeasGtkPluginManagerViewClass {
 };
 
 PEAS_AVAILABLE_IN_ALL
-GType           peas_gtk_plugin_manager_view_get_type             (void) G_GNUC_CONST;
+GType           bean_gtk_plugin_manager_view_get_type             (void) G_GNUC_CONST;
 PEAS_AVAILABLE_IN_ALL
-GtkWidget      *peas_gtk_plugin_manager_view_new                  (PeasEngine               *engine);
+GtkWidget      *bean_gtk_plugin_manager_view_new                  (PeasEngine               *engine);
 
 #ifndef PEAS_DISABLE_DEPRECATED
 PEAS_AVAILABLE_IN_ALL
-void            peas_gtk_plugin_manager_view_set_show_builtin     (PeasGtkPluginManagerView *view,
+void            bean_gtk_plugin_manager_view_set_show_builtin     (PeasGtkPluginManagerView *view,
                                                                    gboolean                  show_builtin);
 PEAS_AVAILABLE_IN_ALL
-gboolean        peas_gtk_plugin_manager_view_get_show_builtin     (PeasGtkPluginManagerView *view);
+gboolean        bean_gtk_plugin_manager_view_get_show_builtin     (PeasGtkPluginManagerView *view);
 #endif
 
 PEAS_AVAILABLE_IN_ALL
-void            peas_gtk_plugin_manager_view_set_selected_plugin  (PeasGtkPluginManagerView *view,
+void            bean_gtk_plugin_manager_view_set_selected_plugin  (PeasGtkPluginManagerView *view,
                                                                    PeasPluginInfo           *info);
 PEAS_AVAILABLE_IN_ALL
-PeasPluginInfo *peas_gtk_plugin_manager_view_get_selected_plugin  (PeasGtkPluginManagerView *view);
+PeasPluginInfo *bean_gtk_plugin_manager_view_get_selected_plugin  (PeasGtkPluginManagerView *view);
 
 G_END_DECLS
 

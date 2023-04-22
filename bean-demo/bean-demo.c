@@ -1,15 +1,15 @@
 /*
- * peas-demo.c
- * This file is part of libpeas
+ * bean-demo.c
+ * This file is part of libbean
  *
  * Copyright (C) 2009-2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -28,10 +28,10 @@
 #include <gtk/gtk.h>
 #include <locale.h>
 
-#include <libpeas/peas.h>
-#include <libpeas-gtk/peas-gtk.h>
+#include <libbean/bean.h>
+#include <libbean-gtk/bean-gtk.h>
 
-#include "peas-demo-window.h"
+#include "bean-demo-window.h"
 
 gboolean run_from_build_dir;
 static GtkWidget *main_window;
@@ -63,7 +63,7 @@ create_main_window (void)
   GtkWidget *button_box;
   GtkWidget *button;
 
-  gtk_window_set_default_icon_name ("libpeas-plugin");
+  gtk_window_set_default_icon_name ("libbean-plugin");
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
@@ -73,7 +73,7 @@ create_main_window (void)
   box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_add (GTK_CONTAINER (window), box);
 
-  manager = peas_gtk_plugin_manager_new (peas_engine_get_default ());
+  manager = bean_gtk_plugin_manager_new (bean_engine_get_default ());
   gtk_box_pack_start (GTK_BOX (box), manager, TRUE, TRUE, 0);
 
   /* Always show all plugins, there are only a few */
@@ -109,14 +109,14 @@ main (int    argc,
 
   setlocale (LC_ALL, "");
   /* Normally, we'd need to call bindtextdomain() here. But that would require
-   * access to the dynamic peas_dirs_get_locale_dir() which is not available
-   * via the ABI. However, libpeas has a static constructor for it so we do
+   * access to the dynamic bean_dirs_get_locale_dir() which is not available
+   * via the ABI. However, libbean has a static constructor for it so we do
    * not need to call it anyway.
    */
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   textdomain (GETTEXT_PACKAGE);
 
-  option_context = g_option_context_new (_("— libpeas demo application"));
+  option_context = g_option_context_new (_("— libbean demo application"));
   g_option_context_add_main_entries (option_context, demo_args, GETTEXT_PACKAGE);
   g_option_context_add_group (option_context, gtk_get_option_group (TRUE));
 
@@ -134,29 +134,29 @@ main (int    argc,
       g_debug ("Running from build directory: %s", PEAS_BUILDDIR);
 
       /* Use the uninstalled typelibs */
-      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libpeas");
-      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libpeas-gtk");
+      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libbean");
+      g_irepository_prepend_search_path (PEAS_BUILDDIR "/libbean-gtk");
 
       /* Use the uninstalled plugin loaders */
       g_setenv ("PEAS_PLUGIN_LOADERS_DIR", PEAS_BUILDDIR "/loaders", TRUE);
     }
 
-  engine = peas_engine_get_default ();
-  plugin_dir = g_build_filename (g_get_user_config_dir (), "peas-demo/plugins", NULL);
-  peas_engine_add_search_path (engine, plugin_dir, plugin_dir);
+  engine = bean_engine_get_default ();
+  plugin_dir = g_build_filename (g_get_user_config_dir (), "bean-demo/plugins", NULL);
+  bean_engine_add_search_path (engine, plugin_dir, plugin_dir);
   g_free (plugin_dir);
 
   /* We don't care about leaking memory */
   g_setenv ("PEAS_ALLOW_ALL_LOADERS", "1", TRUE);
-  peas_engine_enable_loader (engine, "lua5.1");
-  peas_engine_enable_loader (engine, "python3");
+  bean_engine_enable_loader (engine, "lua5.1");
+  bean_engine_enable_loader (engine, "python3");
 
   if (run_from_build_dir)
-    peas_engine_add_search_path (engine, PEAS_BUILDDIR "/peas-demo/plugins", NULL);
+    bean_engine_add_search_path (engine, PEAS_BUILDDIR "/bean-demo/plugins", NULL);
   else
-    peas_engine_add_search_path (engine,
-                                 PEAS_LIBDIR "/peas-demo/plugins/",
-                                 PEAS_PREFIX "/share/peas-demo/plugins");
+    bean_engine_add_search_path (engine,
+                                 PEAS_LIBDIR "/bean-demo/plugins/",
+                                 PEAS_PREFIX "/share/bean-demo/plugins");
 
   n_windows = 0;
   main_window = create_main_window ();

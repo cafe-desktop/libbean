@@ -22,7 +22,7 @@ libintrospection_c = [
 libintrospection_deps = [
   glib_dep,
   gobject_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libintrospection_c_args = [
@@ -54,7 +54,7 @@ libintrospection_gir = gnome.generate_gir(
   dependencies: [libintrospection_dep],
   export_packages: [libintrospection_string],
   link_with: libintrospection_lib,
-  includes: ['GObject-2.0', libpeas_gir.get(0)],
+  includes: ['GObject-2.0', libbean_gir.get(0)],
   install: false,
   extra_args: [
     '--warn-all',

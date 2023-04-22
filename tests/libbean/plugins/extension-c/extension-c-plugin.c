@@ -1,15 +1,15 @@
 /*
  * extension-c-plugin.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2011 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -27,7 +27,7 @@
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include <libpeas/peas.h>
+#include <libbean/bean.h>
 
 #include "introspection-abstract.h"
 #include "introspection-base.h"
@@ -73,7 +73,7 @@ testing_extension_c_plugin_init (TestingExtensionCPlugin *plugin)
 static const PeasPluginInfo *
 testing_extension_c_plugin_get_plugin_info (IntrospectionBase *base)
 {
-  return peas_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
+  return bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
 }
 
 static GSettings *
@@ -81,9 +81,9 @@ testing_extension_c_plugin_get_settings (IntrospectionBase *base)
 {
   PeasPluginInfo *info;
 
-  info = peas_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
+  info = bean_extension_base_get_plugin_info (PEAS_EXTENSION_BASE (base));
 
-  return peas_plugin_info_get_settings (info, NULL);
+  return bean_plugin_info_get_settings (info, NULL);
 }
 
 static void
@@ -175,22 +175,22 @@ testing_extension_c_plugin_class_finalize (TestingExtensionCPluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
   testing_extension_c_abstract_register (G_TYPE_MODULE (module));
   testing_extension_c_plugin_register_type (G_TYPE_MODULE (module));
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               INTROSPECTION_TYPE_ABSTRACT,
                                               TESTING_TYPE_EXTENSION_C_ABSTRACT);
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               INTROSPECTION_TYPE_BASE,
                                               TESTING_TYPE_EXTENSION_C_PLUGIN);
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               INTROSPECTION_TYPE_CALLABLE,
                                               TESTING_TYPE_EXTENSION_C_PLUGIN);
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               INTROSPECTION_TYPE_HAS_PREREQUISITE,
                                               TESTING_TYPE_EXTENSION_C_PLUGIN);
 }

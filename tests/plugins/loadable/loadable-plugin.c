@@ -1,15 +1,15 @@
 /*
  * loadable-plugin.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -27,7 +27,7 @@
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include <libpeas/peas.h>
+#include <libbean/bean.h>
 
 #include "loadable-plugin.h"
 
@@ -38,7 +38,7 @@ typedef struct {
 /* Used by the local linkage test */
 G_MODULE_EXPORT gpointer global_symbol_clash;
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingLoadablePlugin,
                                 testing_loadable_plugin,
@@ -46,7 +46,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingLoadablePlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (TestingLoadablePlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 #define GET_PRIV(o) \
   (testing_loadable_plugin_get_instance_private (o))
@@ -144,7 +144,7 @@ testing_loadable_plugin_class_init (TestingLoadablePluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
   iface->activate = testing_loadable_plugin_activate;
   iface->deactivate = testing_loadable_plugin_deactivate;
@@ -156,11 +156,11 @@ testing_loadable_plugin_class_finalize (TestingLoadablePluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
   testing_loadable_plugin_register_type (G_TYPE_MODULE (module));
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               PEAS_TYPE_ACTIVATABLE,
                                               TESTING_TYPE_LOADABLE_PLUGIN);
 }

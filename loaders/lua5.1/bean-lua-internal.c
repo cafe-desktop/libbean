@@ -1,15 +1,15 @@
 /*
- * peas-lua-internal.c
- * This file is part of libpeas
+ * bean-lua-internal.c
+ * This file is part of libbean
  *
  * Copyright (C) 2015 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,11 +23,11 @@
 #include <config.h>
 #endif
 
-#include "peas-lua-internal.h"
+#include "bean-lua-internal.h"
 
 #include <lauxlib.h>
 
-#include "peas-lua-utils.h"
+#include "bean-lua-utils.h"
 
 
 static gpointer hooks_key = NULL;
@@ -47,7 +47,7 @@ failed_fn (lua_State *L)
 
   g_warning ("%s", msg);
 
-  /* peas_lua_internal_call() knows to check for this value */
+  /* bean_lua_internal_call() knows to check for this value */
   lua_pushlightuserdata (L, &failed_err_key);
 
   g_free (msg);
@@ -55,9 +55,9 @@ failed_fn (lua_State *L)
 }
 
 gboolean
-peas_lua_internal_setup (lua_State *L)
+bean_lua_internal_setup (lua_State *L)
 {
-  if (!peas_lua_utils_load_resource (L, "internal.lua", 0, 1))
+  if (!bean_lua_utils_load_resource (L, "internal.lua", 0, 1))
     {
       /* Already warned */
       return FALSE;
@@ -88,7 +88,7 @@ peas_lua_internal_setup (lua_State *L)
 }
 
 void
-peas_lua_internal_shutdown (lua_State *L)
+bean_lua_internal_shutdown (lua_State *L)
 {
   lua_pushlightuserdata (L, &hooks_key);
   lua_pushnil (L);
@@ -96,7 +96,7 @@ peas_lua_internal_shutdown (lua_State *L)
 }
 
 gboolean
-peas_lua_internal_call (lua_State   *L,
+bean_lua_internal_call (lua_State   *L,
                         const gchar *name,
                         guint        n_args,
                         gint         return_type)
@@ -120,7 +120,7 @@ peas_lua_internal_call (lua_State   *L,
       lua_insert (L, -n_args - 2);
     }
 
-  if (!peas_lua_utils_call (L, 1 + n_args, 1))
+  if (!bean_lua_utils_call (L, 1 + n_args, 1))
     {
       /* Raised by failed_fn() to prevent printing the error */
       if (!lua_isuserdata (L, -1) ||

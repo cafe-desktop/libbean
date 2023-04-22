@@ -1,15 +1,15 @@
 /*
- * peas-extension-set.h
- * This file is part of libpeas
+ * bean-extension-set.h
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -24,15 +24,15 @@
 
 #include <glib-object.h>
 
-#include "peas-engine.h"
-#include "peas-version-macros.h"
+#include "bean-engine.h"
+#include "bean-version-macros.h"
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_EXTENSION_SET            (peas_extension_set_get_type())
+#define PEAS_TYPE_EXTENSION_SET            (bean_extension_set_get_type())
 #define PEAS_EXTENSION_SET(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_EXTENSION_SET, PeasExtensionSet))
 #define PEAS_EXTENSION_SET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_EXTENSION_SET, PeasExtensionSetClass))
 #define PEAS_IS_EXTENSION_SET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_TYPE_EXTENSION_SET))
@@ -58,7 +58,7 @@ struct _PeasExtensionSet {
 /**
  * PeasExtensionSetClass:
  * @parent_class: The parent class.
- * @call: The VFunc for peas_extension_set_call().
+ * @call: The VFunc for bean_extension_set_call().
  * @extension_added: Signal class handler for the
  *                   #PeasExtensionSet::extension-added signal.
  * @extension_removed: Signal class handler for the
@@ -99,7 +99,7 @@ struct _PeasExtensionSetClass {
  * @exten: A #PeasExtension.
  * @data: Optional data passed to the function.
  *
- * This function is passed to peas_extension_set_foreach() and
+ * This function is passed to bean_extension_set_foreach() and
  * will be called for each extension in @set.
  *
  * Since: 1.2
@@ -113,55 +113,55 @@ typedef void (*PeasExtensionSetForeachFunc) (PeasExtensionSet *set,
  * Public methods
  */
 PEAS_AVAILABLE_IN_ALL
-GType              peas_extension_set_get_type    (void)  G_GNUC_CONST;
+GType              bean_extension_set_get_type    (void)  G_GNUC_CONST;
 
 #ifndef __GI_SCANNER__
 #ifndef PEAS_DISABLE_DEPRECATED
 PEAS_AVAILABLE_IN_ALL
-gboolean           peas_extension_set_call        (PeasExtensionSet *set,
+gboolean           bean_extension_set_call        (PeasExtensionSet *set,
                                                    const gchar      *method_name,
                                                    ...);
 PEAS_AVAILABLE_IN_ALL
-gboolean           peas_extension_set_call_valist (PeasExtensionSet *set,
+gboolean           bean_extension_set_call_valist (PeasExtensionSet *set,
                                                    const gchar      *method_name,
                                                    va_list           va_args);
 PEAS_AVAILABLE_IN_ALL
-gboolean           peas_extension_set_callv       (PeasExtensionSet *set,
+gboolean           bean_extension_set_callv       (PeasExtensionSet *set,
                                                    const gchar      *method_name,
                                                    GIArgument       *args);
 #endif
 #endif
 
 PEAS_AVAILABLE_IN_ALL
-void               peas_extension_set_foreach     (PeasExtensionSet *set,
+void               bean_extension_set_foreach     (PeasExtensionSet *set,
                                                    PeasExtensionSetForeachFunc func,
                                                    gpointer          data);
 
 PEAS_AVAILABLE_IN_ALL
-PeasExtension     *peas_extension_set_get_extension (PeasExtensionSet *set,
+PeasExtension     *bean_extension_set_get_extension (PeasExtensionSet *set,
                                                      PeasPluginInfo   *info);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 PEAS_AVAILABLE_IN_ALL
-PeasExtensionSet  *peas_extension_set_newv        (PeasEngine       *engine,
+PeasExtensionSet  *bean_extension_set_newv        (PeasEngine       *engine,
                                                    GType             exten_type,
                                                    guint             n_parameters,
                                                    GParameter       *parameters);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 PEAS_AVAILABLE_IN_1_24
-PeasExtensionSet  *peas_extension_set_new_with_properties (PeasEngine    *engine,
+PeasExtensionSet  *bean_extension_set_new_with_properties (PeasEngine    *engine,
                                                            GType          exten_type,
                                                            guint          n_properties,
                                                            const gchar  **prop_names,
                                                            const GValue  *prop_values);
 PEAS_AVAILABLE_IN_ALL
-PeasExtensionSet  *peas_extension_set_new_valist  (PeasEngine       *engine,
+PeasExtensionSet  *bean_extension_set_new_valist  (PeasEngine       *engine,
                                                    GType             exten_type,
                                                    const gchar      *first_property,
                                                    va_list           var_args);
 PEAS_AVAILABLE_IN_ALL
-PeasExtensionSet  *peas_extension_set_new         (PeasEngine       *engine,
+PeasExtensionSet  *bean_extension_set_new         (PeasEngine       *engine,
                                                    GType             exten_type,
                                                    const gchar      *first_property,
                                                    ...);

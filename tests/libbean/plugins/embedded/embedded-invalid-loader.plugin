@@ -1,6 +1,6 @@
 [Plugin]
 Module=embedded-invalid-loader
-Embedded=peas_engine_new
+Embedded=bean_engine_new
 Loader=python
 Name=Embedded Invalid Loader
 Description=This plugin is embedded with an invalid loader.

@@ -1,15 +1,15 @@
 /*
  * extension-lua.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2014 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -26,8 +26,8 @@
 #include <lua.h>
 #include <lauxlib.h>
 
-#include <libpeas/peas-activatable.h>
-#include "libpeas/peas-engine-priv.h"
+#include <libbean/bean-activatable.h>
+#include "libbean/bean-engine-priv.h"
 
 #include "testing/testing-extension.h"
 #include "introspection/introspection-base.h"
@@ -44,19 +44,19 @@ set_garbage_collector_state (PeasEngine     *engine,
 {
   PeasExtension *extension;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
                                             NULL);
 
   if (start)
     {
       /* collectgarbage('restart') */
-      peas_activatable_activate (PEAS_ACTIVATABLE (extension));
+      bean_activatable_activate (PEAS_ACTIVATABLE (extension));
     }
   else
     {
       /* collectgarbage('stop') */
-      peas_activatable_deactivate (PEAS_ACTIVATABLE (extension));
+      bean_activatable_deactivate (PEAS_ACTIVATABLE (extension));
     }
 
   g_object_unref (extension);
@@ -70,7 +70,7 @@ test_extension_lua_instance_refcount (PeasEngine     *engine,
 
   set_garbage_collector_state (engine, info, FALSE);
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
                                             NULL);
   g_object_add_weak_pointer (extension, (gpointer *) &extension);
@@ -83,11 +83,11 @@ test_extension_lua_instance_refcount (PeasEngine     *engine,
   g_assert_cmpint (extension->ref_count, ==, 2);
 
   /* The Lua wrapper around the extension has been garbage collected */
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
   g_assert_cmpint (G_OBJECT (extension)->ref_count, ==, 1);
 
   /* Create a new Lua wrapper around the extension */
-  peas_activatable_update_state (PEAS_ACTIVATABLE (extension));
+  bean_activatable_update_state (PEAS_ACTIVATABLE (extension));
   g_assert_cmpint (G_OBJECT (extension)->ref_count, ==, 2);
 
   /* The Lua wrapper still exists */
@@ -95,7 +95,7 @@ test_extension_lua_instance_refcount (PeasEngine     *engine,
   g_assert_cmpint (extension->ref_count, ==, 1);
 
   /* The Lua wrapper around the extension has been garbage collected */
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
   g_assert (extension == NULL);
 
   set_garbage_collector_state (engine, info, TRUE);
@@ -119,7 +119,7 @@ test_extension_lua_activatable_subject_refcount (PeasEngine     *engine,
   g_assert_cmpint (object->ref_count, ==, 1);
 
   /* We pre-create the wrapper to make it easier to check reference count */
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
                                             "object", object,
                                             NULL);
@@ -130,7 +130,7 @@ test_extension_lua_activatable_subject_refcount (PeasEngine     *engine,
   /* The Lua wrapper created around our dummy
    * object should have increased its refcount by 1.
    */
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
   g_assert_cmpint (object->ref_count, ==, 2);
 
   g_object_unref (extension);
@@ -139,7 +139,7 @@ test_extension_lua_activatable_subject_refcount (PeasEngine     *engine,
   /* We unreffed the extension, so it should have been
    * destroyed and our dummy object's refcount should be back to 1.
    */
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
   g_assert_cmpint (object->ref_count, ==, 1);
 
   g_object_unref (object);
@@ -156,9 +156,9 @@ test_extension_lua_nonexistent (PeasEngine *engine)
   testing_util_push_log_hook ("Error loading plugin "
                               "'extension-lua51-nonexistent'*");
 
-  info = peas_engine_get_plugin_info (engine, "extension-lua51-nonexistent");
+  info = bean_engine_get_plugin_info (engine, "extension-lua51-nonexistent");
 
-  g_assert (!peas_engine_load_plugin (engine, info));
+  g_assert (!bean_engine_load_plugin (engine, info));
 }
 
 int
@@ -171,7 +171,7 @@ main (int   argc,
   testing_extension_basic ("lua5.1");
 
   /* We still need to add the callable tests
-   * because of peas_extension_call()
+   * because of bean_extension_call()
    */
   testing_extension_callable ("lua5.1");
 

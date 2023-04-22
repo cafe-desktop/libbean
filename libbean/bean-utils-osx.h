@@ -1,15 +1,15 @@
 /*
- * peas-utils-osx.h
- * This file is part of libpeas
+ * bean-utils-osx.h
+ * This file is part of libbean
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -27,13 +27,13 @@
 
 G_BEGIN_DECLS
 
-gchar *peas_dirs_os_x_get_bundle_resource_dir (void);
-gchar *peas_dirs_os_x_get_resource_dir        (const gchar *subdir,
+gchar *bean_dirs_os_x_get_bundle_resource_dir (void);
+gchar *bean_dirs_os_x_get_resource_dir        (const gchar *subdir,
                                                const gchar *default_dir);
-gchar *peas_dirs_os_x_get_data_dir            (void);
-gchar *peas_dirs_os_x_get_lib_dir             (void);
-gchar *peas_dirs_os_x_get_locale_dir          (void);
-void   peas_open_url_osx                      (const gchar *uri);
+gchar *bean_dirs_os_x_get_data_dir            (void);
+gchar *bean_dirs_os_x_get_lib_dir             (void);
+gchar *bean_dirs_os_x_get_locale_dir          (void);
+void   bean_open_url_osx                      (const gchar *uri);
 
 G_END_DECLS
 

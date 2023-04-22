@@ -1,15 +1,15 @@
 /*
  * second-time.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2009-2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -28,18 +28,18 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
-#include <libpeas/peas.h>
+#include <libbean/bean.h>
 
 #include "second-time.h"
 
-static void peas_activatable_iface_init     (PeasActivatableInterface    *iface);
+static void bean_activatable_iface_init     (PeasActivatableInterface    *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (PeasDemoSecondTime,
-                                peasdemo_second_time,
+                                beandemo_second_time,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 enum {
   PROP_0,
@@ -47,7 +47,7 @@ enum {
 };
 
 static void
-peasdemo_second_time_set_property (GObject      *object,
+beandemo_second_time_set_property (GObject      *object,
                                    guint         prop_id,
                                    const GValue *value,
                                    GParamSpec   *pspec)
@@ -67,7 +67,7 @@ peasdemo_second_time_set_property (GObject      *object,
 }
 
 static void
-peasdemo_second_time_get_property (GObject    *object,
+beandemo_second_time_get_property (GObject    *object,
                                    guint       prop_id,
                                    GValue     *value,
                                    GParamSpec *pspec)
@@ -88,13 +88,13 @@ peasdemo_second_time_get_property (GObject    *object,
 
 
 static void
-peasdemo_second_time_init (PeasDemoSecondTime *plugin)
+beandemo_second_time_init (PeasDemoSecondTime *plugin)
 {
   g_debug ("%s", G_STRFUNC);
 }
 
 static void
-peasdemo_second_time_finalize (GObject *object)
+beandemo_second_time_finalize (GObject *object)
 {
   PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
 
@@ -103,7 +103,7 @@ peasdemo_second_time_finalize (GObject *object)
   g_object_unref (plugin->label);
   g_object_unref (plugin->window);
 
-  G_OBJECT_CLASS (peasdemo_second_time_parent_class)->finalize (object);
+  G_OBJECT_CLASS (beandemo_second_time_parent_class)->finalize (object);
 }
 
 static GtkBox *
@@ -113,7 +113,7 @@ get_box (GtkWidget *window)
 }
 
 static void
-peasdemo_second_time_activate (PeasActivatable *activatable)
+beandemo_second_time_activate (PeasActivatable *activatable)
 {
   PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
 
@@ -126,7 +126,7 @@ peasdemo_second_time_activate (PeasActivatable *activatable)
 }
 
 static void
-peasdemo_second_time_deactivate (PeasActivatable *activatable)
+beandemo_second_time_deactivate (PeasActivatable *activatable)
 {
   PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
 
@@ -136,35 +136,35 @@ peasdemo_second_time_deactivate (PeasActivatable *activatable)
 }
 
 static void
-peasdemo_second_time_class_init (PeasDemoSecondTimeClass *klass)
+beandemo_second_time_class_init (PeasDemoSecondTimeClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = peasdemo_second_time_set_property;
-  object_class->get_property = peasdemo_second_time_get_property;
-  object_class->finalize = peasdemo_second_time_finalize;
+  object_class->set_property = beandemo_second_time_set_property;
+  object_class->get_property = beandemo_second_time_get_property;
+  object_class->finalize = beandemo_second_time_finalize;
 
   g_object_class_override_property (object_class, PROP_OBJECT, "object");
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
-  iface->activate = peasdemo_second_time_activate;
-  iface->deactivate = peasdemo_second_time_deactivate;
+  iface->activate = beandemo_second_time_activate;
+  iface->deactivate = beandemo_second_time_deactivate;
 }
 
 static void
-peasdemo_second_time_class_finalize (PeasDemoSecondTimeClass *klass)
+beandemo_second_time_class_finalize (PeasDemoSecondTimeClass *klass)
 {
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
-  peasdemo_second_time_register_type (G_TYPE_MODULE (module));
+  beandemo_second_time_register_type (G_TYPE_MODULE (module));
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               PEAS_TYPE_ACTIVATABLE,
                                               PEASDEMO_TYPE_SECOND_TIME);
 }

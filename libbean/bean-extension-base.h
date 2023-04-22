@@ -1,15 +1,15 @@
 /*
- * peas-extension-base.h
- * This file is part of libpeas
+ * bean-extension-base.h
+ * This file is part of libbean
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -24,15 +24,15 @@
 
 #include <glib-object.h>
 
-#include "peas-plugin-info.h"
-#include "peas-version-macros.h"
+#include "bean-plugin-info.h"
+#include "bean-version-macros.h"
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_EXTENSION_BASE            (peas_extension_base_get_type())
+#define PEAS_TYPE_EXTENSION_BASE            (bean_extension_base_get_type())
 #define PEAS_EXTENSION_BASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_EXTENSION_BASE, PeasExtensionBase))
 #define PEAS_EXTENSION_BASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_EXTENSION_BASE, PeasExtensionBaseClass))
 #define PEAS_IS_EXTENSION_BASE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_TYPE_EXTENSION_BASE))
@@ -71,12 +71,12 @@ struct _PeasExtensionBaseClass {
  * Public methods
  */
 PEAS_AVAILABLE_IN_ALL
-GType            peas_extension_base_get_type         (void)  G_GNUC_CONST;
+GType            bean_extension_base_get_type         (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
-PeasPluginInfo  *peas_extension_base_get_plugin_info  (PeasExtensionBase *extbase);
+PeasPluginInfo  *bean_extension_base_get_plugin_info  (PeasExtensionBase *extbase);
 PEAS_AVAILABLE_IN_ALL
-gchar           *peas_extension_base_get_data_dir     (PeasExtensionBase *extbase);
+gchar           *bean_extension_base_get_data_dir     (PeasExtensionBase *extbase);
 
 G_END_DECLS
 

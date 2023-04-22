@@ -1,15 +1,15 @@
 /*
- * peas-python-internal.c
- * This file is part of libpeas
+ * bean-python-internal.c
+ * This file is part of libbean
  *
  * Copyright (C) 2014-2015 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include "peas-python-internal.h"
+#include "bean-python-internal.h"
 
 #include <gio/gio.h>
 
@@ -48,7 +48,7 @@ failed_fn (PyObject *self,
 
   g_warning ("%s", clean_msg);
 
-  /* peas_python_internal_call() knows to check for this exception */
+  /* bean_python_internal_call() knows to check for this exception */
   PyErr_SetObject (FailedError, NULL);
 
   g_free (clean_msg);
@@ -61,7 +61,7 @@ static PyMethodDef failed_method_def = {
 };
 
 gboolean
-peas_python_internal_setup (gboolean already_initialized)
+bean_python_internal_setup (gboolean already_initialized)
 {
   const gchar *prgname;
   GBytes *internal_python = NULL;
@@ -95,7 +95,7 @@ peas_python_internal_setup (gboolean already_initialized)
    *
    * https://bugzilla.gnome.org/show_bug.cgi?id=673101
    */
-  internal_python = g_resources_lookup_data ("/org/gnome/libpeas/loaders/"
+  internal_python = g_resources_lookup_data ("/org/gnome/libbean/loaders/"
 #if PY_MAJOR_VERSION < 3
                                              "python/"
 #else
@@ -108,15 +108,15 @@ peas_python_internal_setup (gboolean already_initialized)
 
   /* Compile it manually so the filename is available */
   code = Py_CompileString (g_bytes_get_data (internal_python, NULL),
-                           "peas-python-internal.py",
+                           "bean-python-internal.py",
                            Py_file_input);
   goto_error_if_failed (code != NULL);
 
-  internal_module = PyModule_New ("libpeas-internal");
+  internal_module = PyModule_New ("libbean-internal");
   goto_error_if_failed (internal_module != NULL);
 
   goto_error_if_failed (PyModule_AddStringConstant (internal_module, "__file__",
-                                                    "peas-python-internal.py") == 0);
+                                                    "bean-python-internal.py") == 0);
   goto_error_if_failed (PyModule_AddObject (internal_module, "__builtins__",
                                             builtins_module) == 0);
   goto_error_if_failed (PyModule_AddObject (internal_module,
@@ -179,9 +179,9 @@ error:
 }
 
 void
-peas_python_internal_shutdown (void)
+bean_python_internal_shutdown (void)
 {
-  peas_python_internal_call ("exit", NULL, NULL);
+  bean_python_internal_call ("exit", NULL, NULL);
 
   FailedError = NULL;
   internal_hooks = NULL;
@@ -190,7 +190,7 @@ peas_python_internal_shutdown (void)
 }
 
 PyObject *
-peas_python_internal_call (const gchar  *name,
+bean_python_internal_call (const gchar  *name,
                            PyTypeObject *return_type,
                            const gchar  *format,
                            ...)

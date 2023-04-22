@@ -34,20 +34,20 @@ stages:
     paths:
       - '_ccache/'
 
-build peas:
+build bean:
   extends: '.build'
   script:
     - 'meson -Dwidgetry=false -Dintrospection=true -Dvapi=true -Ddemos=false _build .'
     - 'ninja -C _build test'
 
-build peas-gtk:
+build bean-gtk:
   extends: '.build'
   script:
     - 'meson -Dwidgetry=true -Dglade_catalog=true -Dintrospection=true -Dvapi=true -Dgtk_doc=true _build .'
     - 'xvfb-run -a -s "-screen 0 1024x768x24"  ninja -C _build test'
-    - 'ninja -C _build libpeas-doc'
+    - 'ninja -C _build libbean-doc'
   artifacts:
-    name: 'libpeas-doc'
+    name: 'libbean-doc'
     paths:
       - '_build/docs/reference/html'
 
@@ -55,11 +55,11 @@ pages:
   image: 'registry.fedoraproject.org/fedora:30'
   stage: 'deploy'
   dependencies:
-    - 'build peas'
-    - 'build peas-gtk'
+    - 'build bean'
+    - 'build bean-gtk'
   script:
     - 'mkdir -p public/'
-    - 'mv _build/docs/reference/html/ public/libpeas/'
+    - 'mv _build/docs/reference/html/ public/libbean/'
   artifacts:
     paths:
       - 'public'

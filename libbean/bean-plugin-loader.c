@@ -1,15 +1,15 @@
 /*
- * peas-plugin-loader.c
- * This file is part of libpeas
+ * bean-plugin-loader.c
+ * This file is part of libbean
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -21,33 +21,33 @@
 
 #include "config.h"
 
-#include "peas-plugin-loader.h"
+#include "bean-plugin-loader.h"
 
-G_DEFINE_ABSTRACT_TYPE (PeasPluginLoader, peas_plugin_loader, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (PeasPluginLoader, bean_plugin_loader, G_TYPE_OBJECT)
 
 static void
-peas_plugin_loader_finalize (GObject *object)
+bean_plugin_loader_finalize (GObject *object)
 {
   g_debug ("Plugin Loader '%s' Finalized", G_OBJECT_TYPE_NAME (object));
 
-  G_OBJECT_CLASS (peas_plugin_loader_parent_class)->finalize (object);
+  G_OBJECT_CLASS (bean_plugin_loader_parent_class)->finalize (object);
 }
 
 static void
-peas_plugin_loader_init (PeasPluginLoader *loader)
+bean_plugin_loader_init (PeasPluginLoader *loader)
 {
 }
 
 static void
-peas_plugin_loader_class_init (PeasPluginLoaderClass *klass)
+bean_plugin_loader_class_init (PeasPluginLoaderClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = peas_plugin_loader_finalize;
+  object_class->finalize = bean_plugin_loader_finalize;
 }
 
 gboolean
-peas_plugin_loader_initialize (PeasPluginLoader *loader)
+bean_plugin_loader_initialize (PeasPluginLoader *loader)
 {
   PeasPluginLoaderClass *klass;
 
@@ -68,7 +68,7 @@ peas_plugin_loader_initialize (PeasPluginLoader *loader)
 }
 
 gboolean
-peas_plugin_loader_is_global (PeasPluginLoader *loader)
+bean_plugin_loader_is_global (PeasPluginLoader *loader)
 {
   PeasPluginLoaderClass *klass;
 
@@ -83,7 +83,7 @@ peas_plugin_loader_is_global (PeasPluginLoader *loader)
 }
 
 gboolean
-peas_plugin_loader_load (PeasPluginLoader *loader,
+bean_plugin_loader_load (PeasPluginLoader *loader,
                          PeasPluginInfo   *info)
 {
 
@@ -93,7 +93,7 @@ peas_plugin_loader_load (PeasPluginLoader *loader,
 }
 
 void
-peas_plugin_loader_unload (PeasPluginLoader *loader,
+bean_plugin_loader_unload (PeasPluginLoader *loader,
                            PeasPluginInfo   *info)
 {
   g_return_if_fail (PEAS_IS_PLUGIN_LOADER (loader));
@@ -102,7 +102,7 @@ peas_plugin_loader_unload (PeasPluginLoader *loader,
 }
 
 gboolean
-peas_plugin_loader_provides_extension (PeasPluginLoader *loader,
+bean_plugin_loader_provides_extension (PeasPluginLoader *loader,
                                        PeasPluginInfo   *info,
                                        GType             ext_type)
 {
@@ -115,7 +115,7 @@ peas_plugin_loader_provides_extension (PeasPluginLoader *loader,
 }
 
 PeasExtension *
-peas_plugin_loader_create_extension (PeasPluginLoader *loader,
+bean_plugin_loader_create_extension (PeasPluginLoader *loader,
                                      PeasPluginInfo   *info,
                                      GType             ext_type,
                                      guint             n_parameters,
@@ -131,7 +131,7 @@ peas_plugin_loader_create_extension (PeasPluginLoader *loader,
 }
 
 void
-peas_plugin_loader_garbage_collect (PeasPluginLoader *loader)
+bean_plugin_loader_garbage_collect (PeasPluginLoader *loader)
 {
   PeasPluginLoaderClass *klass;
 

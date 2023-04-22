@@ -1,15 +1,15 @@
 /*
  * plugin-manager-view.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -25,8 +25,8 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libpeas/peas.h>
-#include <libpeas-gtk/peas-gtk.h>
+#include <libbean/bean.h>
+#include <libbean-gtk/bean-gtk.h>
 
 #include "testing/testing.h"
 
@@ -64,7 +64,7 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->tree_view = GTK_TREE_VIEW (peas_gtk_plugin_manager_view_new (NULL));
+  fixture->tree_view = GTK_TREE_VIEW (bean_gtk_plugin_manager_view_new (NULL));
   fixture->view = PEAS_GTK_PLUGIN_MANAGER_VIEW (fixture->tree_view);
   fixture->selection = gtk_tree_view_get_selection (fixture->tree_view);
 
@@ -96,7 +96,7 @@ test_runner (TestFixture   *fixture,
   ((void (*) (TestFixture *)) data) (fixture);
 }
 
-/* Based on code from peas-gtk-manager-view.h */
+/* Based on code from bean-gtk-manager-view.h */
 static void
 convert_iter_to_child_iter (PeasGtkPluginManagerView *view,
                             GtkTreeIter              *iter)
@@ -104,7 +104,7 @@ convert_iter_to_child_iter (PeasGtkPluginManagerView *view,
   GtkTreeModel *model;
   GtkTreeIter child_iter;
 
-  if (peas_gtk_plugin_manager_view_get_show_builtin (view))
+  if (bean_gtk_plugin_manager_view_get_show_builtin (view))
     return;
 
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
@@ -125,7 +125,7 @@ model_has_builtin (TestFixture *fixture)
     {
       do
         {
-          if (peas_plugin_info_is_builtin (testing_get_plugin_info_for_iter (fixture->view, &iter)))
+          if (bean_plugin_info_is_builtin (testing_get_plugin_info_for_iter (fixture->view, &iter)))
             found = TRUE;
         }
       while (!found && gtk_tree_model_iter_next (fixture->model, &iter));
@@ -140,20 +140,20 @@ test_gtk_plugin_manager_view_selection (TestFixture *fixture)
   GtkTreeIter iter;
   PeasPluginInfo *info;
 
-  info = peas_gtk_plugin_manager_view_get_selected_plugin (fixture->view);
+  info = bean_gtk_plugin_manager_view_get_selected_plugin (fixture->view);
   g_assert (info == NULL);
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
   gtk_tree_selection_select_iter (fixture->selection, &iter);
 
-  info = peas_gtk_plugin_manager_view_get_selected_plugin (fixture->view);
+  info = bean_gtk_plugin_manager_view_get_selected_plugin (fixture->view);
   g_assert (info != NULL);
 }
 
 static void
 test_gtk_plugin_manager_view_show_builtin (TestFixture *fixture)
 {
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   g_assert (model_has_builtin (fixture));
 }
@@ -162,7 +162,7 @@ static void
 test_gtk_plugin_manager_view_hide_builtin (TestFixture *fixture)
 {
   /* Should this be here given its already the default? */
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, FALSE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, FALSE);
 
   g_assert (!model_has_builtin (fixture));
 }
@@ -206,9 +206,9 @@ test_gtk_plugin_manager_view_enable_plugin (TestFixture *fixture)
   path = gtk_tree_model_get_path (fixture->model, &iter);
   column = gtk_tree_view_get_column (fixture->tree_view, 0);
 
-  g_assert (!peas_plugin_info_is_loaded (info));
+  g_assert (!bean_plugin_info_is_loaded (info));
   gtk_tree_view_row_activated (fixture->tree_view, path, column);
-  g_assert (peas_plugin_info_is_loaded (info));
+  g_assert (bean_plugin_info_is_loaded (info));
 
   gtk_tree_path_free (path);
 }
@@ -221,18 +221,18 @@ test_gtk_plugin_manager_view_enable_builtin_plugin (TestFixture *fixture)
   GtkTreeViewColumn *column;
   PeasPluginInfo *info;
 
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
-  info = peas_engine_get_plugin_info (fixture->engine, "builtin");
+  info = bean_engine_get_plugin_info (fixture->engine, "builtin");
 
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
 
   path = gtk_tree_model_get_path (fixture->model, &iter);
   column = gtk_tree_view_get_column (fixture->tree_view, 0);
 
-  g_assert (!peas_plugin_info_is_loaded (info));
+  g_assert (!bean_plugin_info_is_loaded (info));
   gtk_tree_view_row_activated (fixture->tree_view, path, column);
-  g_assert (!peas_plugin_info_is_loaded (info));
+  g_assert (!bean_plugin_info_is_loaded (info));
 
   gtk_tree_path_free (path);
 }

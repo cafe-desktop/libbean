@@ -1,15 +1,15 @@
 /*
  * testing-extension.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2011-2014 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -28,7 +28,7 @@
 #include <string.h>
 
 #include <glib.h>
-#include <libpeas/peas.h>
+#include <libbean/bean.h>
 
 #include "testing.h"
 #include "testing-extension.h"
@@ -54,8 +54,8 @@ test_setup (TestFixture    *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  peas_engine_enable_loader (fixture->engine, loader);
-  fixture->info = peas_engine_get_plugin_info (fixture->engine,
+  bean_engine_enable_loader (fixture->engine, loader);
+  fixture->info = bean_engine_get_plugin_info (fixture->engine,
                                                extension_plugin);
 }
 
@@ -71,7 +71,7 @@ test_runner  (TestFixture   *fixture,
               gconstpointer  data)
 {
   g_assert (fixture->info != NULL);
-  g_assert (peas_engine_load_plugin (fixture->engine, fixture->info));
+  g_assert (bean_engine_load_plugin (fixture->engine, fixture->info));
 
   ((void (*) (PeasEngine *, PeasPluginInfo *)) data) (fixture->engine,
                                                       fixture->info);
@@ -83,23 +83,23 @@ test_extension_garbage_collect (PeasEngine     *engine,
 {
   gchar **loaded_plugins;
 
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
 
   /* Check that we can collect the garbage when no plugins are loaded */
-  g_assert (peas_engine_unload_plugin (engine, info));
+  g_assert (bean_engine_unload_plugin (engine, info));
 
-  loaded_plugins = peas_engine_get_loaded_plugins (engine);
+  loaded_plugins = bean_engine_get_loaded_plugins (engine);
   g_assert_cmpstr (loaded_plugins[0], ==, NULL);
   g_strfreev (loaded_plugins);
 
-  peas_engine_garbage_collect (engine);
+  bean_engine_garbage_collect (engine);
 }
 
 static void
 test_extension_provides_valid (PeasEngine     *engine,
                                PeasPluginInfo *info)
 {
-  g_assert (peas_engine_provides_extension (engine, info,
+  g_assert (bean_engine_provides_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE));
 }
 
@@ -111,20 +111,20 @@ test_extension_provides_invalid (PeasEngine     *engine,
   testing_util_push_log_hook ("*assertion*G_TYPE_IS_INTERFACE*failed");
 
   /* Invalid GType */
-  peas_engine_provides_extension (engine, info, G_TYPE_INVALID);
+  bean_engine_provides_extension (engine, info, G_TYPE_INVALID);
 
 
   /* GObject but not a GInterface */
-  peas_engine_provides_extension (engine, info, PEAS_TYPE_ENGINE);
+  bean_engine_provides_extension (engine, info, PEAS_TYPE_ENGINE);
 
 
   /* Does not implement this GType */
-  g_assert (!peas_engine_provides_extension (engine, info,
+  g_assert (!bean_engine_provides_extension (engine, info,
                                              INTROSPECTION_TYPE_UNIMPLEMENTED));
 
   /* Not loaded */
-  g_assert (peas_engine_unload_plugin (engine, info));
-  g_assert (!peas_engine_provides_extension (engine, info,
+  g_assert (bean_engine_unload_plugin (engine, info));
+  g_assert (!bean_engine_provides_extension (engine, info,
                                              INTROSPECTION_TYPE_CALLABLE));
 }
 
@@ -134,7 +134,7 @@ test_extension_create_valid (PeasEngine     *engine,
 {
   PeasExtension *extension;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
@@ -151,7 +151,7 @@ test_extension_create_valid_without_properties (PeasEngine     *engine,
   PeasExtension *extension;
 
   extension =
-    peas_engine_create_extension_with_properties (engine, info,
+    bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   0, NULL, NULL);
 
@@ -170,12 +170,12 @@ test_extension_create_valid_with_properties (PeasEngine     *engine,
   GValue prop_values[1] = { G_VALUE_INIT };
   const gchar *prop_names[1] = { "abstract-property" };
 
-  g_assert (peas_engine_load_plugin (engine, info));
+  g_assert (bean_engine_load_plugin (engine, info));
 
   g_value_init (&prop_values[0], G_TYPE_INT);
   g_value_set_int (&prop_values[0], 47);
   extension =
-      peas_engine_create_extension_with_properties (engine, info,
+      bean_engine_create_extension_with_properties (engine, info,
                                                     INTROSPECTION_TYPE_ABSTRACT,
                                                     G_N_ELEMENTS (prop_values),
                                                     prop_names,
@@ -196,34 +196,34 @@ test_extension_create_invalid (PeasEngine     *engine,
   testing_util_push_log_hook ("*assertion*G_TYPE_IS_INTERFACE*failed");
   testing_util_push_log_hook ("*does not provide a 'IntrospectionUnimplemented' extension");
   testing_util_push_log_hook ("*type 'IntrospectionCallable' has no property named 'does-not-exist'");
-  testing_util_push_log_hook ("*assertion*peas_plugin_info_is_loaded*failed");
+  testing_util_push_log_hook ("*assertion*bean_plugin_info_is_loaded*failed");
 
   /* Invalid GType */
-  extension = peas_engine_create_extension (engine, info, G_TYPE_INVALID, NULL);
+  extension = bean_engine_create_extension (engine, info, G_TYPE_INVALID, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
 
   /* GObject but not a GInterface */
-  extension = peas_engine_create_extension (engine, info, PEAS_TYPE_ENGINE, NULL);
+  extension = bean_engine_create_extension (engine, info, PEAS_TYPE_ENGINE, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
 
   /* Does not implement this GType */
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_UNIMPLEMENTED,
                                             NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* Interface does not have a specified property */
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             "does-not-exist", "",
                                             NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* Not loaded */
-  g_assert (peas_engine_unload_plugin (engine, info));
-  extension = peas_engine_create_extension (engine, info,
+  g_assert (bean_engine_unload_plugin (engine, info));
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
@@ -246,30 +246,30 @@ test_extension_create_invalid_with_properties (PeasEngine     *engine,
   testing_util_push_log_hook ("*does not provide a 'IntrospectionUnimplemented' extension");
   testing_util_push_log_hook ("*property name*should not be NULL.");
   testing_util_push_log_hook ("*property value*should*initialized GValue.");
-  testing_util_push_log_hook ("*assertion*peas_plugin_info_is_loaded*failed");
+  testing_util_push_log_hook ("*assertion*bean_plugin_info_is_loaded*failed");
 
   /* Invalid GType */
-  extension = peas_engine_create_extension_with_properties (engine, info,
+  extension = bean_engine_create_extension_with_properties (engine, info,
                                                             G_TYPE_INVALID, 0,
                                                             NULL, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* GObject but not a GInterface */
-  extension = peas_engine_create_extension_with_properties (engine, info,
+  extension = bean_engine_create_extension_with_properties (engine, info,
                                                             PEAS_TYPE_ENGINE, 0,
                                                             NULL, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* Does not implement this GType */
   extension =
-    peas_engine_create_extension_with_properties (engine, info,
+    bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_UNIMPLEMENTED,
                                                   0, NULL, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* Interface has a NULL property name*/
   extension =
-    peas_engine_create_extension_with_properties (engine, info,
+    bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   G_N_ELEMENTS (prop_names2),
                                                   prop_names, prop_values);
@@ -277,16 +277,16 @@ test_extension_create_invalid_with_properties (PeasEngine     *engine,
 
   /* Interface has a not initialiazed GValue */
   extension =
-    peas_engine_create_extension_with_properties (engine, info,
+    bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   G_N_ELEMENTS (prop_names2),
                                                   prop_names2, prop_values2);
   g_assert (!PEAS_IS_EXTENSION (extension));
 
   /* Not loaded */
-  g_assert (peas_engine_unload_plugin (engine, info));
+  g_assert (bean_engine_unload_plugin (engine, info));
   extension =
-    peas_engine_create_extension_with_properties (engine, info,
+    bean_engine_create_extension_with_properties (engine, info,
                                                   INTROSPECTION_TYPE_CALLABLE,
                                                   0, NULL, NULL);
   g_assert (!PEAS_IS_EXTENSION (extension));
@@ -302,7 +302,7 @@ test_extension_create_with_prerequisite (PeasEngine     *engine,
   PeasExtension *extension;
   gint prerequisite_property = -1;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_HAS_PREREQUISITE,
                                             "prerequisite-property", 47,
                                             NULL);
@@ -326,8 +326,8 @@ test_extension_reload (PeasEngine     *engine,
 
   for (i = 0; i < 3; ++i)
     {
-      g_assert (peas_engine_load_plugin (engine, info));
-      g_assert (peas_engine_unload_plugin (engine, info));
+      g_assert (bean_engine_load_plugin (engine, info));
+      g_assert (bean_engine_unload_plugin (engine, info));
     }
 }
 
@@ -338,9 +338,9 @@ test_extension_plugin_info (PeasEngine     *engine,
   PeasExtension *extension;
   IntrospectionBase *base;
 
-  g_assert (peas_engine_load_plugin (engine, info));
+  g_assert (bean_engine_load_plugin (engine, info));
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_BASE,
                                             NULL);
 
@@ -359,9 +359,9 @@ test_extension_get_settings (PeasEngine     *engine,
   IntrospectionBase *base;
   GSettings *settings;
 
-  g_assert (peas_engine_load_plugin (engine, info));
+  g_assert (bean_engine_load_plugin (engine, info));
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_BASE,
                                             NULL);
 
@@ -381,9 +381,9 @@ test_extension_abstract (PeasEngine     *engine,
   PeasExtension *extension;
   IntrospectionAbstract *abstract;
 
-  g_assert (peas_engine_load_plugin (engine, info));
+  g_assert (bean_engine_load_plugin (engine, info));
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_ABSTRACT,
                                             "abstract-property", 47,
                                             NULL);
@@ -433,18 +433,18 @@ multiple_threads_loaders_in_thread (guint    nth_thread,
   GObject *extension;
 
   engine = testing_engine_new_full (use_nonglobal_loaders);
-  peas_engine_enable_loader (engine, loader);
+  bean_engine_enable_loader (engine, loader);
 
-  info = peas_engine_get_plugin_info (engine, extension_plugin);
+  info = bean_engine_get_plugin_info (engine, extension_plugin);
   g_assert (info != NULL);
 
   for (i = 0; i < 10; ++i)
     {
-      g_assert (peas_engine_load_plugin (engine, info));
+      g_assert (bean_engine_load_plugin (engine, info));
 
       for (j = 0; j < 50; ++j)
         {
-          extension = peas_engine_create_extension (engine, info,
+          extension = bean_engine_create_extension (engine, info,
                                                     INTROSPECTION_TYPE_BASE,
                                                     NULL);
 
@@ -452,7 +452,7 @@ multiple_threads_loaders_in_thread (guint    nth_thread,
           g_object_unref (extension);
         }
 
-      g_assert (peas_engine_unload_plugin (engine, info));
+      g_assert (bean_engine_unload_plugin (engine, info));
     }
 
   testing_engine_free (engine);
@@ -481,7 +481,7 @@ multiple_threads_callbacks_in_thread (guint            nth_thread,
   gint i;
 
   for (i = 0; i < 100; ++i)
-    peas_activatable_update_state (activatable);
+    bean_activatable_update_state (activatable);
 }
 
 static void
@@ -491,7 +491,7 @@ test_extension_multiple_threads_callbacks (PeasEngine     *engine,
   PeasExtension *extension;
   gint n_threads, update_count;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
                                             NULL);
 
@@ -511,13 +511,13 @@ test_extension_call_no_args (PeasEngine     *engine,
   PeasExtension *extension;
   IntrospectionCallable *callable;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
   callable = INTROSPECTION_CALLABLE (extension);
 
-  g_assert (peas_extension_call (extension, "call_no_args"));
+  g_assert (bean_extension_call (extension, "call_no_args"));
   introspection_callable_call_no_args (callable);
 
   g_object_unref (extension);
@@ -531,13 +531,13 @@ test_extension_call_with_return (PeasEngine     *engine,
   IntrospectionCallable *callable;
   gchar *return_val = NULL;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
   callable = INTROSPECTION_CALLABLE (extension);
 
-  g_assert (peas_extension_call (extension, "call_with_return", &return_val));
+  g_assert (bean_extension_call (extension, "call_with_return", &return_val));
   g_assert_cmpstr (return_val, ==, "Hello, World!");
 
   g_free (return_val);
@@ -558,13 +558,13 @@ test_extension_call_single_arg (PeasEngine     *engine,
   IntrospectionCallable *callable;
   gboolean called = FALSE;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
   callable = INTROSPECTION_CALLABLE (extension);
 
-  g_assert (peas_extension_call (extension, "call_single_arg", &called));
+  g_assert (bean_extension_call (extension, "call_single_arg", &called));
   g_assert (called);
 
   called = FALSE;
@@ -584,7 +584,7 @@ test_extension_call_multi_args (PeasEngine     *engine,
   gint in, out, inout;
   gint inout_saved;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_CALLABLE,
                                             NULL);
 
@@ -594,7 +594,7 @@ test_extension_call_multi_args (PeasEngine     *engine,
   inout = g_random_int ();
   inout_saved = inout;
 
-  g_assert (peas_extension_call (extension, "call_multi_args",
+  g_assert (bean_extension_call (extension, "call_multi_args",
                                  in, &out, &inout));
 
   g_assert_cmpint (inout_saved, ==, out);
@@ -619,18 +619,18 @@ test_extension_call_abstract (PeasEngine     *engine,
   PeasExtension *extension;
   gint value = 0;
 
-  g_assert (peas_engine_load_plugin (engine, info));
+  g_assert (bean_engine_load_plugin (engine, info));
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_ABSTRACT,
                                             "abstract-property", 47,
                                             NULL);
 
-  g_assert (peas_extension_call (extension, "get_value", &value));
+  g_assert (bean_extension_call (extension, "get_value", &value));
   g_assert_cmpint (value, ==, 47);
 
-  g_assert (peas_extension_call (extension, "set_value", -22));
-  g_assert (peas_extension_call (extension, "get_value", &value));
+  g_assert (bean_extension_call (extension, "set_value", -22));
+  g_assert (bean_extension_call (extension, "get_value", &value));
   g_assert_cmpint (value, ==, -22);
 
   g_object_unref (extension);
@@ -668,7 +668,7 @@ testing_extension_basic (const gchar *loader_)
   g_free (loader_name);
 
   engine = testing_engine_new ();
-  peas_engine_enable_loader (engine, loader);
+  bean_engine_enable_loader (engine, loader);
 
   /* Check that the loaders are created lazily */
   g_assert (g_type_from_name ("PeasPluginLoader") == G_TYPE_INVALID);
@@ -703,7 +703,7 @@ testing_extension_basic (const gchar *loader_)
   _EXTENSION_TEST (loader, "multiple-threads/nonglobal-loaders",
                    multiple_threads_nonglobal_loaders);
 
-  /* Not needed for C plugins as they are independent of libpeas */
+  /* Not needed for C plugins as they are independent of libbean */
   if (g_strcmp0 (loader, "c") != 0)
     {
       _EXTENSION_TEST (loader, "multiple-threads/callbacks",

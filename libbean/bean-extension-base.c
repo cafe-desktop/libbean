@@ -1,16 +1,16 @@
 /*
- * peas-extension-base.c
- * This file is part of libpeas
+ * bean-extension-base.c
+ * This file is part of libbean
  *
  * Copyright (C) 2002-2008 Paolo Maggi
  * Copyright (C) 2009 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -22,11 +22,11 @@
 
 #include "config.h"
 
-#include "peas-extension-base.h"
-#include "peas-plugin-info-priv.h"
+#include "bean-extension-base.h"
+#include "bean-plugin-info-priv.h"
 
 /**
- * SECTION:peas-extension-base
+ * SECTION:bean-extension-base
  * @short_description: Base class for C extensions.
  * @see_also: #PeasPluginInfo
  *
@@ -55,14 +55,14 @@ enum {
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (PeasExtensionBase,
-                                     peas_extension_base,
+                                     bean_extension_base,
                                      G_TYPE_OBJECT)
 
 #define GET_PRIV(o) \
-  (peas_extension_base_get_instance_private (o))
+  (bean_extension_base_get_instance_private (o))
 
 static void
-peas_extension_base_get_property (GObject    *object,
+bean_extension_base_get_property (GObject    *object,
                                   guint       prop_id,
                                   GValue     *value,
                                   GParamSpec *pspec)
@@ -72,10 +72,10 @@ peas_extension_base_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_PLUGIN_INFO:
-      g_value_set_boxed (value, peas_extension_base_get_plugin_info (extbase));
+      g_value_set_boxed (value, bean_extension_base_get_plugin_info (extbase));
       break;
     case PROP_DATA_DIR:
-      g_value_take_string (value, peas_extension_base_get_data_dir (extbase));
+      g_value_take_string (value, bean_extension_base_get_data_dir (extbase));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -84,7 +84,7 @@ peas_extension_base_get_property (GObject    *object,
 }
 
 static void
-peas_extension_base_set_property (GObject      *object,
+bean_extension_base_set_property (GObject      *object,
                                   guint         prop_id,
                                   const GValue *value,
                                   GParamSpec   *pspec)
@@ -104,17 +104,17 @@ peas_extension_base_set_property (GObject      *object,
 }
 
 static void
-peas_extension_base_init (PeasExtensionBase *extbase)
+bean_extension_base_init (PeasExtensionBase *extbase)
 {
 }
 
 static void
-peas_extension_base_class_init (PeasExtensionBaseClass *klass)
+bean_extension_base_class_init (PeasExtensionBaseClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->get_property = peas_extension_base_get_property;
-  object_class->set_property = peas_extension_base_set_property;
+  object_class->get_property = bean_extension_base_get_property;
+  object_class->set_property = bean_extension_base_set_property;
 
   /**
    * PeasExtensionBase:plugin-info:
@@ -137,7 +137,7 @@ peas_extension_base_class_init (PeasExtensionBaseClass *klass)
    * should look for its data files.
    *
    * Note: This is the same path as that returned by
-   * peas_plugin_info_get_data_dir().
+   * bean_plugin_info_get_data_dir().
    */
   properties[PROP_DATA_DIR] =
     g_param_spec_string ("data-dir",
@@ -152,7 +152,7 @@ peas_extension_base_class_init (PeasExtensionBaseClass *klass)
 }
 
 /**
- * peas_extension_base_get_plugin_info:
+ * bean_extension_base_get_plugin_info:
  * @extbase: A #PeasExtensionBase.
  *
  * Get information relative to @extbase.
@@ -161,7 +161,7 @@ peas_extension_base_class_init (PeasExtensionBaseClass *klass)
  * to the #PeasExtensionBase.
  */
 PeasPluginInfo *
-peas_extension_base_get_plugin_info (PeasExtensionBase *extbase)
+bean_extension_base_get_plugin_info (PeasExtensionBase *extbase)
 {
   PeasExtensionBasePrivate *priv = GET_PRIV (extbase);
 
@@ -171,7 +171,7 @@ peas_extension_base_get_plugin_info (PeasExtensionBase *extbase)
 }
 
 /**
- * peas_extension_base_get_data_dir:
+ * bean_extension_base_get_data_dir:
  * @extbase: A #PeasExtensionBase.
  *
  * Get the path of the directory where the plugin should look for
@@ -181,11 +181,11 @@ peas_extension_base_get_plugin_info (PeasExtensionBase *extbase)
  * directory where the plugin should look for its data files
  */
 gchar *
-peas_extension_base_get_data_dir (PeasExtensionBase *extbase)
+bean_extension_base_get_data_dir (PeasExtensionBase *extbase)
 {
   PeasExtensionBasePrivate *priv = GET_PRIV (extbase);
 
   g_return_val_if_fail (PEAS_IS_EXTENSION_BASE (extbase), NULL);
 
-  return g_strdup (peas_plugin_info_get_data_dir (priv->info));
+  return g_strdup (bean_plugin_info_get_data_dir (priv->info));
 }

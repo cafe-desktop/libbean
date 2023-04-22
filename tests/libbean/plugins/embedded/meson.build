@@ -26,7 +26,7 @@ libembedded_res = gnome.compile_resources(
 
 libembedded_deps = [
   glib_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libembedded_lib = shared_library(

@@ -16,7 +16,7 @@ libhas_dep_plugin_deps = [
   glib_dep,
   gobject_dep,
   gmodule_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libhas_dep_lib = shared_library(

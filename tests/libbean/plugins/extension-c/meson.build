@@ -19,7 +19,7 @@ libextension_c_plugin_data = [
 libextension_c_deps = [
   glib_dep,
   gmodule_dep,
-  libpeas_dep,
+  libbean_dep,
   libintrospection_dep,
 ]
 

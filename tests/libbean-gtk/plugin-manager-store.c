@@ -1,15 +1,15 @@
 /*
  * plugin-manager-store.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -25,10 +25,10 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libpeas/peas.h>
-#include <libpeas-gtk/peas-gtk.h>
+#include <libbean/bean.h>
+#include <libbean-gtk/bean-gtk.h>
 
-#include "libpeas-gtk/peas-gtk-plugin-manager-store.h"
+#include "libbean-gtk/bean-gtk-plugin-manager-store.h"
 
 #include "testing/testing.h"
 
@@ -45,7 +45,7 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->store = peas_gtk_plugin_manager_store_new (fixture->engine);
+  fixture->store = bean_gtk_plugin_manager_store_new (fixture->engine);
   fixture->model = GTK_TREE_MODEL (fixture->store);
 }
 
@@ -75,15 +75,15 @@ test_gtk_plugin_manager_store_sorted (TestFixture *fixture)
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
 
-  info2 = peas_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  info2 = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
   while (gtk_tree_model_iter_next (fixture->model, &iter))
     {
       info1 = info2;
-      info2 = peas_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+      info2 = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
-      g_assert_cmpint (g_utf8_collate (peas_plugin_info_get_name (info1),
-                                       peas_plugin_info_get_name (info2)),
+      g_assert_cmpint (g_utf8_collate (bean_plugin_info_get_name (info1),
+                                       bean_plugin_info_get_name (info2)),
                        <, 0);
     }
 }
@@ -95,13 +95,13 @@ test_gtk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
   PeasPluginInfo *info;
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
-  info = peas_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  info = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
-  g_assert (!peas_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (!bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
 
-  peas_engine_load_plugin (fixture->engine, info);
+  bean_engine_load_plugin (fixture->engine, info);
 
-  g_assert (peas_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
 }
 
 static void
@@ -113,11 +113,11 @@ test_gtk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
   test_gtk_plugin_manager_store_plugin_loaded (fixture);
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
-  info = peas_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  info = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
-  peas_engine_unload_plugin (fixture->engine, info);
+  bean_engine_unload_plugin (fixture->engine, info);
 
-  g_assert (!peas_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (!bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
 }
 
 static void
@@ -134,7 +134,7 @@ verify_model (TestFixture    *fixture,
   GIcon *model_icon_gicon;
   gchar *model_icon_stock_id;
 
-  g_assert (peas_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
@@ -196,9 +196,9 @@ test_gtk_plugin_manager_store_verify_loadable (TestFixture *fixture)
 {
   PeasPluginInfo *info;
 
-  info = peas_engine_get_plugin_info (fixture->engine, "loadable");
+  info = bean_engine_get_plugin_info (fixture->engine, "loadable");
 
-  verify_model (fixture, info, TRUE, "libpeas-plugin", G_TYPE_THEMED_ICON,
+  verify_model (fixture, info, TRUE, "libbean-plugin", G_TYPE_THEMED_ICON,
                 FALSE, TRUE);
 }
 
@@ -209,12 +209,12 @@ test_gtk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
-  info = peas_engine_get_plugin_info (fixture->engine, "unavailable");
+  info = bean_engine_get_plugin_info (fixture->engine, "unavailable");
 
-  verify_model (fixture, info, TRUE, "libpeas-plugin", G_TYPE_THEMED_ICON,
+  verify_model (fixture, info, TRUE, "libbean-plugin", G_TYPE_THEMED_ICON,
                 FALSE, TRUE);
 
-  peas_engine_load_plugin (fixture->engine, info);
+  bean_engine_load_plugin (fixture->engine, info);
 
   verify_model (fixture, info, FALSE, "dialog-error",
                 G_TYPE_THEMED_ICON, TRUE, FALSE);
@@ -225,14 +225,14 @@ test_gtk_plugin_manager_store_verify_builtin (TestFixture *fixture)
 {
   PeasPluginInfo *info;
 
-  info = peas_engine_get_plugin_info (fixture->engine, "builtin");
+  info = bean_engine_get_plugin_info (fixture->engine, "builtin");
 
-  verify_model (fixture, info, FALSE, "libpeas-plugin", G_TYPE_THEMED_ICON,
+  verify_model (fixture, info, FALSE, "libbean-plugin", G_TYPE_THEMED_ICON,
                 FALSE, FALSE);
 
-  peas_engine_load_plugin (fixture->engine, info);
+  bean_engine_load_plugin (fixture->engine, info);
 
-  verify_model (fixture, info, FALSE, "libpeas-plugin", G_TYPE_THEMED_ICON,
+  verify_model (fixture, info, FALSE, "libbean-plugin", G_TYPE_THEMED_ICON,
                 FALSE, TRUE);
 }
 
@@ -244,8 +244,8 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
   gchar *model_info;
 
   /* Has description */
-  info = peas_engine_get_plugin_info (fixture->engine, "configurable");
-  g_assert (peas_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  info = bean_engine_get_plugin_info (fixture->engine, "configurable");
+  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
@@ -256,8 +256,8 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
   g_free (model_info);
 
   /* Does not have description */
-  info = peas_engine_get_plugin_info (fixture->engine, "min-info");
-  g_assert (peas_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  info = bean_engine_get_plugin_info (fixture->engine, "min-info");
+  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
   gtk_tree_model_get (fixture->model, &iter,
@@ -275,7 +275,7 @@ verify_icon (TestFixture *fixture,
 {
   PeasPluginInfo *info;
 
-  info = peas_engine_get_plugin_info (fixture->engine, plugin_name);
+  info = bean_engine_get_plugin_info (fixture->engine, plugin_name);
 
   verify_model (fixture, info, TRUE, icon_name, icon_type, FALSE, TRUE);
 }
@@ -304,14 +304,14 @@ test_gtk_plugin_manager_store_valid_stock_icon (TestFixture *fixture)
 static void
 test_gtk_plugin_manager_store_invalid_custom_icon (TestFixture *fixture)
 {
-  verify_icon (fixture, "invalid-custom-icon", "libpeas-plugin",
+  verify_icon (fixture, "invalid-custom-icon", "libbean-plugin",
                G_TYPE_THEMED_ICON);
 }
 
 static void
 test_gtk_plugin_manager_store_invalid_stock_icon (TestFixture *fixture)
 {
-  verify_icon (fixture, "invalid-stock-icon", "libpeas-plugin",
+  verify_icon (fixture, "invalid-stock-icon", "libbean-plugin",
                G_TYPE_THEMED_ICON);
 }
 
@@ -321,11 +321,11 @@ test_gtk_plugin_manager_store_hidden (TestFixture *fixture)
   PeasPluginInfo *info;
   GtkTreeIter iter;
 
-  info = peas_engine_get_plugin_info (fixture->engine, "hidden");
+  info = bean_engine_get_plugin_info (fixture->engine, "hidden");
 
-  g_assert (peas_plugin_info_is_hidden (info));
+  g_assert (bean_plugin_info_is_hidden (info));
 
-  g_assert (!peas_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (!bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                  &iter, info));
 }
 

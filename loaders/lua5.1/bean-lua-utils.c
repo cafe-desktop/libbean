@@ -1,15 +1,15 @@
 /*
- * peas-lua-utils.c
- * This file is part of libpeas
+ * bean-lua-utils.c
+ * This file is part of libbean
  *
  * Copyright (C) 2014-2015 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include "peas-lua-utils.h"
+#include "bean-lua-utils.h"
 
 #include <gio/gio.h>
 
@@ -31,7 +31,7 @@
 
 
 gboolean
-peas_lua_utils_require (lua_State   *L,
+bean_lua_utils_require (lua_State   *L,
                         const gchar *name)
 {
   luaL_checkstack (L, 2, "");
@@ -64,7 +64,7 @@ peas_lua_utils_require (lua_State   *L,
 }
 
 gboolean
-peas_lua_utils_check_version (lua_State *L,
+bean_lua_utils_check_version (lua_State *L,
                               guint      req_major,
                               guint      req_minor,
                               guint      req_micro)
@@ -156,7 +156,7 @@ traceback (lua_State *L)
 }
 
 gboolean
-peas_lua_utils_call (lua_State *L,
+bean_lua_utils_call (lua_State *L,
                      guint      n_args,
                      guint      n_results)
 {
@@ -176,7 +176,7 @@ peas_lua_utils_call (lua_State *L,
 }
 
 gboolean
-peas_lua_utils_load_resource (lua_State   *L,
+bean_lua_utils_load_resource (lua_State   *L,
                               const gchar *name,
                               guint        n_args,
                               guint        n_results)
@@ -196,7 +196,7 @@ peas_lua_utils_load_resource (lua_State   *L,
    *
    * https://bugzilla.gnome.org/show_bug.cgi?id=673101
    */
-  resource_path = g_strconcat ("/org/gnome/libpeas/loaders/lua5.1/",
+  resource_path = g_strconcat ("/org/gnome/libbean/loaders/lua5.1/",
                                name, NULL);
   lua_resource = g_resources_lookup_data (resource_path,
                                           G_RESOURCE_LOOKUP_FLAGS_NONE,
@@ -212,7 +212,7 @@ peas_lua_utils_load_resource (lua_State   *L,
   code = g_bytes_get_data (lua_resource, &code_len);
 
   /* Filenames are prefixed with '@' */
-  lua_filename = g_strconcat ("@peas-lua-", name, NULL);
+  lua_filename = g_strconcat ("@bean-lua-", name, NULL);
 
   if (luaL_loadbuffer (L, code, code_len, lua_filename) != 0)
     {
@@ -229,7 +229,7 @@ peas_lua_utils_load_resource (lua_State   *L,
   g_free (lua_filename);
   g_bytes_unref (lua_resource);
 
-  if (!peas_lua_utils_call (L, n_args, n_results))
+  if (!bean_lua_utils_call (L, n_args, n_results))
     {
       g_warning ("Failed to run '%s' resource: %s",
                  name, lua_tostring (L, -1));

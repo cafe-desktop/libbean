@@ -1,15 +1,15 @@
 /*
- * peas-autocleanups.h
- * This file is part of libpeas
+ * bean-autocleanups.h
+ * This file is part of libbean
  *
  * Copyright (C) 2015 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -22,12 +22,12 @@
 #ifndef __PEAS_AUTOCLEANUPS_H__
 #define __PEAS_AUTOCLEANUPS_H__
 
-#include "peas-activatable.h"
-#include "peas-engine.h"
-#include "peas-extension.h"
-#include "peas-extension-base.h"
-#include "peas-extension-set.h"
-#include "peas-object-module.h"
+#include "bean-activatable.h"
+#include "bean-engine.h"
+#include "bean-extension.h"
+#include "bean-extension-base.h"
+#include "bean-extension-set.h"
+#include "bean-object-module.h"
 
 G_BEGIN_DECLS
 

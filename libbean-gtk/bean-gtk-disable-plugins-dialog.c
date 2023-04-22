@@ -1,15 +1,15 @@
 /*
- * peas-gtk-disable-plugins-dialog.c
- * This file is part of libpeas
+ * bean-gtk-disable-plugins-dialog.c
+ * This file is part of libbean
  *
  * Copyright (C) 2011 Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,10 +23,10 @@
 #include <config.h>
 #endif
 
-#include <libpeas/peas-i18n-priv.h>
-#include <libpeas/peas-plugin-info.h>
+#include <libbean/bean-i18n-priv.h>
+#include <libbean/bean-plugin-info.h>
 
-#include "peas-gtk-disable-plugins-dialog.h"
+#include "bean-gtk-disable-plugins-dialog.h"
 
 enum {
   PLUGIN_INFO_NAME_COLUMN = 0
@@ -48,11 +48,11 @@ enum {
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (PeasGtkDisablePluginsDialog,
-                            peas_gtk_disable_plugins_dialog,
+                            bean_gtk_disable_plugins_dialog,
                             GTK_TYPE_MESSAGE_DIALOG)
 
 #define GET_PRIV(o) \
-  (peas_gtk_disable_plugins_dialog_get_instance_private (o))
+  (bean_gtk_disable_plugins_dialog_get_instance_private (o))
 
 static gint
 model_name_sort_func (GtkListStore *store,
@@ -100,7 +100,7 @@ build_multiple_dependent_plugins (PeasGtkDisablePluginsDialog *dialog)
 
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
       _("The following plugins depend on “%s” and will also be disabled:"),
-      peas_plugin_info_get_name (priv->plugin_info));
+      bean_plugin_info_get_name (priv->plugin_info));
 
   message_area = gtk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG (dialog));
 
@@ -129,7 +129,7 @@ build_multiple_dependent_plugins (PeasGtkDisablePluginsDialog *dialog)
 
       gtk_list_store_append (store, &iter);
       gtk_list_store_set (store, &iter,
-                          PLUGIN_INFO_NAME_COLUMN, peas_plugin_info_get_name (plugin),
+                          PLUGIN_INFO_NAME_COLUMN, bean_plugin_info_get_name (plugin),
                           -1);
     }
 
@@ -167,14 +167,14 @@ build_single_dependent_plugin (PeasGtkDisablePluginsDialog *dialog)
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
       _("The “%s” plugin depends on the “%s” plugin.\n"
         "If you disable “%s”, “%s” will also be disabled."),
-      peas_plugin_info_get_name (priv->plugin_info),
-      peas_plugin_info_get_name (priv->dep_plugins->data),
-      peas_plugin_info_get_name (priv->plugin_info),
-      peas_plugin_info_get_name (priv->dep_plugins->data));
+      bean_plugin_info_get_name (priv->plugin_info),
+      bean_plugin_info_get_name (priv->dep_plugins->data),
+      bean_plugin_info_get_name (priv->plugin_info),
+      bean_plugin_info_get_name (priv->dep_plugins->data));
 }
 
 static void
-peas_gtk_disable_plugins_dialog_init (PeasGtkDisablePluginsDialog *dialog)
+bean_gtk_disable_plugins_dialog_init (PeasGtkDisablePluginsDialog *dialog)
 {
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
@@ -185,7 +185,7 @@ peas_gtk_disable_plugins_dialog_init (PeasGtkDisablePluginsDialog *dialog)
 }
 
 static void
-peas_gtk_disable_plugins_dialog_set_property (GObject      *object,
+bean_gtk_disable_plugins_dialog_set_property (GObject      *object,
                                               guint         prop_id,
                                               const GValue *value,
                                               GParamSpec   *pspec)
@@ -208,7 +208,7 @@ peas_gtk_disable_plugins_dialog_set_property (GObject      *object,
 }
 
 static void
-peas_gtk_disable_plugins_dialog_get_property (GObject    *object,
+bean_gtk_disable_plugins_dialog_get_property (GObject    *object,
                                               guint       prop_id,
                                               GValue     *value,
                                               GParamSpec *pspec)
@@ -231,7 +231,7 @@ peas_gtk_disable_plugins_dialog_get_property (GObject    *object,
 }
 
 static void
-peas_gtk_disable_plugins_dialog_constructed (GObject *object)
+bean_gtk_disable_plugins_dialog_constructed (GObject *object)
 {
   PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
   PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
@@ -241,29 +241,29 @@ peas_gtk_disable_plugins_dialog_constructed (GObject *object)
   else
     build_multiple_dependent_plugins (dialog);
 
-  G_OBJECT_CLASS (peas_gtk_disable_plugins_dialog_parent_class)->constructed (object);
+  G_OBJECT_CLASS (bean_gtk_disable_plugins_dialog_parent_class)->constructed (object);
 }
 
 static void
-peas_gtk_disable_plugins_dialog_finalize (GObject *object)
+bean_gtk_disable_plugins_dialog_finalize (GObject *object)
 {
   PeasGtkDisablePluginsDialog *dialog = PEAS_GTK_DISABLE_PLUGINS_DIALOG (object);
   PeasGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   g_list_free (priv->dep_plugins);
 
-  G_OBJECT_CLASS (peas_gtk_disable_plugins_dialog_parent_class)->finalize (object);
+  G_OBJECT_CLASS (bean_gtk_disable_plugins_dialog_parent_class)->finalize (object);
 }
 
 static void
-peas_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *klass)
+bean_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->get_property = peas_gtk_disable_plugins_dialog_get_property;
-  object_class->set_property = peas_gtk_disable_plugins_dialog_set_property;
-  object_class->constructed = peas_gtk_disable_plugins_dialog_constructed;
-  object_class->finalize = peas_gtk_disable_plugins_dialog_finalize;
+  object_class->get_property = bean_gtk_disable_plugins_dialog_get_property;
+  object_class->set_property = bean_gtk_disable_plugins_dialog_set_property;
+  object_class->constructed = bean_gtk_disable_plugins_dialog_constructed;
+  object_class->finalize = bean_gtk_disable_plugins_dialog_finalize;
 
   properties[PROP_PLUGIN_INFO] =
   g_param_spec_pointer ("plugin-info",
@@ -285,7 +285,7 @@ peas_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *kl
 }
 
 /*
- * peas_gtk_disable_plugins_dialog_new:
+ * bean_gtk_disable_plugins_dialog_new:
  * @parent: transient window.
  * @info: the #PeasPluginInfo being disabled.
  * @dep_plugins: (transfer container) (element-type Peas.PluginInfo):
@@ -296,7 +296,7 @@ peas_gtk_disable_plugins_dialog_class_init (PeasGtkDisablePluginsDialogClass *kl
  * Returns: the new #PeasGtkDisablePluginsDialog.
  */
 GtkWidget  *
-peas_gtk_disable_plugins_dialog_new (GtkWindow      *parent,
+bean_gtk_disable_plugins_dialog_new (GtkWindow      *parent,
                                      PeasPluginInfo *info,
                                      GList          *dep_plugins)
 {
