@@ -43,7 +43,7 @@ build bean:
 build bean-ctk:
   extends: '.build'
   script:
-    - 'meson -Dwidgetry=true -Dglade_catalog=true -Dintrospection=true -Dvapi=true -Dctk_doc=true _build .'
+    - 'meson -Dwidgetry=true -Dglade_catalog=true -Dintrospection=true -Dvapi=true -Dgtk_doc=true _build .'
     - 'xvfb-run -a -s "-screen 0 1024x768x24"  ninja -C _build test'
     - 'ninja -C _build libbean-doc'
   artifacts:
