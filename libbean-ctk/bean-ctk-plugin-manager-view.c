@@ -385,7 +385,7 @@ popup_menu_detach (BeanCtkPluginManagerView *view,
 
 static void
 get_selected_area (CtkTreeView  *tree_view,
-                   GdkRectangle *area)
+                   CdkRectangle *area)
 {
   CtkTreeSelection *selection;
   CtkTreeIter iter;
@@ -421,7 +421,7 @@ menu_position_under_tree_view (CtkMenu     *menu,
 {
   CtkTreeSelection *selection;
   CtkTreeIter iter;
-  GdkWindow *window;
+  CdkWindow *window;
 
   selection = ctk_tree_view_get_selection (tree_view);
 
@@ -432,7 +432,7 @@ menu_position_under_tree_view (CtkMenu     *menu,
     {
       CtkTreeModel *model;
       CtkTreePath *path;
-      GdkRectangle rect;
+      CdkRectangle rect;
 
       model = ctk_tree_view_get_model (tree_view);
       path = ctk_tree_model_get_path (model, &iter);
@@ -480,7 +480,7 @@ menu_position_under_tree_view (CtkMenu     *menu,
 static gboolean
 show_popup_menu (CtkTreeView              *tree_view,
                  BeanCtkPluginManagerView *view,
-                 GdkEventButton           *event)
+                 CdkEventButton           *event)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
@@ -500,7 +500,7 @@ show_popup_menu (CtkTreeView              *tree_view,
     {
 #if CTK_CHECK_VERSION(3, 22, 0)
       ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu),
-                                (const GdkEvent *)event);
+                                (const CdkEvent *)event);
 #else
       ctk_menu_popup (CTK_MENU (priv->popup_menu), NULL, NULL,
                       NULL, NULL, event->button, event->time);
@@ -509,7 +509,7 @@ show_popup_menu (CtkTreeView              *tree_view,
   else
     {
 #if CTK_CHECK_VERSION(3, 22, 0)
-      GdkRectangle cell_area;
+      CdkRectangle cell_area;
 
       get_selected_area (CTK_TREE_VIEW (view), &cell_area);
 
@@ -518,7 +518,7 @@ show_popup_menu (CtkTreeView              *tree_view,
                               &cell_area,
                               GDK_GRAVITY_SOUTH_WEST,
                               GDK_GRAVITY_NORTH_WEST,
-                              (const GdkEvent *)event);
+                              (const CdkEvent *)event);
 
 #else
       ctk_menu_popup (CTK_MENU (priv->popup_menu), NULL, NULL,
@@ -625,7 +625,7 @@ bean_ctk_plugin_manager_view_init (BeanCtkPluginManagerView *view)
 
 static gboolean
 bean_ctk_plugin_manager_view_button_press_event (CtkWidget      *tree_view,
-                                                 GdkEventButton *event)
+                                                 CdkEventButton *event)
 {
   BeanCtkPluginManagerView *view = BEAN_CTK_PLUGIN_MANAGER_VIEW (tree_view);
   CtkWidgetClass *widget_class;

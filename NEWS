@@ -388,7 +388,7 @@ Overview of Changes in libbean 1.6.0
 
 * Remove the vala demo plugin
 
-* Add min required and max allowed version for glib and Gdk
+* Add min required and max allowed version for glib and Cdk
 
 * Translation updates:
   - Assamese

@@ -128,7 +128,7 @@ testing_get_iter_for_plugin_info (BeanCtkPluginManagerView *view,
 
 static gboolean
 delete_event_cb (CtkWidget *window,
-                 GdkEvent  *event,
+                 CdkEvent  *event,
                  CtkWidget *widget)
 {
   ctk_main_quit ();
