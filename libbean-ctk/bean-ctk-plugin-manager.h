@@ -31,39 +31,39 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define BEAN_GTK_TYPE_PLUGIN_MANAGER            (bean_ctk_plugin_manager_get_type())
-#define BEAN_GTK_PLUGIN_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManager))
-#define BEAN_GTK_PLUGIN_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManagerClass))
+#define BEAN_GTK_PLUGIN_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanCtkPluginManager))
+#define BEAN_GTK_PLUGIN_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanCtkPluginManagerClass))
 #define BEAN_GTK_IS_PLUGIN_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER))
-#define BEAN_GTK_PLUGIN_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanGtkPluginManagerClass))
+#define BEAN_GTK_PLUGIN_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER, BeanCtkPluginManagerClass))
 
-typedef struct _BeanGtkPluginManager        BeanGtkPluginManager;
-typedef struct _BeanGtkPluginManagerClass   BeanGtkPluginManagerClass;
-typedef struct _BeanGtkPluginManagerPrivate BeanGtkPluginManagerPrivate;
+typedef struct _BeanCtkPluginManager        BeanCtkPluginManager;
+typedef struct _BeanCtkPluginManagerClass   BeanCtkPluginManagerClass;
+typedef struct _BeanCtkPluginManagerPrivate BeanCtkPluginManagerPrivate;
 
 /**
- * BeanGtkPluginManager:
+ * BeanCtkPluginManager:
  *
- * The #BeanGtkPluginManager structure contains only private data
+ * The #BeanCtkPluginManager structure contains only private data
  * and should only be accessed using the provided API.
  */
-struct _BeanGtkPluginManager
+struct _BeanCtkPluginManager
 {
-  GtkBox box;
+  CtkBox box;
 
   /*< private > */
-  BeanGtkPluginManagerPrivate *priv;
+  BeanCtkPluginManagerPrivate *priv;
 };
 
 /**
- * BeanGtkPluginManagerClass:
+ * BeanCtkPluginManagerClass:
  * @parent_class: The parent class.
  *
- * The class structure for #BeanGtkPluginManager.
+ * The class structure for #BeanCtkPluginManager.
  */
-struct _BeanGtkPluginManagerClass
+struct _BeanCtkPluginManagerClass
 {
-  GtkBoxClass parent_class;
+  CtkBoxClass parent_class;
 
   /*< private >*/
   gpointer padding[8];
@@ -72,10 +72,10 @@ struct _BeanGtkPluginManagerClass
 BEAN_AVAILABLE_IN_ALL
 GType       bean_ctk_plugin_manager_get_type  (void)  G_GNUC_CONST;
 BEAN_AVAILABLE_IN_ALL
-GtkWidget  *bean_ctk_plugin_manager_new       (BeanEngine           *engine);
+CtkWidget  *bean_ctk_plugin_manager_new       (BeanEngine           *engine);
 
 BEAN_AVAILABLE_IN_ALL
-GtkWidget  *bean_ctk_plugin_manager_get_view  (BeanGtkPluginManager *pm);
+CtkWidget  *bean_ctk_plugin_manager_get_view  (BeanCtkPluginManager *pm);
 
 G_END_DECLS
 

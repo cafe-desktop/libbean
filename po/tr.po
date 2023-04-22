@@ -170,8 +170,8 @@ msgstr "Tercihler"
 #~ msgid "Show Builtin"
 #~ msgstr "Yerleşik Eklentileri Göster"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Yapılandır"

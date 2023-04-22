@@ -25,7 +25,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "Gestionari d'empeutons"
 
-#. Translators: What BeanGtkPluginManagerView to use
+#. Translators: What BeanCtkPluginManagerView to use
 #: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Afichatge"
@@ -40,8 +40,8 @@ msgid "Show Builtin"
 msgstr "Afichar los empeutons intèrnes"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #: ../libbean/bean-engine.c:1115
 #, c-format

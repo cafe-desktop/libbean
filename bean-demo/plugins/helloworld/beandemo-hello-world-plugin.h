@@ -40,8 +40,8 @@ typedef struct _BeanDemoHelloWorldPluginClass  BeanDemoHelloWorldPluginClass;
 struct _BeanDemoHelloWorldPlugin {
   BeanExtensionBase parent_instance;
 
-  GtkWidget *window;
-  GtkWidget *label;
+  CtkWidget *window;
+  CtkWidget *label;
 };
 
 struct _BeanDemoHelloWorldPluginClass {

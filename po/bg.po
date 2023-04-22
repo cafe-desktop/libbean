@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #: ../data/glade/libbean-ctk.xml.in.h:2
 msgid "Plugin Manager"

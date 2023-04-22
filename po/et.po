@@ -31,8 +31,8 @@ msgstr "Pluginahalduri vaade"
 msgid "Show Builtin"
 msgstr "Sisseehitatuid kuvatakse"
 
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #, c-format
 msgid "Dependency '%s' was not found"

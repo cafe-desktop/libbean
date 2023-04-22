@@ -33,11 +33,11 @@ void            testing_init                     (gint                       *ar
 
 BeanEngine     *testing_engine_new               (void);
 
-BeanPluginInfo *testing_get_plugin_info_for_iter (BeanGtkPluginManagerView   *view,
-                                                  GtkTreeIter                *iter);
-gboolean        testing_get_iter_for_plugin_info (BeanGtkPluginManagerView   *view,
+BeanPluginInfo *testing_get_plugin_info_for_iter (BeanCtkPluginManagerView   *view,
+                                                  CtkTreeIter                *iter);
+gboolean        testing_get_iter_for_plugin_info (BeanCtkPluginManagerView   *view,
                                                   BeanPluginInfo             *info,
-                                                  GtkTreeIter                *iter);
+                                                  CtkTreeIter                *iter);
 
 void            testing_show_widget              (gpointer                    widget);
 

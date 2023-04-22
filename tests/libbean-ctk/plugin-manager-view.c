@@ -34,15 +34,15 @@ typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
   BeanEngine *engine;
-  GtkTreeView *tree_view;
-  BeanGtkPluginManagerView *view;
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
-  GtkListStore *store;
+  CtkTreeView *tree_view;
+  BeanCtkPluginManagerView *view;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
+  CtkListStore *store;
 };
 
 static void
-notify_model_cb (GtkTreeView *view,
+notify_model_cb (CtkTreeView *view,
                  GParamSpec  *pspec,
                  TestFixture *fixture)
 {
@@ -50,7 +50,7 @@ notify_model_cb (GtkTreeView *view,
 
   if (GTK_IS_TREE_MODEL_FILTER (fixture->model))
     {
-      GtkTreeModelFilter *filter = GTK_TREE_MODEL_FILTER (fixture->model);
+      CtkTreeModelFilter *filter = GTK_TREE_MODEL_FILTER (fixture->model);
       fixture->store = GTK_LIST_STORE (ctk_tree_model_filter_get_model (filter));
     }
   else
@@ -98,11 +98,11 @@ test_runner (TestFixture   *fixture,
 
 /* Based on code from bean-ctk-manager-view.h */
 static void
-convert_iter_to_child_iter (BeanGtkPluginManagerView *view,
-                            GtkTreeIter              *iter)
+convert_iter_to_child_iter (BeanCtkPluginManagerView *view,
+                            CtkTreeIter              *iter)
 {
-  GtkTreeModel *model;
-  GtkTreeIter child_iter;
+  CtkTreeModel *model;
+  CtkTreeIter child_iter;
 
   if (bean_ctk_plugin_manager_view_get_show_builtin (view))
     return;
@@ -118,7 +118,7 @@ convert_iter_to_child_iter (BeanGtkPluginManagerView *view,
 static gboolean
 model_has_builtin (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gboolean found = FALSE;
 
   if (ctk_tree_model_get_iter_first (fixture->model, &iter))
@@ -137,7 +137,7 @@ model_has_builtin (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_view_selection (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   info = bean_ctk_plugin_manager_view_get_selected_plugin (fixture->view);
@@ -170,7 +170,7 @@ test_ctk_plugin_manager_view_hide_builtin (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_view_reload (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *removed_info, *selected_info;
 
   g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
@@ -196,9 +196,9 @@ test_ctk_plugin_manager_view_reload (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_view_enable_plugin (TestFixture *fixture)
 {
-  GtkTreeIter iter;
-  GtkTreePath *path;
-  GtkTreeViewColumn *column;
+  CtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeViewColumn *column;
   BeanPluginInfo *info;
 
   g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
@@ -216,9 +216,9 @@ test_ctk_plugin_manager_view_enable_plugin (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_view_enable_builtin_plugin (TestFixture *fixture)
 {
-  GtkTreeIter iter;
-  GtkTreePath *path;
-  GtkTreeViewColumn *column;
+  CtkTreeIter iter;
+  CtkTreePath *path;
+  CtkTreeViewColumn *column;
   BeanPluginInfo *info;
 
   bean_ctk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);

@@ -164,5 +164,5 @@ msgstr "Osobitosti"
 #~ msgid "Show Builtin"
 #~ msgstr "Pokaži ugrađene"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"

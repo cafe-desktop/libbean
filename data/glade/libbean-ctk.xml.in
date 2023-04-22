@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glade-catalog version="1.0" supports="ctkbuilder" name="libbean-ctk" library="bean-ctk-1.0" domain="@GETTEXT_PACKAGE@" depends="ctk+" book="libbean">
   <glade-widget-classes>
-    <glade-widget-class name="BeanGtkPluginManager" title="Plugin Manager" generic-name="pluginmanager">
+    <glade-widget-class name="BeanCtkPluginManager" title="Plugin Manager" generic-name="pluginmanager">
       <properties>
-        <!-- Translators: What BeanGtkPluginManagerView to use -->
-        <property id="view" name="View" create-type="BeanGtkPluginManagerView" query="False" />
+        <!-- Translators: What BeanCtkPluginManagerView to use -->
+        <property id="view" name="View" create-type="BeanCtkPluginManagerView" query="False" />
 
-        <!-- Disable GtkBox properties that should never be modified -->
+        <!-- Disable CtkBox properties that should never be modified -->
         <property id="homogeneous" disabled="True" />
         <property id="padding" disabled="True" />
         <property id="size" disabled="True" query="False" />
@@ -14,12 +14,12 @@
       </properties>
     </glade-widget-class>
 
-    <glade-widget-class name="BeanGtkPluginManagerView" title="Plugin Manager View" generic-name="pluginmanagerview">
+    <glade-widget-class name="BeanCtkPluginManagerView" title="Plugin Manager View" generic-name="pluginmanagerview">
       <properties>
         <!-- Translators: Whether builtin plugins should appear in the view (property name) -->
         <property id="show-builtin" name="Show Builtin" default="False" />
 
-        <!-- Disable GtkTreeView properties that should never be modified -->
+        <!-- Disable CtkTreeView properties that should never be modified -->
         <property id="model" disabled="True" query="False" />
       </properties>
 
@@ -29,8 +29,8 @@
     </glade-widget-class>
   </glade-widget-classes>
 
-  <glade-widget-group name="BeanGtk" title="Bean Gtk">
-    <glade-widget-class-ref name="BeanGtkPluginManager" />
-    <glade-widget-class-ref name="BeanGtkPluginManagerView" />
+  <glade-widget-group name="BeanCtk" title="Bean Ctk">
+    <glade-widget-class-ref name="BeanCtkPluginManager" />
+    <glade-widget-class-ref name="BeanCtkPluginManagerView" />
   </glade-widget-group>
 </glade-catalog>

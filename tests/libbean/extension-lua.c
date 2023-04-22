@@ -110,7 +110,7 @@ test_extension_lua_activatable_subject_refcount (BeanEngine     *engine,
 
   set_garbage_collector_state (engine, info, FALSE);
 
-  /* Create the 'object' property value, to be similar to a GtkWindow
+  /* Create the 'object' property value, to be similar to a CtkWindow
    * instance: a sunk GInitiallyUnowned object.
    */
   object = g_object_new (G_TYPE_INITIALLY_UNOWNED, NULL);

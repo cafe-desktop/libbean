@@ -36,8 +36,8 @@ msgid "Show Builtin"
 msgstr "Намоиши дарунсохт"
 
 #: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Bean Gtk"
-msgstr "Нахӯди Gtk"
+msgid "Bean Ctk"
+msgstr "Нахӯди Ctk"
 
 #: ../libbean/bean-engine.c:818
 #, c-format

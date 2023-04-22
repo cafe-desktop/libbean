@@ -48,7 +48,7 @@ G_STATIC_ASSERT (G_N_ELEMENTS (ColumnTypes) == BEAN_GTK_PLUGIN_MANAGER_STORE_N_C
 
 typedef struct {
   BeanEngine *engine;
-} BeanGtkPluginManagerStorePrivate;
+} BeanCtkPluginManagerStorePrivate;
 
 /* Properties */
 enum {
@@ -59,7 +59,7 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkPluginManagerStore,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManagerStore,
                             bean_ctk_plugin_manager_store,
                             GTK_TYPE_LIST_STORE)
 
@@ -67,8 +67,8 @@ G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkPluginManagerStore,
   (bean_ctk_plugin_manager_store_get_instance_private (o))
 
 static void
-update_plugin (BeanGtkPluginManagerStore *store,
-               GtkTreeIter               *iter,
+update_plugin (BeanCtkPluginManagerStore *store,
+               CtkTreeIter               *iter,
                BeanPluginInfo            *info)
 {
   gboolean loaded;
@@ -123,7 +123,7 @@ update_plugin (BeanGtkPluginManagerStore *store,
       else
         {
           gint i;
-          GtkIconTheme *icon_theme;
+          CtkIconTheme *icon_theme;
           const gchar * const *names;
           gboolean found_icon = FALSE;
 
@@ -137,7 +137,7 @@ update_plugin (BeanGtkPluginManagerStore *store,
 
           if (!found_icon)
             {
-              GtkStockItem stock_item;
+              CtkStockItem stock_item;
 
               g_clear_object (&icon_gicon);
 
@@ -175,18 +175,18 @@ update_plugin (BeanGtkPluginManagerStore *store,
 static void
 plugin_loaded_toggled_cb (BeanEngine                *engine,
                           BeanPluginInfo            *info,
-                          BeanGtkPluginManagerStore *store)
+                          BeanCtkPluginManagerStore *store)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   if (bean_ctk_plugin_manager_store_get_iter_from_plugin (store, &iter, info))
     update_plugin (store, &iter, info);
 }
 
 static gint
-model_name_sort_func (BeanGtkPluginManagerStore *store,
-                      GtkTreeIter               *iter1,
-                      GtkTreeIter               *iter2,
+model_name_sort_func (BeanCtkPluginManagerStore *store,
+                      CtkTreeIter               *iter1,
+                      CtkTreeIter               *iter2,
                       gpointer                   user_data)
 {
   BeanPluginInfo *info1;
@@ -200,7 +200,7 @@ model_name_sort_func (BeanGtkPluginManagerStore *store,
 }
 
 static void
-bean_ctk_plugin_manager_store_init (BeanGtkPluginManagerStore *store)
+bean_ctk_plugin_manager_store_init (BeanCtkPluginManagerStore *store)
 {
   ctk_list_store_set_column_types (GTK_LIST_STORE (store),
                                    BEAN_GTK_PLUGIN_MANAGER_STORE_N_COLUMNS,
@@ -208,7 +208,7 @@ bean_ctk_plugin_manager_store_init (BeanGtkPluginManagerStore *store)
 
   /* Sort on the plugin names */
   ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
-                                           (GtkTreeIterCompareFunc) model_name_sort_func,
+                                           (CtkTreeIterCompareFunc) model_name_sort_func,
                                            NULL, NULL);
   ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
                                         GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
@@ -221,8 +221,8 @@ bean_ctk_plugin_manager_store_set_property (GObject      *object,
                                             const GValue *value,
                                             GParamSpec   *pspec)
 {
-  BeanGtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   switch (prop_id)
     {
@@ -241,8 +241,8 @@ bean_ctk_plugin_manager_store_get_property (GObject    *object,
                                             GValue     *value,
                                             GParamSpec *pspec)
 {
-  BeanGtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   switch (prop_id)
     {
@@ -258,8 +258,8 @@ bean_ctk_plugin_manager_store_get_property (GObject    *object,
 static void
 bean_ctk_plugin_manager_store_constructed (GObject *object)
 {
-  BeanGtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   if (priv->engine == NULL)
     priv->engine = bean_engine_get_default ();
@@ -285,8 +285,8 @@ bean_ctk_plugin_manager_store_constructed (GObject *object)
 static void
 bean_ctk_plugin_manager_store_dispose (GObject *object)
 {
-  BeanGtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   g_clear_object (&priv->engine);
 
@@ -294,7 +294,7 @@ bean_ctk_plugin_manager_store_dispose (GObject *object)
 }
 
 static void
-bean_ctk_plugin_manager_store_class_init (BeanGtkPluginManagerStoreClass *klass)
+bean_ctk_plugin_manager_store_class_init (BeanCtkPluginManagerStoreClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -304,7 +304,7 @@ bean_ctk_plugin_manager_store_class_init (BeanGtkPluginManagerStoreClass *klass)
   object_class->dispose = bean_ctk_plugin_manager_store_dispose;
 
   /*
-   * BeanGtkPLuginManagerStore:engine:
+   * BeanCtkPLuginManagerStore:engine:
    *
    * The #BeanEngine this store is attached to.
    */
@@ -328,9 +328,9 @@ bean_ctk_plugin_manager_store_class_init (BeanGtkPluginManagerStoreClass *klass)
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Returns: the new #BeanGtkPluginManagerStore.
+ * Returns: the new #BeanCtkPluginManagerStore.
  */
-BeanGtkPluginManagerStore  *
+BeanCtkPluginManagerStore  *
 bean_ctk_plugin_manager_store_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
@@ -342,17 +342,17 @@ bean_ctk_plugin_manager_store_new (BeanEngine *engine)
 
 /*
  * bean_ctk_plugin_manager_store_reload:
- * @store: A #BeanGtkPluginManagerStore.
+ * @store: A #BeanCtkPluginManagerStore.
  *
  * Reloads the list of plugins.
  */
 void
-bean_ctk_plugin_manager_store_reload (BeanGtkPluginManagerStore *store)
+bean_ctk_plugin_manager_store_reload (BeanCtkPluginManagerStore *store)
 {
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
-  GtkListStore *list_store;
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  CtkListStore *list_store;
   const GList *plugins;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
 
@@ -380,18 +380,18 @@ bean_ctk_plugin_manager_store_reload (BeanGtkPluginManagerStore *store)
 
 /*
  * bean_ctk_plugin_manager_store_set_enabled:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  * @enabled: If the plugin should be enabled.
  *
  * Sets if the plugin at @iter should be enabled.
  */
 void
-bean_ctk_plugin_manager_store_set_enabled (BeanGtkPluginManagerStore *store,
-                                           GtkTreeIter               *iter,
+bean_ctk_plugin_manager_store_set_enabled (BeanCtkPluginManagerStore *store,
+                                           CtkTreeIter               *iter,
                                            gboolean                   enabled)
 {
-  BeanGtkPluginManagerStorePrivate *priv = GET_PRIV (store);
+  BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
   BeanPluginInfo *info;
 
   g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
@@ -417,16 +417,16 @@ bean_ctk_plugin_manager_store_set_enabled (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_set_enabled:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  *
  * Returns if the plugin at @iter is enabled.
  *
  * Returns: if the plugin at @iter is enabled.
  */
 gboolean
-bean_ctk_plugin_manager_store_get_enabled (BeanGtkPluginManagerStore *store,
-                                           GtkTreeIter               *iter)
+bean_ctk_plugin_manager_store_get_enabled (BeanCtkPluginManagerStore *store,
+                                           CtkTreeIter               *iter)
 {
   GValue value = G_VALUE_INIT;
   gboolean enabled;
@@ -447,17 +447,17 @@ bean_ctk_plugin_manager_store_get_enabled (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_set_all_enabled:
- * @store: A #BeanGtkPluginManagerStore.
+ * @store: A #BeanCtkPluginManagerStore.
  * @enabled: If all the plugins should be enabled.
  *
  * Sets if all the plugins should be enabled.
  */
 void
-bean_ctk_plugin_manager_store_set_all_enabled (BeanGtkPluginManagerStore *store,
+bean_ctk_plugin_manager_store_set_all_enabled (BeanCtkPluginManagerStore *store,
                                                gboolean                   enabled)
 {
-  GtkTreeModel *model;
-  GtkTreeIter iter;
+  CtkTreeModel *model;
+  CtkTreeIter iter;
 
   g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
 
@@ -476,14 +476,14 @@ bean_ctk_plugin_manager_store_set_all_enabled (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_toggle_enabled:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  *
  * Toggles the if the plugin should should be enabled.
  */
 void
-bean_ctk_plugin_manager_store_toggle_enabled (BeanGtkPluginManagerStore *store,
-                                              GtkTreeIter               *iter)
+bean_ctk_plugin_manager_store_toggle_enabled (BeanCtkPluginManagerStore *store,
+                                              CtkTreeIter               *iter)
 {
   gboolean enabled;
 
@@ -497,8 +497,8 @@ bean_ctk_plugin_manager_store_toggle_enabled (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_can_enabled:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  *
  * Returns if the plugin at @iter can be enabled.
  * Note: that while a plugin may be enableable there are other factors
@@ -507,8 +507,8 @@ bean_ctk_plugin_manager_store_toggle_enabled (BeanGtkPluginManagerStore *store,
  * Returns: if the plugin can be enabled.
  */
 gboolean
-bean_ctk_plugin_manager_store_can_enable (BeanGtkPluginManagerStore *store,
-                                          GtkTreeIter               *iter)
+bean_ctk_plugin_manager_store_can_enable (BeanCtkPluginManagerStore *store,
+                                          CtkTreeIter               *iter)
 {
   GValue value = G_VALUE_INIT;
   gboolean can_enable;
@@ -529,16 +529,16 @@ bean_ctk_plugin_manager_store_can_enable (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_get_plugin:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  *
  * Returns the plugin at @iter.
  *
  * Returns: the plugin at @iter.
  */
 BeanPluginInfo *
-bean_ctk_plugin_manager_store_get_plugin (BeanGtkPluginManagerStore *store,
-                                          GtkTreeIter               *iter)
+bean_ctk_plugin_manager_store_get_plugin (BeanCtkPluginManagerStore *store,
+                                          CtkTreeIter               *iter)
 {
   GValue value = G_VALUE_INIT;
   BeanPluginInfo *info;
@@ -562,8 +562,8 @@ bean_ctk_plugin_manager_store_get_plugin (BeanGtkPluginManagerStore *store,
 
 /*
  * bean_ctk_plugin_manager_store_get_iter_from_plugin:
- * @store: A #BeanGtkPluginManagerStore.
- * @iter: A #GtkTreeIter.
+ * @store: A #BeanCtkPluginManagerStore.
+ * @iter: A #CtkTreeIter.
  * @info: A #BeanPluginInfo.
  *
  * Sets @iter to the @info.
@@ -571,11 +571,11 @@ bean_ctk_plugin_manager_store_get_plugin (BeanGtkPluginManagerStore *store,
  * Returns: if @iter was set.
  */
 gboolean
-bean_ctk_plugin_manager_store_get_iter_from_plugin (BeanGtkPluginManagerStore *store,
-                                                    GtkTreeIter               *iter,
+bean_ctk_plugin_manager_store_get_iter_from_plugin (BeanCtkPluginManagerStore *store,
+                                                    CtkTreeIter               *iter,
                                                     const BeanPluginInfo      *info)
 {
-  GtkTreeModel *model = GTK_TREE_MODEL (store);
+  CtkTreeModel *model = GTK_TREE_MODEL (store);
   gboolean found = FALSE;
 
   g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);

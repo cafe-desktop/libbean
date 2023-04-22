@@ -29,44 +29,44 @@
  * SECTION:bean-ctk-configurable
  * @short_description: Interface for providing a plugin configuration UI.
  *
- * The #BeanGtkConfigurable interface will allow a plugin to provide a
+ * The #BeanCtkConfigurable interface will allow a plugin to provide a
  * graphical interface for the user to configure the plugin through the
- * #BeanGtkPluginManager: the #BeanGtkPluginManager will make its
+ * #BeanCtkPluginManager: the #BeanCtkPluginManager will make its
  * “Configure Plugin” button active when the selected plugin implements
- * the #BeanGtkConfigurable interface.
+ * the #BeanCtkConfigurable interface.
  *
- * To allow plugin configuration from the #BeanGtkPluginManager, the
+ * To allow plugin configuration from the #BeanCtkPluginManager, the
  * plugin writer will just need to implement the
- * BeanGtkConfigurableInterface.create_configure_widget() method.
+ * BeanCtkConfigurableInterface.create_configure_widget() method.
  **/
 
-G_DEFINE_INTERFACE(BeanGtkConfigurable, bean_ctk_configurable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeanCtkConfigurable, bean_ctk_configurable, G_TYPE_OBJECT)
 
 static void
-bean_ctk_configurable_default_init (BeanGtkConfigurableInterface *iface)
+bean_ctk_configurable_default_init (BeanCtkConfigurableInterface *iface)
 {
 }
 
 /**
  * bean_ctk_configurable_create_configure_widget:
- * @configurable: A #BeanGtkConfigurable
+ * @configurable: A #BeanCtkConfigurable
  *
  * Creates the configure widget for the plugin. The returned widget
  * should allow configuring all the relevant aspects of the plugin, and should
  * allow instant-apply, as promoted by the Gnome Human Interface Guidelines.
  *
- * #BeanGtkPluginManager will embed the returned widget into a dialog box,
+ * #BeanCtkPluginManager will embed the returned widget into a dialog box,
  * but you shouldn't take this behaviour for granted as other implementations
  * of a plugin manager UI might do otherwise.
  *
- * This method should always return a valid #GtkWidget instance, never %NULL.
+ * This method should always return a valid #CtkWidget instance, never %NULL.
  *
- * Returns: (transfer full): A #GtkWidget used for configuration.
+ * Returns: (transfer full): A #CtkWidget used for configuration.
  */
-GtkWidget *
-bean_ctk_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
+CtkWidget *
+bean_ctk_configurable_create_configure_widget (BeanCtkConfigurable *configurable)
 {
-  BeanGtkConfigurableInterface *iface;
+  BeanCtkConfigurableInterface *iface;
 
   g_return_val_if_fail (BEAN_GTK_IS_CONFIGURABLE (configurable), NULL);
 

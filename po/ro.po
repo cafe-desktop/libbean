@@ -168,8 +168,8 @@ msgstr "Preferințe"
 #~ msgid "Show Builtin"
 #~ msgstr "Arată modulele integrate"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "C_onfigurează"

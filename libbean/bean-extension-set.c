@@ -47,7 +47,7 @@
  * wish to call specific methods on loading or unloading time.
  *
  * Here is the code for a typical setup of #BeanExtensionSet with
- * #BeanActivatable as the watched extension point, and #GtkWindow
+ * #BeanActivatable as the watched extension point, and #CtkWindow
  * instances as the target objects:
  * |[
  * static void
@@ -68,7 +68,7 @@
  *
  * BeanExtensionSet *
  * setup_extension_set (BeanEngine *engine,
- *                      GtkWindow  *window)
+ *                      CtkWindow  *window)
  * {
  *   BeanExtensionSet *set;
  *

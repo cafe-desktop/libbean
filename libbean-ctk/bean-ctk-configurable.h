@@ -31,37 +31,37 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define BEAN_GTK_TYPE_CONFIGURABLE            (bean_ctk_configurable_get_type ())
-#define BEAN_GTK_CONFIGURABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanGtkConfigurable))
-#define BEAN_GTK_CONFIGURABLE_IFACE(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanGtkConfigurableInterface))
+#define BEAN_GTK_CONFIGURABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurable))
+#define BEAN_GTK_CONFIGURABLE_IFACE(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
 #define BEAN_GTK_IS_CONFIGURABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_GTK_TYPE_CONFIGURABLE))
-#define BEAN_GTK_CONFIGURABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanGtkConfigurableInterface))
+#define BEAN_GTK_CONFIGURABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanCtkConfigurableInterface))
 
 /**
- * BeanGtkConfigurable:
+ * BeanCtkConfigurable:
  *
  * Interface for configurable plugins.
  */
-typedef struct _BeanGtkConfigurable           BeanGtkConfigurable; /* dummy typedef */
-typedef struct _BeanGtkConfigurableInterface  BeanGtkConfigurableInterface;
+typedef struct _BeanCtkConfigurable           BeanCtkConfigurable; /* dummy typedef */
+typedef struct _BeanCtkConfigurableInterface  BeanCtkConfigurableInterface;
 
 /**
- * BeanGtkConfigurableInterface:
+ * BeanCtkConfigurableInterface:
  * @g_iface: The parent interface.
  * @create_configure_widget: Creates the configure widget for the plugin.
  *
  * Provides an interface for configurable plugins.
  */
-struct _BeanGtkConfigurableInterface
+struct _BeanCtkConfigurableInterface
 {
   GTypeInterface g_iface;
 
-  GtkWidget  *(*create_configure_widget)  (BeanGtkConfigurable  *configurable);
+  CtkWidget  *(*create_configure_widget)  (BeanCtkConfigurable  *configurable);
 };
 
 BEAN_AVAILABLE_IN_ALL
 GType       bean_ctk_configurable_get_type                (void)  G_GNUC_CONST;
 BEAN_AVAILABLE_IN_ALL
-GtkWidget  *bean_ctk_configurable_create_configure_widget (BeanGtkConfigurable  *configurable);
+CtkWidget  *bean_ctk_configurable_create_configure_widget (BeanCtkConfigurable  *configurable);
 
 G_END_DECLS
 

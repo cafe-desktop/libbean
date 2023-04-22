@@ -35,7 +35,7 @@ enum {
 typedef struct {
   BeanPluginInfo *plugin_info;
   GList *dep_plugins;
-} BeanGtkDisablePluginsDialogPrivate;
+} BeanCtkDisablePluginsDialogPrivate;
 
 /* Properties */
 enum {
@@ -47,7 +47,7 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkDisablePluginsDialog,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkDisablePluginsDialog,
                             bean_ctk_disable_plugins_dialog,
                             GTK_TYPE_MESSAGE_DIALOG)
 
@@ -55,9 +55,9 @@ G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkDisablePluginsDialog,
   (bean_ctk_disable_plugins_dialog_get_instance_private (o))
 
 static gint
-model_name_sort_func (GtkListStore *store,
-                      GtkTreeIter  *iter1,
-                      GtkTreeIter  *iter2,
+model_name_sort_func (CtkListStore *store,
+                      CtkTreeIter  *iter1,
+                      CtkTreeIter  *iter2,
                       gpointer      user_data)
 {
   gchar *name1, *name2;
@@ -80,16 +80,16 @@ model_name_sort_func (GtkListStore *store,
 }
 
 static void
-build_multiple_dependent_plugins (BeanGtkDisablePluginsDialog *dialog)
+build_multiple_dependent_plugins (BeanCtkDisablePluginsDialog *dialog)
 {
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
   gchar *message;
-  GtkWidget *message_area;
-  GtkWidget *sw;
-  GtkListStore *store;
+  CtkWidget *message_area;
+  CtkWidget *sw;
+  CtkListStore *store;
   GList *dep_plugin;
-  GtkWidget *tree_view;
-  GtkCellRenderer *cell;
+  CtkWidget *tree_view;
+  CtkCellRenderer *cell;
 
   message = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
                          _("Additional plugins must be disabled"),
@@ -115,7 +115,7 @@ build_multiple_dependent_plugins (BeanGtkDisablePluginsDialog *dialog)
 
   /* Sort on the plugin names */
   ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
-                                           (GtkTreeIterCompareFunc) model_name_sort_func,
+                                           (CtkTreeIterCompareFunc) model_name_sort_func,
                                            NULL, NULL);
   ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
                                         GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
@@ -125,7 +125,7 @@ build_multiple_dependent_plugins (BeanGtkDisablePluginsDialog *dialog)
        dep_plugin = dep_plugin->next)
     {
       BeanPluginInfo *plugin = (BeanPluginInfo *) dep_plugin->data;
-      GtkTreeIter iter;
+      CtkTreeIter iter;
 
       ctk_list_store_append (store, &iter);
       ctk_list_store_set (store, &iter,
@@ -152,9 +152,9 @@ build_multiple_dependent_plugins (BeanGtkDisablePluginsDialog *dialog)
 }
 
 static void
-build_single_dependent_plugin (BeanGtkDisablePluginsDialog *dialog)
+build_single_dependent_plugin (BeanCtkDisablePluginsDialog *dialog)
 {
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
   gchar *message;
 
   message = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
@@ -174,7 +174,7 @@ build_single_dependent_plugin (BeanGtkDisablePluginsDialog *dialog)
 }
 
 static void
-bean_ctk_disable_plugins_dialog_init (BeanGtkDisablePluginsDialog *dialog)
+bean_ctk_disable_plugins_dialog_init (BeanCtkDisablePluginsDialog *dialog)
 {
   ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
@@ -190,8 +190,8 @@ bean_ctk_disable_plugins_dialog_set_property (GObject      *object,
                                               const GValue *value,
                                               GParamSpec   *pspec)
 {
-  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
     {
@@ -213,8 +213,8 @@ bean_ctk_disable_plugins_dialog_get_property (GObject    *object,
                                               GValue     *value,
                                               GParamSpec *pspec)
 {
-  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
     {
@@ -233,8 +233,8 @@ bean_ctk_disable_plugins_dialog_get_property (GObject    *object,
 static void
 bean_ctk_disable_plugins_dialog_constructed (GObject *object)
 {
-  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   if (priv->dep_plugins->next == NULL)
     build_single_dependent_plugin (dialog);
@@ -247,8 +247,8 @@ bean_ctk_disable_plugins_dialog_constructed (GObject *object)
 static void
 bean_ctk_disable_plugins_dialog_finalize (GObject *object)
 {
-  BeanGtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
-  BeanGtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   g_list_free (priv->dep_plugins);
 
@@ -256,7 +256,7 @@ bean_ctk_disable_plugins_dialog_finalize (GObject *object)
 }
 
 static void
-bean_ctk_disable_plugins_dialog_class_init (BeanGtkDisablePluginsDialogClass *klass)
+bean_ctk_disable_plugins_dialog_class_init (BeanCtkDisablePluginsDialogClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -291,12 +291,12 @@ bean_ctk_disable_plugins_dialog_class_init (BeanGtkDisablePluginsDialogClass *kl
  * @dep_plugins: (transfer container) (element-type Bean.PluginInfo):
  *  list of plugins that are dependent on @info.
  *
- * Creates a new #BeanGtkDisablePluginsDialog.
+ * Creates a new #BeanCtkDisablePluginsDialog.
  *
- * Returns: the new #BeanGtkDisablePluginsDialog.
+ * Returns: the new #BeanCtkDisablePluginsDialog.
  */
-GtkWidget  *
-bean_ctk_disable_plugins_dialog_new (GtkWindow      *parent,
+CtkWidget  *
+bean_ctk_disable_plugins_dialog_new (CtkWindow      *parent,
                                      BeanPluginInfo *info,
                                      GList          *dep_plugins)
 {

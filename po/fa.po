@@ -165,8 +165,8 @@ msgstr "ترجیحات"
 #~ msgid "Show Builtin"
 #~ msgstr "نمایش توکارها"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_پیکربندی"

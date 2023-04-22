@@ -522,7 +522,7 @@ Overview of Changes in libbean 1.1.0
 * Add bean_extension_set_foreach()
   - Also deprecate the old bean_extension_set_call() method as a result.
 
-* Drop support for Gtk+ 2
+* Drop support for Ctk+ 2
 
 * Translation updates:
   - Lithuanian

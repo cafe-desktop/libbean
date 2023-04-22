@@ -18,9 +18,9 @@
 local lgi = require 'lgi'
 
 local GObject = lgi.GObject
-local Gtk = lgi.Gtk
+local Ctk = lgi.Ctk
 local Bean = lgi.Bean
-local BeanGtk = lgi.BeanGtk
+local BeanCtk = lgi.BeanCtk
 
 
 local LuaHelloPlugin = GObject.Object:derive('LuaHelloPlugin', {
@@ -36,7 +36,7 @@ LuaHelloPlugin._property.object =
 function LuaHelloPlugin:do_activate()
     local window = self.priv.object
     print('LuaHelloPlugin:do_activate', tostring(window))
-    self.priv.label = Gtk.Label.new('Lua Says Hello!')
+    self.priv.label = Ctk.Label.new('Lua Says Hello!')
     self.priv.label:show()
     window:get_child():pack_start(self.priv.label, true, true, 0)
 end
@@ -55,11 +55,11 @@ end
 
 
 local LuaHelloConfigurable = GObject.Object:derive('LuaHelloConfigurable', {
-    BeanGtk.Configurable
+    BeanCtk.Configurable
 })
 
 function LuaHelloConfigurable:do_create_configure_widget()
-    return Gtk.Label.new('Lua Hello configure widget')
+    return Ctk.Label.new('Lua Hello configure widget')
 end
 
 return { LuaHelloPlugin, LuaHelloConfigurable }

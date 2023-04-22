@@ -34,42 +34,42 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW             (bean_ctk_plugin_manager_view_get_type())
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerView))
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerView))
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW))
-#define BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanGtkPluginManagerViewClass))
+#define BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW, BeanCtkPluginManagerViewClass))
 
-typedef struct _BeanGtkPluginManagerView        BeanGtkPluginManagerView;
-typedef struct _BeanGtkPluginManagerViewClass   BeanGtkPluginManagerViewClass;
-typedef struct _BeanGtkPluginManagerViewPrivate BeanGtkPluginManagerViewPrivate;
+typedef struct _BeanCtkPluginManagerView        BeanCtkPluginManagerView;
+typedef struct _BeanCtkPluginManagerViewClass   BeanCtkPluginManagerViewClass;
+typedef struct _BeanCtkPluginManagerViewPrivate BeanCtkPluginManagerViewPrivate;
 
 /**
- * BeanGtkPluginManagerView:
+ * BeanCtkPluginManagerView:
  *
- * The #BeanGtkPluginManagerView structure contains only private data
+ * The #BeanCtkPluginManagerView structure contains only private data
  * and should only be accessed using the provided API.
  */
-struct _BeanGtkPluginManagerView {
-  GtkTreeView parent;
+struct _BeanCtkPluginManagerView {
+  CtkTreeView parent;
 
   /*< private > */
-  BeanGtkPluginManagerViewPrivate *priv;
+  BeanCtkPluginManagerViewPrivate *priv;
 };
 
 /**
- * BeanGtkPluginManagerViewClass:
+ * BeanCtkPluginManagerViewClass:
  * @parent_class: The parent class.
  * @populate_popup: Signal class handler for the
- *                  #BeanGtkPluginManagerView::populate-popup signal.
+ *                  #BeanCtkPluginManagerView::populate-popup signal.
  *
- * The class structure for #BeanGtkPluginManagerView.
+ * The class structure for #BeanCtkPluginManagerView.
  */
-struct _BeanGtkPluginManagerViewClass {
-  GtkTreeViewClass parent_class;
+struct _BeanCtkPluginManagerViewClass {
+  CtkTreeViewClass parent_class;
 
-  void  (*populate_popup)   (BeanGtkPluginManagerView *view,
-                             GtkMenu                  *menu);
+  void  (*populate_popup)   (BeanCtkPluginManagerView *view,
+                             CtkMenu                  *menu);
 
   /*< private >*/
   gpointer padding[8];
@@ -78,21 +78,21 @@ struct _BeanGtkPluginManagerViewClass {
 BEAN_AVAILABLE_IN_ALL
 GType           bean_ctk_plugin_manager_view_get_type             (void) G_GNUC_CONST;
 BEAN_AVAILABLE_IN_ALL
-GtkWidget      *bean_ctk_plugin_manager_view_new                  (BeanEngine               *engine);
+CtkWidget      *bean_ctk_plugin_manager_view_new                  (BeanEngine               *engine);
 
 #ifndef BEAN_DISABLE_DEPRECATED
 BEAN_AVAILABLE_IN_ALL
-void            bean_ctk_plugin_manager_view_set_show_builtin     (BeanGtkPluginManagerView *view,
+void            bean_ctk_plugin_manager_view_set_show_builtin     (BeanCtkPluginManagerView *view,
                                                                    gboolean                  show_builtin);
 BEAN_AVAILABLE_IN_ALL
-gboolean        bean_ctk_plugin_manager_view_get_show_builtin     (BeanGtkPluginManagerView *view);
+gboolean        bean_ctk_plugin_manager_view_get_show_builtin     (BeanCtkPluginManagerView *view);
 #endif
 
 BEAN_AVAILABLE_IN_ALL
-void            bean_ctk_plugin_manager_view_set_selected_plugin  (BeanGtkPluginManagerView *view,
+void            bean_ctk_plugin_manager_view_set_selected_plugin  (BeanCtkPluginManagerView *view,
                                                                    BeanPluginInfo           *info);
 BEAN_AVAILABLE_IN_ALL
-BeanPluginInfo *bean_ctk_plugin_manager_view_get_selected_plugin  (BeanGtkPluginManagerView *view);
+BeanPluginInfo *bean_ctk_plugin_manager_view_get_selected_plugin  (BeanCtkPluginManagerView *view);
 
 G_END_DECLS
 

@@ -33,17 +33,17 @@ typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
   BeanEngine *engine;
-  GtkWidget *window;
-  BeanGtkPluginManager *manager;
-  BeanGtkPluginManagerView *view;
-  GtkTreeSelection *selection;
-  GtkTreeModel *model;
-  GtkWidget *about_button;
-  GtkWidget *configure_button;
+  CtkWidget *window;
+  BeanCtkPluginManager *manager;
+  BeanCtkPluginManagerView *view;
+  CtkTreeSelection *selection;
+  CtkTreeModel *model;
+  CtkWidget *about_button;
+  CtkWidget *configure_button;
 };
 
 static void
-notify_model_cb (GtkTreeView *view,
+notify_model_cb (CtkTreeView *view,
                  GParamSpec  *pspec,
                  TestFixture *fixture)
 {
@@ -98,14 +98,14 @@ test_runner (TestFixture   *fixture,
   ((void (*) (TestFixture *)) data) (fixture);
 }
 
-static GtkWidget *
-find_window_by_title (GtkWindow   *window,
+static CtkWidget *
+find_window_by_title (CtkWindow   *window,
                       const gchar *title)
 {
-  GtkWindowGroup *group;
+  CtkWindowGroup *group;
   GList *windows;
   GList *l;
-  GtkWidget *found_window = NULL;
+  CtkWidget *found_window = NULL;
 
   group = ctk_window_get_group (window);
   windows = ctk_window_group_list_windows (group);
@@ -129,7 +129,7 @@ find_window_by_title (GtkWindow   *window,
 static void
 test_ctk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
@@ -157,7 +157,7 @@ test_ctk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
@@ -206,7 +206,7 @@ test_ctk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_plugin_loaded (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
@@ -222,7 +222,7 @@ test_ctk_plugin_manager_plugin_loaded (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_plugin_unloaded (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   test_ctk_plugin_manager_plugin_loaded (fixture);
@@ -239,8 +239,8 @@ static void
 test_ctk_plugin_manager_about_dialog (TestFixture *fixture)
 {
   gint i;
-  GtkTreeIter iter;
-  GtkWidget *window;
+  CtkTreeIter iter;
+  CtkWidget *window;
   BeanPluginInfo *info;
   const gchar **authors_plugin;
   const gchar * const *authors_dialog;
@@ -286,15 +286,15 @@ test_ctk_plugin_manager_about_dialog (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_configure_dialog (TestFixture *fixture)
 {
-  GtkTreeIter iter;
-  GtkWidget *window;
+  CtkTreeIter iter;
+  CtkWidget *window;
   BeanPluginInfo *info;
   GList *list;
   GList *list_it;
-  GtkWidget *content;
-  GtkWidget *label = NULL;
-  GtkWidget *close_button = NULL;
-  GtkWidget *help_button = NULL;
+  CtkWidget *content;
+  CtkWidget *label = NULL;
+  CtkWidget *close_button = NULL;
+  CtkWidget *help_button = NULL;
 
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
 
@@ -342,17 +342,17 @@ test_ctk_plugin_manager_configure_dialog (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_ctkbuilder (void)
 {
-  GtkBuilder *builder;
+  CtkBuilder *builder;
   GError *error = NULL;
-  BeanGtkPluginManager *manager;
-  BeanGtkPluginManagerView *view;
+  BeanCtkPluginManager *manager;
+  BeanCtkPluginManagerView *view;
   static const gchar *ctkbuilder_string =
     "<?xml version='1.0' encoding='UTF-8'?>\n"
     "<interface>\n"
-    "<object class='BeanGtkPluginManagerView' id='view'>\n"
+    "<object class='BeanCtkPluginManagerView' id='view'>\n"
     "  <property name='show-builtin'>True</property>\n"
     "</object>\n"
-    "<object class='BeanGtkPluginManager' id='manager'>\n"
+    "<object class='BeanCtkPluginManager' id='manager'>\n"
     "  <property name='view'>view</property>\n"
     "</object>\n"
     "</interface>";

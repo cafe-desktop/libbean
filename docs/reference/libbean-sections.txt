@@ -1,8 +1,8 @@
 <SECTION>
 <FILE>bean-ctk-configurable</FILE>
-<TITLE>BeanGtkConfigurable</TITLE>
-BeanGtkConfigurable
-BeanGtkConfigurableInterface
+<TITLE>BeanCtkConfigurable</TITLE>
+BeanCtkConfigurable
+BeanCtkConfigurableInterface
 bean_ctk_configurable_create_configure_widget
 <SUBSECTION Standard>
 BEAN_GTK_CONFIGURABLE
@@ -15,9 +15,9 @@ BEAN_GTK_CONFIGURABLE_GET_IFACE
 
 <SECTION>
 <FILE>bean-ctk-plugin-manager</FILE>
-<TITLE>BeanGtkPluginManager</TITLE>
-BeanGtkPluginManager
-BeanGtkPluginManagerClass
+<TITLE>BeanCtkPluginManager</TITLE>
+BeanCtkPluginManager
+BeanCtkPluginManagerClass
 bean_ctk_plugin_manager_new
 bean_ctk_plugin_manager_get_view
 <SUBSECTION Standard>
@@ -29,14 +29,14 @@ BEAN_GTK_PLUGIN_MANAGER_CLASS
 BEAN_GTK_IS_PLUGIN_MANAGER_CLASS
 BEAN_GTK_PLUGIN_MANAGER_GET_CLASS
 <SUBSECTION Private>
-BeanGtkPluginManagerPrivate
+BeanCtkPluginManagerPrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-ctk-plugin-manager-view</FILE>
-<TITLE>BeanGtkPluginManagerView</TITLE>
-BeanGtkPluginManagerView
-BeanGtkPluginManagerViewClass
+<TITLE>BeanCtkPluginManagerView</TITLE>
+BeanCtkPluginManagerView
+BeanCtkPluginManagerViewClass
 bean_ctk_plugin_manager_view_new
 bean_ctk_plugin_manager_view_set_show_builtin
 bean_ctk_plugin_manager_view_get_show_builtin
@@ -51,7 +51,7 @@ BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS
 BEAN_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS
 BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS
 <SUBSECTION Private>
-BeanGtkPluginManagerViewPrivate
+BeanCtkPluginManagerViewPrivate
 </SECTION>
 
 <SECTION>

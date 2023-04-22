@@ -174,5 +174,5 @@ msgstr "Nastavenia"
 #~ msgstr "Zobraziť vstavané"
 
 # widget group title
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"

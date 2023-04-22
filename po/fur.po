@@ -163,5 +163,5 @@ msgstr "Preferencis"
 #~ msgid "Show Builtin"
 #~ msgstr "Show Builtin"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
