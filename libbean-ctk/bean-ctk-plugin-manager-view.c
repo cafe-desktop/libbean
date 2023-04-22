@@ -426,7 +426,7 @@ menu_position_under_tree_view (CtkMenu     *menu,
   selection = ctk_tree_view_get_selection (tree_view);
 
   window = ctk_widget_get_window (CTK_WIDGET (tree_view));
-  gdk_window_get_origin (window, x, y);
+  cdk_window_get_origin (window, x, y);
 
   if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
