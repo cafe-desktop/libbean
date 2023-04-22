@@ -1,13 +1,13 @@
 /*
- * peas-version-macros.h
- * This file is part of libpeas
+ * bean-version-macros.h
+ * This file is part of libbean
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -22,7 +22,7 @@
 
 #include <glib.h>
 
-#include "peas-version.h"
+#include "bean-version.h"
 
 #ifndef _PEAS_EXTERN
 # define _PEAS_EXTERN extern
@@ -61,7 +61,7 @@
  * PEAS_VERSION_MIN_REQUIRED:
  *
  * A macro that should be defined by the user prior to including
- * the peas.h header.
+ * the bean.h header.
  *
  * The definition should be one of the predefined PEAS version
  * macros: %PEAS_VERSION_1_22, ...
@@ -82,7 +82,7 @@
  * PEAS_VERSION_MAX_ALLOWED:
  *
  * A macro that should be defined by the user prior to including
- * the peas.h header.
+ * the bean.h header.
 
  * The definition should be one of the predefined Peas version
  * macros: %PEAS_VERSION_1_0, %PEAS_VERSION_1_2,...

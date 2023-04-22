@@ -1,15 +1,15 @@
 /*
- * peas-extension.c
- * This file is part of libpeas
+ * bean-extension.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -21,11 +21,11 @@
 
 #include "config.h"
 
-#include "peas-extension.h"
-#include "peas-introspection.h"
+#include "bean-extension.h"
+#include "bean-introspection.h"
 
 /**
- * SECTION:peas-extension
+ * SECTION:bean-extension
  * @short_description: Proxy for extensions.
  * @see_also: #PeasExtensionSet
  *
@@ -52,20 +52,20 @@
  * #PeasExtension does not provide any way to access the underlying object.
  * The main reason is that some loaders may not rely on proper GObject
  * inheritance for the definition of extensions, and hence it would not be
- * possible for libpeas to provide a functional GObject instance at all.
+ * possible for libbean to provide a functional GObject instance at all.
  * Another reason is that it makes reference counting issues easier to deal
  * with.
  *
- * See peas_extension_call() for more information.
+ * See bean_extension_call() for more information.
  **/
 GType
-peas_extension_get_type (void)
+bean_extension_get_type (void)
 {
   return G_TYPE_OBJECT;
 }
 
 static
-G_DEFINE_QUARK (peas-extension-type, extension_type)
+G_DEFINE_QUARK (bean-extension-type, extension_type)
 
 static GICallableInfo *
 get_method_info (PeasExtension *exten,
@@ -78,8 +78,8 @@ get_method_info (PeasExtension *exten,
   GICallableInfo *method_info;
 
   /* Must prioritize the initial GType */
-  exten_type = peas_extension_get_extension_type (exten);
-  method_info = peas_gi_get_method_info (exten_type, method_name);
+  exten_type = bean_extension_get_extension_type (exten);
+  method_info = bean_gi_get_method_info (exten_type, method_name);
 
   if (method_info != NULL)
     {
@@ -93,7 +93,7 @@ get_method_info (PeasExtension *exten,
 
   for (i = 0; interfaces[i] != G_TYPE_INVALID; ++i)
     {
-      method_info = peas_gi_get_method_info (interfaces[i], method_name);
+      method_info = bean_gi_get_method_info (interfaces[i], method_name);
 
       if (method_info != NULL)
         {
@@ -112,7 +112,7 @@ get_method_info (PeasExtension *exten,
 }
 
 /**
- * peas_extension_get_extension_type:
+ * bean_extension_get_extension_type:
  * @exten: A #PeasExtension.
  *
  * Get the #GType of the extension proxied by @exten.
@@ -122,14 +122,14 @@ get_method_info (PeasExtension *exten,
  * Deprecated: 1.2.
  */
 GType
-peas_extension_get_extension_type (PeasExtension *exten)
+bean_extension_get_extension_type (PeasExtension *exten)
 {
   return GPOINTER_TO_SIZE (g_object_get_qdata (G_OBJECT (exten),
                                                extension_type_quark ()));
 }
 
 /**
- * peas_extension_call:
+ * bean_extension_call:
  * @exten: A #PeasExtension.
  * @method_name: the name of the method that should be called.
  * @...: arguments for the method.
@@ -144,8 +144,8 @@ peas_extension_get_extension_type (PeasExtension *exten)
  *
  * For instance, if the method prototype is:
  * |[ gint (*my_method) (MyClass *instance, const gchar *str, SomeObject *obj); ]|
- * you should call peas_extension_call() this way:
- * |[ peas_extension_call (extension, "my_method", "some_str", obj, &gint_var); ]|
+ * you should call bean_extension_call() this way:
+ * |[ bean_extension_call (extension, "my_method", "some_str", obj, &gint_var); ]|
  *
  * This function will not do anything if the introspection data for the proxied
  * object's class has not been loaded previously through g_irepository_require().
@@ -155,7 +155,7 @@ peas_extension_get_extension_type (PeasExtension *exten)
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-peas_extension_call (PeasExtension *exten,
+bean_extension_call (PeasExtension *exten,
                      const gchar   *method_name,
                      ...)
 {
@@ -166,28 +166,28 @@ peas_extension_call (PeasExtension *exten,
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   va_start (args, method_name);
-  result = peas_extension_call_valist (exten, method_name, args);
+  result = bean_extension_call_valist (exten, method_name, args);
   va_end (args);
 
   return result;
 }
 
 /**
- * peas_extension_call_valist:
+ * bean_extension_call_valist:
  * @exten: A #PeasExtension.
  * @method_name: the name of the method that should be called.
  * @args: the arguments for the method.
  *
  * Call a method of the object behind @extension, using @args as arguments.
  *
- * See peas_extension_call() for more information.
+ * See bean_extension_call() for more information.
  *
  * Return value: %TRUE on successful call.
  *
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-peas_extension_call_valist (PeasExtension *exten,
+bean_extension_call_valist (PeasExtension *exten,
                             const gchar   *method_name,
                             va_list        args)
 {
@@ -211,14 +211,14 @@ peas_extension_call_valist (PeasExtension *exten,
   n_args = g_callable_info_get_n_args (callable_info);
   g_return_val_if_fail (n_args >= 0, FALSE);
   gargs = g_newa (GIArgument, n_args);
-  peas_gi_valist_to_arguments (callable_info, args, gargs, &retval_ptr);
+  bean_gi_valist_to_arguments (callable_info, args, gargs, &retval_ptr);
 
-  ret = peas_extension_callv (exten, method_name, gargs, &retval);
+  ret = bean_extension_callv (exten, method_name, gargs, &retval);
 
   if (retval_ptr != NULL)
     {
       g_callable_info_load_return_type (callable_info, &retval_info);
-      peas_gi_argument_to_pointer (&retval_info, &retval, retval_ptr);
+      bean_gi_argument_to_pointer (&retval_info, &retval, retval_ptr);
     }
 
   g_base_info_unref ((GIBaseInfo *) callable_info);
@@ -227,7 +227,7 @@ peas_extension_call_valist (PeasExtension *exten,
 }
 
 /**
- * peas_extension_callv:
+ * bean_extension_callv:
  * @exten: A #PeasExtension.
  * @method_name: the name of the method that should be called.
  * @args: the arguments for the method.
@@ -235,14 +235,14 @@ peas_extension_call_valist (PeasExtension *exten,
  *
  * Call a method of the object behind @extension, using @args as arguments.
  *
- * See peas_extension_call() for more information.
+ * See bean_extension_call() for more information.
  *
  * Return value: %TRUE on successful call.
  *
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-peas_extension_callv (PeasExtension *exten,
+bean_extension_callv (PeasExtension *exten,
                       const gchar   *method_name,
                       GIArgument    *args,
                       GIArgument    *return_value)
@@ -260,7 +260,7 @@ peas_extension_callv (PeasExtension *exten,
   if (method_info == NULL)
     return FALSE;
 
-  success = peas_gi_method_call (G_OBJECT (exten), method_info, gtype,
+  success = bean_gi_method_call (G_OBJECT (exten), method_info, gtype,
                                  method_name, args, return_value);
 
   g_base_info_unref (method_info);

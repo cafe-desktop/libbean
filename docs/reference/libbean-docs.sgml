@@ -9,7 +9,7 @@
   <bookinfo>
     <title>Peas Reference Manual</title>
     <releaseinfo>
-      for libpeas &version; and libpeas-gtk &version;
+      for libbean &version; and libbean-gtk &version;
     </releaseinfo>
   </bookinfo>
 
@@ -17,22 +17,22 @@
     <title>API Reference</title>
     <chapter>
       <title>Core Classes</title>
-      <xi:include href="xml/peas-engine.xml"/>
-      <xi:include href="xml/peas-plugin-info.xml"/>
-      <xi:include href="xml/peas-extension.xml"/>
-      <xi:include href="xml/peas-extension-set.xml"/>
-      <xi:include href="xml/peas-extension-base.xml"/>
-      <xi:include href="xml/peas-object-module.xml"/>
+      <xi:include href="xml/bean-engine.xml"/>
+      <xi:include href="xml/bean-plugin-info.xml"/>
+      <xi:include href="xml/bean-extension.xml"/>
+      <xi:include href="xml/bean-extension-set.xml"/>
+      <xi:include href="xml/bean-extension-base.xml"/>
+      <xi:include href="xml/bean-object-module.xml"/>
     </chapter>
     <chapter>
       <title>Gtk+ Widgets</title>
-      <xi:include href="xml/peas-gtk-plugin-manager.xml"/>
-      <xi:include href="xml/peas-gtk-plugin-manager-view.xml"/>
+      <xi:include href="xml/bean-gtk-plugin-manager.xml"/>
+      <xi:include href="xml/bean-gtk-plugin-manager-view.xml"/>
     </chapter>
     <chapter>
       <title>Built-in Extension Interfaces</title>
-      <xi:include href="xml/peas-activatable.xml"/>
-      <xi:include href="xml/peas-gtk-configurable.xml"/>
+      <xi:include href="xml/bean-activatable.xml"/>
+      <xi:include href="xml/bean-gtk-configurable.xml"/>
     </chapter>
   </part>
   <index id="api-index-full">

@@ -1,5 +1,5 @@
 project(
-  'libpeas', 'c',
+  'libbean', 'c',
   version: '1.28.0',
   license: 'LGPLv2.1+',
   meson_version: '>= 0.49.0',
@@ -73,11 +73,11 @@ typelibdir = join_paths(libdir, 'girepository-1.0')
 # Configurations
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE', package_name)
-config_h.set_quoted('PACKAGE_BUGREPORT', 'http://bugzilla.gnome.org/enter_bug.cgi?product=libpeas')
+config_h.set_quoted('PACKAGE_BUGREPORT', 'http://bugzilla.gnome.org/enter_bug.cgi?product=libbean')
 config_h.set_quoted('PACKAGE_NAME', package_name)
 config_h.set_quoted('PACKAGE_STRING', package_long_string)
-config_h.set_quoted('PACKAGE_URL', 'https://wiki.gnome.org/Projects/Libpeas')
-config_h.set_quoted('PACKAGE_URL', 'https://wiki.gnome.org/Projects/Libpeas')
+config_h.set_quoted('PACKAGE_URL', 'https://wiki.gnome.org/Projects/Libbean')
+config_h.set_quoted('PACKAGE_URL', 'https://wiki.gnome.org/Projects/Libbean')
 config_h.set_quoted('PACKAGE_VERSION', version)
 config_h.set_quoted('VERSION', version)
 
@@ -240,9 +240,9 @@ if build_python3_loader and not python3_found
   build_python3_loader = false
 endif
 
-subdir('libpeas')
+subdir('libbean')
 if build_gtk_widgetry == true
-  subdir('libpeas-gtk')
+  subdir('libbean-gtk')
 endif
 
 subdir('docs')
@@ -252,7 +252,7 @@ subdir('po')
 subdir('loaders')
 
 if build_demos == true
-  subdir('peas-demo')
+  subdir('bean-demo')
 endif
 if generate_gir == true
   subdir('tests')
@@ -261,7 +261,7 @@ endif
 summary = [
   '',
   '------',
-  'libpeas @0@ (@1@)'.format(version, api_version),
+  'libbean @0@ (@1@)'.format(version, api_version),
   '',
   '             Demos: @0@'.format(build_demos),
   '     Documentation: @0@'.format(build_gtk_doc),

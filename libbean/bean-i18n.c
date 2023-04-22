@@ -2,12 +2,12 @@
  * Copyright (C) 1997, 1998, 1999, 2000 Free Software Foundation
  * All rights reserved.
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -24,23 +24,23 @@
 #include <glib/gi18n.h>
 #include <string.h>
 
-#include "peas-dirs.h"
+#include "bean-dirs.h"
 
 #include "gconstructor.h"
 
 #if defined (G_HAS_CONSTRUCTORS)
 # ifdef G_DEFINE_CONSTRUCTOR_NEEDS_PRAGMA
-#  pragma G_DEFINE_CONSTRUCTOR_PRAGMA_ARGS(peas_init_ctor)
+#  pragma G_DEFINE_CONSTRUCTOR_PRAGMA_ARGS(bean_init_ctor)
 # endif
-G_DEFINE_CONSTRUCTOR(peas_init_ctor)
+G_DEFINE_CONSTRUCTOR(bean_init_ctor)
 #else
 # error Your platform/compiler is missing constructor support
 #endif
 
 static void
-peas_init_ctor (void)
+bean_init_ctor (void)
 {
-  gchar *locale_dir = peas_dirs_get_locale_dir ();
+  gchar *locale_dir = bean_dirs_get_locale_dir ();
 
   bindtextdomain (GETTEXT_PACKAGE, locale_dir);
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");

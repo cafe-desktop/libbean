@@ -1,15 +1,15 @@
 /*
  * testing-util.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2011 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -26,7 +26,7 @@
 #include <glib.h>
 #include <girepository.h>
 
-#include "libpeas/peas-engine-priv.h"
+#include "libbean/bean-engine-priv.h"
 
 #include "testing-util.h"
 
@@ -208,7 +208,7 @@ testing_util_init (void)
                                       G_N_ELEMENTS (glib_debug_keys));
 
   g_irepository_require_private (g_irepository_get_default (),
-                                 BUILDDIR "/libpeas",
+                                 BUILDDIR "/libbean",
                                  "Peas", "1.0", 0, &error);
   g_assert_no_error (error);
 
@@ -237,9 +237,9 @@ testing_util_engine_new_full (gboolean nonglobal_loaders)
 
   /* Must be after requiring typelibs */
   if (!nonglobal_loaders)
-    engine = peas_engine_new ();
+    engine = bean_engine_new ();
   else
-    engine = peas_engine_new_with_nonglobal_loaders ();
+    engine = bean_engine_new_with_nonglobal_loaders ();
 
   g_private_set (&engine_key, engine);
 
@@ -251,14 +251,14 @@ testing_util_engine_new_full (gboolean nonglobal_loaders)
    * to the engine before it. This is used to verify that
    * the engine will order the plugin list correctly.
    */
-  peas_engine_add_search_path (engine,
+  bean_engine_add_search_path (engine,
                                BUILDDIR "/tests/plugins/builtin",
                                SRCDIR   "/tests/plugins/builtin");
-  peas_engine_add_search_path (engine,
+  bean_engine_add_search_path (engine,
                                BUILDDIR "/tests/plugins/loadable",
                                SRCDIR   "/tests/plugins/loadable");
 
-  peas_engine_add_search_path (engine,
+  bean_engine_add_search_path (engine,
                                BUILDDIR "/tests/plugins",
                                SRCDIR   "/tests/plugins");
 
@@ -298,7 +298,7 @@ testing_util_run_tests (void)
   g_private_replace (&engine_key, NULL);
   g_private_replace (&unhandled_key, NULL);
   g_private_replace (&log_hooks_key, NULL);
-  _peas_engine_shutdown ();
+  _bean_engine_shutdown ();
 
   return retval;
 }

@@ -1,17 +1,17 @@
 /*
- * peas-engine.c
- * This file is part of libpeas
+ * bean-engine.c
+ * This file is part of libbean
  *
  * Copyright (C) 2002-2005 Paolo Maggi
  * Copyright (C) 2009 Steve Frécinaux
  * Copyright (C) 2010-2014 Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -25,20 +25,20 @@
 
 #include <string.h>
 
-#include "peas-i18n-priv.h"
-#include "peas-engine.h"
-#include "peas-engine-priv.h"
-#include "peas-plugin-info-priv.h"
-#include "peas-plugin-loader.h"
-#include "peas-plugin-loader-c.h"
-#include "peas-object-module.h"
-#include "peas-extension.h"
-#include "peas-dirs.h"
-#include "peas-debug.h"
-#include "peas-utils.h"
+#include "bean-i18n-priv.h"
+#include "bean-engine.h"
+#include "bean-engine-priv.h"
+#include "bean-plugin-info-priv.h"
+#include "bean-plugin-loader.h"
+#include "bean-plugin-loader-c.h"
+#include "bean-object-module.h"
+#include "bean-extension.h"
+#include "bean-dirs.h"
+#include "bean-debug.h"
+#include "bean-utils.h"
 
 /**
- * SECTION:peas-engine
+ * SECTION:bean-engine
  * @short_description: Engine at the heart of the Peas plugin system.
  * @see_also: #PeasPluginInfo
  *
@@ -56,7 +56,7 @@
  *   </listitem>
  * </itemizedlist>
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  **/
 
@@ -109,10 +109,10 @@ struct _PeasEnginePrivate {
   guint use_nonglobal_loaders : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasEngine, peas_engine, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (PeasEngine, bean_engine, G_TYPE_OBJECT)
 
 #define GET_PRIV(o) \
-  (peas_engine_get_instance_private (o))
+  (bean_engine_get_instance_private (o))
 
 static gboolean shutdown = FALSE;
 static PeasEngine *default_engine = NULL;
@@ -120,9 +120,9 @@ static PeasEngine *default_engine = NULL;
 static GMutex loaders_lock;
 static GlobalLoaderInfo loaders[PEAS_UTILS_N_LOADERS];
 
-static void peas_engine_load_plugin_real   (PeasEngine     *engine,
+static void bean_engine_load_plugin_real   (PeasEngine     *engine,
                                             PeasPluginInfo *info);
-static void peas_engine_unload_plugin_real (PeasEngine     *engine,
+static void bean_engine_unload_plugin_real (PeasEngine     *engine,
                                             PeasPluginInfo *info);
 
 static void
@@ -133,7 +133,7 @@ plugin_info_add_sorted (GQueue         *plugin_list,
   GList *furthest_dep = NULL;
   const gchar **dependencies;
 
-  dependencies = peas_plugin_info_get_dependencies (info);
+  dependencies = bean_plugin_info_get_dependencies (info);
 
   for (i = 0; dependencies[i] != NULL; ++i)
     {
@@ -142,7 +142,7 @@ plugin_info_add_sorted (GQueue         *plugin_list,
       for (; pos != NULL; pos = pos->next)
         {
           if (strcmp (dependencies[i],
-                      peas_plugin_info_get_module_name (pos->data)) == 0)
+                      bean_plugin_info_get_module_name (pos->data)) == 0)
             {
               furthest_dep = pos;
               break;
@@ -160,8 +160,8 @@ plugin_info_add_sorted (GQueue         *plugin_list,
     }
 
   g_debug ("Adding '%s' after '%s' due to dependencies",
-           peas_plugin_info_get_module_name (info),
-           peas_plugin_info_get_module_name (furthest_dep->data));
+           bean_plugin_info_get_module_name (info),
+           bean_plugin_info_get_module_name (furthest_dep->data));
 
   g_queue_insert_after (plugin_list, furthest_dep, info);
 }
@@ -176,7 +176,7 @@ load_plugin_info (PeasEngine  *engine,
   PeasPluginInfo *info;
   const gchar *module_name;
 
-  info = _peas_plugin_info_new (filename,
+  info = _bean_plugin_info_new (filename,
                                 module_dir,
                                 data_dir);
 
@@ -186,10 +186,10 @@ load_plugin_info (PeasEngine  *engine,
       return FALSE;
     }
 
-  module_name = peas_plugin_info_get_module_name (info);
-  if (peas_engine_get_plugin_info (engine, module_name) != NULL)
+  module_name = bean_plugin_info_get_module_name (info);
+  if (bean_engine_get_plugin_info (engine, module_name) != NULL)
     {
-      _peas_plugin_info_unref (info);
+      _bean_plugin_info_unref (info);
       return FALSE;
     }
 
@@ -334,7 +334,7 @@ plugin_list_changed (PeasEngine *engine)
       if (pos->prev != NULL)
         g_string_append (msg, ", ");
 
-      g_string_append (msg, peas_plugin_info_get_module_name (pos->data));
+      g_string_append (msg, bean_plugin_info_get_module_name (pos->data));
     }
 
   g_debug ("%s", msg->str);
@@ -342,7 +342,7 @@ plugin_list_changed (PeasEngine *engine)
 }
 
 /**
- * peas_engine_rescan_plugins:
+ * bean_engine_rescan_plugins:
  * @engine: A #PeasEngine.
  *
  * Rescan all the registered directories to find new or updated plugins.
@@ -352,7 +352,7 @@ plugin_list_changed (PeasEngine *engine)
  * restarting the application.
  */
 void
-peas_engine_rescan_plugins (PeasEngine *engine)
+bean_engine_rescan_plugins (PeasEngine *engine)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
   GList *item;
@@ -379,7 +379,7 @@ peas_engine_rescan_plugins (PeasEngine *engine)
 }
 
 static void
-peas_engine_insert_search_path (PeasEngine  *engine,
+bean_engine_insert_search_path (PeasEngine  *engine,
                                 gboolean     prepend,
                                 const gchar *module_dir,
                                 const gchar *data_dir)
@@ -408,7 +408,7 @@ peas_engine_insert_search_path (PeasEngine  *engine,
 }
 
 /**
- * peas_engine_add_search_path:
+ * bean_engine_add_search_path:
  * @engine: A #PeasEngine.
  * @module_dir: the plugin module directory.
  * @data_dir: (allow-none): the plugin data directory.
@@ -425,21 +425,21 @@ peas_engine_insert_search_path (PeasEngine  *engine,
  * when it comes to installation location: the same plugin can be
  * installed either in the system path or in the user's home directory,
  * without taking other special care than using
- * peas_plugin_info_get_data_dir() when looking for its data files.
+ * bean_plugin_info_get_data_dir() when looking for its data files.
  *
  * If @data_dir is %NULL, then it is set to the same value as
  * @module_dir.
  */
 void
-peas_engine_add_search_path (PeasEngine  *engine,
+bean_engine_add_search_path (PeasEngine  *engine,
                              const gchar *module_dir,
                              const gchar *data_dir)
 {
-  peas_engine_insert_search_path (engine, FALSE, module_dir, data_dir);
+  bean_engine_insert_search_path (engine, FALSE, module_dir, data_dir);
 }
 
 /**
- * peas_engine_prepend_search_path:
+ * bean_engine_prepend_search_path:
  * @engine: A #PeasEngine.
  * @module_dir: the plugin module directory.
  * @data_dir: (allow-none): the plugin data directory.
@@ -447,16 +447,16 @@ peas_engine_add_search_path (PeasEngine  *engine,
  * This function prepends a search path to the list of paths where to
  * look for plugins.
  *
- * See Also: peas_engine_add_search_path()
+ * See Also: bean_engine_add_search_path()
  *
  * Since: 1.6
  */
 void
-peas_engine_prepend_search_path (PeasEngine  *engine,
+bean_engine_prepend_search_path (PeasEngine  *engine,
                                  const gchar *module_dir,
                                  const gchar *data_dir)
 {
-  peas_engine_insert_search_path (engine, TRUE, module_dir, data_dir);
+  bean_engine_insert_search_path (engine, TRUE, module_dir, data_dir);
 }
 
 static void
@@ -468,24 +468,24 @@ default_engine_weak_notify (gpointer    unused,
 }
 
 static void
-peas_engine_init (PeasEngine *engine)
+bean_engine_init (PeasEngine *engine)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
 
-  /* Don't need to use atomics as peas_engine_shutdown()
+  /* Don't need to use atomics as bean_engine_shutdown()
    * is private API and as such is not multithread-safe
    */
   if (shutdown)
     {
-      g_error ("libpeas cannot create a plugin engine "
+      g_error ("libbean cannot create a plugin engine "
                "as it has been shutdown.");
     }
 
   /* Set the default engine here to make sure that if a
-   * plugin is loaded and calls peas_engine_get_default()
+   * plugin is loaded and calls bean_engine_get_default()
    * that this engine is returned and not another.
    *
-   * While peas_engine_get_default() is not thread-safe
+   * While bean_engine_get_default() is not thread-safe
    * we are using atomics here to try and prevent bad
    * things from happening.
    */
@@ -506,7 +506,7 @@ peas_engine_init (PeasEngine *engine)
 }
 
 /**
- * peas_engine_garbage_collect:
+ * bean_engine_garbage_collect:
  * @engine: A #PeasEngine.
  *
  * This function triggers garbage collection on all the loaders currently
@@ -515,7 +515,7 @@ peas_engine_init (PeasEngine *engine)
  * disappear.
  */
 void
-peas_engine_garbage_collect (PeasEngine *engine)
+bean_engine_garbage_collect (PeasEngine *engine)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
   gint i;
@@ -527,12 +527,12 @@ peas_engine_garbage_collect (PeasEngine *engine)
       LoaderInfo *loader_info = &priv->loaders[i];
 
       if (loader_info->loader != NULL)
-        peas_plugin_loader_garbage_collect (loader_info->loader);
+        bean_plugin_loader_garbage_collect (loader_info->loader);
     }
 }
 
 static void
-peas_engine_set_property (GObject      *object,
+bean_engine_set_property (GObject      *object,
                           guint         prop_id,
                           const GValue *value,
                           GParamSpec   *pspec)
@@ -543,7 +543,7 @@ peas_engine_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_LOADED_PLUGINS:
-      peas_engine_set_loaded_plugins (engine,
+      bean_engine_set_loaded_plugins (engine,
                                       (const gchar **) g_value_get_boxed (value));
       break;
     case PROP_NONGLOBAL_LOADERS:
@@ -556,7 +556,7 @@ peas_engine_set_property (GObject      *object,
 }
 
 static void
-peas_engine_get_property (GObject    *object,
+bean_engine_get_property (GObject    *object,
                           guint       prop_id,
                           GValue     *value,
                           GParamSpec *pspec)
@@ -568,11 +568,11 @@ peas_engine_get_property (GObject    *object,
     {
     case PROP_PLUGIN_LIST:
       g_value_set_pointer (value,
-                           (gpointer) peas_engine_get_plugin_list (engine));
+                           (gpointer) bean_engine_get_plugin_list (engine));
       break;
     case PROP_LOADED_PLUGINS:
       g_value_take_boxed (value,
-                          (gconstpointer) peas_engine_get_loaded_plugins (engine));
+                          (gconstpointer) bean_engine_get_loaded_plugins (engine));
       break;
     case PROP_NONGLOBAL_LOADERS:
       g_value_set_boolean (value, priv->use_nonglobal_loaders);
@@ -584,14 +584,14 @@ peas_engine_get_property (GObject    *object,
 }
 
 static void
-peas_engine_dispose (GObject *object)
+bean_engine_dispose (GObject *object)
 {
   PeasEngine *engine = PEAS_ENGINE (object);
   PeasEnginePrivate *priv = GET_PRIV (engine);
   GList *item;
   gint i;
 
-  /* See peas_engine_unload_plugin_real() */
+  /* See bean_engine_unload_plugin_real() */
   priv->in_dispose = TRUE;
 
   /* First unload all the plugins */
@@ -599,8 +599,8 @@ peas_engine_dispose (GObject *object)
     {
       PeasPluginInfo *info = PEAS_PLUGIN_INFO (item->data);
 
-      if (peas_plugin_info_is_loaded (info))
-        peas_engine_unload_plugin (engine, info);
+      if (bean_plugin_info_is_loaded (info))
+        bean_engine_unload_plugin (engine, info);
     }
 
   /* Then destroy the plugin loaders */
@@ -611,11 +611,11 @@ peas_engine_dispose (GObject *object)
       g_clear_object (&loader_info->loader);
     }
 
-  G_OBJECT_CLASS (peas_engine_parent_class)->dispose (object);
+  G_OBJECT_CLASS (bean_engine_parent_class)->dispose (object);
 }
 
 static void
-peas_engine_finalize (GObject *object)
+bean_engine_finalize (GObject *object)
 {
   PeasEngine *engine = PEAS_ENGINE (object);
   PeasEnginePrivate *priv = GET_PRIV (engine);
@@ -626,7 +626,7 @@ peas_engine_finalize (GObject *object)
     {
       PeasPluginInfo *info = (PeasPluginInfo *) item->data;
 
-      _peas_plugin_info_unref (info);
+      _bean_plugin_info_unref (info);
     }
 
   /* free the search path list */
@@ -642,29 +642,29 @@ peas_engine_finalize (GObject *object)
   g_queue_clear (&priv->search_paths);
   g_queue_clear (&priv->plugin_list);
 
-  G_OBJECT_CLASS (peas_engine_parent_class)->finalize (object);
+  G_OBJECT_CLASS (bean_engine_parent_class)->finalize (object);
 }
 
 static void
-peas_engine_class_init (PeasEngineClass *klass)
+bean_engine_class_init (PeasEngineClass *klass)
 {
   GType the_type = G_TYPE_FROM_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = peas_engine_set_property;
-  object_class->get_property = peas_engine_get_property;
-  object_class->dispose = peas_engine_dispose;
-  object_class->finalize = peas_engine_finalize;
+  object_class->set_property = bean_engine_set_property;
+  object_class->get_property = bean_engine_get_property;
+  object_class->dispose = bean_engine_dispose;
+  object_class->finalize = bean_engine_finalize;
 
-  klass->load_plugin = peas_engine_load_plugin_real;
-  klass->unload_plugin = peas_engine_unload_plugin_real;
+  klass->load_plugin = bean_engine_load_plugin_real;
+  klass->unload_plugin = bean_engine_unload_plugin_real;
 
   /**
    * PeasEngine:plugin-list:
    *
    * The list of found plugins.
    *
-   * This will be modified when peas_engine_rescan_plugins() is called.
+   * This will be modified when bean_engine_rescan_plugins() is called.
    *
    * Note: the list belongs to the engine and should not be modified or freed.
    */
@@ -680,8 +680,8 @@ peas_engine_class_init (PeasEngineClass *klass)
    *
    * The list of loaded plugins.
    *
-   * This will be modified when peas_engine_load_plugin() or
-   * peas_engine_unload_plugin() is called.
+   * This will be modified when bean_engine_load_plugin() or
+   * bean_engine_unload_plugin() is called.
    *
    * This can be used with GSettings to save the loaded plugins by binding
    * to this property after instantiating the engine by doing:
@@ -708,7 +708,7 @@ peas_engine_class_init (PeasEngineClass *klass)
    *
    * If non-global plugin loaders should be used.
    *
-   * See peas_engine_new_with_nonglobal_loaders() for more information.
+   * See bean_engine_new_with_nonglobal_loaders() for more information.
    *
    * Since: 1.14
    */
@@ -775,18 +775,18 @@ peas_engine_class_init (PeasEngineClass *klass)
   /* We don't support calling PeasEngine API without module support */
   if (!g_module_supported ())
     {
-      g_error ("libpeas is not able to create the "
+      g_error ("libbean is not able to create the "
                "plugins engine as modules are not supported.");
     }
 
   /* We are doing some global initialization here as there is currently no
-   * global init function for libpeas. */
-  peas_debug_init ();
+   * global init function for libbean. */
+  bean_debug_init ();
 
   /* This cannot be done as a compile-time
    * assert, but is critical for correct behavior
    */
-  g_assert (g_strcmp0 (peas_utils_get_loader_from_id (PEAS_UTILS_C_LOADER_ID),
+  g_assert (g_strcmp0 (bean_utils_get_loader_from_id (PEAS_UTILS_C_LOADER_ID),
                        "c") == 0);
 
   /* The C plugin loader is always enabled */
@@ -803,14 +803,14 @@ get_plugin_loader_module (gint loader_id)
   if (global_loader_info->module != NULL)
     return global_loader_info->module;
 
-  loader_name = peas_utils_get_loader_from_id (loader_id);
-  module_name = peas_utils_get_loader_module_from_id (loader_id);
-  module_dir = peas_dirs_get_plugin_loader_dir (loader_name);
+  loader_name = bean_utils_get_loader_from_id (loader_id);
+  module_name = bean_utils_get_loader_module_from_id (loader_id);
+  module_dir = bean_dirs_get_plugin_loader_dir (loader_name);
 
   /* Bind loaders globally, binding
    * locally can break the plugin loaders
    */
-  global_loader_info->module = peas_object_module_new_full (module_name,
+  global_loader_info->module = bean_object_module_new_full (module_name,
                                                             module_dir,
                                                             TRUE, FALSE);
 
@@ -832,7 +832,7 @@ create_plugin_loader (gint loader_id)
 
   if (loader_id == PEAS_UTILS_C_LOADER_ID)
     {
-      loader = peas_plugin_loader_c_new ();
+      loader = bean_plugin_loader_c_new ();
     }
   else
     {
@@ -843,15 +843,15 @@ create_plugin_loader (gint loader_id)
         return NULL;
 
       loader = PEAS_PLUGIN_LOADER (
-            peas_object_module_create_object (module,
+            bean_object_module_create_object (module,
                                               PEAS_TYPE_PLUGIN_LOADER,
                                               0, NULL));
     }
 
-  if (loader == NULL || !peas_plugin_loader_initialize (loader))
+  if (loader == NULL || !bean_plugin_loader_initialize (loader))
     {
       g_warning ("Loader '%s' is not a valid PeasPluginLoader instance",
-                 peas_utils_get_loader_from_id (loader_id));
+                 bean_utils_get_loader_from_id (loader_id));
       g_clear_object (&loader);
     }
 
@@ -871,7 +871,7 @@ get_local_plugin_loader (PeasEngine *engine,
 
   if (global_loader_info->loader != NULL &&
       (!priv->use_nonglobal_loaders ||
-       peas_plugin_loader_is_global (global_loader_info->loader)))
+       bean_plugin_loader_is_global (global_loader_info->loader)))
     {
       return g_object_ref (global_loader_info->loader);
     }
@@ -885,7 +885,7 @@ get_local_plugin_loader (PeasEngine *engine,
     }
 
   if (!priv->use_nonglobal_loaders ||
-      peas_plugin_loader_is_global (loader))
+      bean_plugin_loader_is_global (loader))
     {
       global_loader_info->loader = g_object_ref (loader);
     }
@@ -911,7 +911,7 @@ get_plugin_loader (PeasEngine *engine,
       if (!global_loader_info->enabled)
         {
           g_warning ("The '%s' plugin loader has not been enabled",
-                     peas_utils_get_loader_from_id (loader_id));
+                     bean_utils_get_loader_from_id (loader_id));
 
           g_mutex_unlock (&loaders_lock);
           return NULL;
@@ -920,13 +920,13 @@ get_plugin_loader (PeasEngine *engine,
       g_warning ("The '%s' plugin loader was not enabled "
                  "for this engine. This will no longer be "
                  "supported at some point in the future!",
-                 peas_utils_get_loader_from_id (loader_id));
+                 bean_utils_get_loader_from_id (loader_id));
 
       g_mutex_unlock (&loaders_lock);
 
-      /* Avoid bypassing logic in peas_engine_enable_loader() */
-      peas_engine_enable_loader (engine,
-                                 peas_utils_get_loader_from_id (loader_id));
+      /* Avoid bypassing logic in bean_engine_enable_loader() */
+      bean_engine_enable_loader (engine,
+                                 bean_utils_get_loader_from_id (loader_id));
       return get_plugin_loader (engine, loader_id);
     }
 
@@ -940,7 +940,7 @@ get_plugin_loader (PeasEngine *engine,
 }
 
 /**
- * peas_engine_enable_loader:
+ * bean_engine_enable_loader:
  * @engine: A #PeasEngine.
  * @loader_name: The name of the loader to enable.
  *
@@ -951,7 +951,7 @@ get_plugin_loader (PeasEngine *engine,
  * For instance, the following code will enable Python 2 plugins
  * to be loaded:
  * |[
- * peas_engine_enable_loader (engine, "python");
+ * bean_engine_enable_loader (engine, "python");
  * ]|
  *
  * Note: plugin loaders used to be shared across #PeasEngines so enabling
@@ -960,7 +960,7 @@ get_plugin_loader (PeasEngine *engine,
  *       however a warning has been added to help applications transition.
  **/
 void
-peas_engine_enable_loader (PeasEngine  *engine,
+bean_engine_enable_loader (PeasEngine  *engine,
                            const gchar *loader_name)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
@@ -970,7 +970,7 @@ peas_engine_enable_loader (PeasEngine  *engine,
   g_return_if_fail (PEAS_IS_ENGINE (engine));
   g_return_if_fail (loader_name != NULL && *loader_name != '\0');
 
-  loader_id = peas_utils_get_loader_id (loader_name);
+  loader_id = bean_utils_get_loader_id (loader_name);
 
   if (loader_id == -1)
     {
@@ -1000,7 +1000,7 @@ peas_engine_enable_loader (PeasEngine  *engine,
       gint i;
       const gint *loader_ids;
 
-      loader_ids = peas_utils_get_conflicting_loaders_from_id (loader_id);
+      loader_ids = bean_utils_get_conflicting_loaders_from_id (loader_id);
 
       /* Some loaders conflict with each other
        * and cannot be used in the same process
@@ -1012,7 +1012,7 @@ peas_engine_enable_loader (PeasEngine  *engine,
 
           g_warning ("Cannot enable plugin loader '%s' as the "
                      "'%s' plugin loader is already enabled.", loader_name,
-                     peas_utils_get_loader_from_id (loader_ids[i]));
+                     bean_utils_get_loader_from_id (loader_ids[i]));
 
           loader_info->failed = TRUE;
           loaders[loader_id].failed = TRUE;
@@ -1031,7 +1031,7 @@ peas_engine_enable_loader (PeasEngine  *engine,
 }
 
 /**
- * peas_engine_get_plugin_list:
+ * bean_engine_get_plugin_list:
  * @engine: A #PeasEngine.
  *
  * Returns the list of #PeasPluginInfo known to the engine.
@@ -1041,7 +1041,7 @@ peas_engine_enable_loader (PeasEngine  *engine,
  * not be freed.
  **/
 const GList *
-peas_engine_get_plugin_list (PeasEngine *engine)
+bean_engine_get_plugin_list (PeasEngine *engine)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
 
@@ -1051,7 +1051,7 @@ peas_engine_get_plugin_list (PeasEngine *engine)
 }
 
 /**
- * peas_engine_get_plugin_info:
+ * bean_engine_get_plugin_info:
  * @engine: A #PeasEngine.
  * @plugin_name: A plugin name.
  *
@@ -1062,7 +1062,7 @@ peas_engine_get_plugin_list (PeasEngine *engine)
  * a given plugin module name.
  */
 PeasPluginInfo *
-peas_engine_get_plugin_info (PeasEngine  *engine,
+bean_engine_get_plugin_info (PeasEngine  *engine,
                              const gchar *plugin_name)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
@@ -1074,7 +1074,7 @@ peas_engine_get_plugin_info (PeasEngine  *engine,
   for (l = priv->plugin_list.head; l != NULL; l = l->next)
     {
       PeasPluginInfo *info = (PeasPluginInfo *) l->data;
-      const gchar *module_name = peas_plugin_info_get_module_name (info);
+      const gchar *module_name = bean_plugin_info_get_module_name (info);
 
       if (strcmp (module_name, plugin_name) == 0)
         return info;
@@ -1084,7 +1084,7 @@ peas_engine_get_plugin_info (PeasEngine  *engine,
 }
 
 static void
-peas_engine_load_plugin_real (PeasEngine     *engine,
+bean_engine_load_plugin_real (PeasEngine     *engine,
                               PeasPluginInfo *info)
 {
   const gchar **dependencies;
@@ -1092,24 +1092,24 @@ peas_engine_load_plugin_real (PeasEngine     *engine,
   guint i;
   PeasPluginLoader *loader;
 
-  if (peas_plugin_info_is_loaded (info))
+  if (bean_plugin_info_is_loaded (info))
     return;
 
-  if (!peas_plugin_info_is_available (info, NULL))
+  if (!bean_plugin_info_is_available (info, NULL))
     return;
 
   /* We set the plugin info as loaded before trying to load the dependencies,
    * to make sure we won't have an infinite loop. */
   info->loaded = TRUE;
 
-  dependencies = peas_plugin_info_get_dependencies (info);
+  dependencies = bean_plugin_info_get_dependencies (info);
   for (i = 0; dependencies[i] != NULL; i++)
     {
-      dep_info = peas_engine_get_plugin_info (engine, dependencies[i]);
+      dep_info = bean_engine_get_plugin_info (engine, dependencies[i]);
       if (!dep_info)
         {
           g_warning ("Could not find plugin '%s' for plugin '%s'",
-                     dependencies[i], peas_plugin_info_get_module_name (info));
+                     dependencies[i], bean_plugin_info_get_module_name (info));
           g_set_error (&info->error,
                        PEAS_PLUGIN_INFO_ERROR,
                        PEAS_PLUGIN_INFO_ERROR_DEP_NOT_FOUND,
@@ -1118,13 +1118,13 @@ peas_engine_load_plugin_real (PeasEngine     *engine,
           goto error;
         }
 
-      if (!peas_engine_load_plugin (engine, dep_info))
+      if (!bean_engine_load_plugin (engine, dep_info))
         {
           g_set_error (&info->error,
                        PEAS_PLUGIN_INFO_ERROR,
                        PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED,
                        _("Dependency “%s” failed to load"),
-                       peas_plugin_info_get_name (dep_info));
+                       bean_plugin_info_get_name (dep_info));
           goto error;
         }
     }
@@ -1138,14 +1138,14 @@ peas_engine_load_plugin_real (PeasEngine     *engine,
                    PEAS_PLUGIN_INFO_ERROR,
                    PEAS_PLUGIN_INFO_ERROR_LOADER_NOT_FOUND,
                    _("Plugin loader “%s” was not found"),
-                   peas_utils_get_loader_from_id (info->loader_id));
+                   bean_utils_get_loader_from_id (info->loader_id));
       goto error;
     }
 
-  if (!peas_plugin_loader_load (loader, info))
+  if (!bean_plugin_loader_load (loader, info))
     {
       g_warning ("Error loading plugin '%s'",
-                 peas_plugin_info_get_module_name (info));
+                 bean_plugin_info_get_module_name (info));
       g_set_error (&info->error,
                    PEAS_PLUGIN_INFO_ERROR,
                    PEAS_PLUGIN_INFO_ERROR_LOADING_FAILED,
@@ -1153,7 +1153,7 @@ peas_engine_load_plugin_real (PeasEngine     *engine,
       goto error;
     }
 
-  g_debug ("Loaded plugin '%s'", peas_plugin_info_get_module_name (info));
+  g_debug ("Loaded plugin '%s'", bean_plugin_info_get_module_name (info));
 
   g_object_notify_by_pspec (G_OBJECT (engine),
                             properties[PROP_LOADED_PLUGINS]);
@@ -1167,7 +1167,7 @@ error:
 }
 
 /**
- * peas_engine_load_plugin:
+ * bean_engine_load_plugin:
  * @engine: A #PeasEngine.
  * @info: A #PeasPluginInfo.
  *
@@ -1178,25 +1178,25 @@ error:
  * Returns: whether the plugin has been successfully loaded.
  */
 gboolean
-peas_engine_load_plugin (PeasEngine     *engine,
+bean_engine_load_plugin (PeasEngine     *engine,
                          PeasPluginInfo *info)
 {
   g_return_val_if_fail (PEAS_IS_ENGINE (engine), FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
 
-  if (peas_plugin_info_is_loaded (info))
+  if (bean_plugin_info_is_loaded (info))
     return TRUE;
 
-  if (!peas_plugin_info_is_available (info, NULL))
+  if (!bean_plugin_info_is_available (info, NULL))
     return FALSE;
 
   g_signal_emit (engine, signals[LOAD_PLUGIN], 0, info);
 
-  return peas_plugin_info_is_loaded (info);
+  return bean_plugin_info_is_loaded (info);
 }
 
 static void
-peas_engine_unload_plugin_real (PeasEngine     *engine,
+bean_engine_unload_plugin_real (PeasEngine     *engine,
                                 PeasPluginInfo *info)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
@@ -1204,7 +1204,7 @@ peas_engine_unload_plugin_real (PeasEngine     *engine,
   const gchar *module_name;
   PeasPluginLoader *loader;
 
-  if (!peas_plugin_info_is_loaded (info))
+  if (!bean_plugin_info_is_loaded (info))
     return;
 
   /* We set the plugin info as unloaded before trying to unload the
@@ -1212,25 +1212,25 @@ peas_engine_unload_plugin_real (PeasEngine     *engine,
   info->loaded = FALSE;
 
   /* First unload all the dependant plugins */
-  module_name = peas_plugin_info_get_module_name (info);
+  module_name = bean_plugin_info_get_module_name (info);
   for (item = priv->plugin_list.tail; item != NULL; item = item->prev)
     {
       PeasPluginInfo *other_info = PEAS_PLUGIN_INFO (item->data);
 
-      if (!peas_plugin_info_is_loaded (other_info))
+      if (!bean_plugin_info_is_loaded (other_info))
         continue;
 
-      if (peas_plugin_info_has_dependency (other_info, module_name))
-         peas_engine_unload_plugin (engine, other_info);
+      if (bean_plugin_info_has_dependency (other_info, module_name))
+         bean_engine_unload_plugin (engine, other_info);
     }
 
   /* find the loader and tell it to gc and unload the plugin */
   loader = get_plugin_loader (engine, info->loader_id);
 
-  peas_plugin_loader_garbage_collect (loader);
-  peas_plugin_loader_unload (loader, info);
+  bean_plugin_loader_garbage_collect (loader);
+  bean_plugin_loader_unload (loader, info);
 
-  g_debug ("Unloaded plugin '%s'", peas_plugin_info_get_module_name (info));
+  g_debug ("Unloaded plugin '%s'", bean_plugin_info_get_module_name (info));
 
   /* Don't notify while in dispose so the
    * loaded plugins can easily be kept in GSettings
@@ -1241,7 +1241,7 @@ peas_engine_unload_plugin_real (PeasEngine     *engine,
 }
 
 /**
- * peas_engine_unload_plugin:
+ * bean_engine_unload_plugin:
  * @engine: A #PeasEngine.
  * @info: A #PeasPluginInfo.
  *
@@ -1252,22 +1252,22 @@ peas_engine_unload_plugin_real (PeasEngine     *engine,
  * Returns: whether the plugin has been successfully unloaded.
  */
 gboolean
-peas_engine_unload_plugin (PeasEngine     *engine,
+bean_engine_unload_plugin (PeasEngine     *engine,
                            PeasPluginInfo *info)
 {
   g_return_val_if_fail (PEAS_IS_ENGINE (engine), FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
 
-  if (!peas_plugin_info_is_loaded (info))
+  if (!bean_plugin_info_is_loaded (info))
     return TRUE;
 
   g_signal_emit (engine, signals[UNLOAD_PLUGIN], 0, info);
 
-  return !peas_plugin_info_is_loaded (info);
+  return !bean_plugin_info_is_loaded (info);
 }
 
 /**
- * peas_engine_provides_extension:
+ * bean_engine_provides_extension:
  * @engine: A #PeasEngine.
  * @info: A #PeasPluginInfo.
  * @extension_type: The extension #GType.
@@ -1275,13 +1275,13 @@ peas_engine_unload_plugin (PeasEngine     *engine,
  * Returns if @info provides an extension for @extension_type.
  * If the @info is not loaded than %FALSE will always be returned.
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
  * Returns: if @info provides an extension for @extension_type.
  */
 gboolean
-peas_engine_provides_extension (PeasEngine     *engine,
+bean_engine_provides_extension (PeasEngine     *engine,
                                 PeasPluginInfo *info,
                                 GType           extension_type)
 {
@@ -1292,15 +1292,15 @@ peas_engine_provides_extension (PeasEngine     *engine,
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
 
-  if (!peas_plugin_info_is_loaded (info))
+  if (!bean_plugin_info_is_loaded (info))
     return FALSE;
 
   loader = get_plugin_loader (engine, info->loader_id);
-  return peas_plugin_loader_provides_extension (loader, info, extension_type);
+  return bean_plugin_loader_provides_extension (loader, info, extension_type);
 }
 
 /**
- * peas_engine_create_extensionv: (skip)
+ * bean_engine_create_extensionv: (skip)
  * @engine: A #PeasEngine.
  * @info: A loaded #PeasPluginInfo.
  * @extension_type: The implemented extension #GType.
@@ -1312,16 +1312,16 @@ peas_engine_provides_extension (PeasEngine     *engine,
  * then this function will return a new instance of this implementation,
  * wrapped in a new #PeasExtension instance. Otherwise, it will return %NULL.
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_engine_create_extension() for more information.
+ * See bean_engine_create_extension() for more information.
  *
  * Returns: (transfer full): a new instance of #PeasExtension wrapping
  * the @extension_type instance, or %NULL.
  */
 PeasExtension *
-peas_engine_create_extensionv (PeasEngine     *engine,
+bean_engine_create_extensionv (PeasEngine     *engine,
                                PeasPluginInfo *info,
                                GType           extension_type,
                                guint           n_parameters,
@@ -1334,16 +1334,16 @@ peas_engine_create_extensionv (PeasEngine     *engine,
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), NULL);
-  g_return_val_if_fail (peas_plugin_info_is_loaded (info), NULL);
+  g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
 
   loader = get_plugin_loader (engine, info->loader_id);
-  extension = peas_plugin_loader_create_extension (loader, info, extension_type,
+  extension = bean_plugin_loader_create_extension (loader, info, extension_type,
                                                    n_parameters, parameters);
 
   if (!G_TYPE_CHECK_INSTANCE_TYPE (extension, extension_type))
     {
       g_warning ("Plugin '%s' does not provide a '%s' extension",
-                 peas_plugin_info_get_module_name (info),
+                 bean_plugin_info_get_module_name (info),
                  g_type_name (extension_type));
       return NULL;
     }
@@ -1352,7 +1352,7 @@ peas_engine_create_extensionv (PeasEngine     *engine,
 }
 
 /**
- * peas_engine_create_extension_with_properties: (rename-to peas_engine_create_extension)
+ * bean_engine_create_extension_with_properties: (rename-to bean_engine_create_extension)
  * @engine: A #PeasEngine.
  * @info: A loaded #PeasPluginInfo.
  * @extension_type: The implemented extension #GType.
@@ -1364,10 +1364,10 @@ peas_engine_create_extensionv (PeasEngine     *engine,
  * then this function will return a new instance of this implementation,
  * wrapped in a new #PeasExtension instance. Otherwise, it will return %NULL.
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_engine_create_extension() for more information.
+ * See bean_engine_create_extension() for more information.
  *
  * Returns: (transfer full): a new instance of #PeasExtension wrapping
  * the @extension_type instance, or %NULL.
@@ -1375,7 +1375,7 @@ peas_engine_create_extensionv (PeasEngine     *engine,
  * Since: 1.24
  */
 PeasExtension *
-peas_engine_create_extension_with_properties (PeasEngine     *engine,
+bean_engine_create_extension_with_properties (PeasEngine     *engine,
                                               PeasPluginInfo *info,
                                               GType           extension_type,
                                               guint           n_properties,
@@ -1390,14 +1390,14 @@ peas_engine_create_extension_with_properties (PeasEngine     *engine,
   g_return_val_if_fail (info != NULL, NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), NULL);
-  g_return_val_if_fail (peas_plugin_info_is_loaded (info), NULL);
+  g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
   g_return_val_if_fail (n_properties == 0 || prop_names != NULL, NULL);
   g_return_val_if_fail (n_properties == 0 || prop_values != NULL, NULL);
 
   if (n_properties > 0)
     {
       parameters = g_new (GParameter, n_properties);
-      if (!peas_utils_properties_array_to_parameter_list (extension_type,
+      if (!bean_utils_properties_array_to_parameter_list (extension_type,
                                                           n_properties,
                                                           prop_names,
                                                           prop_values,
@@ -1410,7 +1410,7 @@ peas_engine_create_extension_with_properties (PeasEngine     *engine,
     }
 
   loader = get_plugin_loader (engine, info->loader_id);
-  extension = peas_plugin_loader_create_extension (loader, info, extension_type,
+  extension = bean_plugin_loader_create_extension (loader, info, extension_type,
                                                    n_properties, parameters);
 
   while (n_properties-- > 0)
@@ -1420,7 +1420,7 @@ peas_engine_create_extension_with_properties (PeasEngine     *engine,
   if (!G_TYPE_CHECK_INSTANCE_TYPE (extension, extension_type))
     {
       g_warning ("Plugin '%s' does not provide a '%s' extension",
-                 peas_plugin_info_get_module_name (info),
+                 bean_plugin_info_get_module_name (info),
                  g_type_name (extension_type));
       return NULL;
     }
@@ -1429,7 +1429,7 @@ peas_engine_create_extension_with_properties (PeasEngine     *engine,
 }
 
 /**
- * peas_engine_create_extension_valist: (skip)
+ * bean_engine_create_extension_valist: (skip)
  * @engine: A #PeasEngine.
  * @info: A loaded #PeasPluginInfo.
  * @extension_type: The implemented extension #GType.
@@ -1441,16 +1441,16 @@ peas_engine_create_extension_with_properties (PeasEngine     *engine,
  * then this function will return a new instance of this implementation,
  * wrapped in a new #PeasExtension instance. Otherwise, it will return %NULL.
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_engine_create_extension() for more information.
+ * See bean_engine_create_extension() for more information.
  *
  * Returns: a new instance of #PeasExtension wrapping
  * the @extension_type instance, or %NULL.
  */
 PeasExtension *
-peas_engine_create_extension_valist (PeasEngine     *engine,
+bean_engine_create_extension_valist (PeasEngine     *engine,
                                      PeasPluginInfo *info,
                                      GType           extension_type,
                                      const gchar    *first_property,
@@ -1463,11 +1463,11 @@ peas_engine_create_extension_valist (PeasEngine     *engine,
 
   g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
-  g_return_val_if_fail (peas_plugin_info_is_loaded (info), NULL);
+  g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
 
-  if (!peas_utils_valist_to_parameter_list (extension_type, first_property,
+  if (!bean_utils_valist_to_parameter_list (extension_type, first_property,
                                             var_args, &parameters,
                                             &n_parameters))
     {
@@ -1475,7 +1475,7 @@ peas_engine_create_extension_valist (PeasEngine     *engine,
       return NULL;
     }
 
-  exten = peas_engine_create_extensionv (engine, info, extension_type,
+  exten = bean_engine_create_extensionv (engine, info, extension_type,
                                          n_parameters, parameters);
 
   while (n_parameters-- > 0)
@@ -1486,7 +1486,7 @@ peas_engine_create_extension_valist (PeasEngine     *engine,
 }
 
 /**
- * peas_engine_create_extension: (skip)
+ * bean_engine_create_extension: (skip)
  * @engine: A #PeasEngine.
  * @info: A loaded #PeasPluginInfo.
  * @extension_type: The implemented extension #GType.
@@ -1503,18 +1503,18 @@ peas_engine_create_extension_valist (PeasEngine     *engine,
  * handler (exactly like if you had called g_object_new() yourself).
  *
  * The new extension instance produced by this function will always be
- * returned wrapped in a #PeasExtension proxy, following the current libpeas
+ * returned wrapped in a #PeasExtension proxy, following the current libbean
  * principle of never giving you the actual object (also because it might as
  * well *not* be an actual object).
  *
- * Since libpeas 1.22, @extension_type can be an Abstract #GType
+ * Since libbean 1.22, @extension_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
  * Returns: a new instance of #PeasExtension wrapping
  * the @extension_type instance, or %NULL.
  */
 PeasExtension *
-peas_engine_create_extension (PeasEngine     *engine,
+bean_engine_create_extension (PeasEngine     *engine,
                               PeasPluginInfo *info,
                               GType           extension_type,
                               const gchar    *first_property,
@@ -1525,12 +1525,12 @@ peas_engine_create_extension (PeasEngine     *engine,
 
   g_return_val_if_fail (PEAS_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
-  g_return_val_if_fail (peas_plugin_info_is_loaded (info), NULL);
+  g_return_val_if_fail (bean_plugin_info_is_loaded (info), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
 
   va_start (var_args, first_property);
-  exten = peas_engine_create_extension_valist (engine, info, extension_type,
+  exten = bean_engine_create_extension_valist (engine, info, extension_type,
                                                first_property, var_args);
   va_end (var_args);
 
@@ -1538,7 +1538,7 @@ peas_engine_create_extension (PeasEngine     *engine,
 }
 
 /**
- * peas_engine_get_loaded_plugins:
+ * bean_engine_get_loaded_plugins:
  * @engine: A #PeasEngine.
  *
  * Returns the list of the names of all the loaded plugins, or an array
@@ -1551,7 +1551,7 @@ peas_engine_create_extension (PeasEngine     *engine,
  * %NULL-terminated array of strings.
  */
 gchar **
-peas_engine_get_loaded_plugins (PeasEngine *engine)
+bean_engine_get_loaded_plugins (PeasEngine *engine)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
   GArray *array;
@@ -1566,9 +1566,9 @@ peas_engine_get_loaded_plugins (PeasEngine *engine)
       PeasPluginInfo *info = (PeasPluginInfo *) pl->data;
       gchar *module_name;
 
-      if (peas_plugin_info_is_loaded (info))
+      if (bean_plugin_info_is_loaded (info))
         {
-          module_name = g_strdup (peas_plugin_info_get_module_name (info));
+          module_name = g_strdup (bean_plugin_info_get_module_name (info));
           g_array_append_val (array, module_name);
         }
     }
@@ -1595,7 +1595,7 @@ string_in_strv (const gchar  *needle,
 }
 
 /**
- * peas_engine_set_loaded_plugins:
+ * bean_engine_set_loaded_plugins:
  * @engine: A #PeasEngine.
  * @plugin_names: (allow-none) (array zero-terminated=1): A %NULL-terminated
  *  array of plugin names, or %NULL.
@@ -1607,7 +1607,7 @@ string_in_strv (const gchar  *needle,
  * If @plugin_names is %NULL, all plugins will be unloaded.
  */
 void
-peas_engine_set_loaded_plugins (PeasEngine   *engine,
+bean_engine_set_loaded_plugins (PeasEngine   *engine,
                                 const gchar **plugin_names)
 {
   PeasEnginePrivate *priv = GET_PRIV (engine);
@@ -1622,11 +1622,11 @@ peas_engine_set_loaded_plugins (PeasEngine   *engine,
       gboolean is_loaded;
       gboolean to_load;
 
-      if (!peas_plugin_info_is_available (info, NULL))
+      if (!bean_plugin_info_is_available (info, NULL))
         continue;
 
-      module_name = peas_plugin_info_get_module_name (info);
-      is_loaded = peas_plugin_info_is_loaded (info);
+      module_name = bean_plugin_info_get_module_name (info);
+      is_loaded = bean_plugin_info_is_loaded (info);
 
       to_load = string_in_strv (module_name, plugin_names);
 
@@ -1638,7 +1638,7 @@ peas_engine_set_loaded_plugins (PeasEngine   *engine,
 }
 
 /**
- * peas_engine_new:
+ * bean_engine_new:
  *
  * Return a new instance of #PeasEngine.
  * If no default #PeasEngine has been instantiated yet,
@@ -1648,13 +1648,13 @@ peas_engine_set_loaded_plugins (PeasEngine   *engine,
  * Returns: a new instance of #PeasEngine.
  */
 PeasEngine *
-peas_engine_new (void)
+bean_engine_new (void)
 {
   return PEAS_ENGINE (g_object_new (PEAS_TYPE_ENGINE, NULL));
 }
 
 /**
- * peas_engine_new_with_nonglobal_loaders:
+ * bean_engine_new_with_nonglobal_loaders:
  *
  * Return a new instance of #PeasEngine which will use non-global
  * plugin loaders instead of the default global ones. This allows
@@ -1669,7 +1669,7 @@ peas_engine_new (void)
  * Since: 1.14
  */
 PeasEngine *
-peas_engine_new_with_nonglobal_loaders (void)
+bean_engine_new_with_nonglobal_loaders (void)
 {
   return PEAS_ENGINE (g_object_new (PEAS_TYPE_ENGINE,
                                     "nonglobal-loaders", TRUE,
@@ -1677,29 +1677,29 @@ peas_engine_new_with_nonglobal_loaders (void)
 }
 
 /**
- * peas_engine_get_default:
+ * bean_engine_get_default:
  *
  * Return the existing instance of #PeasEngine or a subclass of it.
  * If no #PeasEngine subclass has been instantiated yet, the first call
  * of this function will return a new instance of #PeasEngine.
  *
  * Note: this function should never be used when multiple threads are
- *       using libpeas API as it is not thread-safe.
+ *       using libbean API as it is not thread-safe.
  *
  * Returns: (transfer none): the existing instance of #PeasEngine.
  */
 PeasEngine *
-peas_engine_get_default (void)
+bean_engine_get_default (void)
 {
-  /* peas_engine_new() will cause the default to be set for us */
+  /* bean_engine_new() will cause the default to be set for us */
   if (default_engine == NULL)
     {
-      PeasEngine *engine = peas_engine_new ();
+      PeasEngine *engine = bean_engine_new ();
 
       if (engine != default_engine)
         {
-          g_warning ("peas_engine_get_default() must not be called when "
-                     "multiple threads are using libpeas API");
+          g_warning ("bean_engine_get_default() must not be called when "
+                     "multiple threads are using libbean API");
           g_object_unref (engine);
         }
     }
@@ -1708,15 +1708,15 @@ peas_engine_get_default (void)
 }
 
 /* < private >
- * _peas_engine_shutdown:
+ * _bean_engine_shutdown:
  *
  * Frees memory shared by PeasEngines.
- * No libpeas API should be called after calling this.
+ * No libbean API should be called after calling this.
  *
  * Note: this is private API and as such is not thread-safe.
  */
 void
-_peas_engine_shutdown (void)
+_bean_engine_shutdown (void)
 {
   gint i;
 

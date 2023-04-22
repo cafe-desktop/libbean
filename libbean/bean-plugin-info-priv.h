@@ -1,16 +1,16 @@
 /*
- * peas-plugin-info-priv.h
- * This file is part of libpeas
+ * bean-plugin-info-priv.h
+ * This file is part of libbean
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  * Copyright (C) 2007 - Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,7 +23,7 @@
 #ifndef __PEAS_PLUGIN_INFO_PRIV_H__
 #define __PEAS_PLUGIN_INFO_PRIV_H__
 
-#include "peas-plugin-info.h"
+#include "bean-plugin-info.h"
 
 struct _PeasPluginInfo {
   /*< private >*/
@@ -66,11 +66,11 @@ struct _PeasPluginInfo {
   guint hidden : 1;
 };
 
-PeasPluginInfo *_peas_plugin_info_new   (const gchar    *filename,
+PeasPluginInfo *_bean_plugin_info_new   (const gchar    *filename,
                                          const gchar    *module_dir,
                                          const gchar    *data_dir);
-PeasPluginInfo *_peas_plugin_info_ref   (PeasPluginInfo *info);
-void            _peas_plugin_info_unref (PeasPluginInfo *info);
+PeasPluginInfo *_bean_plugin_info_ref   (PeasPluginInfo *info);
+void            _bean_plugin_info_unref (PeasPluginInfo *info);
 
 
 #endif /* __PEAS_PLUGIN_INFO_PRIV_H__ */

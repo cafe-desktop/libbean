@@ -7,15 +7,15 @@ lua51_lgi_version_minor = lua51_lgi_version_arr[1].to_int()
 lua51_lgi_version_micro = lua51_lgi_version_arr[2].to_int()
 
 lua51_loader_c = files(
-  'peas-lua-internal.c',
-  'peas-lua-utils.c',
-  'peas-plugin-loader-lua.c',
+  'bean-lua-internal.c',
+  'bean-lua-utils.c',
+  'bean-plugin-loader-lua.c',
 )
 
 subdir('resources') # Declares 'lua51_loader_res'
 
 lua51_loader_deps = [
-  libpeas_dep,
+  libbean_dep,
   lua51_dep,
   lua51_lgi_dep,
   luajit_dep,

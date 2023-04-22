@@ -1,15 +1,15 @@
 /*
- * peas-python-internal.h
- * This file is part of libpeas
+ * bean-python-internal.h
+ * This file is part of libbean
  *
  * Copyright (C) 2015 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -32,10 +32,10 @@
 
 G_BEGIN_DECLS
 
-gboolean  peas_python_internal_setup    (gboolean     already_initialized);
-void      peas_python_internal_shutdown (void);
+gboolean  bean_python_internal_setup    (gboolean     already_initialized);
+void      bean_python_internal_shutdown (void);
 
-PyObject *peas_python_internal_call     (const gchar  *name,
+PyObject *bean_python_internal_call     (const gchar  *name,
                                          PyTypeObject *return_type,
                                          const gchar  *format,
                                          ...);

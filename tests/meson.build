@@ -7,9 +7,9 @@ test_env = [
 
 subdir('testing-util')
 
-subdir('libpeas')
+subdir('libbean')
 if build_gtk_widgetry == true
-  subdir('libpeas-gtk')
+  subdir('libbean-gtk')
 endif
 
 subdir('plugins')

@@ -1,15 +1,15 @@
 /*
- * peas-dirs.c
- * This file is part of libpeas
+ * bean-dirs.c
+ * This file is part of libbean
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,10 +23,10 @@
 #include <config.h>
 #endif
 
-#include "peas-dirs.h"
+#include "bean-dirs.h"
 
 #ifdef OS_OSX
-#include "peas-utils-osx.h"
+#include "bean-utils-osx.h"
 #endif
 
 #ifdef G_OS_WIN32
@@ -34,7 +34,7 @@
 
 #include <libloaderapi.h>
 
-static HMODULE libpeas_dll = NULL;
+static HMODULE libbean_dll = NULL;
 
 #ifdef DLL_EXPORT
 
@@ -43,7 +43,7 @@ BOOL WINAPI DllMain (HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved);
 BOOL WINAPI DllMain (HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
   if (fdwReason == DLL_PROCESS_ATTACH)
-    libpeas_dll = hinstDLL;
+    libbean_dll = hinstDLL;
   return TRUE;
 }
 
@@ -51,49 +51,49 @@ BOOL WINAPI DllMain (HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 #endif
 
 gchar *
-peas_dirs_get_data_dir (void)
+bean_dirs_get_data_dir (void)
 {
   gchar *data_dir;
 
 #ifdef G_OS_WIN32
   gchar *win32_dir;
 
-  win32_dir = g_win32_get_package_installation_directory_of_module (libpeas_dll);
+  win32_dir = g_win32_get_package_installation_directory_of_module (libbean_dll);
 
-  data_dir = g_build_filename (win32_dir, "share", "libpeas-1.0", NULL);
+  data_dir = g_build_filename (win32_dir, "share", "libbean-1.0", NULL);
   g_free (win32_dir);
 #elif defined (OS_OSX)
-  data_dir = peas_dirs_os_x_get_data_dir ();
+  data_dir = bean_dirs_os_x_get_data_dir ();
 #else
-  data_dir = g_build_filename (DATADIR, "libpeas-1.0", NULL);
+  data_dir = g_build_filename (DATADIR, "libbean-1.0", NULL);
 #endif
 
   return data_dir;
 }
 
 gchar *
-peas_dirs_get_lib_dir (void)
+bean_dirs_get_lib_dir (void)
 {
   gchar *lib_dir;
 
 #ifdef G_OS_WIN32
   gchar *win32_dir;
 
-  win32_dir = g_win32_get_package_installation_directory_of_module (libpeas_dll);
+  win32_dir = g_win32_get_package_installation_directory_of_module (libbean_dll);
 
-  lib_dir = g_build_filename (win32_dir, "lib", "libpeas-1.0", NULL);
+  lib_dir = g_build_filename (win32_dir, "lib", "libbean-1.0", NULL);
   g_free (win32_dir);
 #elif defined (OS_OSX)
-  lib_dir = peas_dirs_os_x_get_lib_dir ();
+  lib_dir = bean_dirs_os_x_get_lib_dir ();
 #else
-  lib_dir = g_build_filename (LIBDIR, "libpeas-1.0", NULL);
+  lib_dir = g_build_filename (LIBDIR, "libbean-1.0", NULL);
 #endif
 
   return lib_dir;
 }
 
 gchar *
-peas_dirs_get_plugin_loader_dir (const gchar *loader_name)
+bean_dirs_get_plugin_loader_dir (const gchar *loader_name)
 {
   const gchar *env_var;
   gchar *lib_dir;
@@ -103,7 +103,7 @@ peas_dirs_get_plugin_loader_dir (const gchar *loader_name)
   if (env_var != NULL)
     return g_build_filename (env_var, loader_name, NULL);
 
-  lib_dir = peas_dirs_get_lib_dir ();
+  lib_dir = bean_dirs_get_lib_dir ();
   loader_dir = g_build_filename (lib_dir, "loaders", NULL);
 
   g_free (lib_dir);
@@ -112,20 +112,20 @@ peas_dirs_get_plugin_loader_dir (const gchar *loader_name)
 }
 
 gchar *
-peas_dirs_get_locale_dir (void)
+bean_dirs_get_locale_dir (void)
 {
   gchar *locale_dir;
 
 #ifdef G_OS_WIN32
   gchar *win32_dir;
 
-  win32_dir = g_win32_get_package_installation_directory_of_module (libpeas_dll);
+  win32_dir = g_win32_get_package_installation_directory_of_module (libbean_dll);
 
   locale_dir = g_build_filename (win32_dir, "share", "locale", NULL);
 
   g_free (win32_dir);
 #elif defined (OS_OSX)
-  locale_dir = peas_dirs_os_x_get_locale_dir ();
+  locale_dir = bean_dirs_os_x_get_locale_dir ();
 #else
   locale_dir = g_build_filename (DATADIR, "locale", NULL);
 #endif

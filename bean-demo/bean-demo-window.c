@@ -1,15 +1,15 @@
 /*
- * peas-demo-window.c
- * This file is part of libpeas
+ * bean-demo-window.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include "peas-demo-window.h"
+#include "bean-demo-window.h"
 
 G_DEFINE_TYPE (DemoWindow, demo_window, GTK_TYPE_WINDOW)
 
@@ -33,7 +33,7 @@ on_extension_added (PeasExtensionSet *set,
                     PeasExtension    *exten,
                     DemoWindow       *dw)
 {
-  peas_activatable_activate (PEAS_ACTIVATABLE (exten));
+  bean_activatable_activate (PEAS_ACTIVATABLE (exten));
 }
 
 static void
@@ -42,7 +42,7 @@ on_extension_removed (PeasExtensionSet *set,
                       PeasExtension    *exten,
                       DemoWindow       *dw)
 {
-  peas_activatable_deactivate (PEAS_ACTIVATABLE (exten));
+  bean_activatable_deactivate (PEAS_ACTIVATABLE (exten));
 }
 
 static void
@@ -59,12 +59,12 @@ demo_window_init (DemoWindow *dw)
   gtk_window_set_title (GTK_WINDOW (dw), label);
   g_free (label);
 
-  dw->exten_set = peas_extension_set_new (peas_engine_get_default (),
+  dw->exten_set = bean_extension_set_new (bean_engine_get_default (),
                                           PEAS_TYPE_ACTIVATABLE,
                                           "object", dw,
                                           NULL);
 
-  peas_extension_set_foreach (dw->exten_set,
+  bean_extension_set_foreach (dw->exten_set,
                               (PeasExtensionSetForeachFunc) on_extension_added,
                               dw);
 

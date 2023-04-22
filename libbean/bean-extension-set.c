@@ -1,15 +1,15 @@
 /*
- * peas-extension-set.c
- * This file is part of libpeas
+ * bean-extension-set.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,16 +23,16 @@
 
 #include <string.h>
 
-#include "peas-extension-set.h"
+#include "bean-extension-set.h"
 
-#include "peas-i18n-priv.h"
-#include "peas-introspection.h"
-#include "peas-plugin-info.h"
-#include "peas-marshal.h"
-#include "peas-utils.h"
+#include "bean-i18n-priv.h"
+#include "bean-introspection.h"
+#include "bean-plugin-info.h"
+#include "bean-marshal.h"
+#include "bean-utils.h"
 
 /**
- * SECTION:peas-extension-set
+ * SECTION:bean-extension-set
  * @short_description: Proxy for a set of extensions of the same type.
  * @see_also: #PeasExtension
  *
@@ -55,7 +55,7 @@
  *                     PeasPluginInfo   *info,
  *                     PeasActivatable  *activatable)
  * {
- *   peas_activatable_activate (activatable);
+ *   bean_activatable_activate (activatable);
  * }
  *
  * static void
@@ -63,7 +63,7 @@
  *                       PeasPluginInfo   *info,
  *                       PeasActivatable  *activatable)
  * {
- *   peas_activatable_deactivate (activatable);
+ *   bean_activatable_deactivate (activatable);
  * }
  *
  * PeasExtensionSet *
@@ -72,9 +72,9 @@
  * {
  *   PeasExtensionSet *set;
  *
- *   set = peas_extension_set_new (engine, PEAS_TYPE_ACTIVATABLE,
+ *   set = bean_extension_set_new (engine, PEAS_TYPE_ACTIVATABLE,
  *                                 "object", window, NULL);
- *   peas_extension_set_foreach (set,
+ *   bean_extension_set_foreach (set,
  *                               (PeasExtensionSetForeachFunc) on_extension_added,
  *                               NULL);
  *   g_signal_connect (set, "extension-added",
@@ -127,11 +127,11 @@ static guint signals[LAST_SIGNAL];
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (PeasExtensionSet,
-                            peas_extension_set,
+                            bean_extension_set,
                             G_TYPE_OBJECT)
 
 #define GET_PRIV(o) \
-  (peas_extension_set_get_instance_private (o))
+  (bean_extension_set_get_instance_private (o))
 
 static void
 set_construct_properties (PeasExtensionSet   *set,
@@ -153,7 +153,7 @@ set_construct_properties (PeasExtensionSet   *set,
 }
 
 static void
-peas_extension_set_set_property (GObject      *object,
+bean_extension_set_set_property (GObject      *object,
                                  guint         prop_id,
                                  const GValue *value,
                                  GParamSpec   *pspec)
@@ -178,7 +178,7 @@ peas_extension_set_set_property (GObject      *object,
 }
 
 static void
-peas_extension_set_get_property (GObject    *object,
+bean_extension_set_get_property (GObject    *object,
                                  guint       prop_id,
                                  GValue     *value,
                                  GParamSpec *pspec)
@@ -208,14 +208,14 @@ add_extension (PeasExtensionSet *set,
   ExtensionItem *item;
 
   /* Let's just ignore unloaded plugins... */
-  if (!peas_plugin_info_is_loaded (info))
+  if (!bean_plugin_info_is_loaded (info))
     return;
 
-  if (!peas_engine_provides_extension (priv->engine, info,
+  if (!bean_engine_provides_extension (priv->engine, info,
                                        priv->exten_type))
     return;
 
-  exten = peas_engine_create_extensionv (priv->engine, info,
+  exten = bean_engine_create_extensionv (priv->engine, info,
                                          priv->exten_type,
                                          priv->n_parameters,
                                          priv->parameters);
@@ -260,7 +260,7 @@ remove_extension (PeasExtensionSet *set,
 }
 
 static void
-peas_extension_set_init (PeasExtensionSet *set)
+bean_extension_set_init (PeasExtensionSet *set)
 {
   PeasExtensionSetPrivate *priv = GET_PRIV (set);
 
@@ -268,18 +268,18 @@ peas_extension_set_init (PeasExtensionSet *set)
 }
 
 static void
-peas_extension_set_constructed (GObject *object)
+bean_extension_set_constructed (GObject *object)
 {
   PeasExtensionSet *set = PEAS_EXTENSION_SET (object);
   PeasExtensionSetPrivate *priv = GET_PRIV (set);
   GList *plugins, *l;
 
   if (priv->engine == NULL)
-    priv->engine = peas_engine_get_default ();
+    priv->engine = bean_engine_get_default ();
 
   g_object_ref (priv->engine);
 
-  plugins = (GList *) peas_engine_get_plugin_list (priv->engine);
+  plugins = (GList *) bean_engine_get_plugin_list (priv->engine);
   for (l = plugins; l; l = l->next)
     add_extension (set, (PeasPluginInfo *) l->data);
 
@@ -290,11 +290,11 @@ peas_extension_set_constructed (GObject *object)
                            G_CALLBACK (remove_extension), set,
                            G_CONNECT_SWAPPED);
 
-  G_OBJECT_CLASS (peas_extension_set_parent_class)->constructed (object);
+  G_OBJECT_CLASS (bean_extension_set_parent_class)->constructed (object);
 }
 
 static void
-peas_extension_set_dispose (GObject *object)
+bean_extension_set_dispose (GObject *object)
 {
   PeasExtensionSet *set = PEAS_EXTENSION_SET (object);
   PeasExtensionSetPrivate *priv = GET_PRIV (set);
@@ -319,11 +319,11 @@ peas_extension_set_dispose (GObject *object)
 
   g_clear_object (&priv->engine);
 
-  G_OBJECT_CLASS (peas_extension_set_parent_class)->dispose (object);
+  G_OBJECT_CLASS (bean_extension_set_parent_class)->dispose (object);
 }
 
 static gboolean
-peas_extension_set_call_real (PeasExtensionSet *set,
+bean_extension_set_call_real (PeasExtensionSet *set,
                               const gchar      *method_name,
                               GIArgument       *args)
 {
@@ -335,24 +335,24 @@ peas_extension_set_call_real (PeasExtensionSet *set,
   for (l = priv->extensions.head; l != NULL; l = l->next)
     {
       ExtensionItem *item = (ExtensionItem *) l->data;
-      ret = peas_extension_callv (item->exten, method_name, args, &dummy) && ret;
+      ret = bean_extension_callv (item->exten, method_name, args, &dummy) && ret;
     }
 
   return ret;
 }
 
 static void
-peas_extension_set_class_init (PeasExtensionSetClass *klass)
+bean_extension_set_class_init (PeasExtensionSetClass *klass)
 {
   GType the_type = G_TYPE_FROM_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = peas_extension_set_set_property;
-  object_class->get_property = peas_extension_set_get_property;
-  object_class->constructed = peas_extension_set_constructed;
-  object_class->dispose = peas_extension_set_dispose;
+  object_class->set_property = bean_extension_set_set_property;
+  object_class->get_property = bean_extension_set_get_property;
+  object_class->constructed = bean_extension_set_constructed;
+  object_class->dispose = bean_extension_set_dispose;
 
-  klass->call = peas_extension_set_call_real;
+  klass->call = bean_extension_set_call_real;
 
   /**
    * PeasExtensionSet::extension-added:
@@ -375,7 +375,7 @@ peas_extension_set_class_init (PeasExtensionSetClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (PeasExtensionSetClass, extension_added),
                   NULL, NULL,
-                  peas_cclosure_marshal_VOID__BOXED_OBJECT,
+                  bean_cclosure_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
                   PEAS_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -403,7 +403,7 @@ peas_extension_set_class_init (PeasExtensionSetClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (PeasExtensionSetClass, extension_removed),
                   NULL, NULL,
-                  peas_cclosure_marshal_VOID__BOXED_OBJECT,
+                  bean_cclosure_marshal_VOID__BOXED_OBJECT,
                   G_TYPE_NONE,
                   2,
                   PEAS_TYPE_PLUGIN_INFO | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -439,7 +439,7 @@ peas_extension_set_class_init (PeasExtensionSetClass *klass)
 }
 
 /**
- * peas_extension_set_get_extension:
+ * bean_extension_set_get_extension:
  * @set: A #PeasExtensionSet
  * @info: a #PeasPluginInfo
  *
@@ -449,7 +449,7 @@ peas_extension_set_class_init (PeasExtensionSetClass *klass)
  * Returns: (transfer none): a reference to a #PeasExtension or %NULL
  */
 PeasExtension *
-peas_extension_set_get_extension (PeasExtensionSet *set,
+bean_extension_set_get_extension (PeasExtensionSet *set,
                                   PeasPluginInfo   *info)
 {
   PeasExtensionSetPrivate *priv = GET_PRIV (set);
@@ -470,21 +470,21 @@ peas_extension_set_get_extension (PeasExtensionSet *set,
 }
 
 /**
- * peas_extension_set_call:
+ * bean_extension_set_call:
  * @set: A #PeasExtensionSet.
  * @method_name: the name of the method that should be called.
  * @...: arguments for the method.
  *
  * Call a method on all the #PeasExtension instances contained in @set.
  *
- * See peas_extension_call() for more information.
+ * See bean_extension_call() for more information.
  *
- * Deprecated: 1.2: Use peas_extension_set_foreach() instead.
+ * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
  *
  * Return value: %TRUE on successful call.
  */
 gboolean
-peas_extension_set_call (PeasExtensionSet *set,
+bean_extension_set_call (PeasExtensionSet *set,
                          const gchar      *method_name,
                          ...)
 {
@@ -495,28 +495,28 @@ peas_extension_set_call (PeasExtensionSet *set,
   g_return_val_if_fail (method_name != NULL, FALSE);
 
   va_start (args, method_name);
-  result = peas_extension_set_call_valist (set, method_name, args);
+  result = bean_extension_set_call_valist (set, method_name, args);
   va_end (args);
 
   return result;
 }
 
 /**
- * peas_extension_set_call_valist:
+ * bean_extension_set_call_valist:
  * @set: A #PeasExtensionSet.
  * @method_name: the name of the method that should be called.
  * @va_args: the arguments for the method.
  *
  * Call a method on all the #PeasExtension instances contained in @set.
  *
- * See peas_extension_call_valist() for more information.
+ * See bean_extension_call_valist() for more information.
  *
- * Deprecated: 1.2: Use peas_extension_set_foreach() instead.
+ * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
  *
  * Return value: %TRUE on successful call.
  */
 gboolean
-peas_extension_set_call_valist (PeasExtensionSet *set,
+bean_extension_set_call_valist (PeasExtensionSet *set,
                                 const gchar      *method_name,
                                 va_list           va_args)
 {
@@ -528,7 +528,7 @@ peas_extension_set_call_valist (PeasExtensionSet *set,
   g_return_val_if_fail (PEAS_IS_EXTENSION_SET (set), FALSE);
   g_return_val_if_fail (method_name != NULL, FALSE);
 
-  callable_info = peas_gi_get_method_info (priv->exten_type, method_name);
+  callable_info = bean_gi_get_method_info (priv->exten_type, method_name);
 
   if (callable_info == NULL)
     {
@@ -541,29 +541,29 @@ peas_extension_set_call_valist (PeasExtensionSet *set,
   g_return_val_if_fail (n_args >= 0, FALSE);
 
   args = g_newa (GIArgument, n_args);
-  peas_gi_valist_to_arguments (callable_info, va_args, args, NULL);
+  bean_gi_valist_to_arguments (callable_info, va_args, args, NULL);
 
   g_base_info_unref ((GIBaseInfo *) callable_info);
 
-  return peas_extension_set_callv (set, method_name, args);
+  return bean_extension_set_callv (set, method_name, args);
 }
 
 /**
- * peas_extension_set_callv:
+ * bean_extension_set_callv:
  * @set: A #PeasExtensionSet.
  * @method_name: the name of the method that should be called.
  * @args: the arguments for the method.
  *
  * Call a method on all the #PeasExtension instances contained in @set.
  *
- * See peas_extension_callv() for more information.
+ * See bean_extension_callv() for more information.
  *
  * Return value: %TRUE on successful call.
  *
- * Deprecated: 1.2: Use peas_extension_set_foreach() instead.
+ * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
  */
 gboolean
-peas_extension_set_callv (PeasExtensionSet *set,
+bean_extension_set_callv (PeasExtensionSet *set,
                           const gchar      *method_name,
                           GIArgument       *args)
 {
@@ -577,7 +577,7 @@ peas_extension_set_callv (PeasExtensionSet *set,
 }
 
 /**
- * peas_extension_set_foreach:
+ * bean_extension_set_foreach:
  * @set: A #PeasExtensionSet.
  * @func: (scope call): A function call for each extension.
  * @data: Optional data to be passed to the function or %NULL.
@@ -587,7 +587,7 @@ peas_extension_set_callv (PeasExtensionSet *set,
  * Since: 1.2
  */
 void
-peas_extension_set_foreach (PeasExtensionSet            *set,
+bean_extension_set_foreach (PeasExtensionSet            *set,
                             PeasExtensionSetForeachFunc  func,
                             gpointer                     data)
 {
@@ -606,7 +606,7 @@ peas_extension_set_foreach (PeasExtensionSet            *set,
 }
 
 /**
- * peas_extension_set_newv: (skip)
+ * bean_extension_set_newv: (skip)
  * @engine: (allow-none): A #PeasEngine, or %NULL.
  * @exten_type: the extension #GType.
  * @n_parameters: the length of the @parameters array.
@@ -616,15 +616,15 @@ peas_extension_set_foreach (PeasExtensionSet            *set,
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Since libpeas 1.22, @exten_type can be an Abstract #GType
+ * Since libbean 1.22, @exten_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_extension_set_new() for more information.
+ * See bean_extension_set_new() for more information.
  *
  * Returns: (transfer full): a new instance of #PeasExtensionSet.
  */
 PeasExtensionSet *
-peas_extension_set_newv (PeasEngine *engine,
+bean_extension_set_newv (PeasEngine *engine,
                          GType       exten_type,
                          guint       n_parameters,
                          GParameter *parameters)
@@ -643,7 +643,7 @@ peas_extension_set_newv (PeasEngine *engine,
 }
 
 /**
- * peas_extension_set_new_with_properties: (rename-to peas_extension_set_new)
+ * bean_extension_set_new_with_properties: (rename-to bean_extension_set_new)
  * @engine: (allow-none): A #PeasEngine, or %NULL.
  * @exten_type: the extension #GType.
  * @n_properties: the length of the @prop_names and @prop_values array.
@@ -654,17 +654,17 @@ peas_extension_set_newv (PeasEngine *engine,
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Since libpeas 1.22, @exten_type can be an Abstract #GType
+ * Since libbean 1.22, @exten_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_extension_set_new() for more information.
+ * See bean_extension_set_new() for more information.
  *
  * Returns: (transfer full): a new instance of #PeasExtensionSet.
  *
  * Since 1.24.0
  */
 PeasExtensionSet *
-peas_extension_set_new_with_properties (PeasEngine    *engine,
+bean_extension_set_new_with_properties (PeasEngine    *engine,
                                         GType          exten_type,
                                         guint          n_properties,
                                         const gchar  **prop_names,
@@ -683,7 +683,7 @@ peas_extension_set_new_with_properties (PeasEngine    *engine,
   if (n_properties > 0)
     {
       parameters = g_new0 (GParameter, n_properties);
-      if (!peas_utils_properties_array_to_parameter_list (exten_type,
+      if (!bean_utils_properties_array_to_parameter_list (exten_type,
                                                           n_properties,
                                                           prop_names,
                                                           prop_values,
@@ -709,7 +709,7 @@ peas_extension_set_new_with_properties (PeasEngine    *engine,
 }
 
 /**
- * peas_extension_set_new_valist: (skip)
+ * bean_extension_set_new_valist: (skip)
  * @engine: (allow-none): A #PeasEngine, or %NULL.
  * @exten_type: the extension #GType.
  * @first_property: the name of the first property.
@@ -720,15 +720,15 @@ peas_extension_set_new_with_properties (PeasEngine    *engine,
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Since libpeas 1.22, @exten_type can be an Abstract #GType
+ * Since libbean 1.22, @exten_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_extension_set_new() for more information.
+ * See bean_extension_set_new() for more information.
  *
  * Returns: a new instance of #PeasExtensionSet.
  */
 PeasExtensionSet *
-peas_extension_set_new_valist (PeasEngine  *engine,
+bean_extension_set_new_valist (PeasEngine  *engine,
                                GType        exten_type,
                                const gchar *first_property,
                                va_list      var_args)
@@ -741,7 +741,7 @@ peas_extension_set_new_valist (PeasEngine  *engine,
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
-  if (!peas_utils_valist_to_parameter_list (exten_type, first_property,
+  if (!bean_utils_valist_to_parameter_list (exten_type, first_property,
                                             var_args, &parameters,
                                             &n_parameters))
     {
@@ -749,7 +749,7 @@ peas_extension_set_new_valist (PeasEngine  *engine,
       return NULL;
     }
 
-  set = peas_extension_set_newv (engine, exten_type, n_parameters, parameters);
+  set = bean_extension_set_newv (engine, exten_type, n_parameters, parameters);
 
   while (n_parameters-- > 0)
     g_value_unset (&parameters[n_parameters].value);
@@ -759,7 +759,7 @@ peas_extension_set_new_valist (PeasEngine  *engine,
 }
 
 /**
- * peas_extension_set_new: (skip)
+ * bean_extension_set_new: (skip)
  * @engine: (allow-none): A #PeasEngine, or %NULL.
  * @exten_type: the extension #GType.
  * @first_property: the name of the first property.
@@ -772,20 +772,20 @@ peas_extension_set_new_valist (PeasEngine  *engine,
  * each loaded plugin which implements the @exten_type extension type. It does
  * so by connecting to the relevant signals from #PeasEngine.
  *
- * The property values passed to peas_extension_set_new() will be used for the
+ * The property values passed to bean_extension_set_new() will be used for the
  * construction of new extension instances.
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Since libpeas 1.22, @exten_type can be an Abstract #GType
+ * Since libbean 1.22, @exten_type can be an Abstract #GType
  * and not just an Interface #GType.
  *
- * See peas_engine_create_extension() for more information.
+ * See bean_engine_create_extension() for more information.
  *
  * Returns: a new instance of #PeasExtensionSet.
  */
 PeasExtensionSet *
-peas_extension_set_new (PeasEngine  *engine,
+bean_extension_set_new (PeasEngine  *engine,
                         GType        exten_type,
                         const gchar *first_property,
                         ...)
@@ -798,7 +798,7 @@ peas_extension_set_new (PeasEngine  *engine,
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
   va_start (var_args, first_property);
-  set = peas_extension_set_new_valist (engine, exten_type, first_property, var_args);
+  set = bean_extension_set_new_valist (engine, exten_type, first_property, var_args);
   va_end (var_args);
 
   return set;

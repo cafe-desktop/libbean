@@ -1,15 +1,15 @@
 /*
- * peas-gtk-configurable.c
- * This file is part of libpeas
+ * bean-gtk-configurable.c
+ * This file is part of libbean
  *
  * Copyright (C) 2009-2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,10 +23,10 @@
 #include <config.h>
 #endif
 
-#include "peas-gtk-configurable.h"
+#include "bean-gtk-configurable.h"
 
 /**
- * SECTION:peas-gtk-configurable
+ * SECTION:bean-gtk-configurable
  * @short_description: Interface for providing a plugin configuration UI.
  *
  * The #PeasGtkConfigurable interface will allow a plugin to provide a
@@ -40,15 +40,15 @@
  * PeasGtkConfigurableInterface.create_configure_widget() method.
  **/
 
-G_DEFINE_INTERFACE(PeasGtkConfigurable, peas_gtk_configurable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(PeasGtkConfigurable, bean_gtk_configurable, G_TYPE_OBJECT)
 
 static void
-peas_gtk_configurable_default_init (PeasGtkConfigurableInterface *iface)
+bean_gtk_configurable_default_init (PeasGtkConfigurableInterface *iface)
 {
 }
 
 /**
- * peas_gtk_configurable_create_configure_widget:
+ * bean_gtk_configurable_create_configure_widget:
  * @configurable: A #PeasGtkConfigurable
  *
  * Creates the configure widget for the plugin. The returned widget
@@ -64,7 +64,7 @@ peas_gtk_configurable_default_init (PeasGtkConfigurableInterface *iface)
  * Returns: (transfer full): A #GtkWidget used for configuration.
  */
 GtkWidget *
-peas_gtk_configurable_create_configure_widget (PeasGtkConfigurable *configurable)
+bean_gtk_configurable_create_configure_widget (PeasGtkConfigurable *configurable)
 {
   PeasGtkConfigurableInterface *iface;
 

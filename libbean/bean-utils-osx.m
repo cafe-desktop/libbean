@@ -1,15 +1,15 @@
 /*
- * peas-utils-osx.m
- * This file is part of libpeas
+ * bean-utils-osx.m
+ * This file is part of libbean
  *
  * Copyright (C) 2008 Ignacio Casal Quinteiro
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -25,20 +25,20 @@
 #include <config.h>
 #endif
 
-#include "peas-utils-osx.h"
+#include "bean-utils-osx.h"
 
 #import <Foundation/Foundation.h>
 
 #import <AppKit/AppKit.h>
 
 void
-peas_open_url_osx (const gchar *uri)
+bean_open_url_osx (const gchar *uri)
 {
   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:uri]]];
 }
 
 gchar *
-peas_dirs_os_x_get_bundle_resource_dir (void)
+bean_dirs_os_x_get_bundle_resource_dir (void)
 {
   NSAutoreleasePool *pool;
   gchar *str = NULL;
@@ -66,21 +66,21 @@ peas_dirs_os_x_get_bundle_resource_dir (void)
 }
 
 gchar *
-peas_dirs_os_x_get_resource_dir (const gchar *subdir,
+bean_dirs_os_x_get_resource_dir (const gchar *subdir,
                                  const gchar *default_dir)
 {
   gchar *res_dir;
   gchar *ret;
 
-  res_dir = peas_dirs_os_x_get_bundle_resource_dir ();
+  res_dir = bean_dirs_os_x_get_bundle_resource_dir ();
 
   if (res_dir == NULL)
     {
-      ret = g_build_filename (default_dir, "libpeas-1.0", NULL);
+      ret = g_build_filename (default_dir, "libbean-1.0", NULL);
     }
   else
     {
-      ret = g_build_filename (res_dir, subdir, "libpeas-1.0", NULL);
+      ret = g_build_filename (res_dir, subdir, "libbean-1.0", NULL);
       g_free (res_dir);
     }
 
@@ -88,24 +88,24 @@ peas_dirs_os_x_get_resource_dir (const gchar *subdir,
 }
 
 gchar *
-peas_dirs_os_x_get_data_dir (void)
+bean_dirs_os_x_get_data_dir (void)
 {
-  return peas_dirs_os_x_get_resource_dir ("share", DATADIR);
+  return bean_dirs_os_x_get_resource_dir ("share", DATADIR);
 }
 
 gchar *
-peas_dirs_os_x_get_lib_dir (void)
+bean_dirs_os_x_get_lib_dir (void)
 {
-  return peas_dirs_os_x_get_resource_dir ("lib", LIBDIR);
+  return bean_dirs_os_x_get_resource_dir ("lib", LIBDIR);
 }
 
 gchar *
-peas_dirs_os_x_get_locale_dir (void)
+bean_dirs_os_x_get_locale_dir (void)
 {
   gchar *res_dir;
   gchar *ret;
 
-  res_dir = peas_dirs_os_x_get_bundle_resource_dir ();
+  res_dir = bean_dirs_os_x_get_bundle_resource_dir ();
 
   if (res_dir == NULL)
     {

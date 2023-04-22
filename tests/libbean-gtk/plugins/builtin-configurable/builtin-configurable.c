@@ -1,15 +1,15 @@
 /*
  * builtin-configurable.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -27,19 +27,19 @@
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include <libpeas/peas.h>
-#include <libpeas-gtk/peas-gtk.h>
+#include <libbean/bean.h>
+#include <libbean-gtk/bean-gtk.h>
 
 #include "builtin-configurable.h"
 
-static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinConfigurable,
                                 testing_builtin_configurable,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
-                                                               peas_gtk_configurable_iface_init))
+                                                               bean_gtk_configurable_iface_init))
 
 static void
 testing_builtin_configurable_init (TestingBuiltinConfigurable *configurable)
@@ -58,7 +58,7 @@ testing_builtin_create_configure_widget (PeasGtkConfigurable *configurable)
 }
 
 static void
-peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = testing_builtin_create_configure_widget;
 }
@@ -69,11 +69,11 @@ testing_builtin_configurable_class_finalize (TestingBuiltinConfigurableClass *kl
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
   testing_builtin_configurable_register_type (G_TYPE_MODULE (module));
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               PEAS_GTK_TYPE_CONFIGURABLE,
                                               TESTING_TYPE_BUILTIN_CONFIGURABLE);
 }

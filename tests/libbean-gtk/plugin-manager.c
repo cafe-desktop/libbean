@@ -1,15 +1,15 @@
 /*
  * plugin-manager.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,9 +23,9 @@
 
 #include <gtk/gtk.h>
 
-#include <libpeas/peas.h>
-#include <libpeas/peas-i18n-priv.h>
-#include <libpeas-gtk/peas-gtk.h>
+#include <libbean/bean.h>
+#include <libbean/bean-i18n-priv.h>
+#include <libbean-gtk/bean-gtk.h>
 
 #include "testing/testing.h"
 
@@ -56,8 +56,8 @@ test_setup (TestFixture   *fixture,
 {
   fixture->engine = testing_engine_new ();
   fixture->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  fixture->manager = PEAS_GTK_PLUGIN_MANAGER (peas_gtk_plugin_manager_new (NULL));
-  fixture->view = PEAS_GTK_PLUGIN_MANAGER_VIEW (peas_gtk_plugin_manager_get_view (fixture->manager));
+  fixture->manager = PEAS_GTK_PLUGIN_MANAGER (bean_gtk_plugin_manager_new (NULL));
+  fixture->view = PEAS_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (fixture->manager));
   fixture->selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fixture->view));
 
   gtk_container_add (GTK_CONTAINER (fixture->window),
@@ -137,11 +137,11 @@ test_gtk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
   /* Must come first otherwise the first iter may
    * be after a revealed builtin plugin
    */
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   /* Causes the plugin to become unavailable */
-  info = peas_engine_get_plugin_info (fixture->engine, "unavailable");
-  peas_engine_load_plugin (fixture->engine, info);
+  info = bean_engine_get_plugin_info (fixture->engine, "unavailable");
+  bean_engine_load_plugin (fixture->engine, info);
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
 
@@ -165,17 +165,17 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
   /* Must come first otherwise the first iter may
    * be after a revealed builtin plugin
    */
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   /* So we can configure them */
-  info = peas_engine_get_plugin_info (fixture->engine, "builtin-configurable");
-  peas_engine_load_plugin (fixture->engine, info);
-  info = peas_engine_get_plugin_info (fixture->engine, "configurable");
-  peas_engine_load_plugin (fixture->engine, info);
+  info = bean_engine_get_plugin_info (fixture->engine, "builtin-configurable");
+  bean_engine_load_plugin (fixture->engine, info);
+  info = bean_engine_get_plugin_info (fixture->engine, "configurable");
+  bean_engine_load_plugin (fixture->engine, info);
 
   /* Causes the plugin to become unavailable */
-  info = peas_engine_get_plugin_info (fixture->engine, "unavailable");
-  peas_engine_load_plugin (fixture->engine, info);
+  info = bean_engine_get_plugin_info (fixture->engine, "unavailable");
+  bean_engine_load_plugin (fixture->engine, info);
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
 
@@ -187,13 +187,13 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
 
       info = testing_get_plugin_info_for_iter (fixture->view, &iter);
 
-      if (!peas_plugin_info_is_loaded (info))
+      if (!bean_plugin_info_is_loaded (info))
         {
           sensitive = FALSE;
         }
       else
         {
-          sensitive = peas_engine_provides_extension (fixture->engine, info,
+          sensitive = bean_engine_provides_extension (fixture->engine, info,
                                                       PEAS_GTK_TYPE_CONFIGURABLE);
         }
 
@@ -209,13 +209,13 @@ test_gtk_plugin_manager_plugin_loaded (TestFixture *fixture)
   GtkTreeIter iter;
   PeasPluginInfo *info;
 
-  info = peas_engine_get_plugin_info (fixture->engine, "configurable");
+  info = bean_engine_get_plugin_info (fixture->engine, "configurable");
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
 
   gtk_tree_selection_select_iter (fixture->selection, &iter);
 
   g_assert (!gtk_widget_is_sensitive (fixture->configure_button));
-  peas_engine_load_plugin (fixture->engine, info);
+  bean_engine_load_plugin (fixture->engine, info);
   g_assert (gtk_widget_is_sensitive (fixture->configure_button));
 }
 
@@ -227,11 +227,11 @@ test_gtk_plugin_manager_plugin_unloaded (TestFixture *fixture)
 
   test_gtk_plugin_manager_plugin_loaded (fixture);
 
-  info = peas_engine_get_plugin_info (fixture->engine, "configurable");
+  info = bean_engine_get_plugin_info (fixture->engine, "configurable");
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
 
   g_assert (gtk_widget_is_sensitive (fixture->configure_button));
-  peas_engine_unload_plugin (fixture->engine, info);
+  bean_engine_unload_plugin (fixture->engine, info);
   g_assert (!gtk_widget_is_sensitive (fixture->configure_button));
 }
 
@@ -246,9 +246,9 @@ test_gtk_plugin_manager_about_dialog (TestFixture *fixture)
   const gchar * const *authors_dialog;
 
   /* Full Info is a builtin plugin */
-  peas_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
-  info = peas_engine_get_plugin_info (fixture->engine, "full-info");
+  info = bean_engine_get_plugin_info (fixture->engine, "full-info");
 
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
   gtk_tree_selection_select_iter (fixture->selection, &iter);
@@ -262,19 +262,19 @@ test_gtk_plugin_manager_about_dialog (TestFixture *fixture)
 
 
   g_assert_cmpstr (gtk_about_dialog_get_program_name (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_name (info));
+                   ==, bean_plugin_info_get_name (info));
   g_assert_cmpstr (gtk_about_dialog_get_copyright (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_copyright (info));
+                   ==, bean_plugin_info_get_copyright (info));
   g_assert_cmpstr (gtk_about_dialog_get_website (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_website (info));
+                   ==, bean_plugin_info_get_website (info));
   g_assert_cmpstr (gtk_about_dialog_get_logo_icon_name (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_icon_name (info));
+                   ==, bean_plugin_info_get_icon_name (info));
   g_assert_cmpstr (gtk_about_dialog_get_version (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_version (info));
+                   ==, bean_plugin_info_get_version (info));
   g_assert_cmpstr (gtk_about_dialog_get_comments (GTK_ABOUT_DIALOG (window)),
-                   ==, peas_plugin_info_get_description (info));
+                   ==, bean_plugin_info_get_description (info));
 
-  authors_plugin = peas_plugin_info_get_authors (info);
+  authors_plugin = bean_plugin_info_get_authors (info);
   authors_dialog = gtk_about_dialog_get_authors (GTK_ABOUT_DIALOG (window));
 
   for (i = 0; authors_plugin[i] == NULL && authors_dialog[i] == NULL; ++i)
@@ -296,9 +296,9 @@ test_gtk_plugin_manager_configure_dialog (TestFixture *fixture)
   GtkWidget *close_button = NULL;
   GtkWidget *help_button = NULL;
 
-  info = peas_engine_get_plugin_info (fixture->engine, "configurable");
+  info = bean_engine_get_plugin_info (fixture->engine, "configurable");
 
-  peas_engine_load_plugin (fixture->engine, info);
+  bean_engine_load_plugin (fixture->engine, info);
 
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
   gtk_tree_selection_select_iter (fixture->selection, &iter);
@@ -365,11 +365,11 @@ test_gtk_plugin_manager_gtkbuilder (void)
   manager = PEAS_GTK_PLUGIN_MANAGER (gtk_builder_get_object (builder, "manager"));
   g_assert (PEAS_GTK_IS_PLUGIN_MANAGER (manager));
 
-  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (peas_gtk_plugin_manager_get_view (manager));
+  view = PEAS_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (manager));
 
   g_assert (G_OBJECT (view) == gtk_builder_get_object (builder, "view"));
 
-  g_assert (peas_gtk_plugin_manager_view_get_show_builtin (view));
+  g_assert (bean_gtk_plugin_manager_view_get_show_builtin (view));
 
   /* Freeing the builder will free the objects */
   g_object_unref (builder);

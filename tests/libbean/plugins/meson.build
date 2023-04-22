@@ -1,4 +1,4 @@
-libpeas_plugins_data = [
+libbean_plugins_data = [
   'extension-c-nonexistent.plugin',
   'extension-lua51-nonexistent.plugin',
   'extension-python-nonexistent.plugin',
@@ -14,9 +14,9 @@ libpeas_plugins_data = [
 ]
 
 custom_target(
-  'libpeas-test-data',
-  input: libpeas_plugins_data,
-  output: libpeas_plugins_data,
+  'libbean-test-data',
+  input: libbean_plugins_data,
+  output: libbean_plugins_data,
   command: ['cp', '@INPUT@', '@OUTDIR@'],
   build_by_default: true,
 )

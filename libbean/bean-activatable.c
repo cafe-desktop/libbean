@@ -1,15 +1,15 @@
 /*
- * peas-activatable.c
- * This file is part of libpeas
+ * bean-activatable.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -21,10 +21,10 @@
 
 #include "config.h"
 
-#include "peas-activatable.h"
+#include "bean-activatable.h"
 
 /**
- * SECTION:peas-activatable
+ * SECTION:bean-activatable
  * @short_description: Interface for activatable plugins.
  * @see_also: #PeasExtensionSet
  *
@@ -43,10 +43,10 @@
  * %GeditDocumentActivatable interfaces.
  **/
 
-G_DEFINE_INTERFACE(PeasActivatable, peas_activatable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(PeasActivatable, bean_activatable, G_TYPE_OBJECT)
 
 static void
-peas_activatable_default_init (PeasActivatableInterface *iface)
+bean_activatable_default_init (PeasActivatableInterface *iface)
 {
   /**
    * PeasActivatable:object:
@@ -66,7 +66,7 @@ peas_activatable_default_init (PeasActivatableInterface *iface)
 }
 
 /**
- * peas_activatable_activate:
+ * bean_activatable_activate:
  * @activatable: A #PeasActivatable.
  *
  * Activates the extension on the targetted object.
@@ -75,7 +75,7 @@ peas_activatable_default_init (PeasActivatableInterface *iface)
  * where it makes sense.
  */
 void
-peas_activatable_activate (PeasActivatable *activatable)
+bean_activatable_activate (PeasActivatable *activatable)
 {
   PeasActivatableInterface *iface;
 
@@ -88,7 +88,7 @@ peas_activatable_activate (PeasActivatable *activatable)
 }
 
 /**
- * peas_activatable_deactivate:
+ * bean_activatable_deactivate:
  * @activatable: A #PeasActivatable.
  *
  * Deactivates the extension on the targetted object.
@@ -98,7 +98,7 @@ peas_activatable_activate (PeasActivatable *activatable)
  * and without any more effect on the host application.
  */
 void
-peas_activatable_deactivate (PeasActivatable *activatable)
+bean_activatable_deactivate (PeasActivatable *activatable)
 {
   PeasActivatableInterface *iface;
 
@@ -111,14 +111,14 @@ peas_activatable_deactivate (PeasActivatable *activatable)
 }
 
 /**
- * peas_activatable_update_state:
+ * bean_activatable_update_state:
  * @activatable: A #PeasActivatable.
  *
  * Triggers an update of the extension internal state to take into account
  * state changes in the targetted object, due to some event or user action.
  */
 void
-peas_activatable_update_state (PeasActivatable *activatable)
+bean_activatable_update_state (PeasActivatable *activatable)
 {
   PeasActivatableInterface *iface;
 

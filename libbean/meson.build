@@ -1,4 +1,4 @@
-libpeas_srcdir = include_directories('.')
+libbean_srcdir = include_directories('.')
 
 version_data = configuration_data()
 version_data.set('PEAS_MAJOR_VERSION', version_major)
@@ -6,9 +6,9 @@ version_data.set('PEAS_MINOR_VERSION', version_minor)
 version_data.set('PEAS_MICRO_VERSION', version_micro)
 version_data.set('PEAS_VERSION', meson.project_version())
 
-peas_version_h = configure_file(
-  input: 'peas-version.h.in',
-  output: 'peas-version.h',
+bean_version_h = configure_file(
+  input: 'bean-version.h.in',
+  output: 'bean-version.h',
   configuration: version_data,
   install_dir: join_paths(
     pkgincludedir,
@@ -16,45 +16,45 @@ peas_version_h = configure_file(
   ),
 )
 
-libpeas_public_h = files(
-  'peas-activatable.h',
-  'peas-autocleanups.h',
-  'peas-engine.h',
-  'peas-extension.h',
-  'peas-extension-base.h',
-  'peas-extension-set.h',
-  'peas-object-module.h',
-  'peas-plugin-info.h',
-  'peas-version-macros.h',
-  'peas.h',
+libbean_public_h = files(
+  'bean-activatable.h',
+  'bean-autocleanups.h',
+  'bean-engine.h',
+  'bean-extension.h',
+  'bean-extension-base.h',
+  'bean-extension-set.h',
+  'bean-object-module.h',
+  'bean-plugin-info.h',
+  'bean-version-macros.h',
+  'bean.h',
 )
 
-libpeas_sources = files(
-  'peas-activatable.c',
-  'peas-debug.c',
-  'peas-dirs.c',
-  'peas-engine.c',
-  'peas-extension.c',
-  'peas-extension-base.c',
-  'peas-extension-set.c',
-  'peas-i18n.c',
-  'peas-introspection.c',
-  'peas-object-module.c',
-  'peas-plugin-info.c',
-  'peas-plugin-loader.c',
-  'peas-plugin-loader-c.c',
-  'peas-utils.c',
+libbean_sources = files(
+  'bean-activatable.c',
+  'bean-debug.c',
+  'bean-dirs.c',
+  'bean-engine.c',
+  'bean-extension.c',
+  'bean-extension-base.c',
+  'bean-extension-set.c',
+  'bean-i18n.c',
+  'bean-introspection.c',
+  'bean-object-module.c',
+  'bean-plugin-info.c',
+  'bean-plugin-loader.c',
+  'bean-plugin-loader-c.c',
+  'bean-utils.c',
 )
 
 if build_machine.system() == 'darwin'
-  libpeas_sources += [
-    'peas-utils-osx.m',
-    'peas-utils-osx.h',
+  libbean_sources += [
+    'bean-utils-osx.m',
+    'bean-utils-osx.h',
   ]
 endif
 
 
-libpeas_deps = [
+libbean_deps = [
   glib_dep,
   gobject_dep,
   gmodule_dep,
@@ -62,81 +62,81 @@ libpeas_deps = [
   introspection_dep,
 ]
 
-libpeas_c_args = [
+libbean_c_args = [
   '-DHAVE_CONFIG_H',
-  '-DG_LOG_DOMAIN="libpeas"',
+  '-DG_LOG_DOMAIN="libbean"',
   '-DDATADIR="@0@"'.format(datadir),
   '-DLIBDIR="@0@"'.format(libdir),
 ]
 
-libpeas_link_args = [
+libbean_link_args = [
 ]
 
 if build_machine.system() == 'darwin'
-  libpeas_link_args += [
+  libbean_link_args += [
     '-Wl,-framework', '-Wl,Foundation',
     '-Wl,-framework', '-Wl,AppKit',
   ]
 endif
 
-libpeas_marshal = gnome.genmarshal(
-  'peas-marshal',
-  sources: 'peas-marshal.list',
-  prefix: 'peas_cclosure_marshal',
+libbean_marshal = gnome.genmarshal(
+  'bean-marshal',
+  sources: 'bean-marshal.list',
+  prefix: 'bean_cclosure_marshal',
   install_header: false,
 )
 
-libpeas_marshals_h = libpeas_marshal.get(1)
+libbean_marshals_h = libbean_marshal.get(1)
 
-libpeas_sources += [
-  libpeas_marshal,
+libbean_sources += [
+  libbean_marshal,
 ]
 
 install_headers(
-  libpeas_public_h,
+  libbean_public_h,
   install_dir: join_paths(
     pkgincludedir,
     package_name,
   ),
 )
 
-libpeas_sha = library(
+libbean_sha = library(
   package_string.strip('lib'),
-  libpeas_sources,
+  libbean_sources,
   version: lib_version,
   darwin_versions: lib_version_osx,
-  include_directories: [rootdir, libpeas_srcdir],
-  dependencies: libpeas_deps,
-  c_args: libpeas_c_args + hidden_visibility_args,
-  objc_args: libpeas_c_args,
-  link_args: libpeas_link_args,
+  include_directories: [rootdir, libbean_srcdir],
+  dependencies: libbean_deps,
+  c_args: libbean_c_args + hidden_visibility_args,
+  objc_args: libbean_c_args,
+  link_args: libbean_link_args,
   install: true,
   install_dir: libdir,
 )
 
-libpeas_dep_sources = [
-  libpeas_marshals_h,
+libbean_dep_sources = [
+  libbean_marshals_h,
 ]
 
 if generate_gir == true
-  libpeas_gir_includes = [
+  libbean_gir_includes = [
     'GObject-2.0',
     'GModule-2.0',
     'Gio-2.0',
     'GIRepository-2.0'
   ]
 
-  libpeas_gir = gnome.generate_gir(
-    libpeas_sha,
-    sources: libpeas_sources + libpeas_public_h,
+  libbean_gir = gnome.generate_gir(
+    libbean_sha,
+    sources: libbean_sources + libbean_public_h,
     nsversion: api_version,
     namespace: 'Peas',
-    symbol_prefix: 'peas',
+    symbol_prefix: 'bean',
     identifier_prefix: 'Peas',
-    header: 'libpeas/peas.h',
+    header: 'libbean/bean.h',
     export_packages: [package_string],
-    includes: libpeas_gir_includes,
-    link_with: libpeas_sha,
+    includes: libbean_gir_includes,
+    link_with: libbean_sha,
     install: true,
     install_dir_gir: girdir,
     install_dir_typelib: typelibdir,
@@ -145,19 +145,19 @@ if generate_gir == true
     ],
   )
 
-  libpeas_dep_sources += [
-    libpeas_gir,
+  libbean_dep_sources += [
+    libbean_gir,
   ]
 endif
 
-libpeas_dep = declare_dependency(
-  link_with: libpeas_sha,
-  include_directories: [rootdir, libpeas_srcdir],
-  dependencies: libpeas_deps,
-  sources: libpeas_dep_sources,
+libbean_dep = declare_dependency(
+  link_with: libbean_sha,
+  include_directories: [rootdir, libbean_srcdir],
+  dependencies: libbean_deps,
+  sources: libbean_dep_sources,
 )
 
-libpeas_pc_reqs = [
+libbean_pc_reqs = [
   'glib-2.0 @0@'.format(glib_req),
   'gobject-2.0 @0@'.format(glib_req),
   'gmodule-2.0 @0@'.format(glib_req),
@@ -165,11 +165,11 @@ libpeas_pc_reqs = [
   'gobject-introspection-1.0 @0@'.format(introspection_req),
 ]
 
-libpeas_pc = pkg.generate(
-  libpeas_sha,
+libbean_pc = pkg.generate(
+  libbean_sha,
   name: package_string,
   description: 'GObject plugins library',
   subdirs: package_string,
   install_dir: pkgconfigdir,
-  requires: libpeas_pc_reqs,
+  requires: libbean_pc_reqs,
 )

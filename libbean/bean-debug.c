@@ -1,15 +1,15 @@
 /*
- * peas-debug.c
- * This file is part of libpeas
+ * bean-debug.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include "peas-debug.h"
+#include "bean-debug.h"
 
 
 static void
@@ -35,7 +35,7 @@ debug_log_handler (const gchar    *log_domain,
 }
 
 void
-peas_debug_init (void)
+bean_debug_init (void)
 {
   if (g_getenv ("PEAS_DEBUG") == NULL)
     {

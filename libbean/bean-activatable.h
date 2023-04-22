@@ -1,15 +1,15 @@
 /*
- * peas-activatable.h
- * This file is part of libpeas
+ * bean-activatable.h
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -24,14 +24,14 @@
 
 #include <glib-object.h>
 
-#include "peas-version-macros.h"
+#include "bean-version-macros.h"
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PEAS_TYPE_ACTIVATABLE             (peas_activatable_get_type ())
+#define PEAS_TYPE_ACTIVATABLE             (bean_activatable_get_type ())
 #define PEAS_ACTIVATABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_ACTIVATABLE, PeasActivatable))
 #define PEAS_ACTIVATABLE_IFACE(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), PEAS_TYPE_ACTIVATABLE, PeasActivatableInterface))
 #define PEAS_IS_ACTIVATABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_ACTIVATABLE))
@@ -68,14 +68,14 @@ struct _PeasActivatableInterface {
  * Public methods
  */
 PEAS_AVAILABLE_IN_ALL
-GType             peas_activatable_get_type       (void)  G_GNUC_CONST;
+GType             bean_activatable_get_type       (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
-void              peas_activatable_activate       (PeasActivatable *activatable);
+void              bean_activatable_activate       (PeasActivatable *activatable);
 PEAS_AVAILABLE_IN_ALL
-void              peas_activatable_deactivate     (PeasActivatable *activatable);
+void              bean_activatable_deactivate     (PeasActivatable *activatable);
 PEAS_AVAILABLE_IN_ALL
-void              peas_activatable_update_state   (PeasActivatable *activatable);
+void              bean_activatable_update_state   (PeasActivatable *activatable);
 
 G_END_DECLS
 

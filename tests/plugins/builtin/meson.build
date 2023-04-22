@@ -15,7 +15,7 @@ libbuiltin_plugin_data = [
 libbuiltin_plugin_deps = [
   glib_dep,
   gobject_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libbuiltin_lib = shared_library(

@@ -1,16 +1,16 @@
 /*
  * extension-py.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2011 - Steve Frécinaux
  * Copyright (C) 2011-2013 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -26,8 +26,8 @@
 
 #include <pygobject.h>
 
-#include <libpeas/peas-activatable.h>
-#include "libpeas/peas-engine-priv.h"
+#include <libbean/bean-activatable.h>
+#include "libbean/bean-engine-priv.h"
 
 #include "testing/testing-extension.h"
 #include "introspection/introspection-base.h"
@@ -51,7 +51,7 @@ test_extension_py_instance_refcount (PeasEngine     *engine,
 {
   PeasExtension *extension;
 
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_BASE,
                                             NULL);
 
@@ -80,7 +80,7 @@ test_extension_py_activatable_subject_refcount (PeasEngine     *engine,
   g_assert_cmpint (object->ref_count, ==, 1);
 
   /* we pre-create the wrapper to make it easier to check reference count */
-  extension = peas_engine_create_extension (engine, info,
+  extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
                                             "object", object,
                                             NULL);
@@ -116,10 +116,10 @@ test_extension_py_nonexistent (PeasEngine *engine)
   testing_util_push_log_hook ("Error loading plugin 'extension-"
                               PY_LOADER_STR "-nonexistent'");
 
-  info = peas_engine_get_plugin_info (engine,
+  info = bean_engine_get_plugin_info (engine,
                                       "extension-" PY_LOADER_STR "-nonexistent");
 
-  g_assert (!peas_engine_load_plugin (engine, info));
+  g_assert (!bean_engine_load_plugin (engine, info));
 }
 
 static void
@@ -149,7 +149,7 @@ test_extension_py_already_initialized_subprocess (void)
   g_assert (!PyErr_Occurred ());
 
   engine = testing_engine_new ();
-  peas_engine_enable_loader (engine, PY_LOADER_STR);
+  bean_engine_enable_loader (engine, PY_LOADER_STR);
 
   module = PyImport_AddModule ("__main__");
   dict = PyModule_GetDict (module);
@@ -169,7 +169,7 @@ test_extension_py_already_initialized_subprocess (void)
   PyDict_Clear (dict);
   testing_engine_free (engine);
 
-  _peas_engine_shutdown ();
+  _bean_engine_shutdown ();
 
   /* Should still be initialized */
   g_assert (Py_IsInitialized ());
@@ -209,11 +209,11 @@ test_extension_py_mixed_python_subprocess (void)
   g_setenv ("PEAS_ALLOW_CONFLICTING_LOADERS", "1", TRUE);
 
   engine = testing_engine_new ();
-  peas_engine_enable_loader (engine, ALT_PY_LOADER_STR);
+  bean_engine_enable_loader (engine, ALT_PY_LOADER_STR);
 
-  info = peas_engine_get_plugin_info (engine, "extension-" ALT_PY_LOADER_STR);
+  info = bean_engine_get_plugin_info (engine, "extension-" ALT_PY_LOADER_STR);
 
-  g_assert (!peas_engine_load_plugin (engine, info));
+  g_assert (!bean_engine_load_plugin (engine, info));
 
   testing_engine_free (engine);
 }
@@ -229,7 +229,7 @@ main (int   argc,
   testing_extension_basic (PY_LOADER_STR);
 
   /* We still need to add the callable tests
-   * because of peas_extension_call()
+   * because of bean_extension_call()
    */
   testing_extension_callable (PY_LOADER_STR);
 

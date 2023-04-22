@@ -1,15 +1,15 @@
 /*
  * builtin-plugin.c
- * This file is part of libpeas
+ * This file is part of libbean
  *
  * Copyright (C) 2010 - Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -27,7 +27,7 @@
 #include <glib-object.h>
 #include <gmodule.h>
 
-#include <libpeas/peas.h>
+#include <libbean/bean.h>
 
 #include "builtin-plugin.h"
 
@@ -35,7 +35,7 @@ typedef struct {
   GObject *object;
 } TestingBuiltinPluginPrivate;
 
-static void peas_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (PeasActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinPlugin,
                                 testing_builtin_plugin,
@@ -43,7 +43,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinPlugin,
                                 0,
                                 G_ADD_PRIVATE_DYNAMIC (TestingBuiltinPlugin)
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init))
+                                                               bean_activatable_iface_init))
 
 #define GET_PRIV(o) \
   (testing_builtin_plugin_get_instance_private (o))
@@ -122,7 +122,7 @@ testing_builtin_plugin_class_init (TestingBuiltinPluginClass *klass)
 }
 
 static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (PeasActivatableInterface *iface)
 {
   iface->activate = testing_builtin_plugin_activate;
   iface->deactivate = testing_builtin_plugin_deactivate;
@@ -134,11 +134,11 @@ testing_builtin_plugin_class_finalize (TestingBuiltinPluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
+bean_register_types (PeasObjectModule *module)
 {
   testing_builtin_plugin_register_type (G_TYPE_MODULE (module));
 
-  peas_object_module_register_extension_type (module,
+  bean_object_module_register_extension_type (module,
                                               PEAS_TYPE_ACTIVATABLE,
                                               TESTING_TYPE_BUILTIN_PLUGIN);
 }

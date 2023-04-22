@@ -1,13 +1,13 @@
 /*
- * peas.h
- * This file is part of libpeas
+ * bean.h
+ * This file is part of libbean
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -20,15 +20,15 @@
 #ifndef __PEAS_H__
 #define __PEAS_H__
 
-#include "peas-activatable.h"
-#include "peas-autocleanups.h"
-#include "peas-engine.h"
-#include "peas-extension.h"
-#include "peas-extension-base.h"
-#include "peas-extension-set.h"
-#include "peas-object-module.h"
-#include "peas-plugin-info.h"
-#include "peas-version.h"
-#include "peas-version-macros.h"
+#include "bean-activatable.h"
+#include "bean-autocleanups.h"
+#include "bean-engine.h"
+#include "bean-extension.h"
+#include "bean-extension-base.h"
+#include "bean-extension-set.h"
+#include "bean-object-module.h"
+#include "bean-plugin-info.h"
+#include "bean-version.h"
+#include "bean-version-macros.h"
 
 #endif

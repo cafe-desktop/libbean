@@ -12,7 +12,7 @@ libtesting_util_c = [
 libtesting_util_deps = [
   glib_dep,
   introspection_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libtesting_util_c_args = [

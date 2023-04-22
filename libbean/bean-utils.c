@@ -1,16 +1,16 @@
 /*
- * peas-utils.c
- * This file is part of libpeas
+ * bean-utils.c
+ * This file is part of libbean
  *
  * Copyright (C) 2010 Steve Frécinaux
  * Copyright (C) 2011-2017 Garrett Regier
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -28,7 +28,7 @@
 
 #include <gobject/gvaluecollector.h>
 
-#include "peas-utils.h"
+#include "bean-utils.h"
 
 static const gchar *all_plugin_loaders[] = {
   "c", "lua5.1", "python", "python3"
@@ -50,7 +50,7 @@ G_STATIC_ASSERT (G_N_ELEMENTS (all_plugin_loader_modules) == PEAS_UTILS_N_LOADER
 G_STATIC_ASSERT (G_N_ELEMENTS (conflicting_plugin_loaders) == PEAS_UTILS_N_LOADERS);
 
 static
-G_DEFINE_QUARK (peas-extension-base-class-and-interfaces-cache,
+G_DEFINE_QUARK (bean-extension-base-class-and-interfaces-cache,
                 exten_type_cache)
 
 static void
@@ -181,7 +181,7 @@ find_param_spec_for_prerequisites (const gchar  *name,
 }
 
 gboolean
-peas_utils_properties_array_to_parameter_list (GType          exten_type,
+bean_utils_properties_array_to_parameter_list (GType          exten_type,
                                                guint          n_properties,
                                                const gchar  **prop_names,
                                                const GValue  *prop_values,
@@ -235,7 +235,7 @@ error:
 }
 
 gboolean
-peas_utils_valist_to_parameter_list (GType         exten_type,
+bean_utils_valist_to_parameter_list (GType         exten_type,
                                      const gchar  *first_property,
                                      va_list       args,
                                      GParameter  **params,
@@ -306,7 +306,7 @@ error:
 }
 
 gint
-peas_utils_get_loader_id (const gchar *loader)
+bean_utils_get_loader_id (const gchar *loader)
 {
   gint i;
   gsize len;
@@ -333,7 +333,7 @@ peas_utils_get_loader_id (const gchar *loader)
 }
 
 const gchar *
-peas_utils_get_loader_from_id (gint loader_id)
+bean_utils_get_loader_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
   g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);
@@ -342,7 +342,7 @@ peas_utils_get_loader_from_id (gint loader_id)
 }
 
 const gchar *
-peas_utils_get_loader_module_from_id (gint loader_id)
+bean_utils_get_loader_module_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
   g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);
@@ -351,7 +351,7 @@ peas_utils_get_loader_module_from_id (gint loader_id)
 }
 
 const gint *
-peas_utils_get_conflicting_loaders_from_id (gint loader_id)
+bean_utils_get_conflicting_loaders_from_id (gint loader_id)
 {
   g_return_val_if_fail (loader_id >= 0, NULL);
   g_return_val_if_fail (loader_id < PEAS_UTILS_N_LOADERS, NULL);

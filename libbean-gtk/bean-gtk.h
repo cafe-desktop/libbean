@@ -1,13 +1,13 @@
 /*
- * peas-gtk.h
- * This file is part of libpeas
+ * bean-gtk.h
+ * This file is part of libbean
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -20,9 +20,9 @@
 #ifndef __PEAS_GTK_H__
 #define __PEAS_GTK_H__
 
-#include "peas-gtk-autocleanups.h"
-#include "peas-gtk-configurable.h"
-#include "peas-gtk-plugin-manager.h"
-#include "peas-gtk-plugin-manager-view.h"
+#include "bean-gtk-autocleanups.h"
+#include "bean-gtk-configurable.h"
+#include "bean-gtk-plugin-manager.h"
+#include "bean-gtk-plugin-manager-view.h"
 
 #endif

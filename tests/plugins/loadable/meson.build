@@ -15,7 +15,7 @@ libloadable_plugin_data = [
 libloadable_plugin_deps = [
   glib_dep,
   gobject_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libloadable_lib = shared_library(

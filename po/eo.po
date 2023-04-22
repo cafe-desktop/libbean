@@ -1,10 +1,10 @@
-# Esperanto translation for libpeas.
+# Esperanto translation for libbean.
 # Copyright (C) 2011 Free Software Foundation, Inc.
 # Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2011, 2017.
 # Tiffany ANTOPOLSKI <tiffany.antopolski@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: libpeas master\n"
+"Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=libpea"
 "s&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2017-03-25 04:28+0000\n"
@@ -19,66 +19,66 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/glade/libpeas-gtk.xml.in.h:1
+#: ../data/glade/libbean-gtk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Kromprogram-administrilo"
 
 #. Translators: What PeasGtkPluginManagerView to use
-#: ../data/glade/libpeas-gtk.xml.in.h:3
+#: ../data/glade/libbean-gtk.xml.in.h:3
 msgid "View"
 msgstr "Vido"
 
-#: ../data/glade/libpeas-gtk.xml.in.h:4
+#: ../data/glade/libbean-gtk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "Aspekto de la kromprogram-administrilo"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libpeas-gtk.xml.in.h:6
+#: ../data/glade/libbean-gtk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "Montri integritajn kromprogramojn"
 
-#: ../data/glade/libpeas-gtk.xml.in.h:7
+#: ../data/glade/libbean-gtk.xml.in.h:7
 msgid "Peas Gtk"
 msgstr "Peas Gtk"
 
-#: ../libpeas/peas-engine.c:1118
+#: ../libbean/bean-engine.c:1118
 #, c-format
 msgid "Dependency '%s' was not found"
 msgstr "Ne trovis dependecon '%s'"
 
-#: ../libpeas/peas-engine.c:1128
+#: ../libbean/bean-engine.c:1128
 #, c-format
 msgid "Dependency '%s' failed to load"
 msgstr "Malsukcesis ŝargi dependecon '%s'"
 
-#: ../libpeas/peas-engine.c:1142
+#: ../libbean/bean-engine.c:1142
 #, c-format
 msgid "Plugin loader '%s' was not found"
 msgstr "Ne trovis kromprogram-ŝargilon '%s'"
 
-#: ../libpeas/peas-engine.c:1154
+#: ../libbean/bean-engine.c:1154
 #, c-format
 msgid "Failed to load"
 msgstr "Malsukcesis ŝargi"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:95
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Pluaj kromprogramoj devas esti elŝaltitaj"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:102
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "La sekvantaj kromprogramoj dependas de '%s' kaj ankaŭ estos elŝaltite:"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:144
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Kromprogramoj"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:161
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Plua kromprogramo devas esti elŝaltita"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:168
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -87,61 +87,61 @@ msgstr ""
 "La kromprogramo '%s' dependas de la kromprogramo '%s'.\n"
 "Se vi elŝaltus '%s', estos '%s' ankaŭ elŝaltite."
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:182
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Rezigni"
 
-#: ../libpeas-gtk/peas-gtk-disable-plugins-dialog.c:184
+#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Elŝalti kromprogramojn"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:207
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Okazis eraro dum montrado de helpo."
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:253
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Fermi"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:265
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Helpo"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:323
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "Ag_ordoj"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:328
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:379
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Pri"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager.c:387
+#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Agordoj"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:351
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "E_nŝaltite"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:362
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "E_nŝalti ĉiujn"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:366
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "E_lŝalti ĉiujn"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:526
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Enŝaltite"
 
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:547
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Kromprogramo"
 
 #. Avoid having markup in a translated string
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:634
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
 #, c-format
 #| msgid ""
 #| "<b>The plugin '%s' could not be loaded</b>\n"
@@ -152,30 +152,30 @@ msgstr "Ne eblis ŝargi la kromprogramon '%s'"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libpeas-gtk/peas-gtk-plugin-manager-view.c:640
+#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Eraro okazis: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: ../peas-demo/peas-demo.c:41
+#: ../bean-demo/bean-demo.c:41
 msgid "Run from build directory"
 msgstr "Lanĉi de kunmetaĵo-dosierujo"
 
-#: ../peas-demo/peas-demo.c:92
+#: ../bean-demo/bean-demo.c:92
 msgid "_Quit"
 msgstr "Ĉ_esi"
 
-#: ../peas-demo/peas-demo.c:108
-msgid "- libpeas demo application"
-msgstr "- libpeas demonstraĵo-aplikaĵo"
+#: ../bean-demo/bean-demo.c:108
+msgid "- libbean demo application"
+msgstr "- libbean demonstraĵo-aplikaĵo"
 
-#: ../tests/libpeas-gtk/plugin-manager.c:77
+#: ../tests/libbean-gtk/plugin-manager.c:77
 #| msgid "_About"
 msgid "About"
 msgstr "Pri"
 
-#: ../tests/libpeas-gtk/plugin-manager.c:82
+#: ../tests/libbean-gtk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Agordoj"
 

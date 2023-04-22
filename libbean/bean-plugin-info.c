@@ -1,16 +1,16 @@
 /*
- * peas-plugin-info.c
- * This file is part of libpeas
+ * bean-plugin-info.c
+ * This file is part of libbean
  *
  * Copyright (C) 2002-2005 - Paolo Maggi
  * Copyright (C) 2007 - Steve Frécinaux
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -24,9 +24,9 @@
 
 #include <string.h>
 
-#include "peas-i18n-priv.h"
-#include "peas-plugin-info-priv.h"
-#include "peas-utils.h"
+#include "bean-i18n-priv.h"
+#include "bean-plugin-info-priv.h"
+#include "bean-utils.h"
 
 #ifdef G_OS_WIN32
 #define OS_HELP_KEY "Help-Windows"
@@ -37,7 +37,7 @@
 #endif
 
 /**
- * SECTION:peas-plugin-info
+ * SECTION:bean-plugin-info
  * @short_description: Information about a plugin.
  *
  * A #PeasPluginInfo contains all the information available about a plugin.
@@ -54,27 +54,27 @@
  * Description=Displays "Hello World"
  * Authors=Steve Frécinaux &lt;code@istique.net&gt;
  * Copyright=Copyright © 2009-10 Steve Frécinaux
- * Website=https://wiki.gnome.org/Projects/Libpeas
- * Help=http://library.gnome.org/devel/libpeas/stable/
+ * Website=https://wiki.gnome.org/Projects/Libbean
+ * Help=http://library.gnome.org/devel/libbean/stable/
  * Hidden=false
  * ]|
  **/
 
-G_DEFINE_QUARK (peas-plugin-info-error, peas_plugin_info_error)
+G_DEFINE_QUARK (bean-plugin-info-error, bean_plugin_info_error)
 
-G_DEFINE_BOXED_TYPE (PeasPluginInfo, peas_plugin_info,
-                     _peas_plugin_info_ref,
-                     _peas_plugin_info_unref)
+G_DEFINE_BOXED_TYPE (PeasPluginInfo, bean_plugin_info,
+                     _bean_plugin_info_ref,
+                     _bean_plugin_info_unref)
 
 PeasPluginInfo *
-_peas_plugin_info_ref (PeasPluginInfo *info)
+_bean_plugin_info_ref (PeasPluginInfo *info)
 {
   g_atomic_int_inc (&info->refcount);
   return info;
 }
 
 void
-_peas_plugin_info_unref (PeasPluginInfo *info)
+_bean_plugin_info_unref (PeasPluginInfo *info)
 {
   if (!g_atomic_int_dec_and_test (&info->refcount))
     return;
@@ -107,7 +107,7 @@ _peas_plugin_info_unref (PeasPluginInfo *info)
 }
 
 /*
- * _peas_plugin_info_new:
+ * _bean_plugin_info_new:
  * @filename: The filename where to read the plugin information.
  * @module_dir: The module directory.
  * @data_dir: The data directory.
@@ -117,7 +117,7 @@ _peas_plugin_info_unref (PeasPluginInfo *info)
  * Return value: a newly created #PeasPluginInfo.
  */
 PeasPluginInfo *
-_peas_plugin_info_new (const gchar *filename,
+_bean_plugin_info_new (const gchar *filename,
                        const gchar *module_dir,
                        const gchar *data_dir)
 {
@@ -194,7 +194,7 @@ _peas_plugin_info_new (const gchar *filename,
     }
   else
     {
-      info->loader_id = peas_utils_get_loader_id (loader);
+      info->loader_id = bean_utils_get_loader_id (loader);
 
       if (info->loader_id == -1)
         {
@@ -333,7 +333,7 @@ error:
 }
 
 /**
- * peas_plugin_info_is_loaded:
+ * bean_plugin_info_is_loaded:
  * @info: A #PeasPluginInfo.
  *
  * Check if the plugin is loaded.
@@ -341,7 +341,7 @@ error:
  * Returns: %TRUE if the plugin is loaded.
  */
 gboolean
-peas_plugin_info_is_loaded (const PeasPluginInfo *info)
+bean_plugin_info_is_loaded (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -349,7 +349,7 @@ peas_plugin_info_is_loaded (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_is_available:
+ * bean_plugin_info_is_available:
  * @info: A #PeasPluginInfo.
  * @error: A #GError.
  *
@@ -362,7 +362,7 @@ peas_plugin_info_is_loaded (const PeasPluginInfo *info)
  * Returns: %TRUE if the plugin is available.
  */
 gboolean
-peas_plugin_info_is_available (const PeasPluginInfo  *info,
+bean_plugin_info_is_available (const PeasPluginInfo  *info,
                                GError               **error)
 {
   g_return_val_if_fail (info != NULL, FALSE);
@@ -377,7 +377,7 @@ peas_plugin_info_is_available (const PeasPluginInfo  *info,
 }
 
 /**
- * peas_plugin_info_is_builtin:
+ * bean_plugin_info_is_builtin:
  * @info: A #PeasPluginInfo.
  *
  * Check if the plugin is a builtin plugin.
@@ -394,7 +394,7 @@ peas_plugin_info_is_available (const PeasPluginInfo  *info,
  * if not.
  **/
 gboolean
-peas_plugin_info_is_builtin (const PeasPluginInfo *info)
+bean_plugin_info_is_builtin (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, TRUE);
 
@@ -402,7 +402,7 @@ peas_plugin_info_is_builtin (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_is_hidden:
+ * bean_plugin_info_is_hidden:
  * @info: A #PeasPluginInfo.
  *
  * Check if the plugin is a hidden plugin.
@@ -418,7 +418,7 @@ peas_plugin_info_is_builtin (const PeasPluginInfo *info)
  * if not.
  **/
 gboolean
-peas_plugin_info_is_hidden (const PeasPluginInfo *info)
+bean_plugin_info_is_hidden (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -426,7 +426,7 @@ peas_plugin_info_is_hidden (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_module_name:
+ * bean_plugin_info_get_module_name:
  * @info: A #PeasPluginInfo.
  *
  * Gets the module name.
@@ -440,7 +440,7 @@ peas_plugin_info_is_hidden (const PeasPluginInfo *info)
  * Returns: the module name.
  */
 const gchar *
-peas_plugin_info_get_module_name (const PeasPluginInfo *info)
+bean_plugin_info_get_module_name (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -448,7 +448,7 @@ peas_plugin_info_get_module_name (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_module_dir:
+ * bean_plugin_info_get_module_dir:
  * @info: A #PeasPluginInfo.
  *
  * Gets the module directory.
@@ -460,7 +460,7 @@ peas_plugin_info_get_module_name (const PeasPluginInfo *info)
  * Returns: the module directory.
  */
 const gchar *
-peas_plugin_info_get_module_dir (const PeasPluginInfo *info)
+bean_plugin_info_get_module_dir (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -468,7 +468,7 @@ peas_plugin_info_get_module_dir (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_data_dir:
+ * bean_plugin_info_get_data_dir:
  * @info: A #PeasPluginInfo.
  *
  * Gets the data dir of the plugin.
@@ -481,7 +481,7 @@ peas_plugin_info_get_module_dir (const PeasPluginInfo *info)
  * Returns: the plugin's data dir.
  */
 const gchar *
-peas_plugin_info_get_data_dir (const PeasPluginInfo *info)
+bean_plugin_info_get_data_dir (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -489,7 +489,7 @@ peas_plugin_info_get_data_dir (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_settings:
+ * bean_plugin_info_get_settings:
  * @info: A #PeasPluginInfo.
  * @schema_id: (allow-none): The schema id.
  *
@@ -502,7 +502,7 @@ peas_plugin_info_get_data_dir (const PeasPluginInfo *info)
  * Since: 1.4
  */
 GSettings *
-peas_plugin_info_get_settings (const PeasPluginInfo *info,
+bean_plugin_info_get_settings (const PeasPluginInfo *info,
                                const gchar          *schema_id)
 {
   GSettingsSchema *schema;
@@ -564,7 +564,7 @@ peas_plugin_info_get_settings (const PeasPluginInfo *info,
 }
 
 /**
- * peas_plugin_info_get_dependencies:
+ * bean_plugin_info_get_dependencies:
  * @info: A #PeasPluginInfo.
  *
  * Gets the dependencies of the plugin.
@@ -579,7 +579,7 @@ peas_plugin_info_get_settings (const PeasPluginInfo *info,
  * Returns: (transfer none): the plugin's dependencies.
  */
 const gchar **
-peas_plugin_info_get_dependencies (const PeasPluginInfo *info)
+bean_plugin_info_get_dependencies (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -587,7 +587,7 @@ peas_plugin_info_get_dependencies (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_has_dependency:
+ * bean_plugin_info_has_dependency:
  * @info: A #PeasPluginInfo.
  * @module_name: The name of the plugin to check.
  *
@@ -596,7 +596,7 @@ peas_plugin_info_get_dependencies (const PeasPluginInfo *info)
  * Returns: whether the plugin depends on the plugin @module_name.
  */
 gboolean
-peas_plugin_info_has_dependency (const PeasPluginInfo *info,
+bean_plugin_info_has_dependency (const PeasPluginInfo *info,
                                  const gchar          *module_name)
 {
   guint i;
@@ -615,7 +615,7 @@ peas_plugin_info_has_dependency (const PeasPluginInfo *info,
 
 
 /**
- * peas_plugin_info_get_name:
+ * bean_plugin_info_get_name:
  * @info: A #PeasPluginInfo.
  *
  * Gets the name of the plugin.
@@ -627,7 +627,7 @@ peas_plugin_info_has_dependency (const PeasPluginInfo *info,
  * Returns: the plugin's name.
  */
 const gchar *
-peas_plugin_info_get_name (const PeasPluginInfo *info)
+bean_plugin_info_get_name (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -635,7 +635,7 @@ peas_plugin_info_get_name (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_description:
+ * bean_plugin_info_get_description:
  * @info: A #PeasPluginInfo.
  *
  * Gets the description of the plugin.
@@ -648,7 +648,7 @@ peas_plugin_info_get_name (const PeasPluginInfo *info)
  * Returns: the plugin's description.
  */
 const gchar *
-peas_plugin_info_get_description (const PeasPluginInfo *info)
+bean_plugin_info_get_description (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -656,7 +656,7 @@ peas_plugin_info_get_description (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_icon_name:
+ * bean_plugin_info_get_icon_name:
  * @info: A #PeasPluginInfo.
  *
  * Gets the icon name of the plugin.
@@ -669,18 +669,18 @@ peas_plugin_info_get_description (const PeasPluginInfo *info)
  * Returns: the plugin's icon name.
  */
 const gchar *
-peas_plugin_info_get_icon_name (const PeasPluginInfo *info)
+bean_plugin_info_get_icon_name (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
   if (info->icon_name != NULL)
     return info->icon_name;
 
-  return "libpeas-plugin";
+  return "libbean-plugin";
 }
 
 /**
- * peas_plugin_info_get_authors:
+ * bean_plugin_info_get_authors:
  * @info: A #PeasPluginInfo.
  *
  * Gets a %NULL-terminated array of strings with the authors of the plugin.
@@ -690,7 +690,7 @@ peas_plugin_info_get_icon_name (const PeasPluginInfo *info)
  * Returns: (transfer none) (array zero-terminated=1): the plugin's author list.
  */
 const gchar **
-peas_plugin_info_get_authors (const PeasPluginInfo *info)
+bean_plugin_info_get_authors (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, (const gchar **) NULL);
 
@@ -698,7 +698,7 @@ peas_plugin_info_get_authors (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_website:
+ * bean_plugin_info_get_website:
  * @info: A #PeasPluginInfo.
  *
  * Gets the website of the plugin.
@@ -708,7 +708,7 @@ peas_plugin_info_get_authors (const PeasPluginInfo *info)
  * Returns: the plugin's associated website.
  */
 const gchar *
-peas_plugin_info_get_website (const PeasPluginInfo *info)
+bean_plugin_info_get_website (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -716,7 +716,7 @@ peas_plugin_info_get_website (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_copyright:
+ * bean_plugin_info_get_copyright:
  * @info: A #PeasPluginInfo.
  *
  * Gets the copyright of the plugin.
@@ -726,7 +726,7 @@ peas_plugin_info_get_website (const PeasPluginInfo *info)
  * Returns: the plugin's copyright information.
  */
 const gchar *
-peas_plugin_info_get_copyright (const PeasPluginInfo *info)
+bean_plugin_info_get_copyright (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -734,7 +734,7 @@ peas_plugin_info_get_copyright (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_version:
+ * bean_plugin_info_get_version:
  * @info: A #PeasPluginInfo.
  *
  * Gets the version of the plugin.
@@ -744,7 +744,7 @@ peas_plugin_info_get_copyright (const PeasPluginInfo *info)
  * Returns: the plugin's version.
  */
 const gchar *
-peas_plugin_info_get_version (const PeasPluginInfo *info)
+bean_plugin_info_get_version (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -752,7 +752,7 @@ peas_plugin_info_get_version (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_help_uri:
+ * bean_plugin_info_get_help_uri:
  * @info: A #PeasPluginInfo.
  *
  * Gets the help URI of the plugin.
@@ -768,7 +768,7 @@ peas_plugin_info_get_version (const PeasPluginInfo *info)
  * Returns: the plugin's help URI.
  */
 const gchar *
-peas_plugin_info_get_help_uri (const PeasPluginInfo *info)
+bean_plugin_info_get_help_uri (const PeasPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -776,7 +776,7 @@ peas_plugin_info_get_help_uri (const PeasPluginInfo *info)
 }
 
 /**
- * peas_plugin_info_get_external_data:
+ * bean_plugin_info_get_external_data:
  * @info: A #PeasPluginInfo.
  * @key: The key to lookup.
  *
@@ -794,7 +794,7 @@ peas_plugin_info_get_help_uri (const PeasPluginInfo *info)
  * Since: 1.6
  */
 const gchar *
-peas_plugin_info_get_external_data (const PeasPluginInfo *info,
+bean_plugin_info_get_external_data (const PeasPluginInfo *info,
                                     const gchar          *key)
 {
   g_return_val_if_fail (info != NULL, NULL);

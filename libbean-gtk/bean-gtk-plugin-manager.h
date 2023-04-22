@@ -1,15 +1,15 @@
 /*
- * peas-gtk-plugin-manager.h
- * This file is part of libpeas
+ * bean-gtk-plugin-manager.h
+ * This file is part of libbean
  *
  * Copyright (C) 2005-2009 Paolo Maggi, Paolo Borelli
  *
- * libpeas is free software; you can redistribute it and/or
+ * libbean is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * libpeas is distributed in the hope that it will be useful,
+ * libbean is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
@@ -23,14 +23,14 @@
 #define __PEAS_GTK_PLUGIN_MANAGER_H__
 
 #include <gtk/gtk.h>
-#include <libpeas/peas-engine.h>
+#include <libbean/bean-engine.h>
 
 G_BEGIN_DECLS
 
 /*
  * Type checking and casting macros
  */
-#define PEAS_GTK_TYPE_PLUGIN_MANAGER            (peas_gtk_plugin_manager_get_type())
+#define PEAS_GTK_TYPE_PLUGIN_MANAGER            (bean_gtk_plugin_manager_get_type())
 #define PEAS_GTK_PLUGIN_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER, PeasGtkPluginManager))
 #define PEAS_GTK_PLUGIN_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_GTK_TYPE_PLUGIN_MANAGER, PeasGtkPluginManagerClass))
 #define PEAS_GTK_IS_PLUGIN_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_GTK_TYPE_PLUGIN_MANAGER))
@@ -70,12 +70,12 @@ struct _PeasGtkPluginManagerClass
 };
 
 PEAS_AVAILABLE_IN_ALL
-GType       peas_gtk_plugin_manager_get_type  (void)  G_GNUC_CONST;
+GType       bean_gtk_plugin_manager_get_type  (void)  G_GNUC_CONST;
 PEAS_AVAILABLE_IN_ALL
-GtkWidget  *peas_gtk_plugin_manager_new       (PeasEngine           *engine);
+GtkWidget  *bean_gtk_plugin_manager_new       (PeasEngine           *engine);
 
 PEAS_AVAILABLE_IN_ALL
-GtkWidget  *peas_gtk_plugin_manager_get_view  (PeasGtkPluginManager *pm);
+GtkWidget  *bean_gtk_plugin_manager_get_view  (PeasGtkPluginManager *pm);
 
 G_END_DECLS
 

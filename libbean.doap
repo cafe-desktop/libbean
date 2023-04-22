@@ -5,14 +5,14 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">libpeas</name>
+  <name xml:lang="en">libbean</name>
   <shortdesc xml:lang="en">A GObject plugins library</shortdesc>
-  <description>libpeas is a GObject-based plugins engine, and is targeted
+  <description>libbean is a GObject-based plugins engine, and is targeted
   at giving every application the chance to assume its own extensibility.</description>
-  <homepage rdf:resource="https://wiki.gnome.org/Projects/Libpeas" />
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/libpeas-list" />
-  <download-page rdf:resource="http://download.gnome.org/sources/libpeas/" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/libpeas/issues/" />
+  <homepage rdf:resource="https://wiki.gnome.org/Projects/Libbean" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/libbean-list" />
+  <download-page rdf:resource="http://download.gnome.org/sources/libbean/" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/libbean/issues/" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
   <programming-language>C</programming-language>
 

@@ -15,7 +15,7 @@ libself_dep_plugin_data = [
 libself_dep_plugin_deps = [
   glib_dep,
   gobject_dep,
-  libpeas_dep,
+  libbean_dep,
 ]
 
 libself_dep_lib = shared_library(
