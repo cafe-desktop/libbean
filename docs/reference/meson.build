@@ -80,7 +80,7 @@ if build_ctk_widgetry == true
   ]
 endif
 
-gnome.ctkdoc(
+gnome.gtkdoc(
   package_name,
   main_sgml: 'libbean-docs.sgml',
   gobject_typesfile: 'libbean.types',
@@ -92,7 +92,7 @@ gnome.ctkdoc(
   mkdb_args: libbean_reference_mkdb_args,
   install: true,
   install_dir: join_paths(
-    ctkdocdir,
+    gtkdocdir,
     'html',
     package_name,
   )

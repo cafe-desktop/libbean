@@ -65,7 +65,7 @@ pkglibdir = join_paths(libdir, package_string)
 pkgdatadir = join_paths(datadir, package_string)
 
 girdir = join_paths(datadir, 'gir-1.0')
-ctkdocdir = join_paths(datadir, 'ctk-doc')
+gtkdocdir = join_paths(datadir, 'ctk-doc')
 iconsdir = join_paths(datadir, 'icons')
 pkgconfigdir = join_paths(libdir, 'pkgconfig')
 typelibdir = join_paths(libdir, 'girepository-1.0')
