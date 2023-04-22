@@ -84,7 +84,7 @@ testing_get_plugin_info_for_iter (BeanCtkPluginManagerView *view,
    * is to ask the view for the info of the selected plugin
    */
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (view));
 
   had_selection = ctk_tree_selection_get_selected (selection,
                                                    NULL, &selected_iter);
@@ -107,7 +107,7 @@ testing_get_iter_for_plugin_info (BeanCtkPluginManagerView *view,
   CtkTreeModel *model;
   CtkTreeIter pos_iter;
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (view));
 
   g_assert (ctk_tree_model_get_iter_first (model, &pos_iter));
 
@@ -143,19 +143,19 @@ testing_show_widget (gpointer widget)
   CtkWidget *window;
   GLogFunc orig_log_handler;
 
-  g_assert (GTK_IS_WIDGET (widget));
+  g_assert (CTK_IS_WIDGET (widget));
 
-  widget = ctk_widget_get_toplevel (GTK_WIDGET (widget));
+  widget = ctk_widget_get_toplevel (CTK_WIDGET (widget));
 
-  if (ctk_widget_is_toplevel (GTK_WIDGET (widget)))
+  if (ctk_widget_is_toplevel (CTK_WIDGET (widget)))
     window = widget;
   else
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_container_add (GTK_CONTAINER (window), GTK_WIDGET (widget));
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_container_add (CTK_CONTAINER (window), CTK_WIDGET (widget));
     }
 
-  ctk_window_set_default_size (GTK_WINDOW (window), 200, 100);
+  ctk_window_set_default_size (CTK_WINDOW (window), 200, 100);
 
   ctk_widget_show_all (window);
 

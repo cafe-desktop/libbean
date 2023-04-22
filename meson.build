@@ -266,7 +266,7 @@ summary = [
   '             Demos: @0@'.format(build_demos),
   '     Documentation: @0@'.format(build_ctk_doc),
   '     Glade catalog: @0@'.format(install_glade_catalog),
-  '     GTK+ widgetry: @0@'.format(build_ctk_widgetry),
+  '     CTK+ widgetry: @0@'.format(build_ctk_widgetry),
   '     Introspection: @0@'.format(generate_gir),
   '   Lua 5.1 support: @0@'.format(build_lua51_loader),
   '  Python 2 support: @0@'.format(build_python2_loader),

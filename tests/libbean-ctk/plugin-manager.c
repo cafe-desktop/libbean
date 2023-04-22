@@ -47,7 +47,7 @@ notify_model_cb (CtkTreeView *view,
                  GParamSpec  *pspec,
                  TestFixture *fixture)
 {
-  fixture->model = ctk_tree_view_get_model (GTK_TREE_VIEW (fixture->view));
+  fixture->model = ctk_tree_view_get_model (CTK_TREE_VIEW (fixture->view));
 }
 
 static void
@@ -55,13 +55,13 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  fixture->manager = BEAN_GTK_PLUGIN_MANAGER (bean_ctk_plugin_manager_new (NULL));
-  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (fixture->manager));
-  fixture->selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (fixture->view));
+  fixture->window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  fixture->manager = BEAN_CTK_PLUGIN_MANAGER (bean_ctk_plugin_manager_new (NULL));
+  fixture->view = BEAN_CTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (fixture->manager));
+  fixture->selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (fixture->view));
 
-  ctk_container_add (GTK_CONTAINER (fixture->window),
-                     GTK_WIDGET (fixture->manager));
+  ctk_container_add (CTK_CONTAINER (fixture->window),
+                     CTK_WIDGET (fixture->manager));
 
   g_signal_connect (fixture->view,
                     "notify::model",
@@ -73,20 +73,20 @@ test_setup (TestFixture   *fixture,
 
   fixture->about_button = ctk_test_find_widget (fixture->window,
                                                 _("About"),
-                                                GTK_TYPE_BUTTON);
-  g_assert (GTK_IS_BUTTON (fixture->about_button));
+                                                CTK_TYPE_BUTTON);
+  g_assert (CTK_IS_BUTTON (fixture->about_button));
 
   fixture->configure_button = ctk_test_find_widget (fixture->window,
                                                     _("Preferences"),
-                                                    GTK_TYPE_BUTTON);
-  g_assert (GTK_IS_BUTTON (fixture->configure_button));
+                                                    CTK_TYPE_BUTTON);
+  g_assert (CTK_IS_BUTTON (fixture->configure_button));
 }
 
 static void
 test_teardown (TestFixture   *fixture,
                gconstpointer  data)
 {
-  ctk_widget_destroy (GTK_WIDGET (fixture->window));
+  ctk_widget_destroy (CTK_WIDGET (fixture->window));
 
   testing_engine_free (fixture->engine);
 }
@@ -121,7 +121,7 @@ find_window_by_title (CtkWindow   *window,
 
   g_list_free (windows);
 
-  g_assert (GTK_IS_WINDOW (found_window));
+  g_assert (CTK_IS_WINDOW (found_window));
 
   return found_window;
 }
@@ -194,7 +194,7 @@ test_ctk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
       else
         {
           sensitive = bean_engine_provides_extension (fixture->engine, info,
-                                                      BEAN_GTK_TYPE_CONFIGURABLE);
+                                                      BEAN_CTK_TYPE_CONFIGURABLE);
         }
 
       g_assert_cmpint (ctk_widget_get_sensitive (fixture->configure_button),
@@ -254,28 +254,28 @@ test_ctk_plugin_manager_about_dialog (TestFixture *fixture)
   ctk_tree_selection_select_iter (fixture->selection, &iter);
 
   /* Must be first so we the window is added to the window group */
-  ctk_button_clicked (GTK_BUTTON (fixture->about_button));
+  ctk_button_clicked (CTK_BUTTON (fixture->about_button));
 
-  window = find_window_by_title (GTK_WINDOW (fixture->window),
+  window = find_window_by_title (CTK_WINDOW (fixture->window),
                                  "About Full Info");
-  g_assert (GTK_IS_ABOUT_DIALOG (window));
+  g_assert (CTK_IS_ABOUT_DIALOG (window));
 
 
-  g_assert_cmpstr (ctk_about_dialog_get_program_name (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_program_name (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_name (info));
-  g_assert_cmpstr (ctk_about_dialog_get_copyright (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_copyright (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_copyright (info));
-  g_assert_cmpstr (ctk_about_dialog_get_website (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_website (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_website (info));
-  g_assert_cmpstr (ctk_about_dialog_get_logo_icon_name (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_logo_icon_name (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_icon_name (info));
-  g_assert_cmpstr (ctk_about_dialog_get_version (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_version (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_version (info));
-  g_assert_cmpstr (ctk_about_dialog_get_comments (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_comments (CTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_description (info));
 
   authors_plugin = bean_plugin_info_get_authors (info);
-  authors_dialog = ctk_about_dialog_get_authors (GTK_ABOUT_DIALOG (window));
+  authors_dialog = ctk_about_dialog_get_authors (CTK_ABOUT_DIALOG (window));
 
   for (i = 0; authors_plugin[i] == NULL && authors_dialog[i] == NULL; ++i)
     g_assert_cmpstr (authors_plugin[i], ==, authors_dialog[i]);
@@ -304,22 +304,22 @@ test_ctk_plugin_manager_configure_dialog (TestFixture *fixture)
   ctk_tree_selection_select_iter (fixture->selection, &iter);
 
   /* Must be first so the window is added to the window group */
-  ctk_button_clicked (GTK_BUTTON (fixture->configure_button));
+  ctk_button_clicked (CTK_BUTTON (fixture->configure_button));
 
-  window = find_window_by_title (GTK_WINDOW (fixture->window), "Configurable");
-  g_assert (GTK_IS_DIALOG (window));
+  window = find_window_by_title (CTK_WINDOW (fixture->window), "Configurable");
+  g_assert (CTK_IS_DIALOG (window));
 
-  content = ctk_dialog_get_content_area (GTK_DIALOG (window));
-  list = ctk_container_get_children (GTK_CONTAINER (content));
+  content = ctk_dialog_get_content_area (CTK_DIALOG (window));
+  list = ctk_container_get_children (CTK_CONTAINER (content));
 
   for (list_it = list; list_it != NULL; list_it = list_it->next)
     {
-      if (GTK_IS_LABEL (list_it->data))
+      if (CTK_IS_LABEL (list_it->data))
         {
-          const gchar *text = ctk_label_get_text (GTK_LABEL (list_it->data));
+          const gchar *text = ctk_label_get_text (CTK_LABEL (list_it->data));
 
           if (g_strcmp0 (text, "Hello, World!") == 0)
-            label = GTK_WIDGET (list_it->data);
+            label = CTK_WIDGET (list_it->data);
         }
     }
 
@@ -328,12 +328,12 @@ test_ctk_plugin_manager_configure_dialog (TestFixture *fixture)
   g_list_free (list);
 
 
-  close_button = ctk_dialog_get_widget_for_response (GTK_DIALOG (window),
-                                                     GTK_RESPONSE_CLOSE);
+  close_button = ctk_dialog_get_widget_for_response (CTK_DIALOG (window),
+                                                     CTK_RESPONSE_CLOSE);
   g_assert (close_button != NULL);
 
-  help_button = ctk_dialog_get_widget_for_response (GTK_DIALOG (window),
-                                                    GTK_RESPONSE_HELP);
+  help_button = ctk_dialog_get_widget_for_response (CTK_DIALOG (window),
+                                                    CTK_RESPONSE_HELP);
   g_assert (help_button != NULL);
 
   ctk_widget_destroy (window);
@@ -362,10 +362,10 @@ test_ctk_plugin_manager_ctkbuilder (void)
   ctk_builder_add_from_string (builder, ctkbuilder_string, -1, &error);
   g_assert_no_error (error);
 
-  manager = BEAN_GTK_PLUGIN_MANAGER (ctk_builder_get_object (builder, "manager"));
-  g_assert (BEAN_GTK_IS_PLUGIN_MANAGER (manager));
+  manager = BEAN_CTK_PLUGIN_MANAGER (ctk_builder_get_object (builder, "manager"));
+  g_assert (BEAN_CTK_IS_PLUGIN_MANAGER (manager));
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (manager));
+  view = BEAN_CTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (manager));
 
   g_assert (G_OBJECT (view) == ctk_builder_get_object (builder, "view"));
 

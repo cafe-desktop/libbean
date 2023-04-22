@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
 
-#ifndef __BEAN_GTK_H__
-#define __BEAN_GTK_H__
+#ifndef __BEAN_CTK_H__
+#define __BEAN_CTK_H__
 
 #include "bean-ctk-autocleanups.h"
 #include "bean-ctk-configurable.h"

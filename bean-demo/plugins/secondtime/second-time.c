@@ -57,7 +57,7 @@ beandemo_second_time_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_OBJECT:
-      plugin->window = GTK_WIDGET (g_value_dup_object (value));
+      plugin->window = CTK_WIDGET (g_value_dup_object (value));
       break;
 
     default:
@@ -109,7 +109,7 @@ beandemo_second_time_finalize (GObject *object)
 static CtkBox *
 get_box (CtkWidget *window)
 {
-  return GTK_BOX (ctk_bin_get_child (GTK_BIN (window)));
+  return CTK_BOX (ctk_bin_get_child (CTK_BIN (window)));
 }
 
 static void
@@ -132,7 +132,7 @@ beandemo_second_time_deactivate (BeanActivatable *activatable)
 
   g_debug ("%s", G_STRFUNC);
 
-  ctk_container_remove (GTK_CONTAINER (get_box (plugin->window)), plugin->label);
+  ctk_container_remove (CTK_CONTAINER (get_box (plugin->window)), plugin->label);
 }
 
 static void

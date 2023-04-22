@@ -68,9 +68,9 @@ bean_ctk_configurable_create_configure_widget (BeanCtkConfigurable *configurable
 {
   BeanCtkConfigurableInterface *iface;
 
-  g_return_val_if_fail (BEAN_GTK_IS_CONFIGURABLE (configurable), NULL);
+  g_return_val_if_fail (BEAN_CTK_IS_CONFIGURABLE (configurable), NULL);
 
-  iface = BEAN_GTK_CONFIGURABLE_GET_IFACE (configurable);
+  iface = BEAN_CTK_CONFIGURABLE_GET_IFACE (configurable);
 
   if (G_LIKELY (iface->create_configure_widget != NULL))
     return iface->create_configure_widget (configurable);

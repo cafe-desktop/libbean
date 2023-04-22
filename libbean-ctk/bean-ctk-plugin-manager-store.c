@@ -44,7 +44,7 @@ static const GType ColumnTypes[] = {
   G_TYPE_POINTER  /* BeanPluginInfo */
 };
 
-G_STATIC_ASSERT (G_N_ELEMENTS (ColumnTypes) == BEAN_GTK_PLUGIN_MANAGER_STORE_N_COLUMNS);
+G_STATIC_ASSERT (G_N_ELEMENTS (ColumnTypes) == BEAN_CTK_PLUGIN_MANAGER_STORE_N_COLUMNS);
 
 typedef struct {
   BeanEngine *engine;
@@ -61,7 +61,7 @@ static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManagerStore,
                             bean_ctk_plugin_manager_store,
-                            GTK_TYPE_LIST_STORE)
+                            CTK_TYPE_LIST_STORE)
 
 #define GET_PRIV(o) \
   (bean_ctk_plugin_manager_store_get_instance_private (o))
@@ -157,15 +157,15 @@ update_plugin (BeanCtkPluginManagerStore *store,
       g_free (icon_path);
     }
 
-  ctk_list_store_set (GTK_LIST_STORE (store), iter,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ENABLED_COLUMN,        loaded,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     !builtin && available,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     icon_gicon,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  icon_stock_id,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   !available,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,           markup,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, available && (!builtin || loaded),
-    BEAN_GTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN,         info,
+  ctk_list_store_set (CTK_LIST_STORE (store), iter,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ENABLED_COLUMN,        loaded,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     !builtin && available,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     icon_gicon,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  icon_stock_id,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   !available,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,           markup,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, available && (!builtin || loaded),
+    BEAN_CTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN,         info,
     -1);
 
   g_clear_object (&icon_gicon);
@@ -202,17 +202,17 @@ model_name_sort_func (BeanCtkPluginManagerStore *store,
 static void
 bean_ctk_plugin_manager_store_init (BeanCtkPluginManagerStore *store)
 {
-  ctk_list_store_set_column_types (GTK_LIST_STORE (store),
-                                   BEAN_GTK_PLUGIN_MANAGER_STORE_N_COLUMNS,
+  ctk_list_store_set_column_types (CTK_LIST_STORE (store),
+                                   BEAN_CTK_PLUGIN_MANAGER_STORE_N_COLUMNS,
                                    (GType *) ColumnTypes);
 
   /* Sort on the plugin names */
-  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+  ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (store),
                                            (CtkTreeIterCompareFunc) model_name_sort_func,
                                            NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
-                                        GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-                                        GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (store),
+                                        CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                        CTK_SORT_ASCENDING);
 }
 
 static void
@@ -221,7 +221,7 @@ bean_ctk_plugin_manager_store_set_property (GObject      *object,
                                             const GValue *value,
                                             GParamSpec   *pspec)
 {
-  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStore *store = BEAN_CTK_PLUGIN_MANAGER_STORE (object);
   BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   switch (prop_id)
@@ -241,7 +241,7 @@ bean_ctk_plugin_manager_store_get_property (GObject    *object,
                                             GValue     *value,
                                             GParamSpec *pspec)
 {
-  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStore *store = BEAN_CTK_PLUGIN_MANAGER_STORE (object);
   BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   switch (prop_id)
@@ -258,7 +258,7 @@ bean_ctk_plugin_manager_store_get_property (GObject    *object,
 static void
 bean_ctk_plugin_manager_store_constructed (GObject *object)
 {
-  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStore *store = BEAN_CTK_PLUGIN_MANAGER_STORE (object);
   BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   if (priv->engine == NULL)
@@ -285,7 +285,7 @@ bean_ctk_plugin_manager_store_constructed (GObject *object)
 static void
 bean_ctk_plugin_manager_store_dispose (GObject *object)
 {
-  BeanCtkPluginManagerStore *store = BEAN_GTK_PLUGIN_MANAGER_STORE (object);
+  BeanCtkPluginManagerStore *store = BEAN_CTK_PLUGIN_MANAGER_STORE (object);
   BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
 
   g_clear_object (&priv->engine);
@@ -335,7 +335,7 @@ bean_ctk_plugin_manager_store_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
 
-  return BEAN_GTK_PLUGIN_MANAGER_STORE (g_object_new (BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE,
+  return BEAN_CTK_PLUGIN_MANAGER_STORE (g_object_new (BEAN_CTK_TYPE_PLUGIN_MANAGER_STORE,
                                                       "engine", engine,
                                                       NULL));
 }
@@ -354,9 +354,9 @@ bean_ctk_plugin_manager_store_reload (BeanCtkPluginManagerStore *store)
   const GList *plugins;
   CtkTreeIter iter;
 
-  g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
+  g_return_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store));
 
-  list_store = GTK_LIST_STORE (store);
+  list_store = CTK_LIST_STORE (store);
 
   ctk_list_store_clear (list_store);
 
@@ -394,7 +394,7 @@ bean_ctk_plugin_manager_store_set_enabled (BeanCtkPluginManagerStore *store,
   BeanCtkPluginManagerStorePrivate *priv = GET_PRIV (store);
   BeanPluginInfo *info;
 
-  g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
+  g_return_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store));
   g_return_if_fail (iter != NULL);
   g_return_if_fail (bean_ctk_plugin_manager_store_can_enable (store, iter));
 
@@ -431,11 +431,11 @@ bean_ctk_plugin_manager_store_get_enabled (BeanCtkPluginManagerStore *store,
   GValue value = G_VALUE_INIT;
   gboolean enabled;
 
-  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
+  g_return_val_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  ctk_tree_model_get_value (GTK_TREE_MODEL (store), iter,
-                            BEAN_GTK_PLUGIN_MANAGER_STORE_ENABLED_COLUMN, &value);
+  ctk_tree_model_get_value (CTK_TREE_MODEL (store), iter,
+                            BEAN_CTK_PLUGIN_MANAGER_STORE_ENABLED_COLUMN, &value);
 
   g_return_val_if_fail (G_VALUE_HOLDS_BOOLEAN (&value), FALSE);
   enabled = g_value_get_boolean (&value);
@@ -459,9 +459,9 @@ bean_ctk_plugin_manager_store_set_all_enabled (BeanCtkPluginManagerStore *store,
   CtkTreeModel *model;
   CtkTreeIter iter;
 
-  g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
+  g_return_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store));
 
-  model = GTK_TREE_MODEL (store);
+  model = CTK_TREE_MODEL (store);
 
   if (!ctk_tree_model_get_iter_first (model, &iter))
     return;
@@ -487,7 +487,7 @@ bean_ctk_plugin_manager_store_toggle_enabled (BeanCtkPluginManagerStore *store,
 {
   gboolean enabled;
 
-  g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store));
+  g_return_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store));
   g_return_if_fail (iter != NULL);
 
   enabled = bean_ctk_plugin_manager_store_get_enabled (store, iter);
@@ -513,11 +513,11 @@ bean_ctk_plugin_manager_store_can_enable (BeanCtkPluginManagerStore *store,
   GValue value = G_VALUE_INIT;
   gboolean can_enable;
 
-  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
+  g_return_val_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  ctk_tree_model_get_value (GTK_TREE_MODEL (store), iter,
-                            BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN, &value);
+  ctk_tree_model_get_value (CTK_TREE_MODEL (store), iter,
+                            BEAN_CTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN, &value);
 
   g_return_val_if_fail (G_VALUE_HOLDS_BOOLEAN (&value), FALSE);
   can_enable = g_value_get_boolean (&value);
@@ -543,11 +543,11 @@ bean_ctk_plugin_manager_store_get_plugin (BeanCtkPluginManagerStore *store,
   GValue value = G_VALUE_INIT;
   BeanPluginInfo *info;
 
-  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store), NULL);
+  g_return_val_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
 
-  ctk_tree_model_get_value (GTK_TREE_MODEL (store), iter,
-                            BEAN_GTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN, &value);
+  ctk_tree_model_get_value (CTK_TREE_MODEL (store), iter,
+                            BEAN_CTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN, &value);
 
   g_return_val_if_fail (G_VALUE_HOLDS_POINTER (&value), NULL);
   info = g_value_get_pointer (&value);
@@ -575,10 +575,10 @@ bean_ctk_plugin_manager_store_get_iter_from_plugin (BeanCtkPluginManagerStore *s
                                                     CtkTreeIter               *iter,
                                                     const BeanPluginInfo      *info)
 {
-  CtkTreeModel *model = GTK_TREE_MODEL (store);
+  CtkTreeModel *model = CTK_TREE_MODEL (store);
   gboolean found = FALSE;
 
-  g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
+  g_return_val_if_fail (BEAN_CTK_IS_PLUGIN_MANAGER_STORE (store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (info != NULL, FALSE);
 

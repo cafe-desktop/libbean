@@ -49,7 +49,7 @@ static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkDisablePluginsDialog,
                             bean_ctk_disable_plugins_dialog,
-                            GTK_TYPE_MESSAGE_DIALOG)
+                            CTK_TYPE_MESSAGE_DIALOG)
 
 #define GET_PRIV(o) \
   (bean_ctk_disable_plugins_dialog_get_instance_private (o))
@@ -63,11 +63,11 @@ model_name_sort_func (CtkListStore *store,
   gchar *name1, *name2;
   gint retval;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (store), iter1,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), iter1,
                       PLUGIN_INFO_NAME_COLUMN, &name1,
                       -1);
 
-  ctk_tree_model_get (GTK_TREE_MODEL (store), iter1,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), iter1,
                       PLUGIN_INFO_NAME_COLUMN, &name2,
                       -1);
 
@@ -95,31 +95,31 @@ build_multiple_dependent_plugins (BeanCtkDisablePluginsDialog *dialog)
                          _("Additional plugins must be disabled"),
                          "</span>", NULL);
 
-  ctk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dialog), message);
+  ctk_message_dialog_set_markup (CTK_MESSAGE_DIALOG (dialog), message);
   g_free (message);
 
-  ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+  ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
       _("The following plugins depend on “%s” and will also be disabled:"),
       bean_plugin_info_get_name (priv->plugin_info));
 
-  message_area = ctk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG (dialog));
+  message_area = ctk_message_dialog_get_message_area (CTK_MESSAGE_DIALOG (dialog));
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                       GTK_SHADOW_IN);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  ctk_box_pack_start (GTK_BOX (message_area), sw, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                       CTK_SHADOW_IN);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_AUTOMATIC, CTK_POLICY_AUTOMATIC);
+  ctk_box_pack_start (CTK_BOX (message_area), sw, TRUE, TRUE, 0);
 
   store = ctk_list_store_new (1, G_TYPE_STRING);
 
   /* Sort on the plugin names */
-  ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+  ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (store),
                                            (CtkTreeIterCompareFunc) model_name_sort_func,
                                            NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
-                                        GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-                                        GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (store),
+                                        CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                        CTK_SORT_ASCENDING);
 
   for (dep_plugin = priv->dep_plugins; dep_plugin != NULL;
        dep_plugin = dep_plugin->next)
@@ -133,14 +133,14 @@ build_multiple_dependent_plugins (BeanCtkDisablePluginsDialog *dialog)
                           -1);
     }
 
-  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree_view), FALSE);
-  ctk_tree_view_set_enable_search (GTK_TREE_VIEW (tree_view), FALSE);
+  tree_view = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (tree_view), FALSE);
+  ctk_tree_view_set_enable_search (CTK_TREE_VIEW (tree_view), FALSE);
   ctk_widget_set_size_request (tree_view, 260, 120);
-  ctk_container_add (GTK_CONTAINER (sw), tree_view);
+  ctk_container_add (CTK_CONTAINER (sw), tree_view);
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (tree_view),
                                                0, _("Plugins"),
                                                cell,
                                                "text", PLUGIN_INFO_NAME_COLUMN,
@@ -161,10 +161,10 @@ build_single_dependent_plugin (BeanCtkDisablePluginsDialog *dialog)
                          _("An additional plugin must be disabled"),
                          "</span>", NULL);
 
-  ctk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dialog), message);
+  ctk_message_dialog_set_markup (CTK_MESSAGE_DIALOG (dialog), message);
   g_free (message);
 
-  ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+  ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
       _("The “%s” plugin depends on the “%s” plugin.\n"
         "If you disable “%s”, “%s” will also be disabled."),
       bean_plugin_info_get_name (priv->plugin_info),
@@ -176,12 +176,12 @@ build_single_dependent_plugin (BeanCtkDisablePluginsDialog *dialog)
 static void
 bean_ctk_disable_plugins_dialog_init (BeanCtkDisablePluginsDialog *dialog)
 {
-  ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+  ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
 
-  ctk_dialog_add_button (GTK_DIALOG (dialog),
-                         _("_Cancel"), GTK_RESPONSE_CANCEL);
-  ctk_dialog_add_button (GTK_DIALOG (dialog),
-                         _("Disable Plugins"), GTK_RESPONSE_OK);
+  ctk_dialog_add_button (CTK_DIALOG (dialog),
+                         _("_Cancel"), CTK_RESPONSE_CANCEL);
+  ctk_dialog_add_button (CTK_DIALOG (dialog),
+                         _("Disable Plugins"), CTK_RESPONSE_OK);
 }
 
 static void
@@ -190,7 +190,7 @@ bean_ctk_disable_plugins_dialog_set_property (GObject      *object,
                                               const GValue *value,
                                               GParamSpec   *pspec)
 {
-  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_CTK_DISABLE_PLUGINS_DIALOG (object);
   BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
@@ -213,7 +213,7 @@ bean_ctk_disable_plugins_dialog_get_property (GObject    *object,
                                               GValue     *value,
                                               GParamSpec *pspec)
 {
-  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_CTK_DISABLE_PLUGINS_DIALOG (object);
   BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   switch (prop_id)
@@ -233,7 +233,7 @@ bean_ctk_disable_plugins_dialog_get_property (GObject    *object,
 static void
 bean_ctk_disable_plugins_dialog_constructed (GObject *object)
 {
-  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_CTK_DISABLE_PLUGINS_DIALOG (object);
   BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   if (priv->dep_plugins->next == NULL)
@@ -247,7 +247,7 @@ bean_ctk_disable_plugins_dialog_constructed (GObject *object)
 static void
 bean_ctk_disable_plugins_dialog_finalize (GObject *object)
 {
-  BeanCtkDisablePluginsDialog *dialog = BEAN_GTK_DISABLE_PLUGINS_DIALOG (object);
+  BeanCtkDisablePluginsDialog *dialog = BEAN_CTK_DISABLE_PLUGINS_DIALOG (object);
   BeanCtkDisablePluginsDialogPrivate *priv = GET_PRIV (dialog);
 
   g_list_free (priv->dep_plugins);
@@ -300,10 +300,10 @@ bean_ctk_disable_plugins_dialog_new (CtkWindow      *parent,
                                      BeanPluginInfo *info,
                                      GList          *dep_plugins)
 {
-  return GTK_WIDGET (g_object_new (BEAN_GTK_TYPE_DISABLE_PLUGINS_DIALOG,
+  return CTK_WIDGET (g_object_new (BEAN_CTK_TYPE_DISABLE_PLUGINS_DIALOG,
                                    "transient-for", parent,
                                    "plugin-info", info,
                                    "dependent-plugins", dep_plugins,
-                                   "message-type", GTK_MESSAGE_QUESTION,
+                                   "message-type", CTK_MESSAGE_QUESTION,
                                    NULL));
 }

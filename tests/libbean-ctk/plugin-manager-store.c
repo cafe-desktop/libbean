@@ -46,7 +46,7 @@ test_setup (TestFixture   *fixture,
 {
   fixture->engine = testing_engine_new ();
   fixture->store = bean_ctk_plugin_manager_store_new (fixture->engine);
-  fixture->model = GTK_TREE_MODEL (fixture->store);
+  fixture->model = CTK_TREE_MODEL (fixture->store);
 }
 
 static void
@@ -138,11 +138,11 @@ verify_model (TestFixture    *fixture,
                                                                 &iter, info));
 
   ctk_tree_model_get (fixture->model, &iter,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     &model_can_enable,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     &model_icon_gicon,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  &model_icon_stock_id,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   &model_icon_visible,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, &model_info_sensitive,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     &model_can_enable,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     &model_icon_gicon,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  &model_icon_stock_id,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_ICON_VISIBLE_COLUMN,   &model_icon_visible,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN, &model_info_sensitive,
     -1);
 
   g_assert_cmpint (model_can_enable, ==, can_enable);
@@ -249,7 +249,7 @@ test_ctk_plugin_manager_store_verify_info (TestFixture *fixture)
                                                                 &iter, info));
 
   ctk_tree_model_get (fixture->model, &iter,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Configurable</b>\nA plugin "
                                    "that can be loaded and configured.");
@@ -261,7 +261,7 @@ test_ctk_plugin_manager_store_verify_info (TestFixture *fixture)
                                                                 &iter, info));
 
   ctk_tree_model_get (fixture->model, &iter,
-    BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
+    BEAN_CTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Min Info</b>");
   g_free (model_info);

@@ -48,14 +48,14 @@ notify_model_cb (CtkTreeView *view,
 {
   fixture->model = ctk_tree_view_get_model (fixture->tree_view);
 
-  if (GTK_IS_TREE_MODEL_FILTER (fixture->model))
+  if (CTK_IS_TREE_MODEL_FILTER (fixture->model))
     {
-      CtkTreeModelFilter *filter = GTK_TREE_MODEL_FILTER (fixture->model);
-      fixture->store = GTK_LIST_STORE (ctk_tree_model_filter_get_model (filter));
+      CtkTreeModelFilter *filter = CTK_TREE_MODEL_FILTER (fixture->model);
+      fixture->store = CTK_LIST_STORE (ctk_tree_model_filter_get_model (filter));
     }
   else
     {
-      fixture->store = GTK_LIST_STORE (fixture->model);
+      fixture->store = CTK_LIST_STORE (fixture->model);
     }
 }
 
@@ -64,8 +64,8 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->tree_view = GTK_TREE_VIEW (bean_ctk_plugin_manager_view_new (NULL));
-  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (fixture->tree_view);
+  fixture->tree_view = CTK_TREE_VIEW (bean_ctk_plugin_manager_view_new (NULL));
+  fixture->view = BEAN_CTK_PLUGIN_MANAGER_VIEW (fixture->tree_view);
   fixture->selection = ctk_tree_view_get_selection (fixture->tree_view);
 
   g_signal_connect (fixture->view,
@@ -83,7 +83,7 @@ static void
 test_teardown (TestFixture   *fixture,
                gconstpointer  data)
 {
-  ctk_widget_destroy (GTK_WIDGET (fixture->tree_view));
+  ctk_widget_destroy (CTK_WIDGET (fixture->tree_view));
   g_object_unref (fixture->tree_view);
 
   testing_engine_free (fixture->engine);
@@ -107,9 +107,9 @@ convert_iter_to_child_iter (BeanCtkPluginManagerView *view,
   if (bean_ctk_plugin_manager_view_get_show_builtin (view))
     return;
 
-  model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
+  model = ctk_tree_view_get_model (CTK_TREE_VIEW (view));
 
-  ctk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (model),
+  ctk_tree_model_filter_convert_iter_to_child_iter (CTK_TREE_MODEL_FILTER (model),
                                                     &child_iter, iter);
 
   *iter = child_iter;

@@ -65,35 +65,35 @@ create_main_window (void)
 
   ctk_window_set_default_icon_name ("libbean-plugin");
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event", G_CALLBACK (ctk_main_quit), NULL);
-  ctk_container_set_border_width (GTK_CONTAINER (window), 6);
-  ctk_window_set_title (GTK_WINDOW (window), "Bean Demo");
+  ctk_container_set_border_width (CTK_CONTAINER (window), 6);
+  ctk_window_set_title (CTK_WINDOW (window), "Bean Demo");
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   manager = bean_ctk_plugin_manager_new (bean_engine_get_default ());
-  ctk_box_pack_start (GTK_BOX (box), manager, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), manager, TRUE, TRUE, 0);
 
   /* Always show all plugins, there are only a few */
   scrolled_window = ctk_test_find_sibling (manager,
-                                           GTK_TYPE_SCROLLED_WINDOW);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-                                  GTK_POLICY_NEVER, GTK_POLICY_NEVER);
+                                           CTK_TYPE_SCROLLED_WINDOW);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
+                                  CTK_POLICY_NEVER, CTK_POLICY_NEVER);
 
-  button_box = ctk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-  ctk_box_set_spacing (GTK_BOX (button_box), 6);
-  ctk_button_box_set_layout (GTK_BUTTON_BOX (button_box), GTK_BUTTONBOX_END);
-  ctk_box_pack_start (GTK_BOX (box), button_box, FALSE, FALSE, 0);
+  button_box = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
+  ctk_box_set_spacing (CTK_BOX (button_box), 6);
+  ctk_button_box_set_layout (CTK_BUTTON_BOX (button_box), CTK_BUTTONBOX_END);
+  ctk_box_pack_start (CTK_BOX (box), button_box, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("New window");
   g_signal_connect (button, "clicked", G_CALLBACK (create_new_window), NULL);
-  ctk_container_add (GTK_CONTAINER (button_box), button);
+  ctk_container_add (CTK_CONTAINER (button_box), button);
 
   button = ctk_button_new_with_mnemonic (_("_Quit"));
   g_signal_connect (button, "clicked", G_CALLBACK (ctk_main_quit), NULL);
-  ctk_container_add (GTK_CONTAINER (button_box), button);
+  ctk_container_add (CTK_CONTAINER (button_box), button);
 
   return window;
 }

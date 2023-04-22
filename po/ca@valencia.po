@@ -40,7 +40,7 @@ msgstr "Mostra els connectors integrats"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Ctk"
-msgstr "Bean GTK+"
+msgstr "Bean CTK+"
 
 #: ../libbean/bean-engine.c:1118
 #, c-format

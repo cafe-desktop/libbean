@@ -39,7 +39,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
                                 beandemo_hello_world_configurable,
                                 BEAN_TYPE_EXTENSION_BASE,
                                 0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_GTK_TYPE_CONFIGURABLE,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_CTK_TYPE_CONFIGURABLE,
                                                                bean_ctk_configurable_iface_init))
 
 static void
