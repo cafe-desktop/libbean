@@ -25,7 +25,7 @@
 #ifndef __BEAN_GTK_PLUGIN_MANAGER_STORE_H__
 #define __BEAN_GTK_PLUGIN_MANAGER_STORE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean-engine.h>
 #include <libbean/bean-plugin-info.h>
 
@@ -46,7 +46,7 @@ typedef enum {
 /*
  * Type checking and casting macros
  */
-#define BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE            (bean_gtk_plugin_manager_store_get_type())
+#define BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE            (bean_ctk_plugin_manager_store_get_type())
 #define BEAN_GTK_PLUGIN_MANAGER_STORE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStore))
 #define BEAN_GTK_PLUGIN_MANAGER_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStoreClass))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_STORE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE))
@@ -64,28 +64,28 @@ struct _BeanGtkPluginManagerStoreClass {
   GtkListStoreClass parent_class;
 };
 
-GType                       bean_gtk_plugin_manager_store_get_type              (void) G_GNUC_CONST;
-BeanGtkPluginManagerStore  *bean_gtk_plugin_manager_store_new                   (BeanEngine                *engine);
+GType                       bean_ctk_plugin_manager_store_get_type              (void) G_GNUC_CONST;
+BeanGtkPluginManagerStore  *bean_ctk_plugin_manager_store_new                   (BeanEngine                *engine);
 
-void                        bean_gtk_plugin_manager_store_reload                (BeanGtkPluginManagerStore *store);
+void                        bean_ctk_plugin_manager_store_reload                (BeanGtkPluginManagerStore *store);
 
-void                        bean_gtk_plugin_manager_store_set_enabled           (BeanGtkPluginManagerStore *store,
+void                        bean_ctk_plugin_manager_store_set_enabled           (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter,
                                                                                  gboolean                   enabled);
-gboolean                    bean_gtk_plugin_manager_store_get_enabled           (BeanGtkPluginManagerStore *store,
+gboolean                    bean_ctk_plugin_manager_store_get_enabled           (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
-void                        bean_gtk_plugin_manager_store_set_all_enabled       (BeanGtkPluginManagerStore *store,
+void                        bean_ctk_plugin_manager_store_set_all_enabled       (BeanGtkPluginManagerStore *store,
                                                                                  gboolean                  enabled);
-void                        bean_gtk_plugin_manager_store_toggle_enabled        (BeanGtkPluginManagerStore *store,
+void                        bean_ctk_plugin_manager_store_toggle_enabled        (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-gboolean                    bean_gtk_plugin_manager_store_can_enable            (BeanGtkPluginManagerStore *store,
+gboolean                    bean_ctk_plugin_manager_store_can_enable            (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-BeanPluginInfo             *bean_gtk_plugin_manager_store_get_plugin            (BeanGtkPluginManagerStore *store,
+BeanPluginInfo             *bean_ctk_plugin_manager_store_get_plugin            (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter);
 
-gboolean                    bean_gtk_plugin_manager_store_get_iter_from_plugin  (BeanGtkPluginManagerStore *store,
+gboolean                    bean_ctk_plugin_manager_store_get_iter_from_plugin  (BeanGtkPluginManagerStore *store,
                                                                                  GtkTreeIter               *iter,
                                                                                  const BeanPluginInfo      *info);
 G_END_DECLS

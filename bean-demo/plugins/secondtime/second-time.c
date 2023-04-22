@@ -26,7 +26,7 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <gmodule.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <libbean/bean.h>
 
@@ -109,7 +109,7 @@ beandemo_second_time_finalize (GObject *object)
 static GtkBox *
 get_box (GtkWidget *window)
 {
-  return GTK_BOX (gtk_bin_get_child (GTK_BIN (window)));
+  return GTK_BOX (ctk_bin_get_child (GTK_BIN (window)));
 }
 
 static void
@@ -119,9 +119,9 @@ beandemo_second_time_activate (BeanActivatable *activatable)
 
   g_debug ("%s", G_STRFUNC);
 
-  plugin->label = gtk_label_new ("A second time!");
-  gtk_box_pack_start (get_box (plugin->window), plugin->label, 1, 1, 0);
-  gtk_widget_show (plugin->label);
+  plugin->label = ctk_label_new ("A second time!");
+  ctk_box_pack_start (get_box (plugin->window), plugin->label, 1, 1, 0);
+  ctk_widget_show (plugin->label);
   g_object_ref (plugin->label);
 }
 
@@ -132,7 +132,7 @@ beandemo_second_time_deactivate (BeanActivatable *activatable)
 
   g_debug ("%s", G_STRFUNC);
 
-  gtk_container_remove (GTK_CONTAINER (get_box (plugin->window)), plugin->label);
+  ctk_container_remove (GTK_CONTAINER (get_box (plugin->window)), plugin->label);
 }
 
 static void

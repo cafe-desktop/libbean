@@ -17,7 +17,7 @@ libconfigurable_deps = [
   gobject_dep,
   gmodule_dep,
   libbean_dep,
-  libbean_gtk_dep,
+  libbean_ctk_dep,
 ]
 
 libconfigurable_lib = shared_library(

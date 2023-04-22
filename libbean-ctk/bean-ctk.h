@@ -1,5 +1,5 @@
 /*
- * bean-gtk.h
+ * bean-ctk.h
  * This file is part of libbean
  *
  * libbean is free software; you can redistribute it and/or
@@ -20,9 +20,9 @@
 #ifndef __BEAN_GTK_H__
 #define __BEAN_GTK_H__
 
-#include "bean-gtk-autocleanups.h"
-#include "bean-gtk-configurable.h"
-#include "bean-gtk-plugin-manager.h"
-#include "bean-gtk-plugin-manager-view.h"
+#include "bean-ctk-autocleanups.h"
+#include "bean-ctk-configurable.h"
+#include "bean-ctk-plugin-manager.h"
+#include "bean-ctk-plugin-manager-view.h"
 
 #endif

@@ -1,30 +1,30 @@
 <SECTION>
-<FILE>bean-gtk-configurable</FILE>
+<FILE>bean-ctk-configurable</FILE>
 <TITLE>BeanGtkConfigurable</TITLE>
 BeanGtkConfigurable
 BeanGtkConfigurableInterface
-bean_gtk_configurable_create_configure_widget
+bean_ctk_configurable_create_configure_widget
 <SUBSECTION Standard>
 BEAN_GTK_CONFIGURABLE
 BEAN_GTK_IS_CONFIGURABLE
 BEAN_GTK_TYPE_CONFIGURABLE
-bean_gtk_configurable_get_type
+bean_ctk_configurable_get_type
 BEAN_GTK_CONFIGURABLE_IFACE
 BEAN_GTK_CONFIGURABLE_GET_IFACE
 </SECTION>
 
 <SECTION>
-<FILE>bean-gtk-plugin-manager</FILE>
+<FILE>bean-ctk-plugin-manager</FILE>
 <TITLE>BeanGtkPluginManager</TITLE>
 BeanGtkPluginManager
 BeanGtkPluginManagerClass
-bean_gtk_plugin_manager_new
-bean_gtk_plugin_manager_get_view
+bean_ctk_plugin_manager_new
+bean_ctk_plugin_manager_get_view
 <SUBSECTION Standard>
 BEAN_GTK_PLUGIN_MANAGER
 BEAN_GTK_IS_PLUGIN_MANAGER
 BEAN_GTK_TYPE_PLUGIN_MANAGER
-bean_gtk_plugin_manager_get_type
+bean_ctk_plugin_manager_get_type
 BEAN_GTK_PLUGIN_MANAGER_CLASS
 BEAN_GTK_IS_PLUGIN_MANAGER_CLASS
 BEAN_GTK_PLUGIN_MANAGER_GET_CLASS
@@ -33,20 +33,20 @@ BeanGtkPluginManagerPrivate
 </SECTION>
 
 <SECTION>
-<FILE>bean-gtk-plugin-manager-view</FILE>
+<FILE>bean-ctk-plugin-manager-view</FILE>
 <TITLE>BeanGtkPluginManagerView</TITLE>
 BeanGtkPluginManagerView
 BeanGtkPluginManagerViewClass
-bean_gtk_plugin_manager_view_new
-bean_gtk_plugin_manager_view_set_show_builtin
-bean_gtk_plugin_manager_view_get_show_builtin
-bean_gtk_plugin_manager_view_set_selected_plugin
-bean_gtk_plugin_manager_view_get_selected_plugin
+bean_ctk_plugin_manager_view_new
+bean_ctk_plugin_manager_view_set_show_builtin
+bean_ctk_plugin_manager_view_get_show_builtin
+bean_ctk_plugin_manager_view_set_selected_plugin
+bean_ctk_plugin_manager_view_get_selected_plugin
 <SUBSECTION Standard>
 BEAN_GTK_PLUGIN_MANAGER_VIEW
 BEAN_GTK_IS_PLUGIN_MANAGER_VIEW
 BEAN_GTK_TYPE_PLUGIN_MANAGER_VIEW
-bean_gtk_plugin_manager_view_get_type
+bean_ctk_plugin_manager_view_get_type
 BEAN_GTK_PLUGIN_MANAGER_VIEW_CLASS
 BEAN_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS
 BEAN_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS

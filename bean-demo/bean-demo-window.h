@@ -22,7 +22,7 @@
 #ifndef __BEAN_DEMO_WINDOW_H__
 #define __BEAN_DEMO_WINDOW_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean.h>
 
 G_BEGIN_DECLS

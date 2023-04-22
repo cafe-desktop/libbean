@@ -28,18 +28,18 @@
 #include <gmodule.h>
 
 #include <libbean/bean.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 
 #include "configurable-plugin.h"
 
-static void bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
+static void bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingConfigurablePlugin,
                                 testing_configurable_plugin,
                                 BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_GTK_TYPE_CONFIGURABLE,
-                                                               bean_gtk_configurable_iface_init))
+                                                               bean_ctk_configurable_iface_init))
 
 static void
 testing_configurable_plugin_init (TestingConfigurablePlugin *configurable)
@@ -54,11 +54,11 @@ testing_configurable_plugin_class_init (TestingConfigurablePluginClass *klass)
 static GtkWidget *
 testing_configurable_plugin_create_configure_widget (BeanGtkConfigurable *configurable)
 {
-  return gtk_label_new ("Hello, World!");
+  return ctk_label_new ("Hello, World!");
 }
 
 static void
-bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = testing_configurable_plugin_create_configure_widget;
 }

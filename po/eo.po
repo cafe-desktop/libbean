@@ -19,25 +19,25 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Kromprogram-administrilo"
 
 #. Translators: What BeanGtkPluginManagerView to use
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Vido"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "Aspekto de la kromprogram-administrilo"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "Montri integritajn kromprogramojn"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -61,24 +61,24 @@ msgstr "Ne trovis kromprogram-ŝargilon '%s'"
 msgid "Failed to load"
 msgstr "Malsukcesis ŝargi"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Pluaj kromprogramoj devas esti elŝaltitaj"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "La sekvantaj kromprogramoj dependas de '%s' kaj ankaŭ estos elŝaltite:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Kromprogramoj"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Plua kromprogramo devas esti elŝaltita"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -87,61 +87,61 @@ msgstr ""
 "La kromprogramo '%s' dependas de la kromprogramo '%s'.\n"
 "Se vi elŝaltus '%s', estos '%s' ankaŭ elŝaltite."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Rezigni"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Elŝalti kromprogramojn"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Okazis eraro dum montrado de helpo."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Fermi"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Helpo"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "Ag_ordoj"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Pri"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Agordoj"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "E_nŝaltite"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "E_nŝalti ĉiujn"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "E_lŝalti ĉiujn"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Enŝaltite"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Kromprogramo"
 
 #. Avoid having markup in a translated string
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 #| msgid ""
 #| "<b>The plugin '%s' could not be loaded</b>\n"
@@ -152,7 +152,7 @@ msgstr "Ne eblis ŝargi la kromprogramon '%s'"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Eraro okazis: %s"
@@ -170,12 +170,12 @@ msgstr "Ĉ_esi"
 msgid "- libbean demo application"
 msgstr "- libbean demonstraĵo-aplikaĵo"
 
-#: ../tests/libbean-gtk/plugin-manager.c:77
+#: ../tests/libbean-ctk/plugin-manager.c:77
 #| msgid "_About"
 msgid "About"
 msgstr "Pri"
 
-#: ../tests/libbean-gtk/plugin-manager.c:82
+#: ../tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Agordoj"
 

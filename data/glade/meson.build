@@ -2,8 +2,8 @@ glade_catalog_xml = configuration_data()
 glade_catalog_xml.set('GETTEXT_PACKAGE', package_string)
 
 bean_glade_catalog = configure_file(
-  input: 'libbean-gtk.xml.in',
-  output: 'libbean-gtk.xml',
+  input: 'libbean-ctk.xml.in',
+  output: 'libbean-ctk.xml',
   configuration: glade_catalog_xml,
   install_dir: catalogdir,
 )

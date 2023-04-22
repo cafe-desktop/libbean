@@ -21,11 +21,11 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <libbean/bean.h>
 #include <libbean/bean-i18n-priv.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 
 #include "testing/testing.h"
 
@@ -47,7 +47,7 @@ notify_model_cb (GtkTreeView *view,
                  GParamSpec  *pspec,
                  TestFixture *fixture)
 {
-  fixture->model = gtk_tree_view_get_model (GTK_TREE_VIEW (fixture->view));
+  fixture->model = ctk_tree_view_get_model (GTK_TREE_VIEW (fixture->view));
 }
 
 static void
@@ -55,12 +55,12 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  fixture->manager = BEAN_GTK_PLUGIN_MANAGER (bean_gtk_plugin_manager_new (NULL));
-  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (fixture->manager));
-  fixture->selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fixture->view));
+  fixture->window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  fixture->manager = BEAN_GTK_PLUGIN_MANAGER (bean_ctk_plugin_manager_new (NULL));
+  fixture->view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (fixture->manager));
+  fixture->selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (fixture->view));
 
-  gtk_container_add (GTK_CONTAINER (fixture->window),
+  ctk_container_add (GTK_CONTAINER (fixture->window),
                      GTK_WIDGET (fixture->manager));
 
   g_signal_connect (fixture->view,
@@ -71,12 +71,12 @@ test_setup (TestFixture   *fixture,
   /* Set the model */
   g_object_notify (G_OBJECT (fixture->view), "model");
 
-  fixture->about_button = gtk_test_find_widget (fixture->window,
+  fixture->about_button = ctk_test_find_widget (fixture->window,
                                                 _("About"),
                                                 GTK_TYPE_BUTTON);
   g_assert (GTK_IS_BUTTON (fixture->about_button));
 
-  fixture->configure_button = gtk_test_find_widget (fixture->window,
+  fixture->configure_button = ctk_test_find_widget (fixture->window,
                                                     _("Preferences"),
                                                     GTK_TYPE_BUTTON);
   g_assert (GTK_IS_BUTTON (fixture->configure_button));
@@ -86,7 +86,7 @@ static void
 test_teardown (TestFixture   *fixture,
                gconstpointer  data)
 {
-  gtk_widget_destroy (GTK_WIDGET (fixture->window));
+  ctk_widget_destroy (GTK_WIDGET (fixture->window));
 
   testing_engine_free (fixture->engine);
 }
@@ -107,12 +107,12 @@ find_window_by_title (GtkWindow   *window,
   GList *l;
   GtkWidget *found_window = NULL;
 
-  group = gtk_window_get_group (window);
-  windows = gtk_window_group_list_windows (group);
+  group = ctk_window_get_group (window);
+  windows = ctk_window_group_list_windows (group);
 
   for (l = windows; l != NULL; l = l->next)
     {
-      if (g_strcmp0 (gtk_window_get_title (l->data), title) == 0)
+      if (g_strcmp0 (ctk_window_get_title (l->data), title) == 0)
         {
           found_window = l->data;
           break;
@@ -127,7 +127,7 @@ find_window_by_title (GtkWindow   *window,
 }
 
 static void
-test_gtk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
+test_ctk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
@@ -137,25 +137,25 @@ test_gtk_plugin_manager_about_button_sensitivity (TestFixture *fixture)
   /* Must come first otherwise the first iter may
    * be after a revealed builtin plugin
    */
-  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_ctk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   /* Causes the plugin to become unavailable */
   info = bean_engine_get_plugin_info (fixture->engine, "unavailable");
   bean_engine_load_plugin (fixture->engine, info);
 
-  g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
+  g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
 
   do
     {
-      gtk_tree_selection_select_iter (fixture->selection, &iter);
+      ctk_tree_selection_select_iter (fixture->selection, &iter);
 
-      g_assert (gtk_widget_get_sensitive (fixture->about_button));
+      g_assert (ctk_widget_get_sensitive (fixture->about_button));
     }
-  while (gtk_tree_model_iter_next (fixture->model, &iter));
+  while (ctk_tree_model_iter_next (fixture->model, &iter));
 }
 
 static void
-test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
+test_ctk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
@@ -165,7 +165,7 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
   /* Must come first otherwise the first iter may
    * be after a revealed builtin plugin
    */
-  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_ctk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   /* So we can configure them */
   info = bean_engine_get_plugin_info (fixture->engine, "builtin-configurable");
@@ -177,13 +177,13 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
   info = bean_engine_get_plugin_info (fixture->engine, "unavailable");
   bean_engine_load_plugin (fixture->engine, info);
 
-  g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
+  g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
 
   do
     {
       gboolean sensitive;
 
-      gtk_tree_selection_select_iter (fixture->selection, &iter);
+      ctk_tree_selection_select_iter (fixture->selection, &iter);
 
       info = testing_get_plugin_info_for_iter (fixture->view, &iter);
 
@@ -197,14 +197,14 @@ test_gtk_plugin_manager_configure_button_sensitivity (TestFixture *fixture)
                                                       BEAN_GTK_TYPE_CONFIGURABLE);
         }
 
-      g_assert_cmpint (gtk_widget_get_sensitive (fixture->configure_button),
+      g_assert_cmpint (ctk_widget_get_sensitive (fixture->configure_button),
                        ==, sensitive);
     }
-  while (gtk_tree_model_iter_next (fixture->model, &iter));
+  while (ctk_tree_model_iter_next (fixture->model, &iter));
 }
 
 static void
-test_gtk_plugin_manager_plugin_loaded (TestFixture *fixture)
+test_ctk_plugin_manager_plugin_loaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
@@ -212,31 +212,31 @@ test_gtk_plugin_manager_plugin_loaded (TestFixture *fixture)
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
 
-  gtk_tree_selection_select_iter (fixture->selection, &iter);
+  ctk_tree_selection_select_iter (fixture->selection, &iter);
 
-  g_assert (!gtk_widget_is_sensitive (fixture->configure_button));
+  g_assert (!ctk_widget_is_sensitive (fixture->configure_button));
   bean_engine_load_plugin (fixture->engine, info);
-  g_assert (gtk_widget_is_sensitive (fixture->configure_button));
+  g_assert (ctk_widget_is_sensitive (fixture->configure_button));
 }
 
 static void
-test_gtk_plugin_manager_plugin_unloaded (TestFixture *fixture)
+test_ctk_plugin_manager_plugin_unloaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
 
-  test_gtk_plugin_manager_plugin_loaded (fixture);
+  test_ctk_plugin_manager_plugin_loaded (fixture);
 
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
 
-  g_assert (gtk_widget_is_sensitive (fixture->configure_button));
+  g_assert (ctk_widget_is_sensitive (fixture->configure_button));
   bean_engine_unload_plugin (fixture->engine, info);
-  g_assert (!gtk_widget_is_sensitive (fixture->configure_button));
+  g_assert (!ctk_widget_is_sensitive (fixture->configure_button));
 }
 
 static void
-test_gtk_plugin_manager_about_dialog (TestFixture *fixture)
+test_ctk_plugin_manager_about_dialog (TestFixture *fixture)
 {
   gint i;
   GtkTreeIter iter;
@@ -246,45 +246,45 @@ test_gtk_plugin_manager_about_dialog (TestFixture *fixture)
   const gchar * const *authors_dialog;
 
   /* Full Info is a builtin plugin */
-  bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
+  bean_ctk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 
   info = bean_engine_get_plugin_info (fixture->engine, "full-info");
 
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
-  gtk_tree_selection_select_iter (fixture->selection, &iter);
+  ctk_tree_selection_select_iter (fixture->selection, &iter);
 
   /* Must be first so we the window is added to the window group */
-  gtk_button_clicked (GTK_BUTTON (fixture->about_button));
+  ctk_button_clicked (GTK_BUTTON (fixture->about_button));
 
   window = find_window_by_title (GTK_WINDOW (fixture->window),
                                  "About Full Info");
   g_assert (GTK_IS_ABOUT_DIALOG (window));
 
 
-  g_assert_cmpstr (gtk_about_dialog_get_program_name (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_program_name (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_name (info));
-  g_assert_cmpstr (gtk_about_dialog_get_copyright (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_copyright (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_copyright (info));
-  g_assert_cmpstr (gtk_about_dialog_get_website (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_website (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_website (info));
-  g_assert_cmpstr (gtk_about_dialog_get_logo_icon_name (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_logo_icon_name (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_icon_name (info));
-  g_assert_cmpstr (gtk_about_dialog_get_version (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_version (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_version (info));
-  g_assert_cmpstr (gtk_about_dialog_get_comments (GTK_ABOUT_DIALOG (window)),
+  g_assert_cmpstr (ctk_about_dialog_get_comments (GTK_ABOUT_DIALOG (window)),
                    ==, bean_plugin_info_get_description (info));
 
   authors_plugin = bean_plugin_info_get_authors (info);
-  authors_dialog = gtk_about_dialog_get_authors (GTK_ABOUT_DIALOG (window));
+  authors_dialog = ctk_about_dialog_get_authors (GTK_ABOUT_DIALOG (window));
 
   for (i = 0; authors_plugin[i] == NULL && authors_dialog[i] == NULL; ++i)
     g_assert_cmpstr (authors_plugin[i], ==, authors_dialog[i]);
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 }
 
 static void
-test_gtk_plugin_manager_configure_dialog (TestFixture *fixture)
+test_ctk_plugin_manager_configure_dialog (TestFixture *fixture)
 {
   GtkTreeIter iter;
   GtkWidget *window;
@@ -301,22 +301,22 @@ test_gtk_plugin_manager_configure_dialog (TestFixture *fixture)
   bean_engine_load_plugin (fixture->engine, info);
 
   testing_get_iter_for_plugin_info (fixture->view, info, &iter);
-  gtk_tree_selection_select_iter (fixture->selection, &iter);
+  ctk_tree_selection_select_iter (fixture->selection, &iter);
 
   /* Must be first so the window is added to the window group */
-  gtk_button_clicked (GTK_BUTTON (fixture->configure_button));
+  ctk_button_clicked (GTK_BUTTON (fixture->configure_button));
 
   window = find_window_by_title (GTK_WINDOW (fixture->window), "Configurable");
   g_assert (GTK_IS_DIALOG (window));
 
-  content = gtk_dialog_get_content_area (GTK_DIALOG (window));
-  list = gtk_container_get_children (GTK_CONTAINER (content));
+  content = ctk_dialog_get_content_area (GTK_DIALOG (window));
+  list = ctk_container_get_children (GTK_CONTAINER (content));
 
   for (list_it = list; list_it != NULL; list_it = list_it->next)
     {
       if (GTK_IS_LABEL (list_it->data))
         {
-          const gchar *text = gtk_label_get_text (GTK_LABEL (list_it->data));
+          const gchar *text = ctk_label_get_text (GTK_LABEL (list_it->data));
 
           if (g_strcmp0 (text, "Hello, World!") == 0)
             label = GTK_WIDGET (list_it->data);
@@ -328,25 +328,25 @@ test_gtk_plugin_manager_configure_dialog (TestFixture *fixture)
   g_list_free (list);
 
 
-  close_button = gtk_dialog_get_widget_for_response (GTK_DIALOG (window),
+  close_button = ctk_dialog_get_widget_for_response (GTK_DIALOG (window),
                                                      GTK_RESPONSE_CLOSE);
   g_assert (close_button != NULL);
 
-  help_button = gtk_dialog_get_widget_for_response (GTK_DIALOG (window),
+  help_button = ctk_dialog_get_widget_for_response (GTK_DIALOG (window),
                                                     GTK_RESPONSE_HELP);
   g_assert (help_button != NULL);
 
-  gtk_widget_destroy (window);
+  ctk_widget_destroy (window);
 }
 
 static void
-test_gtk_plugin_manager_gtkbuilder (void)
+test_ctk_plugin_manager_ctkbuilder (void)
 {
   GtkBuilder *builder;
   GError *error = NULL;
   BeanGtkPluginManager *manager;
   BeanGtkPluginManagerView *view;
-  static const gchar *gtkbuilder_string =
+  static const gchar *ctkbuilder_string =
     "<?xml version='1.0' encoding='UTF-8'?>\n"
     "<interface>\n"
     "<object class='BeanGtkPluginManagerView' id='view'>\n"
@@ -357,19 +357,19 @@ test_gtk_plugin_manager_gtkbuilder (void)
     "</object>\n"
     "</interface>";
 
-  builder = gtk_builder_new ();
+  builder = ctk_builder_new ();
 
-  gtk_builder_add_from_string (builder, gtkbuilder_string, -1, &error);
+  ctk_builder_add_from_string (builder, ctkbuilder_string, -1, &error);
   g_assert_no_error (error);
 
-  manager = BEAN_GTK_PLUGIN_MANAGER (gtk_builder_get_object (builder, "manager"));
+  manager = BEAN_GTK_PLUGIN_MANAGER (ctk_builder_get_object (builder, "manager"));
   g_assert (BEAN_GTK_IS_PLUGIN_MANAGER (manager));
 
-  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_gtk_plugin_manager_get_view (manager));
+  view = BEAN_GTK_PLUGIN_MANAGER_VIEW (bean_ctk_plugin_manager_get_view (manager));
 
-  g_assert (G_OBJECT (view) == gtk_builder_get_object (builder, "view"));
+  g_assert (G_OBJECT (view) == ctk_builder_get_object (builder, "view"));
 
-  g_assert (bean_gtk_plugin_manager_view_get_show_builtin (view));
+  g_assert (bean_ctk_plugin_manager_view_get_show_builtin (view));
 
   /* Freeing the builder will free the objects */
   g_object_unref (builder);
@@ -382,13 +382,13 @@ main (int    argc,
   testing_init (&argc, &argv);
 
 #define TEST(path, ftest) \
-  g_test_add ("/gtk/plugin-manager/" path, TestFixture, \
-              (gpointer) test_gtk_plugin_manager_##ftest, \
+  g_test_add ("/ctk/plugin-manager/" path, TestFixture, \
+              (gpointer) test_ctk_plugin_manager_##ftest, \
               test_setup, test_runner, test_teardown)
 
 #define TEST_FUNC(path, ftest) \
-  g_test_add_func ("/gtk/plugin-manager/" path, \
-                   test_gtk_plugin_manager_##ftest)
+  g_test_add_func ("/ctk/plugin-manager/" path, \
+                   test_ctk_plugin_manager_##ftest)
 
   TEST ("about-button-sensitivity", about_button_sensitivity);
   TEST ("configure-button-sensitivity", configure_button_sensitivity);
@@ -399,7 +399,7 @@ main (int    argc,
   TEST ("about-dialog", about_dialog);
   TEST ("configure-dialog", configure_dialog);
 
-  TEST_FUNC ("gtkbuilder", gtkbuilder);
+  TEST_FUNC ("ctkbuilder", ctkbuilder);
 
 #undef TEST
 

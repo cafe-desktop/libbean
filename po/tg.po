@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Мудири плагинҳо"
 
-#: ../data/glade/libbean-gtk.xml.in.h:2
+#: ../data/glade/libbean-ctk.xml.in.h:2
 msgid "View"
 msgstr "Намоиш"
 
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "Plugin Manager View"
 msgstr "Намуди мудири плагинҳо"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:5
+#: ../data/glade/libbean-ctk.xml.in.h:5
 msgid "Show Builtin"
 msgstr "Намоиши дарунсохт"
 
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Bean Gtk"
 msgstr "Нахӯди Gtk"
 
@@ -59,25 +59,25 @@ msgstr "Боркунандаи плагини '%s' ёфт нашуд"
 msgid "Failed to load"
 msgstr "Боркунӣ қатъ шуд"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:91
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
 msgid "Additional plugins must be disabled"
 msgstr "Плагинҳои иловагӣ бояд ғайрифаъол карда шаванд"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:98
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr ""
 "Плагинҳои зерин аз '%s' вобаста ҳастанд ва инчунин ғайрифаъол карда мешаванд:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:140
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
 msgid "Plugins"
 msgstr "Плагинҳо"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:156
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
 msgid "An additional plugin must be disabled"
 msgstr "Плагини иловагӣ бояд ғайрифаъол карда шавад"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:163
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -86,43 +86,43 @@ msgstr ""
 "Плагини '%s' аз плагини '%s' вобаста аст.\n"
 "Агар шумо '%s'-ро ғайрифаъол кунед, '%s' инчунин ғайрифаъол мешавад."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:183
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
 msgid "Disable Plugins"
 msgstr "Ғайрифаъол кардани плагинҳо"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:182
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:182
 msgid "There was an error displaying the help."
 msgstr "Ҳангоми намоиши кӯмак хатогӣ ба вуҷуд омад."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_About"
 msgstr "_Дар бораи барнома"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:395
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:395
 msgid "_Preferences"
 msgstr "_Хусусиятҳо"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:334
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
 msgid "_Enabled"
 msgstr "_Фаъол"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:345
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
 msgid "E_nable All"
 msgstr "_Фаъол кардани плагинҳо"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:349
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
 msgid "_Disable All"
 msgstr "_Ғайрифаъол кардани ҳама"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:510
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:510
 msgid "Enabled"
 msgstr "Фаъол"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:531
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:531
 msgid "Plugin"
 msgstr "Плагин"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:621
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:621
 #, c-format
 msgid ""
 "<b>The plugin '%s' could not be loaded</b>\n"

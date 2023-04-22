@@ -44,15 +44,15 @@ testing_init (gint    *argc,
   /* Must set environment variables first */
   testing_util_envars ();
 
-  gtk_test_init (argc, argv, NULL);
+  ctk_test_init (argc, argv, NULL);
 
-  /* Must be called after gtk_test_init()
+  /* Must be called after ctk_test_init()
    * because it changed the log settings
    */
   testing_util_init ();
 
   g_irepository_require_private (g_irepository_get_default (),
-                                 BUILDDIR "/libbean-gtk",
+                                 BUILDDIR "/libbean-ctk",
                                  "BeanGtk", "1.0", 0, &error);
   g_assert_no_error (error);
 
@@ -65,8 +65,8 @@ testing_engine_new (void)
   BeanEngine *engine;
 
   engine = testing_util_engine_new ();
-  bean_engine_add_search_path (engine, BUILDDIR "/tests/libbean-gtk/plugins",
-                                       SRCDIR   "/tests/libbean-gtk/plugins");
+  bean_engine_add_search_path (engine, BUILDDIR "/tests/libbean-ctk/plugins",
+                                       SRCDIR   "/tests/libbean-ctk/plugins");
 
   return engine;
 }
@@ -84,17 +84,17 @@ testing_get_plugin_info_for_iter (BeanGtkPluginManagerView *view,
    * is to ask the view for the info of the selected plugin
    */
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
-  had_selection = gtk_tree_selection_get_selected (selection,
+  had_selection = ctk_tree_selection_get_selected (selection,
                                                    NULL, &selected_iter);
 
-  gtk_tree_selection_select_iter (selection, iter);
+  ctk_tree_selection_select_iter (selection, iter);
 
-  info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
+  info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
   if (had_selection)
-    gtk_tree_selection_select_iter (selection, &selected_iter);
+    ctk_tree_selection_select_iter (selection, &selected_iter);
 
   return info;
 }
@@ -107,9 +107,9 @@ testing_get_iter_for_plugin_info (BeanGtkPluginManagerView *view,
   GtkTreeModel *model;
   GtkTreeIter pos_iter;
 
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
 
-  g_assert (gtk_tree_model_get_iter_first (model, &pos_iter));
+  g_assert (ctk_tree_model_get_iter_first (model, &pos_iter));
 
   do
     {
@@ -121,7 +121,7 @@ testing_get_iter_for_plugin_info (BeanGtkPluginManagerView *view,
           return TRUE;
         }
     }
-  while (gtk_tree_model_iter_next (model, &pos_iter));
+  while (ctk_tree_model_iter_next (model, &pos_iter));
 
   return FALSE;
 }
@@ -131,7 +131,7 @@ delete_event_cb (GtkWidget *window,
                  GdkEvent  *event,
                  GtkWidget *widget)
 {
-  gtk_main_quit ();
+  ctk_main_quit ();
 
   return TRUE;
 }
@@ -145,19 +145,19 @@ testing_show_widget (gpointer widget)
 
   g_assert (GTK_IS_WIDGET (widget));
 
-  widget = gtk_widget_get_toplevel (GTK_WIDGET (widget));
+  widget = ctk_widget_get_toplevel (GTK_WIDGET (widget));
 
-  if (gtk_widget_is_toplevel (GTK_WIDGET (widget)))
+  if (ctk_widget_is_toplevel (GTK_WIDGET (widget)))
     window = widget;
   else
     {
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (widget));
+      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      ctk_container_add (GTK_CONTAINER (window), GTK_WIDGET (widget));
     }
 
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 100);
+  ctk_window_set_default_size (GTK_WINDOW (window), 200, 100);
 
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 
   g_signal_connect (window,
                     "delete-event",
@@ -167,7 +167,7 @@ testing_show_widget (gpointer widget)
   /* Do not abort if a warning occurs while running the widget */
   orig_log_handler = g_log_set_default_handler (g_log_default_handler, NULL);
 
-  gtk_main ();
+  ctk_main ();
 
   g_log_set_default_handler (orig_log_handler, NULL);
 }

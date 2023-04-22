@@ -45,8 +45,8 @@ lib_version_osx = [osx_current, '@0@.@1@'.format(osx_current, interface_age)]
 package_name = meson.project_name()
 package_string = '@0@-@1@'.format(package_name, api_version)
 package_long_string = '@0@-@1@'.format(package_name, version)
-package_gtk_name = '@0@-gtk'.format(meson.project_name())
-package_gtk_string = '@0@-@1@'.format(package_gtk_name, api_version)
+package_ctk_name = '@0@-ctk'.format(meson.project_name())
+package_ctk_string = '@0@-@1@'.format(package_ctk_name, api_version)
 
 # Paths
 rootdir = include_directories('.')
@@ -65,7 +65,7 @@ pkglibdir = join_paths(libdir, package_string)
 pkgdatadir = join_paths(datadir, package_string)
 
 girdir = join_paths(datadir, 'gir-1.0')
-gtkdocdir = join_paths(datadir, 'gtk-doc')
+ctkdocdir = join_paths(datadir, 'ctk-doc')
 iconsdir = join_paths(datadir, 'icons')
 pkgconfigdir = join_paths(libdir, 'pkgconfig')
 typelibdir = join_paths(libdir, 'girepository-1.0')
@@ -90,8 +90,8 @@ glib_req_version = '2.38.0'
 
 glib_req = '>= @0@'.format(glib_req_version)
 introspection_req = '>= 1.39.0'
-gtk_req = '>= 3.0.0'
-gtk_doc_req = '>= 1.11'
+ctk_req = '>= 3.0.0'
+ctk_doc_req = '>= 1.11'
 python2_req = '>= 2.5.2'
 python3_req = '>= 3.2.0'
 pygobject_req = '>= 3.2.0'
@@ -104,9 +104,9 @@ gobject_dep = dependency('gobject-2.0', version: glib_req)
 gmodule_dep = dependency('gmodule-2.0', version: glib_req)
 gio_dep = dependency('gio-2.0', version: glib_req)
 introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req)
-gtk_dep = dependency('gtk+-3.0', version: gtk_req, required: false)
+ctk_dep = dependency('ctk+-3.0', version: ctk_req, required: false)
 
-gtk_doc_dep = dependency('gtk-doc', version: gtk_doc_req, required: false)
+ctk_doc_dep = dependency('ctk-doc', version: ctk_doc_req, required: false)
 gladeui_dep = dependency('gladeui-2.0', required: false)
 
 # From python 3.8 we neeed python3-embed
@@ -187,9 +187,9 @@ configure_file(
 )
 
 # Options
-build_gtk_doc = get_option('gtk_doc')
-if build_gtk_doc and not gtk_doc_dep.found()
-  build_gtk_doc = false
+build_ctk_doc = get_option('ctk_doc')
+if build_ctk_doc and not ctk_doc_dep.found()
+  build_ctk_doc = false
 endif
 
 install_glade_catalog = get_option('glade_catalog')
@@ -207,13 +207,13 @@ elif install_glade_catalog == true
 #   )
 endif
 
-build_gtk_widgetry = get_option('widgetry')
-if build_gtk_widgetry and not gtk_dep.found()
-  build_gtk_widgetry = false
+build_ctk_widgetry = get_option('widgetry')
+if build_ctk_widgetry and not ctk_dep.found()
+  build_ctk_widgetry = false
 endif
 
 build_demos = get_option('demos')
-if build_demos and not build_gtk_widgetry
+if build_demos and not build_ctk_widgetry
   build_demos = false
 endif
 
@@ -241,8 +241,8 @@ if build_python3_loader and not python3_found
 endif
 
 subdir('libbean')
-if build_gtk_widgetry == true
-  subdir('libbean-gtk')
+if build_ctk_widgetry == true
+  subdir('libbean-ctk')
 endif
 
 subdir('docs')
@@ -264,9 +264,9 @@ summary = [
   'libbean @0@ (@1@)'.format(version, api_version),
   '',
   '             Demos: @0@'.format(build_demos),
-  '     Documentation: @0@'.format(build_gtk_doc),
+  '     Documentation: @0@'.format(build_ctk_doc),
   '     Glade catalog: @0@'.format(install_glade_catalog),
-  '     GTK+ widgetry: @0@'.format(build_gtk_widgetry),
+  '     GTK+ widgetry: @0@'.format(build_ctk_widgetry),
   '     Introspection: @0@'.format(generate_gir),
   '   Lua 5.1 support: @0@'.format(build_lua51_loader),
   '  Python 2 support: @0@'.format(build_python2_loader),

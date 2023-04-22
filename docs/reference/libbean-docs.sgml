@@ -9,7 +9,7 @@
   <bookinfo>
     <title>Bean Reference Manual</title>
     <releaseinfo>
-      for libbean &version; and libbean-gtk &version;
+      for libbean &version; and libbean-ctk &version;
     </releaseinfo>
   </bookinfo>
 
@@ -26,13 +26,13 @@
     </chapter>
     <chapter>
       <title>Gtk+ Widgets</title>
-      <xi:include href="xml/bean-gtk-plugin-manager.xml"/>
-      <xi:include href="xml/bean-gtk-plugin-manager-view.xml"/>
+      <xi:include href="xml/bean-ctk-plugin-manager.xml"/>
+      <xi:include href="xml/bean-ctk-plugin-manager-view.xml"/>
     </chapter>
     <chapter>
       <title>Built-in Extension Interfaces</title>
       <xi:include href="xml/bean-activatable.xml"/>
-      <xi:include href="xml/bean-gtk-configurable.xml"/>
+      <xi:include href="xml/bean-ctk-configurable.xml"/>
     </chapter>
   </part>
   <index id="api-index-full">

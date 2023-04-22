@@ -26,21 +26,21 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <gmodule.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <libbean/bean.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 
 #include "beandemo-hello-world-configurable.h"
 
-static void bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
+static void bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
                                 beandemo_hello_world_configurable,
                                 BEAN_TYPE_EXTENSION_BASE,
                                 0,
                                 G_IMPLEMENT_INTERFACE_DYNAMIC (BEAN_GTK_TYPE_CONFIGURABLE,
-                                                               bean_gtk_configurable_iface_init))
+                                                               bean_ctk_configurable_iface_init))
 
 static void
 beandemo_hello_world_configurable_init (BeanDemoHelloWorldConfigurable *plugin)
@@ -53,7 +53,7 @@ beandemo_hello_world_configurable_create_configure_widget (BeanGtkConfigurable *
 {
   g_debug ("%s", G_STRFUNC);
 
-  return gtk_label_new ("This is a configuration dialog for the HelloWorld plugin.");
+  return ctk_label_new ("This is a configuration dialog for the HelloWorld plugin.");
 }
 
 static void
@@ -62,7 +62,7 @@ beandemo_hello_world_configurable_class_init (BeanDemoHelloWorldConfigurableClas
 }
 
 static void
-bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = beandemo_hello_world_configurable_create_configure_widget;
 }

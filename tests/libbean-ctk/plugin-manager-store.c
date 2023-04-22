@@ -24,11 +24,11 @@
 #endif
 
 #include <glib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 
-#include "libbean-gtk/bean-gtk-plugin-manager-store.h"
+#include "libbean-ctk/bean-ctk-plugin-manager-store.h"
 
 #include "testing/testing.h"
 
@@ -45,7 +45,7 @@ test_setup (TestFixture   *fixture,
             gconstpointer  data)
 {
   fixture->engine = testing_engine_new ();
-  fixture->store = bean_gtk_plugin_manager_store_new (fixture->engine);
+  fixture->store = bean_ctk_plugin_manager_store_new (fixture->engine);
   fixture->model = GTK_TREE_MODEL (fixture->store);
 }
 
@@ -66,21 +66,21 @@ test_runner (TestFixture   *fixture,
 }
 
 static void
-test_gtk_plugin_manager_store_sorted (TestFixture *fixture)
+test_ctk_plugin_manager_store_sorted (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info1, *info2;
 
   /* TODO: add a plugin that would cause this to assert if strcmp() was used */
 
-  g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
+  g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
 
-  info2 = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  info2 = bean_ctk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
-  while (gtk_tree_model_iter_next (fixture->model, &iter))
+  while (ctk_tree_model_iter_next (fixture->model, &iter))
     {
       info1 = info2;
-      info2 = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+      info2 = bean_ctk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
       g_assert_cmpint (g_utf8_collate (bean_plugin_info_get_name (info1),
                                        bean_plugin_info_get_name (info2)),
@@ -89,35 +89,35 @@ test_gtk_plugin_manager_store_sorted (TestFixture *fixture)
 }
 
 static void
-test_gtk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
+test_ctk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
 
-  g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
-  info = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
+  info = bean_ctk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
-  g_assert (!bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (!bean_ctk_plugin_manager_store_get_enabled (fixture->store, &iter));
 
   bean_engine_load_plugin (fixture->engine, info);
 
-  g_assert (bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (bean_ctk_plugin_manager_store_get_enabled (fixture->store, &iter));
 }
 
 static void
-test_gtk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
+test_ctk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
 
-  test_gtk_plugin_manager_store_plugin_loaded (fixture);
+  test_ctk_plugin_manager_store_plugin_loaded (fixture);
 
-  g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
-  info = bean_gtk_plugin_manager_store_get_plugin (fixture->store, &iter);
+  g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
+  info = bean_ctk_plugin_manager_store_get_plugin (fixture->store, &iter);
 
   bean_engine_unload_plugin (fixture->engine, info);
 
-  g_assert (!bean_gtk_plugin_manager_store_get_enabled (fixture->store, &iter));
+  g_assert (!bean_ctk_plugin_manager_store_get_enabled (fixture->store, &iter));
 }
 
 static void
@@ -134,10 +134,10 @@ verify_model (TestFixture    *fixture,
   GIcon *model_icon_gicon;
   gchar *model_icon_stock_id;
 
-  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (bean_ctk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
-  gtk_tree_model_get (fixture->model, &iter,
+  ctk_tree_model_get (fixture->model, &iter,
     BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,     &model_can_enable,
     BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN,     &model_icon_gicon,
     BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN,  &model_icon_stock_id,
@@ -192,7 +192,7 @@ verify_model (TestFixture    *fixture,
 }
 
 static void
-test_gtk_plugin_manager_store_verify_loadable (TestFixture *fixture)
+test_ctk_plugin_manager_store_verify_loadable (TestFixture *fixture)
 {
   BeanPluginInfo *info;
 
@@ -203,7 +203,7 @@ test_gtk_plugin_manager_store_verify_loadable (TestFixture *fixture)
 }
 
 static void
-test_gtk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
+test_ctk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
 {
   BeanPluginInfo *info;
 
@@ -221,7 +221,7 @@ test_gtk_plugin_manager_store_verify_unavailable (TestFixture *fixture)
 }
 
 static void
-test_gtk_plugin_manager_store_verify_builtin (TestFixture *fixture)
+test_ctk_plugin_manager_store_verify_builtin (TestFixture *fixture)
 {
   BeanPluginInfo *info;
 
@@ -237,7 +237,7 @@ test_gtk_plugin_manager_store_verify_builtin (TestFixture *fixture)
 }
 
 static void
-test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
+test_ctk_plugin_manager_store_verify_info (TestFixture *fixture)
 {
   GtkTreeIter iter;
   BeanPluginInfo *info;
@@ -245,10 +245,10 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
 
   /* Has description */
   info = bean_engine_get_plugin_info (fixture->engine, "configurable");
-  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (bean_ctk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
-  gtk_tree_model_get (fixture->model, &iter,
+  ctk_tree_model_get (fixture->model, &iter,
     BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Configurable</b>\nA plugin "
@@ -257,10 +257,10 @@ test_gtk_plugin_manager_store_verify_info (TestFixture *fixture)
 
   /* Does not have description */
   info = bean_engine_get_plugin_info (fixture->engine, "min-info");
-  g_assert (bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (bean_ctk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                 &iter, info));
 
-  gtk_tree_model_get (fixture->model, &iter,
+  ctk_tree_model_get (fixture->model, &iter,
     BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,  &model_info,
     -1);
   g_assert_cmpstr (model_info, ==, "<b>Min Info</b>");
@@ -281,42 +281,42 @@ verify_icon (TestFixture *fixture,
 }
 
 static void
-test_gtk_plugin_manager_store_valid_custom_icon (TestFixture *fixture)
+test_ctk_plugin_manager_store_valid_custom_icon (TestFixture *fixture)
 {
   verify_icon (fixture, "valid-custom-icon", "exists.png", G_TYPE_FILE_ICON);
 }
 
 static void
-test_gtk_plugin_manager_store_valid_stock_icon (TestFixture *fixture)
+test_ctk_plugin_manager_store_valid_stock_icon (TestFixture *fixture)
 {
   GtkIconTheme *icon_theme;
   GType icon_type = G_TYPE_INVALID;
 
-  icon_theme = gtk_icon_theme_get_default ();
+  icon_theme = ctk_icon_theme_get_default ();
 
   /* Usually the theme does not have this icon */
-  if (gtk_icon_theme_has_icon (icon_theme, "gtk-unindent"))
+  if (ctk_icon_theme_has_icon (icon_theme, "ctk-unindent"))
     icon_type = G_TYPE_THEMED_ICON;
 
-  verify_icon (fixture, "valid-stock-icon", "gtk-unindent", icon_type);
+  verify_icon (fixture, "valid-stock-icon", "ctk-unindent", icon_type);
 }
 
 static void
-test_gtk_plugin_manager_store_invalid_custom_icon (TestFixture *fixture)
+test_ctk_plugin_manager_store_invalid_custom_icon (TestFixture *fixture)
 {
   verify_icon (fixture, "invalid-custom-icon", "libbean-plugin",
                G_TYPE_THEMED_ICON);
 }
 
 static void
-test_gtk_plugin_manager_store_invalid_stock_icon (TestFixture *fixture)
+test_ctk_plugin_manager_store_invalid_stock_icon (TestFixture *fixture)
 {
   verify_icon (fixture, "invalid-stock-icon", "libbean-plugin",
                G_TYPE_THEMED_ICON);
 }
 
 static void
-test_gtk_plugin_manager_store_hidden (TestFixture *fixture)
+test_ctk_plugin_manager_store_hidden (TestFixture *fixture)
 {
   BeanPluginInfo *info;
   GtkTreeIter iter;
@@ -325,7 +325,7 @@ test_gtk_plugin_manager_store_hidden (TestFixture *fixture)
 
   g_assert (bean_plugin_info_is_hidden (info));
 
-  g_assert (!bean_gtk_plugin_manager_store_get_iter_from_plugin (fixture->store,
+  g_assert (!bean_ctk_plugin_manager_store_get_iter_from_plugin (fixture->store,
                                                                  &iter, info));
 }
 
@@ -336,8 +336,8 @@ main (int    argc,
   testing_init (&argc, &argv);
 
 #define TEST(path, ftest) \
-  g_test_add ("/gtk/plugin-manager-store/" path, TestFixture, \
-              (gpointer) test_gtk_plugin_manager_store_##ftest, \
+  g_test_add ("/ctk/plugin-manager-store/" path, TestFixture, \
+              (gpointer) test_ctk_plugin_manager_store_##ftest, \
               test_setup, test_runner, test_teardown)
 
   TEST ("sorted", sorted);

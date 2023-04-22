@@ -16,7 +16,7 @@ libsecondtime_lib = shared_library(
   libsecondtime_name,
   libsecondtime_c,
   include_directories: rootdir,
-  dependencies: [gtk_dep, libbean_dep],
+  dependencies: [ctk_dep, libbean_dep],
   c_args: libsecondtime_c_args,
   install_dir: join_paths(bean_demo_plugins_dir, 'secondtime'),
   install: true,

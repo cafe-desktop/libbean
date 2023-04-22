@@ -18,7 +18,7 @@ executable(
   bean_demo_name,
   bean_demo_c,
   c_args: bean_demo_c_args,
-  dependencies: [libbean_gtk_dep],
+  dependencies: [libbean_ctk_dep],
   install: true,
 )
 

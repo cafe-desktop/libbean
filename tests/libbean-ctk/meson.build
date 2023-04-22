@@ -1,5 +1,5 @@
 
-libbean_gtk_tests_sources = [
+libbean_ctk_tests_sources = [
   ['plugin-manager'],
   ['plugin-manager-store'],
   ['plugin-manager-view'],
@@ -9,17 +9,17 @@ subdir('testing')
 
 subdir('plugins')
 
-libbean_gtk_tests_deps = [
+libbean_ctk_tests_deps = [
   glib_dep,
-  gtk_dep,
+  ctk_dep,
   libbean_dep,
-  libbean_gtk_dep,
+  libbean_ctk_dep,
 
   libtesting_util_dep,
-  libbean_gtk_testing_dep,
+  libbean_ctk_testing_dep,
 ]
 
-foreach test: libbean_gtk_tests_sources
+foreach test: libbean_ctk_tests_sources
   test_name = test.get(0)
   test_sources = ['@0@.c'.format(test_name)]
 
@@ -27,7 +27,7 @@ foreach test: libbean_gtk_tests_sources
     test_name,
     test_sources,
     c_args: ['-UG_DISABLE_ASSERT', '-UG_DISABLE_CAST_CHECKS'],
-    dependencies: libbean_gtk_tests_deps
+    dependencies: libbean_ctk_tests_deps
   )
 
   test('test-@0@'.format(test_name), test_exe, env: test_env)

@@ -1,4 +1,4 @@
-libbean_gtk_plugins_data = [
+libbean_ctk_plugins_data = [
   'hidden.plugin',
   'invalid-custom-icon.plugin',
   'invalid-stock-icon.plugin',
@@ -6,9 +6,9 @@ libbean_gtk_plugins_data = [
 ]
 
 custom_target(
-  'libbean-gtk-test-data',
-  input: libbean_gtk_plugins_data,
-  output: libbean_gtk_plugins_data,
+  'libbean-ctk-test-data',
+  input: libbean_ctk_plugins_data,
+  output: libbean_ctk_plugins_data,
   command: ['cp', '@INPUT@', '@OUTDIR@'],
   build_by_default: true,
 )

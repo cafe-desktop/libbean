@@ -16,25 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Tilleggshåndterer"
 
 #. Translators: What BeanGtkPluginManagerView to use
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Vis"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "Visning av tilleggshåndtering"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "Vis innebyggede"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -58,24 +58,24 @@ msgstr "Tilleggslaster «%s» ble ikke funnet"
 msgid "Failed to load"
 msgstr "Feilet ved lasting"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Flere tillegg må slås av"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "Følgende tilegg er avhengig av «%s» og vil også bli slått av:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Tillegg"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Flere tillegg må slås av"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -84,61 +84,61 @@ msgstr ""
 "Tillegget «%s» er avhengig av tillegg «%s».\n"
 "Hvis du slår av «%s» vil «%s» også bli slått av."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Slå av tillegg"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Det oppsto en feil under visning av hjelp."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Lukk"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "Bruk_ervalg"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Om"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Brukervalg"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Slått på"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "Slå på _alle"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "Slå a_v alle"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Aktivert"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Tillegg"
 
 #. Avoid having markup in a translated string
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin '%s' could not be loaded"
 msgstr "Tillegg «%s» kunne ikke lastes"
@@ -146,7 +146,7 @@ msgstr "Tillegg «%s» kunne ikke lastes"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "En feil oppsto: %s"
@@ -164,10 +164,10 @@ msgstr "A_vslutt"
 msgid "- libbean demo application"
 msgstr "- libbean demoprogram"
 
-#: ../tests/libbean-gtk/plugin-manager.c:77
+#: ../tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "Om"
 
-#: ../tests/libbean-gtk/plugin-manager.c:82
+#: ../tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Brukervalg"

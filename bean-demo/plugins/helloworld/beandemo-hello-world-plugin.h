@@ -22,7 +22,7 @@
 #ifndef __BEANDEMO_HELLO_WORLD_PLUGIN_H__
 #define __BEANDEMO_HELLO_WORLD_PLUGIN_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean.h>
 
 G_BEGIN_DECLS

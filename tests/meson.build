@@ -8,8 +8,8 @@ test_env = [
 subdir('testing-util')
 
 subdir('libbean')
-if build_gtk_widgetry == true
-  subdir('libbean-gtk')
+if build_ctk_widgetry == true
+  subdir('libbean-ctk')
 endif
 
 subdir('plugins')
