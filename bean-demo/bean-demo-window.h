@@ -42,9 +42,9 @@ typedef struct _DemoWindowClass    DemoWindowClass;
 
 struct _DemoWindow
 {
-  GtkWindow parent;
+  CtkWindow parent;
 
-  GtkWidget *box;
+  CtkWidget *box;
 
   BeanEngine *engine;
   BeanExtensionSet *exten_set;
@@ -52,13 +52,13 @@ struct _DemoWindow
 
 struct _DemoWindowClass
 {
-  GtkWindowClass parent_class;
+  CtkWindowClass parent_class;
 
   guint n_windows;
 };
 
 GType       demo_window_get_type      (void)  G_GNUC_CONST;
-GtkWidget  *demo_window_new           (void);
+CtkWidget  *demo_window_new           (void);
 
 G_END_DECLS
 

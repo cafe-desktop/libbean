@@ -36,8 +36,8 @@ typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
   BeanEngine *engine;
-  GtkTreeModel *model;
-  BeanGtkPluginManagerStore *store;
+  CtkTreeModel *model;
+  BeanCtkPluginManagerStore *store;
 };
 
 static void
@@ -68,7 +68,7 @@ test_runner (TestFixture   *fixture,
 static void
 test_ctk_plugin_manager_store_sorted (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info1, *info2;
 
   /* TODO: add a plugin that would cause this to assert if strcmp() was used */
@@ -91,7 +91,7 @@ test_ctk_plugin_manager_store_sorted (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   g_assert (ctk_tree_model_get_iter_first (fixture->model, &iter));
@@ -107,7 +107,7 @@ test_ctk_plugin_manager_store_plugin_loaded (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_store_plugin_unloaded (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
 
   test_ctk_plugin_manager_store_plugin_loaded (fixture);
@@ -129,7 +129,7 @@ verify_model (TestFixture    *fixture,
               gboolean        icon_visible,
               gboolean        info_sensitive)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   gboolean model_can_enable, model_icon_visible, model_info_sensitive;
   GIcon *model_icon_gicon;
   gchar *model_icon_stock_id;
@@ -239,7 +239,7 @@ test_ctk_plugin_manager_store_verify_builtin (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_store_verify_info (TestFixture *fixture)
 {
-  GtkTreeIter iter;
+  CtkTreeIter iter;
   BeanPluginInfo *info;
   gchar *model_info;
 
@@ -289,7 +289,7 @@ test_ctk_plugin_manager_store_valid_custom_icon (TestFixture *fixture)
 static void
 test_ctk_plugin_manager_store_valid_stock_icon (TestFixture *fixture)
 {
-  GtkIconTheme *icon_theme;
+  CtkIconTheme *icon_theme;
   GType icon_type = G_TYPE_INVALID;
 
   icon_theme = ctk_icon_theme_get_default ();
@@ -319,7 +319,7 @@ static void
 test_ctk_plugin_manager_store_hidden (TestFixture *fixture)
 {
   BeanPluginInfo *info;
-  GtkTreeIter iter;
+  CtkTreeIter iter;
 
   info = bean_engine_get_plugin_info (fixture->engine, "hidden");
 

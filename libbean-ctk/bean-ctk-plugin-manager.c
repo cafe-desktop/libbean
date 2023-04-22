@@ -45,7 +45,7 @@
  * SECTION:bean-ctk-plugin-manager
  * @short_description: Management GUI for plugins.
  *
- * The #BeanGtkPluginManager is a widget that can be used to manage plugins,
+ * The #BeanCtkPluginManager is a widget that can be used to manage plugins,
  * i.e. load or unload them, and see some pieces of information.
  *
  * <inlinegraphic fileref="bean-ctk-plugin-manager.png" format="PNG" />
@@ -57,16 +57,16 @@
  *
  **/
 
-struct _BeanGtkPluginManagerPrivate {
+struct _BeanCtkPluginManagerPrivate {
   BeanEngine *engine;
 
-  GtkWidget *sw;
-  GtkWidget *view;
+  CtkWidget *sw;
+  CtkWidget *view;
 
-  GtkWidget *about;
+  CtkWidget *about;
 
-  GtkWidget *about_button;
-  GtkWidget *configure_button;
+  CtkWidget *about_button;
+  CtkWidget *configure_button;
 };
 
 /* Properties */
@@ -79,23 +79,23 @@ enum {
 
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
-G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkPluginManager,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManager,
                             bean_ctk_plugin_manager,
                             GTK_TYPE_BOX)
 
-static GtkWindow *
-get_toplevel (GtkWidget *widget)
+static CtkWindow *
+get_toplevel (CtkWidget *widget)
 {
-  GtkWindow *toplevel;
+  CtkWindow *toplevel;
 
-  toplevel = (GtkWindow *) ctk_widget_get_toplevel (widget);
+  toplevel = (CtkWindow *) ctk_widget_get_toplevel (widget);
   if (!GTK_IS_WINDOW (toplevel))
     return NULL;
 
   /* Make sure the window always has a window group */
   if (!ctk_window_has_group (toplevel))
     {
-      GtkWindowGroup *window_group;
+      CtkWindowGroup *window_group;
 
       window_group = ctk_window_group_new ();
       ctk_window_group_add_window (window_group, toplevel);
@@ -106,10 +106,10 @@ get_toplevel (GtkWidget *widget)
 }
 
 static gboolean
-plugin_is_configurable (BeanGtkPluginManager *pm,
+plugin_is_configurable (BeanCtkPluginManager *pm,
                         BeanPluginInfo       *info)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   if (info == NULL || !bean_plugin_info_is_loaded (info))
     return FALSE;
@@ -119,10 +119,10 @@ plugin_is_configurable (BeanGtkPluginManager *pm,
 }
 
 static void
-update_button_sensitivity (BeanGtkPluginManager *pm,
+update_button_sensitivity (BeanCtkPluginManager *pm,
                            BeanPluginInfo       *info)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   ctk_widget_set_sensitive (priv->about_button, info != NULL);
   ctk_widget_set_sensitive (priv->configure_button,
@@ -130,13 +130,13 @@ update_button_sensitivity (BeanGtkPluginManager *pm,
 }
 
 static void
-show_about_cb (GtkWidget            *widget,
-               BeanGtkPluginManager *pm)
+show_about_cb (CtkWidget            *widget,
+               BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  BeanGtkPluginManagerView *view;
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerView *view;
   BeanPluginInfo *info;
-  GtkWindow *toplevel;
+  CtkWindow *toplevel;
   gboolean modal;
 
   view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
@@ -176,13 +176,13 @@ show_about_cb (GtkWidget            *widget,
 }
 
 static void
-help_button_cb (GtkWidget      *button,
+help_button_cb (CtkWidget      *button,
                 BeanPluginInfo *info)
 {
   const gchar *help_uri;
 #ifndef OS_OSX
   GError *error = NULL;
-  GtkWidget *error_dlg;
+  CtkWidget *error_dlg;
 #endif
 
   g_return_if_fail (bean_plugin_info_get_help_uri (info) != NULL);
@@ -221,16 +221,16 @@ help_button_cb (GtkWidget      *button,
 }
 
 static void
-show_configure_cb (GtkWidget            *widget,
-                   BeanGtkPluginManager *pm)
+show_configure_cb (CtkWidget            *widget,
+                   BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  BeanGtkPluginManagerView *view;
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerView *view;
   BeanPluginInfo *info;
   BeanExtension *exten;
-  GtkWidget *conf_widget = NULL;
-  GtkWidget *conf_dlg;
-  GtkWidget *vbox;
+  CtkWidget *conf_widget = NULL;
+  CtkWidget *conf_dlg;
+  CtkWidget *vbox;
 
   view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
 
@@ -259,7 +259,7 @@ show_configure_cb (GtkWidget            *widget,
 
   if (bean_plugin_info_get_help_uri (info) != NULL)
     {
-      GtkWidget *help_button;
+      CtkWidget *help_button;
 
       help_button = ctk_dialog_add_button (GTK_DIALOG (conf_dlg),
                                            _("_Help"), GTK_RESPONSE_HELP);
@@ -281,10 +281,10 @@ show_configure_cb (GtkWidget            *widget,
 static void
 plugin_loaded_toggled_cb (BeanEngine           *engine,
                           BeanPluginInfo       *info,
-                          BeanGtkPluginManager *pm)
+                          BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  BeanGtkPluginManagerView *view;
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerView *view;
   BeanPluginInfo *selected;
 
   view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
@@ -295,10 +295,10 @@ plugin_loaded_toggled_cb (BeanEngine           *engine,
 }
 
 static void
-selection_changed_cb (BeanGtkPluginManager *pm)
+selection_changed_cb (BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  BeanGtkPluginManagerView *view;
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerView *view;
   BeanPluginInfo *info;
 
   view = BEAN_GTK_PLUGIN_MANAGER_VIEW (priv->view);
@@ -308,12 +308,12 @@ selection_changed_cb (BeanGtkPluginManager *pm)
 }
 
 static void
-populate_popup_cb (BeanGtkPluginManagerView *view,
-                   GtkMenu                  *menu,
-                   BeanGtkPluginManager     *pm)
+populate_popup_cb (BeanCtkPluginManagerView *view,
+                   CtkMenu                  *menu,
+                   BeanCtkPluginManager     *pm)
 {
   BeanPluginInfo *info;
-  GtkWidget *item;
+  CtkWidget *item;
 
   info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
@@ -331,19 +331,19 @@ populate_popup_cb (BeanGtkPluginManagerView *view,
 }
 
 static void
-bean_ctk_plugin_manager_init (BeanGtkPluginManager *pm)
+bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  GtkWidget *toolbar;
-  GtkStyleContext *context;
-  GtkToolItem *toolitem;
-  GtkWidget *toolbar_box;
-  GtkWidget *item_box;
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  CtkWidget *toolbar;
+  CtkStyleContext *context;
+  CtkToolItem *toolitem;
+  CtkWidget *toolbar_box;
+  CtkWidget *item_box;
 
-  /* If we are using a BeanGtkPluginManager, we know for sure we will be using
+  /* If we are using a BeanCtkPluginManager, we know for sure we will be using
      libbean-ctk, so let's load the typelib for it here. */
   g_irepository_require (g_irepository_get_default (),
-                         "BeanGtk", "1.0", 0, NULL);
+                         "BeanCtk", "1.0", 0, NULL);
 
   ctk_orientable_set_orientation (GTK_ORIENTABLE (pm),
                                   GTK_ORIENTATION_VERTICAL);
@@ -407,8 +407,8 @@ bean_ctk_plugin_manager_set_property (GObject      *object,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
     {
@@ -430,8 +430,8 @@ bean_ctk_plugin_manager_get_property (GObject    *object,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   switch (prop_id)
     {
@@ -450,9 +450,9 @@ bean_ctk_plugin_manager_get_property (GObject    *object,
 static void
 bean_ctk_plugin_manager_constructed (GObject *object)
 {
-  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
-  GtkTreeSelection *selection;
+  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  CtkTreeSelection *selection;
 
   if (priv->engine == NULL)
     priv->engine = bean_engine_get_default ();
@@ -525,8 +525,8 @@ bean_ctk_plugin_manager_constructed (GObject *object)
 static void
 bean_ctk_plugin_manager_dispose (GObject *object)
 {
-  BeanGtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManager *pm = BEAN_GTK_PLUGIN_MANAGER (object);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   g_clear_object (&priv->engine);
   g_clear_pointer (&priv->about, ctk_widget_destroy);
@@ -535,7 +535,7 @@ bean_ctk_plugin_manager_dispose (GObject *object)
 }
 
 static void
-bean_ctk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
+bean_ctk_plugin_manager_class_init (BeanCtkPluginManagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -545,7 +545,7 @@ bean_ctk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
   object_class->dispose = bean_ctk_plugin_manager_dispose;
 
   /**
-   * BeanGtkPluginManager:engine:
+   * BeanCtkPluginManager:engine:
    *
    * The #BeanEngine this manager is attached to.
    */
@@ -559,9 +559,9 @@ bean_ctk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
                          G_PARAM_STATIC_STRINGS);
 
   /**
-   * BeanGtkPluginManager:view:
+   * BeanCtkPluginManager:view:
    *
-   * The #BeanGtkPluginManagerView shown in the #BeanGtkPluginManager.
+   * The #BeanCtkPluginManagerView shown in the #BeanCtkPluginManager.
    */
   properties[PROP_VIEW] =
     g_param_spec_object ("view",
@@ -583,9 +583,9 @@ bean_ctk_plugin_manager_class_init (BeanGtkPluginManagerClass *klass)
  *
  * If @engine is %NULL, then the default engine will be used.
  *
- * Returns: the new #BeanGtkPluginManager.
+ * Returns: the new #BeanCtkPluginManager.
  */
-GtkWidget *
+CtkWidget *
 bean_ctk_plugin_manager_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
@@ -597,16 +597,16 @@ bean_ctk_plugin_manager_new (BeanEngine *engine)
 
 /**
  * bean_ctk_plugin_manager_get_view:
- * @pm: A #BeanGtkPluginManager.
+ * @pm: A #BeanCtkPluginManager.
  *
- * Returns the #BeanGtkPluginManagerView of @pm.
+ * Returns the #BeanCtkPluginManagerView of @pm.
  *
- * Returns: (transfer none): the #GtkTreeView of @pm.
+ * Returns: (transfer none): the #CtkTreeView of @pm.
  */
-GtkWidget *
-bean_ctk_plugin_manager_get_view (BeanGtkPluginManager *pm)
+CtkWidget *
+bean_ctk_plugin_manager_get_view (BeanCtkPluginManager *pm)
 {
-  BeanGtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
 
   g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER (pm), NULL);
 

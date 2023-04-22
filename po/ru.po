@@ -29,7 +29,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "Менеджер модулей"
 
-#. Translators: What BeanGtkPluginManagerView to use
+#. Translators: What BeanCtkPluginManagerView to use
 #: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Вид"
@@ -44,8 +44,8 @@ msgid "Show Builtin"
 msgstr "Показывать встроенные модули"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #: ../libbean/bean-engine.c:976
 #, c-format

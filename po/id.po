@@ -166,5 +166,5 @@ msgstr "Preferensi"
 #~ msgid "Show Builtin"
 #~ msgstr "Tampilkan Bawaan"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"

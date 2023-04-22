@@ -24,7 +24,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "Gestor de connectors"
 
-#. Translators: What BeanGtkPluginManagerView to use
+#. Translators: What BeanCtkPluginManagerView to use
 #: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Visualitza"
@@ -39,7 +39,7 @@ msgid "Show Builtin"
 msgstr "Mostra els connectors integrats"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Gtk"
+msgid "Bean Ctk"
 msgstr "Bean GTK+"
 
 #: ../libbean/bean-engine.c:1118

@@ -167,8 +167,8 @@ msgstr "Preferencias"
 #~ msgid "Show Builtin"
 #~ msgstr "Mostrar incluídos"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "C_onfigurar"

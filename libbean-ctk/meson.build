@@ -70,7 +70,7 @@ libbean_ctk_dep_sources = []
 if generate_gir == true
   libbean_ctk_gir_includes = [
     'GObject-2.0',
-    'Gtk-3.0',
+    'Ctk-3.0',
     libbean_gir.get(0)
   ]
 
@@ -78,9 +78,9 @@ if generate_gir == true
     libbean_ctk_sha,
     sources: libbean_ctk_c + libbean_ctk_public_h,
     nsversion: api_version,
-    namespace: 'BeanGtk',
+    namespace: 'BeanCtk',
     symbol_prefix: 'bean_ctk',
-    identifier_prefix: 'BeanGtk',
+    identifier_prefix: 'BeanCtk',
     header: 'libbean-ctk/bean-ctk.h',
     export_packages: [package_ctk_string],
     includes: libbean_ctk_gir_includes,

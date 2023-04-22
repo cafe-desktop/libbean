@@ -175,5 +175,5 @@ msgstr "Nuostatos"
 #~ msgid "Show Builtin"
 #~ msgstr "Rodyti integruotus"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"

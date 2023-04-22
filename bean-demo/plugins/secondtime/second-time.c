@@ -106,8 +106,8 @@ beandemo_second_time_finalize (GObject *object)
   G_OBJECT_CLASS (beandemo_second_time_parent_class)->finalize (object);
 }
 
-static GtkBox *
-get_box (GtkWidget *window)
+static CtkBox *
+get_box (CtkWidget *window)
 {
   return GTK_BOX (ctk_bin_get_child (GTK_BIN (window)));
 }

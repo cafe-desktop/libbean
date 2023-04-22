@@ -53,7 +53,7 @@ testing_init (gint    *argc,
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/libbean-ctk",
-                                 "BeanGtk", "1.0", 0, &error);
+                                 "BeanCtk", "1.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;
@@ -72,11 +72,11 @@ testing_engine_new (void)
 }
 
 BeanPluginInfo *
-testing_get_plugin_info_for_iter (BeanGtkPluginManagerView *view,
-                                  GtkTreeIter              *iter)
+testing_get_plugin_info_for_iter (BeanCtkPluginManagerView *view,
+                                  CtkTreeIter              *iter)
 {
-  GtkTreeSelection *selection;
-  GtkTreeIter selected_iter;
+  CtkTreeSelection *selection;
+  CtkTreeIter selected_iter;
   gboolean had_selection;
   BeanPluginInfo *info;
 
@@ -100,12 +100,12 @@ testing_get_plugin_info_for_iter (BeanGtkPluginManagerView *view,
 }
 
 gboolean
-testing_get_iter_for_plugin_info (BeanGtkPluginManagerView *view,
+testing_get_iter_for_plugin_info (BeanCtkPluginManagerView *view,
                                   BeanPluginInfo           *info,
-                                  GtkTreeIter              *iter)
+                                  CtkTreeIter              *iter)
 {
-  GtkTreeModel *model;
-  GtkTreeIter pos_iter;
+  CtkTreeModel *model;
+  CtkTreeIter pos_iter;
 
   model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
 
@@ -127,9 +127,9 @@ testing_get_iter_for_plugin_info (BeanGtkPluginManagerView *view,
 }
 
 static gboolean
-delete_event_cb (GtkWidget *window,
+delete_event_cb (CtkWidget *window,
                  GdkEvent  *event,
-                 GtkWidget *widget)
+                 CtkWidget *widget)
 {
   ctk_main_quit ();
 
@@ -140,7 +140,7 @@ delete_event_cb (GtkWidget *window,
 void
 testing_show_widget (gpointer widget)
 {
-  GtkWidget *window;
+  CtkWidget *window;
   GLogFunc orig_log_handler;
 
   g_assert (GTK_IS_WIDGET (widget));

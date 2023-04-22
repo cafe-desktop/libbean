@@ -21,8 +21,8 @@
 
 from gi.repository import GObject
 from gi.repository import Bean
-from gi.repository import BeanGtk
-from gi.repository import Gtk
+from gi.repository import BeanCtk
+from gi.repository import Ctk
 
 LABEL_STRING="Python Says Hello!"
 
@@ -34,7 +34,7 @@ class PythonHelloPlugin(GObject.Object, Bean.Activatable):
     def do_activate(self):
         window = self.object
         print("PythonHelloPlugin.do_activate", repr(window))
-        window._pythonhello_label = Gtk.Label()
+        window._pythonhello_label = Ctk.Label()
         window._pythonhello_label.set_text(LABEL_STRING)
         window._pythonhello_label.show()
         window.get_child().pack_start(window._pythonhello_label, True, True, 0)
@@ -48,10 +48,10 @@ class PythonHelloPlugin(GObject.Object, Bean.Activatable):
     def do_update_state(self):
         print("PythonHelloPlugin.do_update_state", repr(self.object))
 
-class PythonHelloConfigurable(GObject.Object, BeanGtk.Configurable):
+class PythonHelloConfigurable(GObject.Object, BeanCtk.Configurable):
     __gtype_name__ = 'PythonHelloConfigurable'
 
     def do_create_configure_widget(self):
-        return Gtk.Label.new("Python Hello configure widget")
+        return Ctk.Label.new("Python Hello configure widget")
 
 # ex:set ts=4 et sw=4 ai:

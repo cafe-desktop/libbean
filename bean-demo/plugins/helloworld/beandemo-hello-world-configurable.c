@@ -33,7 +33,7 @@
 
 #include "beandemo-hello-world-configurable.h"
 
-static void bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
+static void bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
                                 beandemo_hello_world_configurable,
@@ -48,8 +48,8 @@ beandemo_hello_world_configurable_init (BeanDemoHelloWorldConfigurable *plugin)
   g_debug ("%s", G_STRFUNC);
 }
 
-static GtkWidget *
-beandemo_hello_world_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
+static CtkWidget *
+beandemo_hello_world_configurable_create_configure_widget (BeanCtkConfigurable *configurable)
 {
   g_debug ("%s", G_STRFUNC);
 
@@ -62,7 +62,7 @@ beandemo_hello_world_configurable_class_init (BeanDemoHelloWorldConfigurableClas
 }
 
 static void
-bean_ctk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
+bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = beandemo_hello_world_configurable_create_configure_widget;
 }

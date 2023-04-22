@@ -39,8 +39,8 @@ typedef struct _BeanDemoSecondTimeClass  BeanDemoSecondTimeClass;
 struct _BeanDemoSecondTime {
   BeanExtensionBase parent_instance;
 
-  GtkWidget *window;
-  GtkWidget *label;
+  CtkWidget *window;
+  CtkWidget *label;
 };
 
 struct _BeanDemoSecondTimeClass {

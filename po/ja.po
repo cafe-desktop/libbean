@@ -164,5 +164,5 @@ msgstr "設定"
 #~ msgid "Show Builtin"
 #~ msgstr "組み込みプラグインを表示する"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"

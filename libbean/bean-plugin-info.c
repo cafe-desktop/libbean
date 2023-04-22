@@ -383,7 +383,7 @@ bean_plugin_info_is_available (const BeanPluginInfo  *info,
  * Check if the plugin is a builtin plugin.
  *
  * A builtin plugin is a plugin which cannot be enabled or disabled by the
- * user through a plugin manager (like #BeanGtkPluginManager). Loading or
+ * user through a plugin manager (like #BeanCtkPluginManager). Loading or
  * unloading such plugins is the responsibility of the application alone.
  * Most applications will usually load those plugins immediately after
  * the initialization of the #BeanEngine.
@@ -408,7 +408,7 @@ bean_plugin_info_is_builtin (const BeanPluginInfo *info)
  * Check if the plugin is a hidden plugin.
  *
  * A hidden plugin is a plugin which cannot be seen by a
- * user through a plugin manager (like #BeanGtkPluginManager). Loading and
+ * user through a plugin manager (like #BeanCtkPluginManager). Loading and
  * unloading such plugins is the responsibility of the application alone or
  * through plugins that depend on them.
  *

@@ -41,52 +41,52 @@ typedef enum {
   BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN,
   BEAN_GTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN,
   BEAN_GTK_PLUGIN_MANAGER_STORE_N_COLUMNS
-} BeanGtkPluginManagerStoreColumns;
+} BeanCtkPluginManagerStoreColumns;
 
 /*
  * Type checking and casting macros
  */
 #define BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE            (bean_ctk_plugin_manager_store_get_type())
-#define BEAN_GTK_PLUGIN_MANAGER_STORE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStore))
-#define BEAN_GTK_PLUGIN_MANAGER_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStoreClass))
+#define BEAN_GTK_PLUGIN_MANAGER_STORE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanCtkPluginManagerStore))
+#define BEAN_GTK_PLUGIN_MANAGER_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanCtkPluginManagerStoreClass))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_STORE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE))
 #define BEAN_GTK_IS_PLUGIN_MANAGER_STORE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE))
-#define BEAN_GTK_PLUGIN_MANAGER_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanGtkPluginManagerStoreClass))
+#define BEAN_GTK_PLUGIN_MANAGER_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), BEAN_GTK_TYPE_PLUGIN_MANAGER_STORE, BeanCtkPluginManagerStoreClass))
 
-typedef struct _BeanGtkPluginManagerStore         BeanGtkPluginManagerStore;
-typedef struct _BeanGtkPluginManagerStoreClass    BeanGtkPluginManagerStoreClass;
+typedef struct _BeanCtkPluginManagerStore         BeanCtkPluginManagerStore;
+typedef struct _BeanCtkPluginManagerStoreClass    BeanCtkPluginManagerStoreClass;
 
-struct _BeanGtkPluginManagerStore {
-  GtkListStore parent;
+struct _BeanCtkPluginManagerStore {
+  CtkListStore parent;
 };
 
-struct _BeanGtkPluginManagerStoreClass {
-  GtkListStoreClass parent_class;
+struct _BeanCtkPluginManagerStoreClass {
+  CtkListStoreClass parent_class;
 };
 
 GType                       bean_ctk_plugin_manager_store_get_type              (void) G_GNUC_CONST;
-BeanGtkPluginManagerStore  *bean_ctk_plugin_manager_store_new                   (BeanEngine                *engine);
+BeanCtkPluginManagerStore  *bean_ctk_plugin_manager_store_new                   (BeanEngine                *engine);
 
-void                        bean_ctk_plugin_manager_store_reload                (BeanGtkPluginManagerStore *store);
+void                        bean_ctk_plugin_manager_store_reload                (BeanCtkPluginManagerStore *store);
 
-void                        bean_ctk_plugin_manager_store_set_enabled           (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter,
+void                        bean_ctk_plugin_manager_store_set_enabled           (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter,
                                                                                  gboolean                   enabled);
-gboolean                    bean_ctk_plugin_manager_store_get_enabled           (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter);
-void                        bean_ctk_plugin_manager_store_set_all_enabled       (BeanGtkPluginManagerStore *store,
+gboolean                    bean_ctk_plugin_manager_store_get_enabled           (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter);
+void                        bean_ctk_plugin_manager_store_set_all_enabled       (BeanCtkPluginManagerStore *store,
                                                                                  gboolean                  enabled);
-void                        bean_ctk_plugin_manager_store_toggle_enabled        (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter);
+void                        bean_ctk_plugin_manager_store_toggle_enabled        (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter);
 
-gboolean                    bean_ctk_plugin_manager_store_can_enable            (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter);
+gboolean                    bean_ctk_plugin_manager_store_can_enable            (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter);
 
-BeanPluginInfo             *bean_ctk_plugin_manager_store_get_plugin            (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter);
+BeanPluginInfo             *bean_ctk_plugin_manager_store_get_plugin            (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter);
 
-gboolean                    bean_ctk_plugin_manager_store_get_iter_from_plugin  (BeanGtkPluginManagerStore *store,
-                                                                                 GtkTreeIter               *iter,
+gboolean                    bean_ctk_plugin_manager_store_get_iter_from_plugin  (BeanCtkPluginManagerStore *store,
+                                                                                 CtkTreeIter               *iter,
                                                                                  const BeanPluginInfo      *info);
 G_END_DECLS
 

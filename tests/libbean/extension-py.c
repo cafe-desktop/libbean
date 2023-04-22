@@ -73,7 +73,7 @@ test_extension_py_activatable_subject_refcount (BeanEngine     *engine,
   GObject *object;
   PyObject *wrapper;
 
-  /* Create the 'object' property value, to be similar to a GtkWindow
+  /* Create the 'object' property value, to be similar to a CtkWindow
    * instance: a sunk GInitiallyUnowned object. */
   object = g_object_new (G_TYPE_INITIALLY_UNOWNED, NULL);
   g_object_ref_sink (object);

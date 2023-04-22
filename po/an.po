@@ -24,7 +24,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "Chestor de complementos"
 
-#. Translators: What BeanGtkPluginManagerView to use
+#. Translators: What BeanCtkPluginManagerView to use
 #: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Veyer"
@@ -39,8 +39,8 @@ msgid "Show Builtin"
 msgstr "Amostrar incluyius"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #: ../libbean/bean-engine.c:976
 #, c-format

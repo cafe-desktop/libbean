@@ -173,8 +173,8 @@ msgstr "偏好設定"
 #~ msgid "Show Builtin"
 #~ msgstr "顯示內建"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "設定(_o)"

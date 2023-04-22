@@ -24,7 +24,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "ప్లగిన్ నిర్వాహకం"
 
-#. Translators: What BeanGtkPluginManagerView to use
+#. Translators: What BeanCtkPluginManagerView to use
 #: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "వీక్షణం"
@@ -39,7 +39,7 @@ msgid "Show Builtin"
 msgstr "బిల్ట్ఇన్ చూపించు"
 
 #: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Gtk"
+msgid "Bean Ctk"
 msgstr "పియాస్ జిటికె"
 
 #: ../libbean/bean-engine.c:856

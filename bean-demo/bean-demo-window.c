@@ -92,7 +92,7 @@ demo_window_class_init (DemoWindowClass *klass)
   klass->n_windows = 0;
 }
 
-GtkWidget *
+CtkWidget *
 demo_window_new (void)
 {
   return GTK_WIDGET (g_object_new (DEMO_TYPE_WINDOW, NULL));

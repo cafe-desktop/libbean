@@ -166,8 +166,8 @@ msgstr "首选项"
 #~ msgid "Show Builtin"
 #~ msgstr "显示内置插件"
 
-#~ msgid "Bean Gtk"
-#~ msgstr "Bean Gtk"
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "配置(_O)"

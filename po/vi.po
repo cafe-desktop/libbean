@@ -36,8 +36,8 @@ msgid "Show Builtin"
 msgstr "Hiện dựng sẵn"
 
 #: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Bean Gtk"
-msgstr "Bean Gtk"
+msgid "Bean Ctk"
+msgstr "Bean Ctk"
 
 #: ../libbean/bean-engine.c:789
 #, c-format

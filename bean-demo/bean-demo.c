@@ -34,7 +34,7 @@
 #include "bean-demo-window.h"
 
 gboolean run_from_build_dir;
-static GtkWidget *main_window;
+static CtkWidget *main_window;
 static int n_windows;
 
 static GOptionEntry demo_args[] = {
@@ -47,21 +47,21 @@ static GOptionEntry demo_args[] = {
 static void
 create_new_window (void)
 {
-  GtkWidget *window;
+  CtkWidget *window;
 
   window = demo_window_new ();
   ctk_widget_show_all (window);
 }
 
-static GtkWidget *
+static CtkWidget *
 create_main_window (void)
 {
-  GtkWidget *window;
-  GtkWidget *box;
-  GtkWidget *manager;
-  GtkWidget *scrolled_window;
-  GtkWidget *button_box;
-  GtkWidget *button;
+  CtkWidget *window;
+  CtkWidget *box;
+  CtkWidget *manager;
+  CtkWidget *scrolled_window;
+  CtkWidget *button_box;
+  CtkWidget *button;
 
   ctk_window_set_default_icon_name ("libbean-plugin");
 
