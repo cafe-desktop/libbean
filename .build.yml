@@ -4,7 +4,6 @@
 requires:
   debian:
     - aptitude
-    - adwaita-icon-theme
     - clang-tools
     - cppcheck
     - expect #required for unbuffer
