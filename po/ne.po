@@ -41,7 +41,7 @@ msgstr "ब्युल्टइन वस्तु"
 #: ../data/glade/libbean-ctk.xml.in.h:7
 #, fuzzy
 msgid "Bean Ctk"
-msgstr "ctk-doc"
+msgstr "gtk-doc"
 
 #: ../libbean/bean-engine.c:856
 #, c-format
