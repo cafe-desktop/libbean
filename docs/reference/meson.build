@@ -2,7 +2,7 @@ glib_prefix = glib_dep.get_pkgconfig_variable('prefix')
 glib_docpath = join_paths(glib_prefix, 'share', 'ctk-doc', 'html')
 
 ctk_prefix = ctk_dep.get_pkgconfig_variable('prefix')
-ctk_docpath = join_paths(ctk_prefix, 'share', 'ctk-doc', 'html')
+gtk_docpath = join_paths(ctk_prefix, 'share', 'ctk-doc', 'html')
 
 libbean_reference_ignored_h = [
   'gconstructor.h',
@@ -76,7 +76,7 @@ if build_ctk_widgetry == true
   ]
 
   libbean_reference_fixxref_args += [
-    '--extra-dir=@0@'.format(join_paths(ctk_docpath, 'ctk')),
+    '--extra-dir=@0@'.format(join_paths(gtk_docpath, 'ctk')),
   ]
 endif
 

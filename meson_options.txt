@@ -27,6 +27,6 @@ option('demos',
        type: 'boolean', value: true,
        description: 'Build demo programs')
 
-option('ctk_doc',
+option('gtk_doc',
        type: 'boolean', value: false,
        description: 'Build reference manual (requires ctk-doc)')

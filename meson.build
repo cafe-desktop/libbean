@@ -91,7 +91,7 @@ glib_req_version = '2.38.0'
 glib_req = '>= @0@'.format(glib_req_version)
 introspection_req = '>= 1.39.0'
 ctk_req = '>= 3.0.0'
-ctk_doc_req = '>= 1.11'
+gtk_doc_req = '>= 1.11'
 python2_req = '>= 2.5.2'
 python3_req = '>= 3.2.0'
 pygobject_req = '>= 3.2.0'
@@ -106,7 +106,7 @@ gio_dep = dependency('gio-2.0', version: glib_req)
 introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req)
 ctk_dep = dependency('ctk+-3.0', version: ctk_req, required: false)
 
-ctk_doc_dep = dependency('ctk-doc', version: ctk_doc_req, required: false)
+gtk_doc_dep = dependency('ctk-doc', version: gtk_doc_req, required: false)
 gladeui_dep = dependency('gladeui-2.0', required: false)
 
 # From python 3.8 we neeed python3-embed
@@ -187,9 +187,9 @@ configure_file(
 )
 
 # Options
-build_ctk_doc = get_option('ctk_doc')
-if build_ctk_doc and not ctk_doc_dep.found()
-  build_ctk_doc = false
+build_gtk_doc = get_option('gtk_doc')
+if build_gtk_doc and not gtk_doc_dep.found()
+  build_gtk_doc = false
 endif
 
 install_glade_catalog = get_option('glade_catalog')
@@ -264,7 +264,7 @@ summary = [
   'libbean @0@ (@1@)'.format(version, api_version),
   '',
   '             Demos: @0@'.format(build_demos),
-  '     Documentation: @0@'.format(build_ctk_doc),
+  '     Documentation: @0@'.format(build_gtk_doc),
   '     Glade catalog: @0@'.format(install_glade_catalog),
   '     CTK+ widgetry: @0@'.format(build_ctk_widgetry),
   '     Introspection: @0@'.format(generate_gir),
