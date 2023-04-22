@@ -167,8 +167,8 @@ msgstr "Možnosti"
 #~ msgid "Show Builtin"
 #~ msgstr "Pokaži vgrajene"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "An error occurred: "
 #~ msgstr "Prišlo je do napake:"

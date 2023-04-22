@@ -25,11 +25,11 @@
 
 #include "bean-plugin-info.h"
 
-struct _PeasPluginInfo {
+struct _BeanPluginInfo {
   /*< private >*/
   gint refcount;
 
-  /* Used and managed by PeasPluginLoader */
+  /* Used and managed by BeanPluginLoader */
   gpointer loader_data;
 
   gchar *filename;
@@ -66,11 +66,11 @@ struct _PeasPluginInfo {
   guint hidden : 1;
 };
 
-PeasPluginInfo *_bean_plugin_info_new   (const gchar    *filename,
+BeanPluginInfo *_bean_plugin_info_new   (const gchar    *filename,
                                          const gchar    *module_dir,
                                          const gchar    *data_dir);
-PeasPluginInfo *_bean_plugin_info_ref   (PeasPluginInfo *info);
-void            _bean_plugin_info_unref (PeasPluginInfo *info);
+BeanPluginInfo *_bean_plugin_info_ref   (BeanPluginInfo *info);
+void            _bean_plugin_info_unref (BeanPluginInfo *info);
 
 
 #endif /* __PEAS_PLUGIN_INFO_PRIV_H__ */

@@ -173,8 +173,8 @@ msgstr "Indstillinger"
 #~ msgid "Show Builtin"
 #~ msgstr "Vis builtin"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Konfigurer"

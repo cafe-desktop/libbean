@@ -21,7 +21,7 @@
 
 #if 0
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
 }
 #endif

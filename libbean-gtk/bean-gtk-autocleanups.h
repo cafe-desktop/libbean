@@ -32,9 +32,9 @@ G_BEGIN_DECLS
 #ifndef __GI_SCANNER__
 #if GLIB_CHECK_VERSION (2, 44, 0)
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasGtkConfigurable, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasGtkPluginManager, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasGtkPluginManagerView, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanGtkConfigurable, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanGtkPluginManager, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanGtkPluginManagerView, g_object_unref)
 
 #endif /* GLIB_CHECK_VERSION (2, 44, 0) */
 #endif /* __GI_SCANNER__ */

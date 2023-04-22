@@ -37,15 +37,15 @@ typedef struct _TestingBuiltinConfigurable         TestingBuiltinConfigurable;
 typedef struct _TestingBuiltinConfigurableClass    TestingBuiltinConfigurableClass;
 
 struct _TestingBuiltinConfigurable {
-  PeasExtensionBase parent_instance;
+  BeanExtensionBase parent_instance;
 };
 
 struct _TestingBuiltinConfigurableClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 GType                 testing_builtin_configurable_get_type (void) G_GNUC_CONST;
-G_MODULE_EXPORT void  bean_register_types                   (PeasObjectModule *module);
+G_MODULE_EXPORT void  bean_register_types                   (BeanObjectModule *module);
 
 G_END_DECLS
 

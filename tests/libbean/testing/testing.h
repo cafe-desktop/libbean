@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 void        testing_init             (gint    *argc,
                                       gchar ***argv);
 
-PeasEngine *testing_engine_new_full  (gboolean nonglobal_loaders);
+BeanEngine *testing_engine_new_full  (gboolean nonglobal_loaders);
 
 #define testing_engine_new() (testing_engine_new_full (FALSE))
 

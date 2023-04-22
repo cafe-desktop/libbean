@@ -29,33 +29,33 @@
  * SECTION:bean-gtk-configurable
  * @short_description: Interface for providing a plugin configuration UI.
  *
- * The #PeasGtkConfigurable interface will allow a plugin to provide a
+ * The #BeanGtkConfigurable interface will allow a plugin to provide a
  * graphical interface for the user to configure the plugin through the
- * #PeasGtkPluginManager: the #PeasGtkPluginManager will make its
+ * #BeanGtkPluginManager: the #BeanGtkPluginManager will make its
  * “Configure Plugin” button active when the selected plugin implements
- * the #PeasGtkConfigurable interface.
+ * the #BeanGtkConfigurable interface.
  *
- * To allow plugin configuration from the #PeasGtkPluginManager, the
+ * To allow plugin configuration from the #BeanGtkPluginManager, the
  * plugin writer will just need to implement the
- * PeasGtkConfigurableInterface.create_configure_widget() method.
+ * BeanGtkConfigurableInterface.create_configure_widget() method.
  **/
 
-G_DEFINE_INTERFACE(PeasGtkConfigurable, bean_gtk_configurable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeanGtkConfigurable, bean_gtk_configurable, G_TYPE_OBJECT)
 
 static void
-bean_gtk_configurable_default_init (PeasGtkConfigurableInterface *iface)
+bean_gtk_configurable_default_init (BeanGtkConfigurableInterface *iface)
 {
 }
 
 /**
  * bean_gtk_configurable_create_configure_widget:
- * @configurable: A #PeasGtkConfigurable
+ * @configurable: A #BeanGtkConfigurable
  *
  * Creates the configure widget for the plugin. The returned widget
  * should allow configuring all the relevant aspects of the plugin, and should
  * allow instant-apply, as promoted by the Gnome Human Interface Guidelines.
  *
- * #PeasGtkPluginManager will embed the returned widget into a dialog box,
+ * #BeanGtkPluginManager will embed the returned widget into a dialog box,
  * but you shouldn't take this behaviour for granted as other implementations
  * of a plugin manager UI might do otherwise.
  *
@@ -64,9 +64,9 @@ bean_gtk_configurable_default_init (PeasGtkConfigurableInterface *iface)
  * Returns: (transfer full): A #GtkWidget used for configuration.
  */
 GtkWidget *
-bean_gtk_configurable_create_configure_widget (PeasGtkConfigurable *configurable)
+bean_gtk_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
 {
-  PeasGtkConfigurableInterface *iface;
+  BeanGtkConfigurableInterface *iface;
 
   g_return_val_if_fail (PEAS_GTK_IS_CONFIGURABLE (configurable), NULL);
 

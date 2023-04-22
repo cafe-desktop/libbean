@@ -170,5 +170,5 @@ msgstr "Asetukset"
 #~ msgid "Show Builtin"
 #~ msgstr "Näytä sisäänrakennetut"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"

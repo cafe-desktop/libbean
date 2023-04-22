@@ -68,7 +68,7 @@ create_main_window (void)
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
   gtk_container_set_border_width (GTK_CONTAINER (window), 6);
-  gtk_window_set_title (GTK_WINDOW (window), "Peas Demo");
+  gtk_window_set_title (GTK_WINDOW (window), "Bean Demo");
 
   box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_add (GTK_CONTAINER (window), box);
@@ -105,7 +105,7 @@ main (int    argc,
   GOptionContext *option_context;
   GError *error = NULL;
   gchar *plugin_dir;
-  PeasEngine *engine;
+  BeanEngine *engine;
 
   setlocale (LC_ALL, "");
   /* Normally, we'd need to call bindtextdomain() here. But that would require

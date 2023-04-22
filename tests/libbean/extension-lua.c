@@ -38,11 +38,11 @@
  * will occur if the garbage collector runs preemptively.
  */
 static void
-set_garbage_collector_state (PeasEngine     *engine,
-                             PeasPluginInfo *info,
+set_garbage_collector_state (BeanEngine     *engine,
+                             BeanPluginInfo *info,
                              gboolean        start)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
 
   extension = bean_engine_create_extension (engine, info,
                                             PEAS_TYPE_ACTIVATABLE,
@@ -63,10 +63,10 @@ set_garbage_collector_state (PeasEngine     *engine,
 }
 
 static void
-test_extension_lua_instance_refcount (PeasEngine     *engine,
-                                      PeasPluginInfo *info)
+test_extension_lua_instance_refcount (BeanEngine     *engine,
+                                      BeanPluginInfo *info)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
 
   set_garbage_collector_state (engine, info, FALSE);
 
@@ -102,10 +102,10 @@ test_extension_lua_instance_refcount (PeasEngine     *engine,
 }
 
 static void
-test_extension_lua_activatable_subject_refcount (PeasEngine     *engine,
-                                                 PeasPluginInfo *info)
+test_extension_lua_activatable_subject_refcount (BeanEngine     *engine,
+                                                 BeanPluginInfo *info)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
   GObject *object;
 
   set_garbage_collector_state (engine, info, FALSE);
@@ -149,9 +149,9 @@ test_extension_lua_activatable_subject_refcount (PeasEngine     *engine,
 }
 
 static void
-test_extension_lua_nonexistent (PeasEngine *engine)
+test_extension_lua_nonexistent (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Error loading plugin "
                               "'extension-lua51-nonexistent'*");

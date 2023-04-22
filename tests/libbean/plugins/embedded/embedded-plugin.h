@@ -37,15 +37,15 @@ typedef struct _TestingEmbeddedPlugin         TestingEmbeddedPlugin;
 typedef struct _TestingEmbeddedPluginClass    TestingEmbeddedPluginClass;
 
 struct _TestingEmbeddedPlugin {
-  PeasExtensionBase parent_instance;
+  BeanExtensionBase parent_instance;
 };
 
 struct _TestingEmbeddedPluginClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 GType                testing_embedded_plugin_get_type       (void) G_GNUC_CONST;
-G_MODULE_EXPORT void testing_embedded_plugin_register_types (PeasObjectModule *module);
+G_MODULE_EXPORT void testing_embedded_plugin_register_types (BeanObjectModule *module);
 
 G_END_DECLS
 

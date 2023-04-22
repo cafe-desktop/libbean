@@ -33,10 +33,10 @@
 
 
 static void
-test_extension_c_embedded (PeasEngine *engine)
+test_extension_c_embedded (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
-  PeasExtension *extension;
+  BeanPluginInfo *info;
+  BeanExtension *extension;
 
   info = bean_engine_get_plugin_info (engine, "embedded");
 
@@ -75,9 +75,9 @@ test_extension_c_embedded (PeasEngine *engine)
 }
 
 static void
-test_extension_c_embedded_missing_symbol (PeasEngine *engine)
+test_extension_c_embedded_missing_symbol (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Failed to get '*does_not_exist*' "
                               "for module 'embedded-missing-symbol':*");
@@ -89,10 +89,10 @@ test_extension_c_embedded_missing_symbol (PeasEngine *engine)
 }
 
 static void
-test_extension_c_instance_refcount (PeasEngine     *engine,
-                                    PeasPluginInfo *info)
+test_extension_c_instance_refcount (BeanEngine     *engine,
+                                    BeanPluginInfo *info)
 {
-  PeasExtension *extension;
+  BeanExtension *extension;
 
   extension = bean_engine_create_extension (engine, info,
                                             INTROSPECTION_TYPE_BASE,
@@ -101,7 +101,7 @@ test_extension_c_instance_refcount (PeasEngine     *engine,
   g_assert (PEAS_IS_EXTENSION (extension));
 
   /* The refcount of the returned object should be 1:
-   *  - one ref for the PeasExtension
+   *  - one ref for the BeanExtension
    */
   g_assert_cmpint (extension->ref_count, ==, 1);
 
@@ -109,9 +109,9 @@ test_extension_c_instance_refcount (PeasEngine     *engine,
 }
 
 static void
-test_extension_c_nonexistent (PeasEngine *engine)
+test_extension_c_nonexistent (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Failed to load module 'extension-c-nonexistent'*");
   testing_util_push_log_hook ("Error loading plugin 'extension-c-nonexistent'");
@@ -122,11 +122,11 @@ test_extension_c_nonexistent (PeasEngine *engine)
 }
 
 static void
-test_extension_c_local_linkage (PeasEngine     *engine,
-                                PeasPluginInfo *info)
+test_extension_c_local_linkage (BeanEngine     *engine,
+                                BeanPluginInfo *info)
 {
-  PeasPluginInfo *loadable_info;
-  PeasExtension *c_extension, *loadable_extension;
+  BeanPluginInfo *loadable_info;
+  BeanExtension *c_extension, *loadable_extension;
   gpointer c_global_symbol, loadable_global_symbol;
 
   loadable_info = bean_engine_get_plugin_info (engine, "loadable");
@@ -160,9 +160,9 @@ test_extension_c_local_linkage (PeasEngine     *engine,
 }
 
 static void
-test_extension_c_missing_symbol (PeasEngine *engine)
+test_extension_c_missing_symbol (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Failed to get 'bean_register_types' for "
                               "module 'extension-c-missing-symbol'*");

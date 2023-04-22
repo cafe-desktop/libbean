@@ -34,7 +34,7 @@
  * SECTION:bean-object-module
  * @short_description: Type module which allows extension registration.
  *
- * #PeasObjectModule is a subclass of #GTypeModule which allows registration
+ * #BeanObjectModule is a subclass of #GTypeModule which allows registration
  * of extensions.  It will be used by C extensions implementors to register
  * extension implementations from within the bean_register_types module
  * function.
@@ -43,7 +43,7 @@
  * and not just an Interface #GType.
  **/
 
-typedef void (*PeasObjectModuleRegisterFunc) (PeasObjectModule *module);
+typedef void (*BeanObjectModuleRegisterFunc) (BeanObjectModule *module);
 
 enum {
   PROP_0,
@@ -59,15 +59,15 @@ static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 typedef struct {
   GType exten_type;
-  PeasFactoryFunc func;
+  BeanFactoryFunc func;
   gpointer user_data;
   GDestroyNotify destroy_func;
 } ExtensionImplementation;
 
-struct _PeasObjectModulePrivate {
+struct _BeanObjectModulePrivate {
   GModule *library;
 
-  PeasObjectModuleRegisterFunc register_func;
+  BeanObjectModuleRegisterFunc register_func;
   GArray *implementations;
 
   gchar *path;
@@ -78,7 +78,7 @@ struct _PeasObjectModulePrivate {
   guint local_linkage : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasObjectModule,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanObjectModule,
                             bean_object_module,
                             G_TYPE_TYPE_MODULE)
 
@@ -92,8 +92,8 @@ static const gchar *intern_plugin_info = NULL;
 static gboolean
 bean_object_module_load (GTypeModule *gmodule)
 {
-  PeasObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (priv->module_name != NULL, FALSE);
 
@@ -170,8 +170,8 @@ bean_object_module_load (GTypeModule *gmodule)
 static void
 bean_object_module_unload (GTypeModule *gmodule)
 {
-  PeasObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModule *module = PEAS_OBJECT_MODULE (gmodule);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
   ExtensionImplementation *impls;
   guint i;
 
@@ -192,9 +192,9 @@ bean_object_module_unload (GTypeModule *gmodule)
 }
 
 static void
-bean_object_module_init (PeasObjectModule *module)
+bean_object_module_init (BeanObjectModule *module)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   priv->implementations = g_array_new (FALSE, FALSE,
                                        sizeof (ExtensionImplementation));
@@ -203,8 +203,8 @@ bean_object_module_init (PeasObjectModule *module)
 static void
 bean_object_module_finalize (GObject *object)
 {
-  PeasObjectModule *module = PEAS_OBJECT_MODULE (object);
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_free (priv->path);
   g_free (priv->module_name);
@@ -220,8 +220,8 @@ bean_object_module_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  PeasObjectModule *module = PEAS_OBJECT_MODULE (object);
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   switch (prop_id)
     {
@@ -252,8 +252,8 @@ bean_object_module_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  PeasObjectModule *module = PEAS_OBJECT_MODULE (object);
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModule *module = PEAS_OBJECT_MODULE (object);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   switch (prop_id)
     {
@@ -281,7 +281,7 @@ bean_object_module_set_property (GObject      *object,
 }
 
 static void
-bean_object_module_class_init (PeasObjectModuleClass *klass)
+bean_object_module_class_init (BeanObjectModuleClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GTypeModuleClass *module_class = G_TYPE_MODULE_CLASS (klass);
@@ -332,7 +332,7 @@ bean_object_module_class_init (PeasObjectModuleClass *klass)
                           G_PARAM_STATIC_STRINGS);
 
   /**
-   * PeasObjectModule:local-linkage
+   * BeanObjectModule:local-linkage
    *
    * This property indicates whether the module is loaded with
    * local linkage, i.e. #G_MODULE_BIND_LOCAL.
@@ -357,11 +357,11 @@ bean_object_module_class_init (PeasObjectModuleClass *klass)
  * @path: The path.
  * @resident: If the module should be resident.
  *
- * Creates a new #PeasObjectModule.
+ * Creates a new #BeanObjectModule.
  *
- * Return value: a new #PeasObjectModule.
+ * Return value: a new #BeanObjectModule.
  */
-PeasObjectModule *
+BeanObjectModule *
 bean_object_module_new (const gchar *module_name,
                         const gchar *path,
                         gboolean     resident)
@@ -383,13 +383,13 @@ bean_object_module_new (const gchar *module_name,
  * @resident: If the module should be resident.
  * @local_linkage: Whether to load the module with local linkage.
  *
- * Creates a new #PeasObjectModule.
+ * Creates a new #BeanObjectModule.
  *
- * Return value: a new #PeasObjectModule.
+ * Return value: a new #BeanObjectModule.
  *
  * Since 1.14
  */
-PeasObjectModule *
+BeanObjectModule *
 bean_object_module_new_full (const gchar *module_name,
                              const gchar *path,
                              gboolean     resident,
@@ -410,13 +410,13 @@ bean_object_module_new_full (const gchar *module_name,
  * bean_object_module_new_embedded: (skip)
  * @module_name: The module name.
  *
- * Creates a new #PeasObjectModule for an embedded plugin.
+ * Creates a new #BeanObjectModule for an embedded plugin.
  *
- * Return value: a new #PeasObjectModule.
+ * Return value: a new #BeanObjectModule.
  *
  * Since: 1.18
  */
-PeasObjectModule *
+BeanObjectModule *
 bean_object_module_new_embedded (const gchar *module_name,
                                  const gchar *symbol)
 {
@@ -433,14 +433,14 @@ bean_object_module_new_embedded (const gchar *module_name,
 
 /**
  * bean_object_module_create_object: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  * @exten_type: The #GType of the extension.
  * @n_parameters: The number of paramteters.
  * @parameters: (array length=n_parameters): The parameters.
  *
  * Creates an object for the @exten_type passing @n_parameters
- * and @parameters to the #PeasFactoryFunc. If @module does
- * not provide a #PeasFactoryFunc for @exten_type then
+ * and @parameters to the #BeanFactoryFunc. If @module does
+ * not provide a #BeanFactoryFunc for @exten_type then
  * %NULL is returned.
  *
  * Since libbean 1.22, @exten_type can be an Abstract #GType
@@ -449,12 +449,12 @@ bean_object_module_new_embedded (const gchar *module_name,
  * Return value: (transfer full): The created object, or %NULL.
  */
 GObject *
-bean_object_module_create_object (PeasObjectModule *module,
+bean_object_module_create_object (BeanObjectModule *module,
                                   GType             exten_type,
                                   guint             n_parameters,
                                   GParameter       *parameters)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
   guint i;
   ExtensionImplementation *impls;
 
@@ -474,7 +474,7 @@ bean_object_module_create_object (PeasObjectModule *module,
 
 /**
  * bean_object_module_provides_object: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  * @exten_type: The #GType of the extension.
  *
  * Determines if the module provides an extension for @exten_type.
@@ -485,10 +485,10 @@ bean_object_module_create_object (PeasObjectModule *module,
  * Return value: if the module provides an extension for @exten_type.
  */
 gboolean
-bean_object_module_provides_object (PeasObjectModule *module,
+bean_object_module_provides_object (BeanObjectModule *module,
                                     GType             exten_type)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
   guint i;
   ExtensionImplementation *impls;
 
@@ -508,16 +508,16 @@ bean_object_module_provides_object (PeasObjectModule *module,
 
 /**
  * bean_object_module_get_path: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  *
  * Gets the path.
  *
  * Return value: the path.
  */
 const gchar *
-bean_object_module_get_path (PeasObjectModule *module)
+bean_object_module_get_path (BeanObjectModule *module)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
 
@@ -526,16 +526,16 @@ bean_object_module_get_path (PeasObjectModule *module)
 
 /**
  * bean_object_module_get_module_name: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  *
  * Gets the module name.
  *
  * Return value: the module name.
  */
 const gchar *
-bean_object_module_get_module_name (PeasObjectModule *module)
+bean_object_module_get_module_name (BeanObjectModule *module)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
 
@@ -544,7 +544,7 @@ bean_object_module_get_module_name (PeasObjectModule *module)
 
 /**
  * bean_object_module_get_symbol: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  *
  * Gets the symbol name used to register extension implementations.
  *
@@ -553,9 +553,9 @@ bean_object_module_get_module_name (PeasObjectModule *module)
  * Since: 1.18
  */
 const gchar *
-bean_object_module_get_symbol (PeasObjectModule *module)
+bean_object_module_get_symbol (BeanObjectModule *module)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
 
@@ -564,16 +564,16 @@ bean_object_module_get_symbol (PeasObjectModule *module)
 
 /**
  * bean_object_module_get_library: (skip)
- * @module: A #PeasObjectModule.
+ * @module: A #BeanObjectModule.
  *
  * Gets the library.
  *
  * Return value: the library.
  */
 GModule *
-bean_object_module_get_library (PeasObjectModule *module)
+bean_object_module_get_library (BeanObjectModule *module)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
 
   g_return_val_if_fail (PEAS_IS_OBJECT_MODULE (module), NULL);
 
@@ -582,9 +582,9 @@ bean_object_module_get_library (PeasObjectModule *module)
 
 /**
  * bean_object_module_register_extension_factory:
- * @module: Your plugin's #PeasObjectModule.
+ * @module: Your plugin's #BeanObjectModule.
  * @exten_type: The #GType of the extension you implement.
- * @factory_func: The #PeasFactoryFunc that will create the @exten_type
+ * @factory_func: The #BeanFactoryFunc that will create the @exten_type
  *   instance when requested.
  * @user_data: Data to pass to @func calls.
  * @destroy_func: A #GDestroyNotify for @user_data.
@@ -602,13 +602,13 @@ bean_object_module_get_library (PeasObjectModule *module)
  * and not just an Interface #GType.
  */
 void
-bean_object_module_register_extension_factory (PeasObjectModule *module,
+bean_object_module_register_extension_factory (BeanObjectModule *module,
                                                GType             exten_type,
-                                               PeasFactoryFunc   factory_func,
+                                               BeanFactoryFunc   factory_func,
                                                gpointer          user_data,
                                                GDestroyNotify    destroy_func)
 {
-  PeasObjectModulePrivate *priv = GET_PRIV (module);
+  BeanObjectModulePrivate *priv = GET_PRIV (module);
   ExtensionImplementation impl = { exten_type, factory_func, user_data, destroy_func };
 
   g_return_if_fail (PEAS_IS_OBJECT_MODULE (module));
@@ -654,7 +654,7 @@ create_gobject_from_type (guint       n_parameters,
 
 /**
  * bean_object_module_register_extension_type:
- * @module: Your plugin's #PeasObjectModule.
+ * @module: Your plugin's #BeanObjectModule.
  * @exten_type: The #GType of the extension you implement.
  * @impl_type: The #GType of your implementation of @exten_type.
  *
@@ -664,7 +664,7 @@ create_gobject_from_type (guint       n_parameters,
  * and not just an Interface #GType.
  */
 void
-bean_object_module_register_extension_type (PeasObjectModule *module,
+bean_object_module_register_extension_type (BeanObjectModule *module,
                                             GType             exten_type,
                                             GType             impl_type)
 {

@@ -37,21 +37,21 @@ typedef struct _TestingLoadablePlugin         TestingLoadablePlugin;
 typedef struct _TestingLoadablePluginClass    TestingLoadablePluginClass;
 
 struct _TestingLoadablePlugin {
-  /* Inherit from GObject and not PeasExtensionBase
+  /* Inherit from GObject and not BeanExtensionBase
    * to check that it is possible
    */
   GObject parent_instance;
 };
 
 struct _TestingLoadablePluginClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 /* Used by the local linkage test */
 G_MODULE_EXPORT gpointer global_symbol_clash;
 
 GType                 testing_loadable_plugin_get_type (void) G_GNUC_CONST;
-G_MODULE_EXPORT void  bean_register_types              (PeasObjectModule *module);
+G_MODULE_EXPORT void  bean_register_types              (BeanObjectModule *module);
 
 G_END_DECLS
 

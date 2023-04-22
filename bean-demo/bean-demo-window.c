@@ -28,18 +28,18 @@
 G_DEFINE_TYPE (DemoWindow, demo_window, GTK_TYPE_WINDOW)
 
 static void
-on_extension_added (PeasExtensionSet *set,
-                    PeasPluginInfo   *info,
-                    PeasExtension    *exten,
+on_extension_added (BeanExtensionSet *set,
+                    BeanPluginInfo   *info,
+                    BeanExtension    *exten,
                     DemoWindow       *dw)
 {
   bean_activatable_activate (PEAS_ACTIVATABLE (exten));
 }
 
 static void
-on_extension_removed (PeasExtensionSet *set,
-                      PeasPluginInfo   *info,
-                      PeasExtension    *exten,
+on_extension_removed (BeanExtensionSet *set,
+                      BeanPluginInfo   *info,
+                      BeanExtension    *exten,
                       DemoWindow       *dw)
 {
   bean_activatable_deactivate (PEAS_ACTIVATABLE (exten));
@@ -55,7 +55,7 @@ demo_window_init (DemoWindow *dw)
   gtk_box_set_homogeneous (GTK_BOX (dw->box), TRUE);
   gtk_container_add (GTK_CONTAINER (dw), dw->box);
 
-  label = g_strdup_printf ("Peas Window %d", ++(klass->n_windows));
+  label = g_strdup_printf ("Bean Window %d", ++(klass->n_windows));
   gtk_window_set_title (GTK_WINDOW (dw), label);
   g_free (label);
 
@@ -65,7 +65,7 @@ demo_window_init (DemoWindow *dw)
                                           NULL);
 
   bean_extension_set_foreach (dw->exten_set,
-                              (PeasExtensionSetForeachFunc) on_extension_added,
+                              (BeanExtensionSetForeachFunc) on_extension_added,
                               dw);
 
   g_signal_connect (dw->exten_set, "extension-added", G_CALLBACK (on_extension_added), dw);

@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 void        testing_util_envars          (void);
 void        testing_util_init            (void);
 
-PeasEngine *testing_util_engine_new_full (gboolean    nonglobal_loaders);
-void        testing_util_engine_free     (PeasEngine *engine);
+BeanEngine *testing_util_engine_new_full (gboolean    nonglobal_loaders);
+void        testing_util_engine_free     (BeanEngine *engine);
 
 int         testing_util_run_tests       (void);
 

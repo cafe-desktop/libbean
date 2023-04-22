@@ -33,34 +33,34 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define PEAS_TYPE_EXTENSION_BASE            (bean_extension_base_get_type())
-#define PEAS_EXTENSION_BASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_EXTENSION_BASE, PeasExtensionBase))
-#define PEAS_EXTENSION_BASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_EXTENSION_BASE, PeasExtensionBaseClass))
+#define PEAS_EXTENSION_BASE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBase))
+#define PEAS_EXTENSION_BASE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
 #define PEAS_IS_EXTENSION_BASE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), PEAS_TYPE_EXTENSION_BASE))
 #define PEAS_IS_EXTENSION_BASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_EXTENSION_BASE))
-#define PEAS_EXTENSION_BASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_EXTENSION_BASE, PeasExtensionBaseClass))
+#define PEAS_EXTENSION_BASE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_EXTENSION_BASE, BeanExtensionBaseClass))
 
 /**
- * PeasExtensionBase:
+ * BeanExtensionBase:
  *
  * Base class for C extensions.
  */
-typedef struct _PeasExtensionBase        PeasExtensionBase;
-typedef struct _PeasExtensionBaseClass   PeasExtensionBaseClass;
-typedef struct _PeasExtensionBasePrivate PeasExtensionBasePrivate;
+typedef struct _BeanExtensionBase        BeanExtensionBase;
+typedef struct _BeanExtensionBaseClass   BeanExtensionBaseClass;
+typedef struct _BeanExtensionBasePrivate BeanExtensionBasePrivate;
 
-struct _PeasExtensionBase {
+struct _BeanExtensionBase {
   GObject parent;
 
-  PeasExtensionBasePrivate *priv;
+  BeanExtensionBasePrivate *priv;
 };
 
 /**
- * PeasExtensionBaseClass:
+ * BeanExtensionBaseClass:
  * @parent_class: The parent class.
  *
- * The class structure of #PeasExtensionBase.
+ * The class structure of #BeanExtensionBase.
  */
-struct _PeasExtensionBaseClass {
+struct _BeanExtensionBaseClass {
   GObjectClass parent_class;
 
   /*< private >*/
@@ -74,9 +74,9 @@ PEAS_AVAILABLE_IN_ALL
 GType            bean_extension_base_get_type         (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
-PeasPluginInfo  *bean_extension_base_get_plugin_info  (PeasExtensionBase *extbase);
+BeanPluginInfo  *bean_extension_base_get_plugin_info  (BeanExtensionBase *extbase);
 PEAS_AVAILABLE_IN_ALL
-gchar           *bean_extension_base_get_data_dir     (PeasExtensionBase *extbase);
+gchar           *bean_extension_base_get_data_dir     (BeanExtensionBase *extbase);
 
 G_END_DECLS
 

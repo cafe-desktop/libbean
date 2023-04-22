@@ -27,29 +27,29 @@
 /**
  * SECTION:bean-extension
  * @short_description: Proxy for extensions.
- * @see_also: #PeasExtensionSet
+ * @see_also: #BeanExtensionSet
  *
- * #PeasExtension is a proxy class used to access actual extensions
+ * #BeanExtension is a proxy class used to access actual extensions
  * implemented using various languages.  As such, the application writer will
- * use #PeasExtension instances to call methods on extension provided by
+ * use #BeanExtension instances to call methods on extension provided by
  * loaded plugins.
  *
  * To properly use the proxy instances, you will need GObject-introspection
  * data for the #GType you want to use as an extension point.
- * For instance, if you wish to use #PeasActivatable, you will need to
+ * For instance, if you wish to use #BeanActivatable, you will need to
  * put the following code excerpt in the engine initialization code, in order
- * to load the required "Peas" typelib:
+ * to load the required "Bean" typelib:
  *
  * |[
  * g_irepository_require (g_irepository_get_default (),
- *                        "Peas", "1.0", 0, NULL);
+ *                        "Bean", "1.0", 0, NULL);
  * ]|
  *
  * You should proceed the same way for any namespace which provides types
  * you want to use as extension points. GObject-introspection data is required
  * for all the supported languages, even for C.
  *
- * #PeasExtension does not provide any way to access the underlying object.
+ * #BeanExtension does not provide any way to access the underlying object.
  * The main reason is that some loaders may not rely on proper GObject
  * inheritance for the definition of extensions, and hence it would not be
  * possible for libbean to provide a functional GObject instance at all.
@@ -68,7 +68,7 @@ static
 G_DEFINE_QUARK (bean-extension-type, extension_type)
 
 static GICallableInfo *
-get_method_info (PeasExtension *exten,
+get_method_info (BeanExtension *exten,
                  const gchar   *method_name,
                  GType         *gtype)
 {
@@ -113,7 +113,7 @@ get_method_info (PeasExtension *exten,
 
 /**
  * bean_extension_get_extension_type:
- * @exten: A #PeasExtension.
+ * @exten: A #BeanExtension.
  *
  * Get the #GType of the extension proxied by @exten.
  *
@@ -122,7 +122,7 @@ get_method_info (PeasExtension *exten,
  * Deprecated: 1.2.
  */
 GType
-bean_extension_get_extension_type (PeasExtension *exten)
+bean_extension_get_extension_type (BeanExtension *exten)
 {
   return GPOINTER_TO_SIZE (g_object_get_qdata (G_OBJECT (exten),
                                                extension_type_quark ()));
@@ -130,7 +130,7 @@ bean_extension_get_extension_type (PeasExtension *exten)
 
 /**
  * bean_extension_call:
- * @exten: A #PeasExtension.
+ * @exten: A #BeanExtension.
  * @method_name: the name of the method that should be called.
  * @...: arguments for the method.
  *
@@ -155,7 +155,7 @@ bean_extension_get_extension_type (PeasExtension *exten)
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-bean_extension_call (PeasExtension *exten,
+bean_extension_call (BeanExtension *exten,
                      const gchar   *method_name,
                      ...)
 {
@@ -174,7 +174,7 @@ bean_extension_call (PeasExtension *exten,
 
 /**
  * bean_extension_call_valist:
- * @exten: A #PeasExtension.
+ * @exten: A #BeanExtension.
  * @method_name: the name of the method that should be called.
  * @args: the arguments for the method.
  *
@@ -187,7 +187,7 @@ bean_extension_call (PeasExtension *exten,
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-bean_extension_call_valist (PeasExtension *exten,
+bean_extension_call_valist (BeanExtension *exten,
                             const gchar   *method_name,
                             va_list        args)
 {
@@ -228,7 +228,7 @@ bean_extension_call_valist (PeasExtension *exten,
 
 /**
  * bean_extension_callv:
- * @exten: A #PeasExtension.
+ * @exten: A #BeanExtension.
  * @method_name: the name of the method that should be called.
  * @args: the arguments for the method.
  * @return_value: the return falue for the method.
@@ -242,7 +242,7 @@ bean_extension_call_valist (PeasExtension *exten,
  * Deprecated: 1.2: Use the object directly instead.
  */
 gboolean
-bean_extension_callv (PeasExtension *exten,
+bean_extension_callv (BeanExtension *exten,
                       const gchar   *method_name,
                       GIArgument    *args,
                       GIArgument    *return_value)

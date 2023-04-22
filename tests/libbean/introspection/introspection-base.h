@@ -42,7 +42,7 @@ struct _IntrospectionBaseInterface {
   GTypeInterface g_iface;
 
   /* Virtual public methods */
-  const PeasPluginInfo *(*get_plugin_info) (IntrospectionBase *base);
+  const BeanPluginInfo *(*get_plugin_info) (IntrospectionBase *base);
   GSettings            *(*get_settings)    (IntrospectionBase *base);
 };
 
@@ -51,7 +51,7 @@ struct _IntrospectionBaseInterface {
  */
 GType      introspection_base_get_type     (void) G_GNUC_CONST;
 
-const PeasPluginInfo *introspection_base_get_plugin_info (IntrospectionBase *base);
+const BeanPluginInfo *introspection_base_get_plugin_info (IntrospectionBase *base);
 GSettings            *introspection_base_get_settings    (IntrospectionBase *base);
 
 G_END_DECLS

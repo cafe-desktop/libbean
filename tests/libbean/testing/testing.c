@@ -56,10 +56,10 @@ testing_init (gint    *argc,
   initialized = TRUE;
 }
 
-PeasEngine *
+BeanEngine *
 testing_engine_new_full (gboolean nonglobal_loaders)
 {
-  PeasEngine *engine;
+  BeanEngine *engine;
 
   testing_util_push_log_hook ("*Bad plugin file *invalid.plugin*");
   testing_util_push_log_hook ("*Error loading *invalid.plugin*");

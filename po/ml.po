@@ -21,7 +21,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "സംയോജക പാലകന്‍"
 
-#. Translators: What PeasGtkPluginManagerView to use
+#. Translators: What BeanGtkPluginManagerView to use
 #: ../data/glade/libbean-gtk.xml.in.h:3
 msgid "View"
 msgstr "ദൃശ്യം"
@@ -36,7 +36,7 @@ msgid "Show Builtin"
 msgstr "നേരത്തെയുള്ളതു കാണിക്കുക"
 
 #: ../data/glade/libbean-gtk.xml.in.h:7
-msgid "Peas Gtk"
+msgid "Bean Gtk"
 msgstr "പീസ് ജിടികെ"
 
 #: ../libbean/bean-engine.c:1118

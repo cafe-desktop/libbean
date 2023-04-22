@@ -39,11 +39,11 @@ typedef struct _IntrospectionAbstract         IntrospectionAbstract;
 typedef struct _IntrospectionAbstractClass    IntrospectionAbstractClass;
 
 struct _IntrospectionAbstract {
-  PeasExtensionBase parent;
+  BeanExtensionBase parent;
 };
 
 struct _IntrospectionAbstractClass {
-  PeasExtensionBaseClass parent_class;
+  BeanExtensionBaseClass parent_class;
 };
 
 /*

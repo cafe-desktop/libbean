@@ -33,54 +33,54 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_OBJECT_MODULE             (bean_object_module_get_type ())
-#define PEAS_OBJECT_MODULE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_OBJECT_MODULE, PeasObjectModule))
-#define PEAS_OBJECT_MODULE_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_OBJECT_MODULE, PeasObjectModuleClass))
+#define PEAS_OBJECT_MODULE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_OBJECT_MODULE, BeanObjectModule))
+#define PEAS_OBJECT_MODULE_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
 #define PEAS_IS_OBJECT_MODULE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_OBJECT_MODULE))
 #define PEAS_IS_OBJECT_MODULE_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_OBJECT_MODULE))
-#define PEAS_OBJECT_MODULE_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_OBJECT_MODULE, PeasObjectModuleClass))
+#define PEAS_OBJECT_MODULE_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), PEAS_TYPE_OBJECT_MODULE, BeanObjectModuleClass))
 
-typedef struct _PeasObjectModule         PeasObjectModule;
-typedef struct _PeasObjectModuleClass    PeasObjectModuleClass;
-typedef struct _PeasObjectModulePrivate  PeasObjectModulePrivate;
+typedef struct _BeanObjectModule         BeanObjectModule;
+typedef struct _BeanObjectModuleClass    BeanObjectModuleClass;
+typedef struct _BeanObjectModulePrivate  BeanObjectModulePrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
- * PeasFactoryFunc:
+ * BeanFactoryFunc:
  * @n_parameters: The number of paramteters.
  * @parameters: (array length=n_parameters): The parameters.
  * @user_data: Optional data to be passed to the function, or %NULL.
  *
- * A #PeasFactoryFunc is a factory function which will instanciate a new
+ * A #BeanFactoryFunc is a factory function which will instanciate a new
  * extension of a given type. g_object_newv() is such a function.
  *
  * It is used with bean_object_module_register_extension_factory().
  *
  * Return value: (transfer full): The created object.
  */
-typedef GObject *(*PeasFactoryFunc)   (guint          n_parameters,
+typedef GObject *(*BeanFactoryFunc)   (guint          n_parameters,
                                        GParameter    *parameters,
                                        gpointer       user_data);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
- * PeasObjectModule:
+ * BeanObjectModule:
  *
- * The #PeasObjectModule structure contains only private data and should only
+ * The #BeanObjectModule structure contains only private data and should only
  * be accessed using the provided API.
  */
-struct _PeasObjectModule {
+struct _BeanObjectModule {
   GTypeModule parent;
 
-  PeasObjectModulePrivate *priv;
+  BeanObjectModulePrivate *priv;
 };
 
 /**
- * PeasObjectModuleClass:
+ * BeanObjectModuleClass:
  * @parent_class: The parent class.
  *
- * The class structure for #PeasObjectModule.
+ * The class structure for #BeanObjectModule.
  */
-struct _PeasObjectModuleClass {
+struct _BeanObjectModuleClass {
   GTypeModuleClass parent_class;
 
   /*< private >*/
@@ -90,49 +90,49 @@ struct _PeasObjectModuleClass {
 PEAS_AVAILABLE_IN_ALL
 GType               bean_object_module_get_type               (void) G_GNUC_CONST;
 PEAS_AVAILABLE_IN_ALL
-PeasObjectModule   *bean_object_module_new                    (const gchar      *module_name,
+BeanObjectModule   *bean_object_module_new                    (const gchar      *module_name,
                                                                const gchar      *path,
                                                                gboolean          resident);
 PEAS_AVAILABLE_IN_ALL
-PeasObjectModule   *bean_object_module_new_full               (const gchar      *module_name,
+BeanObjectModule   *bean_object_module_new_full               (const gchar      *module_name,
                                                                const gchar      *path,
                                                                gboolean          resident,
                                                                gboolean          local_linkage);
 PEAS_AVAILABLE_IN_ALL
-PeasObjectModule   *bean_object_module_new_embedded           (const gchar      *module_name,
+BeanObjectModule   *bean_object_module_new_embedded           (const gchar      *module_name,
                                                                const gchar      *symbol);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 PEAS_AVAILABLE_IN_ALL
-GObject            *bean_object_module_create_object          (PeasObjectModule *module,
+GObject            *bean_object_module_create_object          (BeanObjectModule *module,
                                                                GType             exten_type,
                                                                guint             n_parameters,
                                                                GParameter       *parameters);
 G_GNUC_END_IGNORE_DEPRECATIONS
 PEAS_AVAILABLE_IN_ALL
-gboolean            bean_object_module_provides_object        (PeasObjectModule *module,
+gboolean            bean_object_module_provides_object        (BeanObjectModule *module,
                                                                GType             exten_type);
 
 PEAS_AVAILABLE_IN_ALL
-const gchar        *bean_object_module_get_path               (PeasObjectModule *module);
+const gchar        *bean_object_module_get_path               (BeanObjectModule *module);
 PEAS_AVAILABLE_IN_ALL
-const gchar        *bean_object_module_get_module_name        (PeasObjectModule *module);
+const gchar        *bean_object_module_get_module_name        (BeanObjectModule *module);
 PEAS_AVAILABLE_IN_ALL
-const gchar        *bean_object_module_get_symbol             (PeasObjectModule *module);
+const gchar        *bean_object_module_get_symbol             (BeanObjectModule *module);
 
 PEAS_AVAILABLE_IN_ALL
-GModule            *bean_object_module_get_library            (PeasObjectModule *module);
+GModule            *bean_object_module_get_library            (BeanObjectModule *module);
 
 PEAS_AVAILABLE_IN_ALL
 void                bean_object_module_register_extension_factory
-                                                              (PeasObjectModule *module,
+                                                              (BeanObjectModule *module,
                                                                GType             exten_type,
-                                                               PeasFactoryFunc   factory_func,
+                                                               BeanFactoryFunc   factory_func,
                                                                gpointer          user_data,
                                                                GDestroyNotify    destroy_func);
 PEAS_AVAILABLE_IN_ALL
 void                bean_object_module_register_extension_type
-                                                              (PeasObjectModule *module,
+                                                              (BeanObjectModule *module,
                                                                GType             exten_type,
                                                                GType             impl_type);
 

@@ -22,7 +22,7 @@ msgstr ""
 msgid "Plugin Manager"
 msgstr "Umsjón viðbóta"
 
-#. Translators: What PeasGtkPluginManagerView to use
+#. Translators: What BeanGtkPluginManagerView to use
 #: ../data/glade/libbean-gtk.xml.in.h:3
 msgid "View"
 msgstr "Skoða"
@@ -37,8 +37,8 @@ msgid "Show Builtin"
 msgstr "Sýna innbyggðar"
 
 #: ../data/glade/libbean-gtk.xml.in.h:7
-msgid "Peas Gtk"
-msgstr "Peas Gtk"
+msgid "Bean Gtk"
+msgstr "Bean Gtk"
 
 #: ../libbean/bean-engine.c:1118
 #, c-format

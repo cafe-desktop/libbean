@@ -35,7 +35,7 @@ typedef struct {
   GObject *object;
 } TestingHasDepPluginPrivate;
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingHasDepPlugin,
                                 testing_has_dep_plugin,
@@ -101,12 +101,12 @@ testing_has_dep_plugin_init (TestingHasDepPlugin *plugin)
 }
 
 static void
-testing_has_dep_plugin_activate (PeasActivatable *activatable)
+testing_has_dep_plugin_activate (BeanActivatable *activatable)
 {
 }
 
 static void
-testing_has_dep_plugin_deactivate (PeasActivatable *activatable)
+testing_has_dep_plugin_deactivate (BeanActivatable *activatable)
 {
 }
 
@@ -122,7 +122,7 @@ testing_has_dep_plugin_class_init (TestingHasDepPluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
   iface->activate = testing_has_dep_plugin_activate;
   iface->deactivate = testing_has_dep_plugin_deactivate;
@@ -134,7 +134,7 @@ testing_has_dep_plugin_class_finalize (TestingHasDepPluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   testing_has_dep_plugin_register_type (G_TYPE_MODULE (module));
 

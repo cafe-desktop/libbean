@@ -29,28 +29,28 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_PLUGIN_LOADER_PYTHON             (bean_plugin_loader_python_get_type ())
-#define PEAS_PLUGIN_LOADER_PYTHON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, PeasPluginLoaderPython))
-#define PEAS_PLUGIN_LOADER_PYTHON_CONST(obj)       (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, PeasPluginLoaderPython const))
-#define PEAS_PLUGIN_LOADER_PYTHON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_PYTHON, PeasPluginLoaderPythonClass))
+#define PEAS_PLUGIN_LOADER_PYTHON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, BeanPluginLoaderPython))
+#define PEAS_PLUGIN_LOADER_PYTHON_CONST(obj)       (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, BeanPluginLoaderPython const))
+#define PEAS_PLUGIN_LOADER_PYTHON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_PYTHON, BeanPluginLoaderPythonClass))
 #define PEAS_IS_PLUGIN_LOADER_PYTHON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON))
 #define PEAS_IS_PLUGIN_LOADER_PYTHON_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_PLUGIN_LOADER_PYTHON))
-#define PEAS_PLUGIN_LOADER_PYTHON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, PeasPluginLoaderPythonClass))
+#define PEAS_PLUGIN_LOADER_PYTHON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_PYTHON, BeanPluginLoaderPythonClass))
 
-typedef struct _PeasPluginLoaderPython         PeasPluginLoaderPython;
-typedef struct _PeasPluginLoaderPythonClass    PeasPluginLoaderPythonClass;
+typedef struct _BeanPluginLoaderPython         BeanPluginLoaderPython;
+typedef struct _BeanPluginLoaderPythonClass    BeanPluginLoaderPythonClass;
 
-struct _PeasPluginLoaderPython {
-  PeasPluginLoader parent;
+struct _BeanPluginLoaderPython {
+  BeanPluginLoader parent;
 };
 
-struct _PeasPluginLoaderPythonClass {
-  PeasPluginLoaderClass parent_class;
+struct _BeanPluginLoaderPythonClass {
+  BeanPluginLoaderClass parent_class;
 };
 
 GType                    bean_plugin_loader_python_get_type  (void) G_GNUC_CONST;
 
 /* All the loaders must implement this function */
-G_MODULE_EXPORT void     bean_register_types                 (PeasObjectModule *module);
+G_MODULE_EXPORT void     bean_register_types                 (BeanObjectModule *module);
 
 G_END_DECLS
 

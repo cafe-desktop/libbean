@@ -45,9 +45,9 @@ typedef struct {
   gpointer lgi_lock;
   LgiLockFunc lgi_enter_func;
   LgiLockFunc lgi_leave_func;
-} PeasPluginLoaderLuaPrivate;
+} BeanPluginLoaderLuaPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (PeasPluginLoaderLua,
+G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderLua,
                             bean_plugin_loader_lua,
                             PEAS_TYPE_PLUGIN_LOADER)
 
@@ -57,7 +57,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (PeasPluginLoaderLua,
 static GQuark quark_extension_type = 0;
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   bean_object_module_register_extension_type (module,
                                               PEAS_TYPE_PLUGIN_LOADER,
@@ -65,10 +65,10 @@ bean_register_types (PeasObjectModule *module)
 }
 
 static lua_State *
-thread_enter (PeasPluginLoaderLua *lua_loader,
-              PeasPluginInfo      *info)
+thread_enter (BeanPluginLoaderLua *lua_loader,
+              BeanPluginInfo      *info)
 {
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = priv->L;
   lua_State *NL = info->loader_data;
 
@@ -94,11 +94,11 @@ thread_enter (PeasPluginLoaderLua *lua_loader,
 }
 
 static void
-thread_leave (PeasPluginLoaderLua  *lua_loader,
-              PeasPluginInfo       *info,
+thread_leave (BeanPluginLoaderLua  *lua_loader,
+              BeanPluginInfo       *info,
               lua_State           **L_ptr)
 {
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = info->loader_data;
 
   /* Prevent keeping the L as a usable variable */
@@ -113,7 +113,7 @@ thread_leave (PeasPluginLoaderLua  *lua_loader,
 
 static GType
 find_lua_extension_type (lua_State      *L,
-                         PeasPluginInfo *info,
+                         BeanPluginInfo *info,
                          GType           exten_type)
 {
   luaL_checkstack (L, 2, "");
@@ -139,11 +139,11 @@ find_lua_extension_type (lua_State      *L,
 }
 
 static gboolean
-bean_plugin_loader_lua_provides_extension (PeasPluginLoader *loader,
-                                           PeasPluginInfo   *info,
+bean_plugin_loader_lua_provides_extension (BeanPluginLoader *loader,
+                                           BeanPluginInfo   *info,
                                            GType             exten_type)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   GType the_type;
 
@@ -155,14 +155,14 @@ bean_plugin_loader_lua_provides_extension (PeasPluginLoader *loader,
   return the_type != G_TYPE_INVALID;
 }
 
-static PeasExtension *
-bean_plugin_loader_lua_create_extension (PeasPluginLoader *loader,
-                                         PeasPluginInfo   *info,
+static BeanExtension *
+bean_plugin_loader_lua_create_extension (BeanPluginLoader *loader,
+                                         BeanPluginInfo   *info,
                                          GType             exten_type,
                                          guint             n_parameters,
                                          GParameter       *parameters)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   GType the_type;
   GObject *object = NULL;
@@ -197,10 +197,10 @@ out:
 }
 
 static gboolean
-bean_plugin_loader_lua_load (PeasPluginLoader *loader,
-                             PeasPluginInfo   *info)
+bean_plugin_loader_lua_load (BeanPluginLoader *loader,
+                             BeanPluginInfo   *info)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
   gboolean success = FALSE;
 
@@ -222,11 +222,11 @@ bean_plugin_loader_lua_load (PeasPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_lua_unload (PeasPluginLoader *loader,
-                               PeasPluginInfo   *info)
+bean_plugin_loader_lua_unload (BeanPluginLoader *loader,
+                               BeanPluginInfo   *info)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = priv->L;
 
   priv->lgi_enter_func (priv->lgi_lock);
@@ -245,10 +245,10 @@ bean_plugin_loader_lua_unload (PeasPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_lua_garbage_collect (PeasPluginLoader *loader)
+bean_plugin_loader_lua_garbage_collect (BeanPluginLoader *loader)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L = priv->L;
 
   priv->lgi_enter_func (priv->lgi_lock);
@@ -266,10 +266,10 @@ atpanic_handler (lua_State *L)
 }
 
 static gboolean
-bean_plugin_loader_lua_initialize (PeasPluginLoader *loader)
+bean_plugin_loader_lua_initialize (BeanPluginLoader *loader)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (loader);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
   lua_State *L;
 
   priv->L = L = luaL_newstate ();
@@ -339,21 +339,21 @@ bean_plugin_loader_lua_initialize (PeasPluginLoader *loader)
 }
 
 static gboolean
-bean_plugin_loader_lua_is_global (PeasPluginLoader *loader)
+bean_plugin_loader_lua_is_global (BeanPluginLoader *loader)
 {
   return FALSE;
 }
 
 static void
-bean_plugin_loader_lua_init (PeasPluginLoaderLua *lua_loader)
+bean_plugin_loader_lua_init (BeanPluginLoaderLua *lua_loader)
 {
 }
 
 static void
 bean_plugin_loader_lua_finalize (GObject *object)
 {
-  PeasPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (object);
-  PeasPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
+  BeanPluginLoaderLua *lua_loader = PEAS_PLUGIN_LOADER_LUA (object);
+  BeanPluginLoaderLuaPrivate *priv = GET_PRIV (lua_loader);
 
   /* Must take the lock as Lua code will run on lua_close
    * and another thread might be running Lua code already
@@ -368,10 +368,10 @@ bean_plugin_loader_lua_finalize (GObject *object)
 }
 
 static void
-bean_plugin_loader_lua_class_init (PeasPluginLoaderLuaClass *klass)
+bean_plugin_loader_lua_class_init (BeanPluginLoaderLuaClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  PeasPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
+  BeanPluginLoaderClass *loader_class = PEAS_PLUGIN_LOADER_CLASS (klass);
 
   quark_extension_type = g_quark_from_static_string ("bean-extension-type");
 

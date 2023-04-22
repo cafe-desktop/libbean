@@ -37,14 +37,14 @@ G_BEGIN_DECLS
 #define PEAS_IS_EXTENSION(obj)         (G_IS_OBJECT(obj))
 
 /**
- * PeasExtension:
+ * BeanExtension:
  *
  * A proxy class to access the actual plugin.
  */
-typedef GObject PeasExtension;
+typedef GObject BeanExtension;
 
 /*
- * All the public methods of PeasExtension are deprecated and should not be
+ * All the public methods of BeanExtension are deprecated and should not be
  * used. Due to gi-scanner's touchiness, we also hide these legacy API from
  * GI to avoid hairy issues.
  */
@@ -55,18 +55,18 @@ GType        bean_extension_get_type        (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
 GType        bean_extension_get_extension_type
-                                            (PeasExtension *exten);
+                                            (BeanExtension *exten);
 
 PEAS_AVAILABLE_IN_ALL
-gboolean     bean_extension_call            (PeasExtension *exten,
+gboolean     bean_extension_call            (BeanExtension *exten,
                                              const gchar   *method_name,
                                              ...);
 PEAS_AVAILABLE_IN_ALL
-gboolean     bean_extension_call_valist     (PeasExtension *exten,
+gboolean     bean_extension_call_valist     (BeanExtension *exten,
                                              const gchar   *method_name,
                                              va_list        args);
 PEAS_AVAILABLE_IN_ALL
-gboolean     bean_extension_callv           (PeasExtension *exten,
+gboolean     bean_extension_callv           (BeanExtension *exten,
                                              const gchar   *method_name,
                                              GIArgument    *args,
                                              GIArgument    *return_value);

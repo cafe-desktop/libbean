@@ -33,9 +33,9 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
   GtkTreeView *tree_view;
-  PeasGtkPluginManagerView *view;
+  BeanGtkPluginManagerView *view;
   GtkTreeSelection *selection;
   GtkTreeModel *model;
   GtkListStore *store;
@@ -98,7 +98,7 @@ test_runner (TestFixture   *fixture,
 
 /* Based on code from bean-gtk-manager-view.h */
 static void
-convert_iter_to_child_iter (PeasGtkPluginManagerView *view,
+convert_iter_to_child_iter (BeanGtkPluginManagerView *view,
                             GtkTreeIter              *iter)
 {
   GtkTreeModel *model;
@@ -138,7 +138,7 @@ static void
 test_gtk_plugin_manager_view_selection (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_gtk_plugin_manager_view_get_selected_plugin (fixture->view);
   g_assert (info == NULL);
@@ -171,7 +171,7 @@ static void
 test_gtk_plugin_manager_view_reload (TestFixture *fixture)
 {
   GtkTreeIter iter;
-  PeasPluginInfo *removed_info, *selected_info;
+  BeanPluginInfo *removed_info, *selected_info;
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
   gtk_tree_selection_select_iter (fixture->selection, &iter);
@@ -199,7 +199,7 @@ test_gtk_plugin_manager_view_enable_plugin (TestFixture *fixture)
   GtkTreeIter iter;
   GtkTreePath *path;
   GtkTreeViewColumn *column;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   g_assert (gtk_tree_model_get_iter_first (fixture->model, &iter));
   info = testing_get_plugin_info_for_iter (fixture->view, &iter);
@@ -219,7 +219,7 @@ test_gtk_plugin_manager_view_enable_builtin_plugin (TestFixture *fixture)
   GtkTreeIter iter;
   GtkTreePath *path;
   GtkTreeViewColumn *column;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   bean_gtk_plugin_manager_view_set_show_builtin (fixture->view, TRUE);
 

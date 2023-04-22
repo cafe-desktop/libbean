@@ -28,21 +28,21 @@
 G_BEGIN_DECLS
 
 #define PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE         (beandemo_hello_world_configurable_get_type ())
-#define PEASDEMO_HELLO_WORLD_CONFIGURABLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, PeasDemoHelloWorldConfigurable))
-#define PEASDEMO_HELLO_WORLD_CONFIGURABLE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, PeasDemoHelloWorldConfigurable))
+#define PEASDEMO_HELLO_WORLD_CONFIGURABLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, BeanDemoHelloWorldConfigurable))
+#define PEASDEMO_HELLO_WORLD_CONFIGURABLE_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, BeanDemoHelloWorldConfigurable))
 #define PEASDEMO_IS_HELLO_WORLD_CONFIGURABLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE))
 #define PEASDEMO_IS_HELLO_WORLD_CONFIGURABLE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE))
-#define PEASDEMO_HELLO_WORLD_CONFIGURABLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, PeasDemoHelloWorldConfigurableClass))
+#define PEASDEMO_HELLO_WORLD_CONFIGURABLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), PEASDEMO_TYPE_HELLO_WORLD_CONFIGURABLE, BeanDemoHelloWorldConfigurableClass))
 
-typedef struct _PeasDemoHelloWorldConfigurable      PeasDemoHelloWorldConfigurable;
-typedef struct _PeasDemoHelloWorldConfigurableClass PeasDemoHelloWorldConfigurableClass;
+typedef struct _BeanDemoHelloWorldConfigurable      BeanDemoHelloWorldConfigurable;
+typedef struct _BeanDemoHelloWorldConfigurableClass BeanDemoHelloWorldConfigurableClass;
 
-struct _PeasDemoHelloWorldConfigurable {
-  PeasExtensionBase parent;
+struct _BeanDemoHelloWorldConfigurable {
+  BeanExtensionBase parent;
 };
 
-struct _PeasDemoHelloWorldConfigurableClass {
-  PeasExtensionBaseClass parent_class;
+struct _BeanDemoHelloWorldConfigurableClass {
+  BeanExtensionBaseClass parent_class;
 };
 
 GType   beandemo_hello_world_configurable_get_type  (void) G_GNUC_CONST;

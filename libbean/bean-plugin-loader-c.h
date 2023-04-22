@@ -27,25 +27,25 @@
 G_BEGIN_DECLS
 
 #define PEAS_TYPE_PLUGIN_LOADER_C            (bean_plugin_loader_c_get_type ())
-#define PEAS_PLUGIN_LOADER_C(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_C, PeasPluginLoaderC))
-#define PEAS_PLUGIN_LOADER_C_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_C, PeasPluginLoaderCClass))
+#define PEAS_PLUGIN_LOADER_C(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_PLUGIN_LOADER_C, BeanPluginLoaderC))
+#define PEAS_PLUGIN_LOADER_C_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), PEAS_TYPE_PLUGIN_LOADER_C, BeanPluginLoaderCClass))
 #define PEAS_IS_PLUGIN_LOADER_C(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_PLUGIN_LOADER_C))
 #define PEAS_IS_PLUGIN_LOADER_C_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), PEAS_TYPE_PLUGIN_LOADER_C))
-#define PEAS_PLUGIN_LOADER_C_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_C, PeasPluginLoaderCClass))
+#define PEAS_PLUGIN_LOADER_C_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), PEAS_TYPE_PLUGIN_LOADER_C, BeanPluginLoaderCClass))
 
-typedef struct _PeasPluginLoaderC         PeasPluginLoaderC;
-typedef struct _PeasPluginLoaderCClass    PeasPluginLoaderCClass;
+typedef struct _BeanPluginLoaderC         BeanPluginLoaderC;
+typedef struct _BeanPluginLoaderCClass    BeanPluginLoaderCClass;
 
-struct _PeasPluginLoaderC {
-  PeasPluginLoader parent;
+struct _BeanPluginLoaderC {
+  BeanPluginLoader parent;
 };
 
-struct _PeasPluginLoaderCClass {
-  PeasPluginLoaderClass parent_class;
+struct _BeanPluginLoaderCClass {
+  BeanPluginLoaderClass parent_class;
 };
 
 GType             bean_plugin_loader_c_get_type    (void) G_GNUC_CONST;
-PeasPluginLoader *bean_plugin_loader_c_new         (void);
+BeanPluginLoader *bean_plugin_loader_c_new         (void);
 
 G_END_DECLS
 

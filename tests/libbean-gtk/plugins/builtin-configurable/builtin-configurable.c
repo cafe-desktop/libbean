@@ -32,7 +32,7 @@
 
 #include "builtin-configurable.h"
 
-static void bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
+static void bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinConfigurable,
                                 testing_builtin_configurable,
@@ -52,13 +52,13 @@ testing_builtin_configurable_class_init (TestingBuiltinConfigurableClass *klass)
 }
 
 static GtkWidget *
-testing_builtin_create_configure_widget (PeasGtkConfigurable *configurable)
+testing_builtin_create_configure_widget (BeanGtkConfigurable *configurable)
 {
   return gtk_label_new ("Hello, World!");
 }
 
 static void
-bean_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
+bean_gtk_configurable_iface_init (BeanGtkConfigurableInterface *iface)
 {
   iface->create_configure_widget = testing_builtin_create_configure_widget;
 }
@@ -69,7 +69,7 @@ testing_builtin_configurable_class_finalize (TestingBuiltinConfigurableClass *kl
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   testing_builtin_configurable_register_type (G_TYPE_MODULE (module));
 

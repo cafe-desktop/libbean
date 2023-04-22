@@ -38,7 +38,7 @@ typedef struct {
 /* Used by the local linkage test */
 G_MODULE_EXPORT gpointer global_symbol_clash;
 
-static void bean_activatable_iface_init (PeasActivatableInterface *iface);
+static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingLoadablePlugin,
                                 testing_loadable_plugin,
@@ -55,7 +55,7 @@ enum {
   PROP_0,
   PROP_GLOBAL_SYMBOL_CLASH,
 
-  /* PeasActivatable */
+  /* BeanActivatable */
   PROP_OBJECT,
   N_PROPERTIES = PROP_OBJECT
 };
@@ -114,12 +114,12 @@ testing_loadable_plugin_init (TestingLoadablePlugin *plugin)
 }
 
 static void
-testing_loadable_plugin_activate (PeasActivatable *activatable)
+testing_loadable_plugin_activate (BeanActivatable *activatable)
 {
 }
 
 static void
-testing_loadable_plugin_deactivate (PeasActivatable *activatable)
+testing_loadable_plugin_deactivate (BeanActivatable *activatable)
 {
 }
 
@@ -144,7 +144,7 @@ testing_loadable_plugin_class_init (TestingLoadablePluginClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
   iface->activate = testing_loadable_plugin_activate;
   iface->deactivate = testing_loadable_plugin_deactivate;
@@ -156,7 +156,7 @@ testing_loadable_plugin_class_finalize (TestingLoadablePluginClass *klass)
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   testing_loadable_plugin_register_type (G_TYPE_MODULE (module));
 

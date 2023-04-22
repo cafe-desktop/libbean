@@ -66,9 +66,9 @@
  * The definition should be one of the predefined PEAS version
  * macros: %PEAS_VERSION_1_22, ...
  *
- * This macro defines the lower bound for the Peas API to use.
+ * This macro defines the lower bound for the Bean API to use.
  *
- * If a function has been deprecated in a newer version of Peas,
+ * If a function has been deprecated in a newer version of Bean,
  * it is possible to use this symbol to avoid the compiler warnings
  * without disabling warning for every deprecated function.
  *
@@ -84,12 +84,12 @@
  * A macro that should be defined by the user prior to including
  * the bean.h header.
 
- * The definition should be one of the predefined Peas version
+ * The definition should be one of the predefined Bean version
  * macros: %PEAS_VERSION_1_0, %PEAS_VERSION_1_2,...
  *
  * This macro defines the upper bound for the PEAS API to use.
  *
- * If a function has been introduced in a newer version of Peas,
+ * If a function has been introduced in a newer version of Bean,
  * it is possible to use this symbol to get compiler warnings when
  * trying to use that function.
  *

@@ -177,8 +177,8 @@ msgstr "Preferências"
 #~ msgid "Show Builtin"
 #~ msgstr "Mostrar embutidos"
 
-#~ msgid "Peas Gtk"
-#~ msgstr "Peas Gtk"
+#~ msgid "Bean Gtk"
+#~ msgstr "Bean Gtk"
 
 #~ msgid "C_onfigure"
 #~ msgstr "C_onfigurar"

@@ -46,8 +46,8 @@ struct _DemoWindow
 
   GtkWidget *box;
 
-  PeasEngine *engine;
-  PeasExtensionSet *exten_set;
+  BeanEngine *engine;
+  BeanExtensionSet *exten_set;
 };
 
 struct _DemoWindowClass

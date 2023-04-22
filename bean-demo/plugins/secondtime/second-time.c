@@ -32,9 +32,9 @@
 
 #include "second-time.h"
 
-static void bean_activatable_iface_init     (PeasActivatableInterface    *iface);
+static void bean_activatable_iface_init     (BeanActivatableInterface    *iface);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PeasDemoSecondTime,
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoSecondTime,
                                 beandemo_second_time,
                                 PEAS_TYPE_EXTENSION_BASE,
                                 0,
@@ -52,7 +52,7 @@ beandemo_second_time_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
 
   switch (prop_id)
     {
@@ -72,7 +72,7 @@ beandemo_second_time_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
 
   switch (prop_id)
     {
@@ -88,7 +88,7 @@ beandemo_second_time_get_property (GObject    *object,
 
 
 static void
-beandemo_second_time_init (PeasDemoSecondTime *plugin)
+beandemo_second_time_init (BeanDemoSecondTime *plugin)
 {
   g_debug ("%s", G_STRFUNC);
 }
@@ -96,7 +96,7 @@ beandemo_second_time_init (PeasDemoSecondTime *plugin)
 static void
 beandemo_second_time_finalize (GObject *object)
 {
-  PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
+  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (object);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -113,9 +113,9 @@ get_box (GtkWidget *window)
 }
 
 static void
-beandemo_second_time_activate (PeasActivatable *activatable)
+beandemo_second_time_activate (BeanActivatable *activatable)
 {
-  PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
+  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -126,9 +126,9 @@ beandemo_second_time_activate (PeasActivatable *activatable)
 }
 
 static void
-beandemo_second_time_deactivate (PeasActivatable *activatable)
+beandemo_second_time_deactivate (BeanActivatable *activatable)
 {
-  PeasDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
+  BeanDemoSecondTime *plugin = PEASDEMO_SECOND_TIME (activatable);
 
   g_debug ("%s", G_STRFUNC);
 
@@ -136,7 +136,7 @@ beandemo_second_time_deactivate (PeasActivatable *activatable)
 }
 
 static void
-beandemo_second_time_class_init (PeasDemoSecondTimeClass *klass)
+beandemo_second_time_class_init (BeanDemoSecondTimeClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -148,19 +148,19 @@ beandemo_second_time_class_init (PeasDemoSecondTimeClass *klass)
 }
 
 static void
-bean_activatable_iface_init (PeasActivatableInterface *iface)
+bean_activatable_iface_init (BeanActivatableInterface *iface)
 {
   iface->activate = beandemo_second_time_activate;
   iface->deactivate = beandemo_second_time_deactivate;
 }
 
 static void
-beandemo_second_time_class_finalize (PeasDemoSecondTimeClass *klass)
+beandemo_second_time_class_finalize (BeanDemoSecondTimeClass *klass)
 {
 }
 
 G_MODULE_EXPORT void
-bean_register_types (PeasObjectModule *module)
+bean_register_types (BeanObjectModule *module)
 {
   beandemo_second_time_register_type (G_TYPE_MODULE (module));
 

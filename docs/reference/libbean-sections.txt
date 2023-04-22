@@ -1,8 +1,8 @@
 <SECTION>
 <FILE>bean-gtk-configurable</FILE>
-<TITLE>PeasGtkConfigurable</TITLE>
-PeasGtkConfigurable
-PeasGtkConfigurableInterface
+<TITLE>BeanGtkConfigurable</TITLE>
+BeanGtkConfigurable
+BeanGtkConfigurableInterface
 bean_gtk_configurable_create_configure_widget
 <SUBSECTION Standard>
 PEAS_GTK_CONFIGURABLE
@@ -15,9 +15,9 @@ PEAS_GTK_CONFIGURABLE_GET_IFACE
 
 <SECTION>
 <FILE>bean-gtk-plugin-manager</FILE>
-<TITLE>PeasGtkPluginManager</TITLE>
-PeasGtkPluginManager
-PeasGtkPluginManagerClass
+<TITLE>BeanGtkPluginManager</TITLE>
+BeanGtkPluginManager
+BeanGtkPluginManagerClass
 bean_gtk_plugin_manager_new
 bean_gtk_plugin_manager_get_view
 <SUBSECTION Standard>
@@ -29,14 +29,14 @@ PEAS_GTK_PLUGIN_MANAGER_CLASS
 PEAS_GTK_IS_PLUGIN_MANAGER_CLASS
 PEAS_GTK_PLUGIN_MANAGER_GET_CLASS
 <SUBSECTION Private>
-PeasGtkPluginManagerPrivate
+BeanGtkPluginManagerPrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-gtk-plugin-manager-view</FILE>
-<TITLE>PeasGtkPluginManagerView</TITLE>
-PeasGtkPluginManagerView
-PeasGtkPluginManagerViewClass
+<TITLE>BeanGtkPluginManagerView</TITLE>
+BeanGtkPluginManagerView
+BeanGtkPluginManagerViewClass
 bean_gtk_plugin_manager_view_new
 bean_gtk_plugin_manager_view_set_show_builtin
 bean_gtk_plugin_manager_view_get_show_builtin
@@ -51,14 +51,14 @@ PEAS_GTK_PLUGIN_MANAGER_VIEW_CLASS
 PEAS_GTK_IS_PLUGIN_MANAGER_VIEW_CLASS
 PEAS_GTK_PLUGIN_MANAGER_VIEW_GET_CLASS
 <SUBSECTION Private>
-PeasGtkPluginManagerViewPrivate
+BeanGtkPluginManagerViewPrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-engine</FILE>
-<TITLE>PeasEngine</TITLE>
-PeasEngine
-PeasEngineClass
+<TITLE>BeanEngine</TITLE>
+BeanEngine
+BeanEngineClass
 bean_engine_new
 bean_engine_new_with_nonglobal_loaders
 bean_engine_get_default
@@ -86,14 +86,14 @@ PEAS_ENGINE_CLASS
 PEAS_IS_ENGINE_CLASS
 PEAS_ENGINE_GET_CLASS
 <SUBSECTION Private>
-PeasEnginePrivate
+BeanEnginePrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-activatable</FILE>
-<TITLE>PeasActivatable</TITLE>
-PeasActivatable
-PeasActivatableInterface
+<TITLE>BeanActivatable</TITLE>
+BeanActivatable
+BeanActivatableInterface
 bean_activatable_activate
 bean_activatable_deactivate
 bean_activatable_update_state
@@ -108,10 +108,10 @@ PEAS_ACTIVATABLE_GET_IFACE
 
 <SECTION>
 <FILE>bean-extension-set</FILE>
-<TITLE>PeasExtensionSet</TITLE>
-PeasExtensionSet
-PeasExtensionSetClass
-PeasExtensionSetForeachFunc
+<TITLE>BeanExtensionSet</TITLE>
+BeanExtensionSet
+BeanExtensionSetClass
+BeanExtensionSetForeachFunc
 bean_extension_set_call
 bean_extension_set_call_valist
 bean_extension_set_callv
@@ -129,15 +129,15 @@ PEAS_EXTENSION_SET_CLASS
 PEAS_IS_EXTENSION_SET_CLASS
 PEAS_EXTENSION_SET_GET_CLASS
 <SUBSECTION Private>
-PeasExtensionSetPrivate
+BeanExtensionSetPrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-object-module</FILE>
-<TITLE>PeasObjectModule</TITLE>
-PeasObjectModule
-PeasObjectModuleClass
-PeasFactoryFunc
+<TITLE>BeanObjectModule</TITLE>
+BeanObjectModule
+BeanObjectModuleClass
+BeanFactoryFunc
 bean_object_module_register_extension_factory
 bean_object_module_register_extension_type
 <SUBSECTION Standard>
@@ -149,7 +149,7 @@ PEAS_OBJECT_MODULE_CLASS
 PEAS_IS_OBJECT_MODULE_CLASS
 PEAS_OBJECT_MODULE_GET_CLASS
 <SUBSECTION Private>
-PeasObjectModulePrivate
+BeanObjectModulePrivate
 bean_object_module_new
 bean_object_module_new_full
 bean_object_module_new_embedded
@@ -163,9 +163,9 @@ bean_object_module_provides_object
 
 <SECTION>
 <FILE>bean-extension-base</FILE>
-<TITLE>PeasExtensionBase</TITLE>
-PeasExtensionBase
-PeasExtensionBaseClass
+<TITLE>BeanExtensionBase</TITLE>
+BeanExtensionBase
+BeanExtensionBaseClass
 bean_extension_base_get_plugin_info
 bean_extension_base_get_data_dir
 <SUBSECTION Standard>
@@ -177,13 +177,13 @@ PEAS_EXTENSION_BASE_CLASS
 PEAS_IS_EXTENSION_BASE_CLASS
 PEAS_EXTENSION_BASE_GET_CLASS
 <SUBSECTION Private>
-PeasExtensionBasePrivate
+BeanExtensionBasePrivate
 </SECTION>
 
 <SECTION>
 <FILE>bean-extension</FILE>
-<TITLE>PeasExtension</TITLE>
-PeasExtension
+<TITLE>BeanExtension</TITLE>
+BeanExtension
 bean_extension_get_extension_type
 bean_extension_call
 bean_extension_call_valist
@@ -197,9 +197,9 @@ bean_extension_get_type
 
 <SECTION>
 <FILE>bean-plugin-info</FILE>
-<TITLE>PeasPluginInfo</TITLE>
-PeasPluginInfo
-PeasPluginInfoError
+<TITLE>BeanPluginInfo</TITLE>
+BeanPluginInfo
+BeanPluginInfoError
 bean_plugin_info_is_loaded
 bean_plugin_info_is_available
 bean_plugin_info_is_builtin

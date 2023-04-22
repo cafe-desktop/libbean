@@ -31,12 +31,12 @@ G_BEGIN_DECLS
 void            testing_init                     (gint                       *argc,
                                                   gchar                    ***argv);
 
-PeasEngine     *testing_engine_new               (void);
+BeanEngine     *testing_engine_new               (void);
 
-PeasPluginInfo *testing_get_plugin_info_for_iter (PeasGtkPluginManagerView   *view,
+BeanPluginInfo *testing_get_plugin_info_for_iter (BeanGtkPluginManagerView   *view,
                                                   GtkTreeIter                *iter);
-gboolean        testing_get_iter_for_plugin_info (PeasGtkPluginManagerView   *view,
-                                                  PeasPluginInfo             *info,
+gboolean        testing_get_iter_for_plugin_info (BeanGtkPluginManagerView   *view,
+                                                  BeanPluginInfo             *info,
                                                   GtkTreeIter                *iter);
 
 void            testing_show_widget              (gpointer                    widget);

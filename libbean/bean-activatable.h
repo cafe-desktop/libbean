@@ -32,21 +32,21 @@ G_BEGIN_DECLS
  * Type checking and casting macros
  */
 #define PEAS_TYPE_ACTIVATABLE             (bean_activatable_get_type ())
-#define PEAS_ACTIVATABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_ACTIVATABLE, PeasActivatable))
-#define PEAS_ACTIVATABLE_IFACE(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), PEAS_TYPE_ACTIVATABLE, PeasActivatableInterface))
+#define PEAS_ACTIVATABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatable))
+#define PEAS_ACTIVATABLE_IFACE(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatableInterface))
 #define PEAS_IS_ACTIVATABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PEAS_TYPE_ACTIVATABLE))
-#define PEAS_ACTIVATABLE_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), PEAS_TYPE_ACTIVATABLE, PeasActivatableInterface))
+#define PEAS_ACTIVATABLE_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), PEAS_TYPE_ACTIVATABLE, BeanActivatableInterface))
 
 /**
- * PeasActivatable:
+ * BeanActivatable:
  *
  * Interface for activatable plugins.
  */
-typedef struct _PeasActivatable           PeasActivatable; /* dummy typedef */
-typedef struct _PeasActivatableInterface  PeasActivatableInterface;
+typedef struct _BeanActivatable           BeanActivatable; /* dummy typedef */
+typedef struct _BeanActivatableInterface  BeanActivatableInterface;
 
 /**
- * PeasActivatableInterface:
+ * BeanActivatableInterface:
  * @g_iface: The parent interface.
  * @activate: Activates the plugin.
  * @deactivate: Deactivates the plugin.
@@ -55,13 +55,13 @@ typedef struct _PeasActivatableInterface  PeasActivatableInterface;
  *
  * Provides an interface for activatable plugins.
  */
-struct _PeasActivatableInterface {
+struct _BeanActivatableInterface {
   GTypeInterface g_iface;
 
   /* Virtual public methods */
-  void        (*activate)                 (PeasActivatable *activatable);
-  void        (*deactivate)               (PeasActivatable *activatable);
-  void        (*update_state)             (PeasActivatable *activatable);
+  void        (*activate)                 (BeanActivatable *activatable);
+  void        (*deactivate)               (BeanActivatable *activatable);
+  void        (*update_state)             (BeanActivatable *activatable);
 };
 
 /*
@@ -71,11 +71,11 @@ PEAS_AVAILABLE_IN_ALL
 GType             bean_activatable_get_type       (void)  G_GNUC_CONST;
 
 PEAS_AVAILABLE_IN_ALL
-void              bean_activatable_activate       (PeasActivatable *activatable);
+void              bean_activatable_activate       (BeanActivatable *activatable);
 PEAS_AVAILABLE_IN_ALL
-void              bean_activatable_deactivate     (PeasActivatable *activatable);
+void              bean_activatable_deactivate     (BeanActivatable *activatable);
 PEAS_AVAILABLE_IN_ALL
-void              bean_activatable_update_state   (PeasActivatable *activatable);
+void              bean_activatable_update_state   (BeanActivatable *activatable);
 
 G_END_DECLS
 

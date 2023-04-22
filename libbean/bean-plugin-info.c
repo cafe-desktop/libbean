@@ -40,7 +40,7 @@
  * SECTION:bean-plugin-info
  * @short_description: Information about a plugin.
  *
- * A #PeasPluginInfo contains all the information available about a plugin.
+ * A #BeanPluginInfo contains all the information available about a plugin.
  *
  * All this information comes from the related plugin info file, whose file
  * extension is ".plugin". Here is an example of such a plugin file, in the
@@ -62,19 +62,19 @@
 
 G_DEFINE_QUARK (bean-plugin-info-error, bean_plugin_info_error)
 
-G_DEFINE_BOXED_TYPE (PeasPluginInfo, bean_plugin_info,
+G_DEFINE_BOXED_TYPE (BeanPluginInfo, bean_plugin_info,
                      _bean_plugin_info_ref,
                      _bean_plugin_info_unref)
 
-PeasPluginInfo *
-_bean_plugin_info_ref (PeasPluginInfo *info)
+BeanPluginInfo *
+_bean_plugin_info_ref (BeanPluginInfo *info)
 {
   g_atomic_int_inc (&info->refcount);
   return info;
 }
 
 void
-_bean_plugin_info_unref (PeasPluginInfo *info)
+_bean_plugin_info_unref (BeanPluginInfo *info)
 {
   if (!g_atomic_int_dec_and_test (&info->refcount))
     return;
@@ -112,11 +112,11 @@ _bean_plugin_info_unref (PeasPluginInfo *info)
  * @module_dir: The module directory.
  * @data_dir: The data directory.
  *
- * Creates a new #PeasPluginInfo from a file on the disk.
+ * Creates a new #BeanPluginInfo from a file on the disk.
  *
- * Return value: a newly created #PeasPluginInfo.
+ * Return value: a newly created #BeanPluginInfo.
  */
-PeasPluginInfo *
+BeanPluginInfo *
 _bean_plugin_info_new (const gchar *filename,
                        const gchar *module_dir,
                        const gchar *data_dir)
@@ -125,7 +125,7 @@ _bean_plugin_info_new (const gchar *filename,
   gboolean is_resource;
   gchar *loader = NULL;
   gchar **strv, **keys;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GKeyFile *plugin_file;
   GBytes *bytes = NULL;
   GError *error = NULL;
@@ -134,7 +134,7 @@ _bean_plugin_info_new (const gchar *filename,
 
   is_resource = g_str_has_prefix (filename, "resource://");
 
-  info = g_new0 (PeasPluginInfo, 1);
+  info = g_new0 (BeanPluginInfo, 1);
   info->refcount = 1;
 
   plugin_file = g_key_file_new ();
@@ -334,14 +334,14 @@ error:
 
 /**
  * bean_plugin_info_is_loaded:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Check if the plugin is loaded.
  *
  * Returns: %TRUE if the plugin is loaded.
  */
 gboolean
-bean_plugin_info_is_loaded (const PeasPluginInfo *info)
+bean_plugin_info_is_loaded (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -350,7 +350,7 @@ bean_plugin_info_is_loaded (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_is_available:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  * @error: A #GError.
  *
  * Check if the plugin is available.
@@ -362,7 +362,7 @@ bean_plugin_info_is_loaded (const PeasPluginInfo *info)
  * Returns: %TRUE if the plugin is available.
  */
 gboolean
-bean_plugin_info_is_available (const PeasPluginInfo  *info,
+bean_plugin_info_is_available (const BeanPluginInfo  *info,
                                GError               **error)
 {
   g_return_val_if_fail (info != NULL, FALSE);
@@ -378,15 +378,15 @@ bean_plugin_info_is_available (const PeasPluginInfo  *info,
 
 /**
  * bean_plugin_info_is_builtin:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Check if the plugin is a builtin plugin.
  *
  * A builtin plugin is a plugin which cannot be enabled or disabled by the
- * user through a plugin manager (like #PeasGtkPluginManager). Loading or
+ * user through a plugin manager (like #BeanGtkPluginManager). Loading or
  * unloading such plugins is the responsibility of the application alone.
  * Most applications will usually load those plugins immediately after
- * the initialization of the #PeasEngine.
+ * the initialization of the #BeanEngine.
  *
  * The relevant key in the plugin info file is "Builtin".
  *
@@ -394,7 +394,7 @@ bean_plugin_info_is_available (const PeasPluginInfo  *info,
  * if not.
  **/
 gboolean
-bean_plugin_info_is_builtin (const PeasPluginInfo *info)
+bean_plugin_info_is_builtin (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, TRUE);
 
@@ -403,12 +403,12 @@ bean_plugin_info_is_builtin (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_is_hidden:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Check if the plugin is a hidden plugin.
  *
  * A hidden plugin is a plugin which cannot be seen by a
- * user through a plugin manager (like #PeasGtkPluginManager). Loading and
+ * user through a plugin manager (like #BeanGtkPluginManager). Loading and
  * unloading such plugins is the responsibility of the application alone or
  * through plugins that depend on them.
  *
@@ -418,7 +418,7 @@ bean_plugin_info_is_builtin (const PeasPluginInfo *info)
  * if not.
  **/
 gboolean
-bean_plugin_info_is_hidden (const PeasPluginInfo *info)
+bean_plugin_info_is_hidden (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, FALSE);
 
@@ -427,7 +427,7 @@ bean_plugin_info_is_hidden (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_module_name:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the module name.
  *
@@ -440,7 +440,7 @@ bean_plugin_info_is_hidden (const PeasPluginInfo *info)
  * Returns: the module name.
  */
 const gchar *
-bean_plugin_info_get_module_name (const PeasPluginInfo *info)
+bean_plugin_info_get_module_name (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -449,18 +449,18 @@ bean_plugin_info_get_module_name (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_module_dir:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the module directory.
  *
  * The module directory is the directory where the plugin file was found. This
  * is not a value from the #GKeyFile, but rather a value provided by the
- * #PeasEngine.
+ * #BeanEngine.
  *
  * Returns: the module directory.
  */
 const gchar *
-bean_plugin_info_get_module_dir (const PeasPluginInfo *info)
+bean_plugin_info_get_module_dir (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -469,19 +469,19 @@ bean_plugin_info_get_module_dir (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_data_dir:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the data dir of the plugin.
  *
  * The module data directory is the directory where a plugin should find its
  * runtime data. This is not a value read from the #GKeyFile, but rather a
- * value provided by the #PeasEngine, depending on where the plugin file was
+ * value provided by the #BeanEngine, depending on where the plugin file was
  * found.
  *
  * Returns: the plugin's data dir.
  */
 const gchar *
-bean_plugin_info_get_data_dir (const PeasPluginInfo *info)
+bean_plugin_info_get_data_dir (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -490,7 +490,7 @@ bean_plugin_info_get_data_dir (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_settings:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  * @schema_id: (allow-none): The schema id.
  *
  * Creates a new #GSettings for the given @schema_id and if
@@ -502,7 +502,7 @@ bean_plugin_info_get_data_dir (const PeasPluginInfo *info)
  * Since: 1.4
  */
 GSettings *
-bean_plugin_info_get_settings (const PeasPluginInfo *info,
+bean_plugin_info_get_settings (const BeanPluginInfo *info,
                                const gchar          *schema_id)
 {
   GSettingsSchema *schema;
@@ -537,7 +537,7 @@ bean_plugin_info_get_settings (const PeasPluginInfo *info,
       g_object_unref (module_dir_location);
 
       default_source = g_settings_schema_source_get_default ();
-      ((PeasPluginInfo *) info)->schema_source =
+      ((BeanPluginInfo *) info)->schema_source =
             g_settings_schema_source_new_from_directory (info->module_dir,
                                                          default_source,
                                                          FALSE, NULL);
@@ -565,11 +565,11 @@ bean_plugin_info_get_settings (const PeasPluginInfo *info,
 
 /**
  * bean_plugin_info_get_dependencies:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the dependencies of the plugin.
  *
- * The #PeasEngine will always ensure that the dependencies of a plugin are
+ * The #BeanEngine will always ensure that the dependencies of a plugin are
  * loaded when the said plugin is loaded. It means that dependencies are
  * loaded before the plugin, and unloaded after it. Circular dependencies of
  * plugins lead to undefined loading order.
@@ -579,7 +579,7 @@ bean_plugin_info_get_settings (const PeasPluginInfo *info,
  * Returns: (transfer none): the plugin's dependencies.
  */
 const gchar **
-bean_plugin_info_get_dependencies (const PeasPluginInfo *info)
+bean_plugin_info_get_dependencies (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -588,7 +588,7 @@ bean_plugin_info_get_dependencies (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_has_dependency:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  * @module_name: The name of the plugin to check.
  *
  * Check if the plugin depends on another plugin.
@@ -596,7 +596,7 @@ bean_plugin_info_get_dependencies (const PeasPluginInfo *info)
  * Returns: whether the plugin depends on the plugin @module_name.
  */
 gboolean
-bean_plugin_info_has_dependency (const PeasPluginInfo *info,
+bean_plugin_info_has_dependency (const BeanPluginInfo *info,
                                  const gchar          *module_name)
 {
   guint i;
@@ -616,7 +616,7 @@ bean_plugin_info_has_dependency (const PeasPluginInfo *info,
 
 /**
  * bean_plugin_info_get_name:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the name of the plugin.
  *
@@ -627,7 +627,7 @@ bean_plugin_info_has_dependency (const PeasPluginInfo *info,
  * Returns: the plugin's name.
  */
 const gchar *
-bean_plugin_info_get_name (const PeasPluginInfo *info)
+bean_plugin_info_get_name (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -636,7 +636,7 @@ bean_plugin_info_get_name (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_description:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the description of the plugin.
  *
@@ -648,7 +648,7 @@ bean_plugin_info_get_name (const PeasPluginInfo *info)
  * Returns: the plugin's description.
  */
 const gchar *
-bean_plugin_info_get_description (const PeasPluginInfo *info)
+bean_plugin_info_get_description (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -657,7 +657,7 @@ bean_plugin_info_get_description (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_icon_name:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the icon name of the plugin.
  *
@@ -669,7 +669,7 @@ bean_plugin_info_get_description (const PeasPluginInfo *info)
  * Returns: the plugin's icon name.
  */
 const gchar *
-bean_plugin_info_get_icon_name (const PeasPluginInfo *info)
+bean_plugin_info_get_icon_name (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -681,7 +681,7 @@ bean_plugin_info_get_icon_name (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_authors:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets a %NULL-terminated array of strings with the authors of the plugin.
  *
@@ -690,7 +690,7 @@ bean_plugin_info_get_icon_name (const PeasPluginInfo *info)
  * Returns: (transfer none) (array zero-terminated=1): the plugin's author list.
  */
 const gchar **
-bean_plugin_info_get_authors (const PeasPluginInfo *info)
+bean_plugin_info_get_authors (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, (const gchar **) NULL);
 
@@ -699,7 +699,7 @@ bean_plugin_info_get_authors (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_website:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the website of the plugin.
  *
@@ -708,7 +708,7 @@ bean_plugin_info_get_authors (const PeasPluginInfo *info)
  * Returns: the plugin's associated website.
  */
 const gchar *
-bean_plugin_info_get_website (const PeasPluginInfo *info)
+bean_plugin_info_get_website (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -717,7 +717,7 @@ bean_plugin_info_get_website (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_copyright:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the copyright of the plugin.
  *
@@ -726,7 +726,7 @@ bean_plugin_info_get_website (const PeasPluginInfo *info)
  * Returns: the plugin's copyright information.
  */
 const gchar *
-bean_plugin_info_get_copyright (const PeasPluginInfo *info)
+bean_plugin_info_get_copyright (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -735,7 +735,7 @@ bean_plugin_info_get_copyright (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_version:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the version of the plugin.
  *
@@ -744,7 +744,7 @@ bean_plugin_info_get_copyright (const PeasPluginInfo *info)
  * Returns: the plugin's version.
  */
 const gchar *
-bean_plugin_info_get_version (const PeasPluginInfo *info)
+bean_plugin_info_get_version (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -753,7 +753,7 @@ bean_plugin_info_get_version (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_help_uri:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  *
  * Gets the help URI of the plugin.
  *
@@ -768,7 +768,7 @@ bean_plugin_info_get_version (const PeasPluginInfo *info)
  * Returns: the plugin's help URI.
  */
 const gchar *
-bean_plugin_info_get_help_uri (const PeasPluginInfo *info)
+bean_plugin_info_get_help_uri (const BeanPluginInfo *info)
 {
   g_return_val_if_fail (info != NULL, NULL);
 
@@ -777,14 +777,14 @@ bean_plugin_info_get_help_uri (const PeasPluginInfo *info)
 
 /**
  * bean_plugin_info_get_external_data:
- * @info: A #PeasPluginInfo.
+ * @info: A #BeanPluginInfo.
  * @key: The key to lookup.
  *
  * Gets external data specified for the plugin.
  *
  * External data is specified in the plugin info file prefixed with X-. For
- * example, if a key/value pair X-Peas=1 is specified in the key file, you
- * can use "Peas" for @key to retrieve the value "1".
+ * example, if a key/value pair X-Bean=1 is specified in the key file, you
+ * can use "Bean" for @key to retrieve the value "1".
  *
  * Note: that you can omit the X- prefix when retrieving the value,
  * but not when specifying the value in the file.
@@ -794,7 +794,7 @@ bean_plugin_info_get_help_uri (const PeasPluginInfo *info)
  * Since: 1.6
  */
 const gchar *
-bean_plugin_info_get_external_data (const PeasPluginInfo *info,
+bean_plugin_info_get_external_data (const BeanPluginInfo *info,
                                     const gchar          *key)
 {
   g_return_val_if_fail (info != NULL, NULL);

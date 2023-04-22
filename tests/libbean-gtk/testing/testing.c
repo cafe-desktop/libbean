@@ -53,16 +53,16 @@ testing_init (gint    *argc,
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/libbean-gtk",
-                                 "PeasGtk", "1.0", 0, &error);
+                                 "BeanGtk", "1.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;
 }
 
-PeasEngine *
+BeanEngine *
 testing_engine_new (void)
 {
-  PeasEngine *engine;
+  BeanEngine *engine;
 
   engine = testing_util_engine_new ();
   bean_engine_add_search_path (engine, BUILDDIR "/tests/libbean-gtk/plugins",
@@ -71,14 +71,14 @@ testing_engine_new (void)
   return engine;
 }
 
-PeasPluginInfo *
-testing_get_plugin_info_for_iter (PeasGtkPluginManagerView *view,
+BeanPluginInfo *
+testing_get_plugin_info_for_iter (BeanGtkPluginManagerView *view,
                                   GtkTreeIter              *iter)
 {
   GtkTreeSelection *selection;
   GtkTreeIter selected_iter;
   gboolean had_selection;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   /* This is annoying but the only way to get the plugin info
    * is to ask the view for the info of the selected plugin
@@ -100,8 +100,8 @@ testing_get_plugin_info_for_iter (PeasGtkPluginManagerView *view,
 }
 
 gboolean
-testing_get_iter_for_plugin_info (PeasGtkPluginManagerView *view,
-                                  PeasPluginInfo           *info,
+testing_get_iter_for_plugin_info (BeanGtkPluginManagerView *view,
+                                  BeanPluginInfo           *info,
                                   GtkTreeIter              *iter)
 {
   GtkTreeModel *model;

@@ -22,43 +22,43 @@
 
 /**
  * SECTION:bean-version
- * @short_description: Peas version checking
+ * @short_description: Bean version checking
  *
- * Peas provides macros to check the version of the library at compile-time
+ * Bean provides macros to check the version of the library at compile-time
  */
 
 /**
  * PEAS_MAJOR_VERSION:
  *
- * Peas major version component (e.g. 1 if %PEAS_VERSION is 1.2.3)
+ * Bean major version component (e.g. 1 if %PEAS_VERSION is 1.2.3)
  */
 #define PEAS_MAJOR_VERSION              (@PEAS_MAJOR_VERSION@)
 
 /**
  * PEAS_MINOR_VERSION:
  *
- * Peas minor version component (e.g. 2 if %PEAS_VERSION is 1.2.3)
+ * Bean minor version component (e.g. 2 if %PEAS_VERSION is 1.2.3)
  */
 #define PEAS_MINOR_VERSION              (@PEAS_MINOR_VERSION@)
 
 /**
  * PEAS_MICRO_VERSION:
  *
- * Peas micro version component (e.g. 3 if %PEAS_VERSION is 1.2.3)
+ * Bean micro version component (e.g. 3 if %PEAS_VERSION is 1.2.3)
  */
 #define PEAS_MICRO_VERSION              (@PEAS_MICRO_VERSION@)
 
 /**
  * PEAS_VERSION
  *
- * Peas version.
+ * Bean version.
  */
 #define PEAS_VERSION                    (@PEAS_VERSION@)
 
 /**
  * PEAS_VERSION_S:
  *
- * Peas version, encoded as a string, useful for printing and
+ * Bean version, encoded as a string, useful for printing and
  * concatenation.
  */
 #define PEAS_VERSION_S                  "@PEAS_VERSION@"
@@ -69,7 +69,7 @@
 /**
  * PEAS_VERSION_HEX:
  *
- * Peas version, encoded as an hexadecimal number, useful for
+ * Bean version, encoded as an hexadecimal number, useful for
  * integer comparisons.
  */
 #define PEAS_VERSION_HEX \

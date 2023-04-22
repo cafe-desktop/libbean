@@ -21,8 +21,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../data/glade/libbean-gtk.xml.in.h:1
-msgid "Peas Gtk"
-msgstr "Peas Gtk"
+msgid "Bean Gtk"
+msgstr "Bean Gtk"
 
 #: ../data/glade/libbean-gtk.xml.in.h:2
 msgid "Plugin Manager"

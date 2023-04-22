@@ -34,7 +34,7 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
 };
 
 static void
@@ -55,13 +55,13 @@ static void
 test_runner (TestFixture   *fixture,
              gconstpointer  data)
 {
-  ((void (*) (PeasEngine *engine)) data) (fixture->engine);
+  ((void (*) (BeanEngine *engine)) data) (fixture->engine);
 }
 
 static void
-test_engine_new (PeasEngine *engine)
+test_engine_new (BeanEngine *engine)
 {
-  PeasEngine *new_engine;
+  BeanEngine *new_engine;
 
   /* Only one testing engine can be alive */
   new_engine = bean_engine_new ();
@@ -78,7 +78,7 @@ test_engine_new (PeasEngine *engine)
 }
 
 static void
-test_engine_dispose (PeasEngine *engine)
+test_engine_dispose (BeanEngine *engine)
 {
   /* Yes this really has failed before */
   g_object_run_dispose (G_OBJECT (engine));
@@ -95,7 +95,7 @@ static void
 test_engine_get_default (void)
 {
   GType the_type;
-  PeasEngine *test_engine;
+  BeanEngine *test_engine;
 
   g_assert (bean_engine_get_default () == bean_engine_get_default ());
 
@@ -112,8 +112,8 @@ test_engine_get_default (void)
    */
   the_type = g_type_register_static_simple (PEAS_TYPE_ENGINE,
                                             "TestEngineGetDefault",
-                                            sizeof (PeasEngineClass), NULL,
-                                            sizeof (PeasEngine),
+                                            sizeof (BeanEngineClass), NULL,
+                                            sizeof (BeanEngine),
                                             (GInstanceInitFunc) bean_engine_get_default,
                                             0);
   test_engine = PEAS_ENGINE (g_object_new (the_type, NULL));
@@ -124,9 +124,9 @@ test_engine_get_default (void)
 }
 
 static void
-test_engine_load_plugin (PeasEngine *engine)
+test_engine_load_plugin (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (engine, "loadable");
 
@@ -138,9 +138,9 @@ test_engine_load_plugin (PeasEngine *engine)
 }
 
 static void
-test_engine_load_plugin_with_dep (PeasEngine *engine)
+test_engine_load_plugin_with_dep (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (engine, "has-dep");
 
@@ -153,9 +153,9 @@ test_engine_load_plugin_with_dep (PeasEngine *engine)
 }
 
 static void
-test_engine_load_plugin_with_self_dep (PeasEngine *engine)
+test_engine_load_plugin_with_self_dep (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (engine, "self-dep");
 
@@ -164,10 +164,10 @@ test_engine_load_plugin_with_self_dep (PeasEngine *engine)
 }
 
 static void
-test_engine_load_plugin_with_nonexistent_dep (PeasEngine *engine)
+test_engine_load_plugin_with_nonexistent_dep (BeanEngine *engine)
 {
   GError *error = NULL;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
@@ -183,9 +183,9 @@ test_engine_load_plugin_with_nonexistent_dep (PeasEngine *engine)
 }
 
 static void
-test_engine_unload_plugin (PeasEngine *engine)
+test_engine_unload_plugin (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (engine, "loadable");
 
@@ -199,9 +199,9 @@ test_engine_unload_plugin (PeasEngine *engine)
 }
 
 static void
-test_engine_unload_plugin_with_dep (PeasEngine *engine)
+test_engine_unload_plugin_with_dep (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   test_engine_load_plugin_with_dep (engine);
 
@@ -216,9 +216,9 @@ test_engine_unload_plugin_with_dep (PeasEngine *engine)
 }
 
 static void
-test_engine_unload_plugin_with_self_dep (PeasEngine *engine)
+test_engine_unload_plugin_with_self_dep (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   test_engine_load_plugin_with_self_dep (engine);
 
@@ -229,9 +229,9 @@ test_engine_unload_plugin_with_self_dep (PeasEngine *engine)
 }
 
 static void
-test_engine_unavailable_plugin (PeasEngine *engine)
+test_engine_unavailable_plugin (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Could not find plugin 'does-not-exist'*");
 
@@ -243,10 +243,10 @@ test_engine_unavailable_plugin (PeasEngine *engine)
 }
 
 static void
-test_engine_not_loadable_plugin (PeasEngine *engine)
+test_engine_not_loadable_plugin (BeanEngine *engine)
 {
   GError *error = NULL;
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   testing_util_push_log_hook ("Failed to load module 'not-loadable'*");
   testing_util_push_log_hook ("Error loading plugin 'not-loadable'");
@@ -263,12 +263,12 @@ test_engine_not_loadable_plugin (PeasEngine *engine)
 }
 
 static void
-test_engine_plugin_list (PeasEngine *engine)
+test_engine_plugin_list (BeanEngine *engine)
 {
   GList *plugin_list;
   const gchar **dependencies;
   gint builtin_index, loadable_index, two_deps_index;
-  PeasPluginInfo *builtin_info, *loadable_info, *two_deps_info;
+  BeanPluginInfo *builtin_info, *loadable_info, *two_deps_info;
 
   plugin_list = (GList *) bean_engine_get_plugin_list (engine);
 
@@ -296,25 +296,25 @@ test_engine_plugin_list (PeasEngine *engine)
 }
 
 static void
-load_plugin_cb (PeasEngine     *engine,
-                PeasPluginInfo *info,
+load_plugin_cb (BeanEngine     *engine,
+                BeanPluginInfo *info,
                 gint           *loaded)
 {
-  /* PeasEngine:load is not stopped if loading fails */
+  /* BeanEngine:load is not stopped if loading fails */
   if (bean_plugin_info_is_loaded (info))
     ++(*loaded);
 }
 
 static void
-unload_plugin_cb (PeasEngine     *engine,
-                  PeasPluginInfo *info,
+unload_plugin_cb (BeanEngine     *engine,
+                  BeanPluginInfo *info,
                   gint           *loaded)
 {
   --(*loaded);
 }
 
 static void
-notify_loaded_plugins_cb (PeasEngine   *engine,
+notify_loaded_plugins_cb (BeanEngine   *engine,
                           GParamSpec   *pspec,
                           gchar      ***loaded_plugins)
 {
@@ -325,9 +325,9 @@ notify_loaded_plugins_cb (PeasEngine   *engine,
 }
 
 static void
-test_engine_loaded_plugins (PeasEngine *engine)
+test_engine_loaded_plugins (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   gint loaded = 0;
   gchar **load_plugins;
   gchar **loaded_plugins = NULL;
@@ -413,7 +413,7 @@ test_engine_loaded_plugins (PeasEngine *engine)
 }
 
 static void
-test_engine_enable_unkown_loader (PeasEngine *engine)
+test_engine_enable_unkown_loader (BeanEngine *engine)
 {
   testing_util_push_log_hook ("Failed to enable unknown "
                               "plugin loader 'does-not-exist'");
@@ -422,13 +422,13 @@ test_engine_enable_unkown_loader (PeasEngine *engine)
 }
 
 static void
-test_engine_enable_loader_multiple_times (PeasEngine *engine)
+test_engine_enable_loader_multiple_times (BeanEngine *engine)
 {
   bean_engine_enable_loader (engine, "C");
 }
 
 static void
-test_engine_nonexistent_search_path (PeasEngine *engine)
+test_engine_nonexistent_search_path (BeanEngine *engine)
 {
   /* We use /nowhere as it is also used in configure.ac */
   bean_engine_add_search_path (engine, "/nowhere", NULL);
@@ -444,7 +444,7 @@ test_engine_shutdown (void)
 }
 
 static void
-test_engine_shutdown_subprocess (PeasEngine *engine)
+test_engine_shutdown_subprocess (BeanEngine *engine)
 {
     testing_engine_free (engine);
 

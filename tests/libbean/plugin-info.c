@@ -33,7 +33,7 @@
 typedef struct _TestFixture TestFixture;
 
 struct _TestFixture {
-  PeasEngine *engine;
+  BeanEngine *engine;
 };
 
 static void
@@ -54,13 +54,13 @@ static void
 test_runner (TestFixture   *fixture,
              gconstpointer  data)
 {
-  ((void (*) (PeasEngine *engine)) data) (fixture->engine);
+  ((void (*) (BeanEngine *engine)) data) (fixture->engine);
 }
 
 static void
-test_plugin_info_verify_full_info (PeasEngine *engine)
+test_plugin_info_verify_full_info (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GError *error = NULL;
   const gchar **authors;
 
@@ -96,9 +96,9 @@ test_plugin_info_verify_full_info (PeasEngine *engine)
 }
 
 static void
-test_plugin_info_verify_min_info (PeasEngine *engine)
+test_plugin_info_verify_min_info (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   GError *error = NULL;
   const gchar **authors;
 
@@ -128,9 +128,9 @@ test_plugin_info_verify_min_info (PeasEngine *engine)
 }
 
 static void
-test_plugin_info_has_dep (PeasEngine *engine)
+test_plugin_info_has_dep (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
 
   info = bean_engine_get_plugin_info (engine, "full-info");
 
@@ -146,21 +146,21 @@ test_plugin_info_has_dep (PeasEngine *engine)
 }
 
 static void
-test_plugin_info_missing_module (PeasEngine *engine)
+test_plugin_info_missing_module (BeanEngine *engine)
 {
   g_assert (bean_engine_get_plugin_info (engine, "invalid-info-module") == NULL);
 }
 
 static void
-test_plugin_info_missing_name (PeasEngine *engine)
+test_plugin_info_missing_name (BeanEngine *engine)
 {
   g_assert (bean_engine_get_plugin_info (engine, "invalid-info-name") == NULL);
 }
 
 static void
-test_plugin_info_os_dependant_help (PeasEngine *engine)
+test_plugin_info_os_dependant_help (BeanEngine *engine)
 {
-  PeasPluginInfo *info;
+  BeanPluginInfo *info;
   const gchar *help;
 
   info = bean_engine_get_plugin_info (engine, "os-dependant-help");
