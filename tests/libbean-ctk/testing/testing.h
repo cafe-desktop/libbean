@@ -23,7 +23,7 @@
 #define __TESTING_H__
 
 #include <libbean/bean.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 #include <testing-util.h>
 
 G_BEGIN_DECLS

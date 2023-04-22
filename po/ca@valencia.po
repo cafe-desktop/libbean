@@ -20,25 +20,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.8.11\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Gestor de connectors"
 
 #. Translators: What BeanGtkPluginManagerView to use
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Visualitza"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "Visualització del gestor de connectors"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "Mostra els connectors integrats"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean GTK+"
 
@@ -62,24 +62,24 @@ msgstr "No s'ha trobat el carregador de connectors «%s»"
 msgid "Failed to load"
 msgstr "No s'ha pogut carregar"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "S'han d'inhabilitar connectors addicionals"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "Els connectors següents depenen de «%s» i també s'han d'inhabilitar:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Connectors"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "S'ha d'inhabilitar un connector addicional"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -88,61 +88,61 @@ msgstr ""
 "El connector «%s» depèn del connector «%s».\n"
 "Si inhabiliteu «%s» també s'inhabilitarà «%s»."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Inhabilita connectors"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "S'ha produït un error en mostrar l'ajuda."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Tanca"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "_Preferències"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Quant a"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Preferències"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Habilitat"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "H_abilita'ls tots"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Inhabilita'ls tots"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Habilitat"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Connector"
 
 #. Avoid having markup in a translated string
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin '%s' could not be loaded"
 msgstr "No s'ha pogut carregar el connector «%s»"
@@ -150,7 +150,7 @@ msgstr "No s'ha pogut carregar el connector «%s»"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "S'ha produït un error: %s"
@@ -168,10 +168,10 @@ msgstr "I_x"
 msgid "- libbean demo application"
 msgstr "- aplicació de demostració de la libbean"
 
-#: ../tests/libbean-gtk/plugin-manager.c:77
+#: ../tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "Quant a"
 
-#: ../tests/libbean-gtk/plugin-manager.c:82
+#: ../tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Preferències"

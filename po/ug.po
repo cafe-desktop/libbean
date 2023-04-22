@@ -16,24 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "قىستۇرما باشقۇرغۇچ"
 
-#: ../data/glade/libbean-gtk.xml.in.h:2
+#: ../data/glade/libbean-ctk.xml.in.h:2
 msgid "View"
 msgstr "كۆرۈنۈش"
 
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "Plugin Manager View"
 msgstr "قىستۇرما باشقۇرغۇ كۆرۈنۈشى"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:5
+#: ../data/glade/libbean-ctk.xml.in.h:5
 msgid "Show Builtin"
 msgstr "ئىچىگە قوشۇۋېتىلگىنى كۆرسەت"
 
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -57,24 +57,24 @@ msgstr "قىستۇرما يۈكلىگۈچ ‹%s›  تېپىلمىدى"
 msgid "Failed to load"
 msgstr "يۈكلەش مەغلۇپ بولدى"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:91
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
 msgid "Additional plugins must be disabled"
 msgstr "قوشۇمچە قىستۇرمىلار چەكلىنىشى كېرەك"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:98
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "«%s» نىڭ بېقىنىدىغان تۆۋەندىكى قىستۇرمىلارمۇ چەكلىنىشى كېرەك:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:140
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
 msgid "Plugins"
 msgstr "قىستۇرما"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:156
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
 msgid "An additional plugin must be disabled"
 msgstr "بىر قوشۇمچە قىستۇرما چەكلىنىشى كېرەك"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:163
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -82,43 +82,43 @@ msgid ""
 msgstr "«%s» دېگەن قىستۇرما «%s» دېگەن قىستۇرمىغا بېقىنىدۇ.\n"
 "ئەگەر «%s» چەكلەنسە «%s» مۇ چەكلىنىدۇ."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:183
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
 msgid "Disable Plugins"
 msgstr "قىستۇرمىلارنى چەكلەش"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:182
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:182
 msgid "There was an error displaying the help."
 msgstr "ياردەم ھۆججىتىنى كۆرسىتىشتە خاتالىق كۆرۈلدى."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_About"
 msgstr "ھەققىدە(_A)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:395
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:395
 msgid "_Preferences"
 msgstr "مايىللىق(_P)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:334
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
 msgid "_Enabled"
 msgstr "قوزغىتىلغان(_E)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:345
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
 msgid "E_nable All"
 msgstr "ھەممىنى قوزغات(_E)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:349
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
 msgid "_Disable All"
 msgstr "ھەممىنى چەكلە(_D)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:508
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:508
 msgid "Enabled"
 msgstr "ئىناۋەتلىك قىلىنغان"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:529
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:529
 msgid "Plugin"
 msgstr "قىستۇرما"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:619
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:619
 #, c-format
 msgid ""
 "<b>The plugin '%s' could not be loaded</b>\n"

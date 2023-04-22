@@ -38,24 +38,24 @@ msgstr "プラグインローダー“%s”が見つかりません"
 msgid "Failed to load"
 msgstr "ロードに失敗しました"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "追加プラグインを無効にする必要があります"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "次のプラグインは“%s”に依存しており、すべて無効になります:"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "プラグイン"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "追加プラグインを無効にする必要があります"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
@@ -64,61 +64,61 @@ msgstr ""
 "プラグイン“%s”は“%s”に依存しています。\n"
 "“%s”を無効にする場合、“%s”も無効になります。"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "プラグインを無効にする"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "ヘルプを表示する時にエラーが発生しました。"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "設定(_E)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "情報(_A)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "設定(_P)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "有効(_E)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "すべて有効(_N)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "すべて無効(_D)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "有効"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "プラグイン"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "プラグイン“%s”をロードできません"
@@ -126,7 +126,7 @@ msgstr "プラグイン“%s”をロードできません"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "エラー発生: %s"
@@ -144,11 +144,11 @@ msgstr "終了(_Q)"
 msgid "— libbean demo application"
 msgstr "— libbean のデモ用アプリケーション"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "情報"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "設定"
 

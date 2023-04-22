@@ -39,24 +39,24 @@ msgstr "Le chargeur de greffon « %s » n’a pas été trouvé"
 msgid "Failed to load"
 msgstr "Échec de chargement"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Des greffons supplémentaires doivent être désactivés"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "Les greffons suivants dépendent de « %s » et seront aussi désactivés :"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Greffons"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Un greffon supplémentaire doit être désactivé"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
@@ -65,61 +65,61 @@ msgstr ""
 "Le greffon « %s » dépend du greffon « %s ».\n"
 "Si vous désactivez « %s », « %s » sera également désactivé."
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Désactiver les greffons"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Une erreur s’est produite durant l’affichage de l’aide."
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Fermer"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "Aid_e"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "P_références"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "À _propos"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Préférences"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Activé"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "_Tout activer"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "Tout _désactiver"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Activé"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Greffon"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Le greffon « %s » n’a pas pu être chargé"
@@ -127,7 +127,7 @@ msgstr "Le greffon « %s » n’a pas pu être chargé"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Une erreur est survenue : %s"
@@ -145,10 +145,10 @@ msgstr "_Quitter"
 msgid "— libbean demo application"
 msgstr "— application démo libbean"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "À propos"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Préférences"

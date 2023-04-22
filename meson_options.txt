@@ -18,7 +18,7 @@ option('vapi',
 
 option('widgetry',
        type: 'boolean', value: true,
-       description: 'Build GTK+ widgetry (requires gtk+)')
+       description: 'Build GTK+ widgetry (requires ctk+)')
 option('glade_catalog',
        type: 'boolean', value: true,
        description: 'Install Glade catalog (requires gladeui)')
@@ -27,6 +27,6 @@ option('demos',
        type: 'boolean', value: true,
        description: 'Build demo programs')
 
-option('gtk_doc',
+option('ctk_doc',
        type: 'boolean', value: false,
-       description: 'Build reference manual (requires gtk-doc)')
+       description: 'Build reference manual (requires ctk-doc)')

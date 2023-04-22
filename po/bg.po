@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
-#: ../data/glade/libbean-gtk.xml.in.h:2
+#: ../data/glade/libbean-ctk.xml.in.h:2
 msgid "Plugin Manager"
 msgstr "Управление на приставките"
 
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "Plugin Manager View"
 msgstr "Изглед на приставките"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:5
+#: ../data/glade/libbean-ctk.xml.in.h:5
 msgid "Show Builtin"
 msgstr "Вградени приставки"
 
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "View"
 msgstr "Изглед"
 
@@ -59,24 +59,24 @@ msgstr "Модулът за зареждане на приставки не бе
 msgid "Failed to load"
 msgstr "Неуспешно зареждане"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:91
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
 msgid "Additional plugins must be disabled"
 msgstr "Трябва да се изключат още приставки"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:98
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "Следните приставки зависят от „%s“ и също ще бъдат изключени:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:140
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
 msgid "Plugins"
 msgstr "Приставки"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:156
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
 msgid "An additional plugin must be disabled"
 msgstr "Още една приставка трябва да се изключи"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:163
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -85,43 +85,43 @@ msgstr ""
 "Приставката „%s“ зависи от „%s“.\n"
 "Ако изключите „%s“, „%s“ също ще бъде изключена."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:183
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
 msgid "Disable Plugins"
 msgstr "Изключване на приставки"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:182
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:182
 msgid "There was an error displaying the help."
 msgstr "Възникна грешка при показване на помощната документация."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_About"
 msgstr "_Относно"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:395
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:395
 msgid "_Preferences"
 msgstr "_Настройки"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:334
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
 msgid "_Enabled"
 msgstr "_Включена"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:345
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
 msgid "E_nable All"
 msgstr "В_ключване на всички"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:349
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
 msgid "_Disable All"
 msgstr "_Изключване на всички"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:508
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:508
 msgid "Enabled"
 msgstr "Включена"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:529
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:529
 msgid "Plugin"
 msgstr "Приставка"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:619
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:619
 #, c-format
 msgid ""
 "<b>The plugin '%s' could not be loaded</b>\n"

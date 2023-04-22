@@ -17,7 +17,7 @@ libbuiltin_configurable_deps = [
   gobject_dep,
   gmodule_dep,
   libbean_dep,
-  libbean_gtk_dep,
+  libbean_ctk_dep,
 ]
 
 libbuiltin_configurable_lib = shared_library(

@@ -25,11 +25,11 @@
 
 #include <girepository.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <locale.h>
 
 #include <libbean/bean.h>
-#include <libbean-gtk/bean-gtk.h>
+#include <libbean-ctk/bean-ctk.h>
 
 #include "bean-demo-window.h"
 
@@ -50,7 +50,7 @@ create_new_window (void)
   GtkWidget *window;
 
   window = demo_window_new ();
-  gtk_widget_show_all (window);
+  ctk_widget_show_all (window);
 }
 
 static GtkWidget *
@@ -63,37 +63,37 @@ create_main_window (void)
   GtkWidget *button_box;
   GtkWidget *button;
 
-  gtk_window_set_default_icon_name ("libbean-plugin");
+  ctk_window_set_default_icon_name ("libbean-plugin");
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  g_signal_connect (window, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (window), 6);
-  gtk_window_set_title (GTK_WINDOW (window), "Bean Demo");
+  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  g_signal_connect (window, "delete-event", G_CALLBACK (ctk_main_quit), NULL);
+  ctk_container_set_border_width (GTK_CONTAINER (window), 6);
+  ctk_window_set_title (GTK_WINDOW (window), "Bean Demo");
 
-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (GTK_CONTAINER (window), box);
 
-  manager = bean_gtk_plugin_manager_new (bean_engine_get_default ());
-  gtk_box_pack_start (GTK_BOX (box), manager, TRUE, TRUE, 0);
+  manager = bean_ctk_plugin_manager_new (bean_engine_get_default ());
+  ctk_box_pack_start (GTK_BOX (box), manager, TRUE, TRUE, 0);
 
   /* Always show all plugins, there are only a few */
-  scrolled_window = gtk_test_find_sibling (manager,
+  scrolled_window = ctk_test_find_sibling (manager,
                                            GTK_TYPE_SCROLLED_WINDOW);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
                                   GTK_POLICY_NEVER, GTK_POLICY_NEVER);
 
-  button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-  gtk_box_set_spacing (GTK_BOX (button_box), 6);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (button_box), GTK_BUTTONBOX_END);
-  gtk_box_pack_start (GTK_BOX (box), button_box, FALSE, FALSE, 0);
+  button_box = ctk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+  ctk_box_set_spacing (GTK_BOX (button_box), 6);
+  ctk_button_box_set_layout (GTK_BUTTON_BOX (button_box), GTK_BUTTONBOX_END);
+  ctk_box_pack_start (GTK_BOX (box), button_box, FALSE, FALSE, 0);
 
-  button = gtk_button_new_with_label ("New window");
+  button = ctk_button_new_with_label ("New window");
   g_signal_connect (button, "clicked", G_CALLBACK (create_new_window), NULL);
-  gtk_container_add (GTK_CONTAINER (button_box), button);
+  ctk_container_add (GTK_CONTAINER (button_box), button);
 
-  button = gtk_button_new_with_mnemonic (_("_Quit"));
-  g_signal_connect (button, "clicked", G_CALLBACK (gtk_main_quit), NULL);
-  gtk_container_add (GTK_CONTAINER (button_box), button);
+  button = ctk_button_new_with_mnemonic (_("_Quit"));
+  g_signal_connect (button, "clicked", G_CALLBACK (ctk_main_quit), NULL);
+  ctk_container_add (GTK_CONTAINER (button_box), button);
 
   return window;
 }
@@ -118,7 +118,7 @@ main (int    argc,
 
   option_context = g_option_context_new (_("— libbean demo application"));
   g_option_context_add_main_entries (option_context, demo_args, GETTEXT_PACKAGE);
-  g_option_context_add_group (option_context, gtk_get_option_group (TRUE));
+  g_option_context_add_group (option_context, ctk_get_option_group (TRUE));
 
   if (!g_option_context_parse (option_context, &argc, &argv, &error))
     {
@@ -135,7 +135,7 @@ main (int    argc,
 
       /* Use the uninstalled typelibs */
       g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean");
-      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean-gtk");
+      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean-ctk");
 
       /* Use the uninstalled plugin loaders */
       g_setenv ("BEAN_PLUGIN_LOADERS_DIR", BEAN_BUILDDIR "/loaders", TRUE);
@@ -160,11 +160,11 @@ main (int    argc,
 
   n_windows = 0;
   main_window = create_main_window ();
-  gtk_widget_show_all (main_window);
+  ctk_widget_show_all (main_window);
 
-  gtk_main ();
+  ctk_main ();
 
-  gtk_widget_destroy (main_window);
+  ctk_widget_destroy (main_window);
 
   g_object_unref (engine);
 

@@ -8,7 +8,7 @@ requires:
     - cppcheck
     - expect #required for unbuffer
     - git
-    - gtk-doc-tools
+    - ctk-doc-tools
     - intltool
     - libgirepository1.0-dev
     - libgirepository1.0-doc

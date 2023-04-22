@@ -31,13 +31,13 @@
 #include <libbean/bean-engine.h>
 #include <libbean/bean-i18n-priv.h>
 
-#include "bean-gtk-plugin-manager-view.h"
-#include "bean-gtk-disable-plugins-dialog.h"
-#include "bean-gtk-plugin-manager-store.h"
-#include "bean-gtk-configurable.h"
+#include "bean-ctk-plugin-manager-view.h"
+#include "bean-ctk-disable-plugins-dialog.h"
+#include "bean-ctk-plugin-manager-store.h"
+#include "bean-ctk-configurable.h"
 
 /**
- * SECTION:bean-gtk-plugin-manager-view
+ * SECTION:bean-ctk-plugin-manager-view
  * @short_description: Management tree view for plugins.
  *
  * The #BeanGtkPluginManagerView is a tree view that can be used to manage
@@ -45,7 +45,7 @@
  *
  * The only thing you need to do as an application writer if you wish
  * to use the view to display your plugins is to instantiate it using
- * bean_gtk_plugin_manager_view_new() and pack it into another
+ * bean_ctk_plugin_manager_view_new() and pack it into another
  * widget or a window.
  *
  * Note: Changing the model of the view is not supported.
@@ -80,11 +80,11 @@ static guint signals[LAST_SIGNAL];
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 G_DEFINE_TYPE_WITH_PRIVATE (BeanGtkPluginManagerView,
-                            bean_gtk_plugin_manager_view,
+                            bean_ctk_plugin_manager_view,
                             GTK_TYPE_TREE_VIEW)
 
 #define GET_PRIV(o) \
-  (bean_gtk_plugin_manager_view_get_instance_private (o))
+  (bean_ctk_plugin_manager_view_get_instance_private (o))
 
 static void
 convert_iter_to_child_iter (BeanGtkPluginManagerView *view,
@@ -97,9 +97,9 @@ convert_iter_to_child_iter (BeanGtkPluginManagerView *view,
       GtkTreeModel *model;
       GtkTreeIter child_iter;
 
-      model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+      model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
 
-      gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (model),
+      ctk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (model),
                                                         &child_iter, iter);
 
       *iter = child_iter;
@@ -118,9 +118,9 @@ convert_child_iter_to_iter (BeanGtkPluginManagerView *view,
       GtkTreeModel *model;
       GtkTreeIter iter;
 
-      model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+      model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
 
-      success = gtk_tree_model_filter_convert_child_iter_to_iter (GTK_TREE_MODEL_FILTER (model),
+      success = ctk_tree_model_filter_convert_child_iter_to_iter (GTK_TREE_MODEL_FILTER (model),
                                                                   &iter, child_iter);
 
       if (success)
@@ -168,7 +168,7 @@ toggle_enabled (BeanGtkPluginManagerView *view,
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
   BeanPluginInfo *info;
 
-  info = bean_gtk_plugin_manager_store_get_plugin (priv->store, iter);
+  info = bean_ctk_plugin_manager_store_get_plugin (priv->store, iter);
 
   if (bean_plugin_info_is_loaded (info))
     {
@@ -182,22 +182,22 @@ toggle_enabled (BeanGtkPluginManagerView *view,
           GtkWidget *dialog;
           gint response;
 
-          parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (view)));
+          parent = GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (view)));
 
           /* The dialog takes the list so don't free it */
-          dialog = bean_gtk_disable_plugins_dialog_new (parent, info,
+          dialog = bean_ctk_disable_plugins_dialog_new (parent, info,
                                                         dep_plugins);
 
-          response = gtk_dialog_run (GTK_DIALOG (dialog));
+          response = ctk_dialog_run (GTK_DIALOG (dialog));
 
-          gtk_widget_destroy (dialog);
+          ctk_widget_destroy (dialog);
 
           if (response != GTK_RESPONSE_OK)
             return;
         }
     }
 
-  bean_gtk_plugin_manager_store_toggle_enabled (priv->store, iter);
+  bean_ctk_plugin_manager_store_toggle_enabled (priv->store, iter);
 }
 
 static void
@@ -208,12 +208,12 @@ plugin_list_changed_cb (BeanEngine               *engine,
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
   BeanPluginInfo *info;
 
-  info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
+  info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
-  bean_gtk_plugin_manager_store_reload (priv->store);
+  bean_ctk_plugin_manager_store_reload (priv->store);
 
   if (info != NULL)
-    bean_gtk_plugin_manager_view_set_selected_plugin (view, info);
+    bean_ctk_plugin_manager_view_set_selected_plugin (view, info);
 }
 
 static gboolean
@@ -227,7 +227,7 @@ filter_builtins_visible (BeanGtkPluginManagerStore *store,
   /* We never filter showing builtins */
   g_assert (priv->show_builtin == FALSE);
 
-  info = bean_gtk_plugin_manager_store_get_plugin (store, iter);
+  info = bean_ctk_plugin_manager_store_get_plugin (store, iter);
 
   if (info == NULL)
     return FALSE;
@@ -244,16 +244,16 @@ enabled_toggled_cb (GtkCellRendererToggle    *cell,
   GtkTreePath *path;
   GtkTreeIter iter;
 
-  model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
-  path = gtk_tree_path_new_from_string (path_str);
+  model = ctk_tree_view_get_model (GTK_TREE_VIEW (view));
+  path = ctk_tree_path_new_from_string (path_str);
 
-  if (gtk_tree_model_get_iter (model, &iter, path))
+  if (ctk_tree_model_get_iter (model, &iter, path))
     {
       convert_iter_to_child_iter (view, &iter);
       toggle_enabled (view, &iter);
     }
 
-  gtk_tree_path_free (path);
+  ctk_tree_path_free (path);
 }
 
 /* Callback used as the interactive search comparison function */
@@ -275,7 +275,7 @@ name_search_cb (GtkTreeModel             *model,
   gboolean retval;
 
   convert_iter_to_child_iter (view, &child_iter);
-  info = bean_gtk_plugin_manager_store_get_plugin (priv->store, &child_iter);
+  info = bean_ctk_plugin_manager_store_get_plugin (priv->store, &child_iter);
 
   if (info == NULL)
     return FALSE;
@@ -307,9 +307,9 @@ enabled_menu_cb (GtkMenu                  *menu,
   GtkTreeIter iter;
   GtkTreeSelection *selection;
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
-  g_return_if_fail (gtk_tree_selection_get_selected (selection, NULL, &iter));
+  g_return_if_fail (ctk_tree_selection_get_selected (selection, NULL, &iter));
 
   convert_iter_to_child_iter (view, &iter);
 
@@ -322,7 +322,7 @@ enable_all_menu_cb (GtkMenu                  *menu,
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
-  bean_gtk_plugin_manager_store_set_all_enabled (priv->store, TRUE);
+  bean_ctk_plugin_manager_store_set_all_enabled (priv->store, TRUE);
 }
 
 static void
@@ -331,7 +331,7 @@ disable_all_menu_cb (GtkMenu                  *menu,
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
-  bean_gtk_plugin_manager_store_set_all_enabled (priv->store, FALSE);
+  bean_ctk_plugin_manager_store_set_all_enabled (priv->store, FALSE);
 }
 
 static GtkWidget *
@@ -341,35 +341,35 @@ create_popup_menu (BeanGtkPluginManagerView *view)
   GtkWidget *menu;
   GtkWidget *item;
 
-  info = bean_gtk_plugin_manager_view_get_selected_plugin (view);
+  info = bean_ctk_plugin_manager_view_get_selected_plugin (view);
 
   if (info == NULL)
     return NULL;
 
-  menu = gtk_menu_new ();
+  menu = ctk_menu_new ();
 
-  item = gtk_check_menu_item_new_with_mnemonic (_("_Enabled"));
-  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
+  item = ctk_check_menu_item_new_with_mnemonic (_("_Enabled"));
+  ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
                                   bean_plugin_info_is_loaded (info));
   g_signal_connect (item, "toggled", G_CALLBACK (enabled_menu_cb), view);
-  gtk_widget_set_sensitive (item, bean_plugin_info_is_available (info, NULL) &&
+  ctk_widget_set_sensitive (item, bean_plugin_info_is_available (info, NULL) &&
                                   !bean_plugin_info_is_builtin (info));
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-  item = gtk_separator_menu_item_new ();
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  item = ctk_separator_menu_item_new ();
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-  item = gtk_menu_item_new_with_mnemonic (_("E_nable All"));
+  item = ctk_menu_item_new_with_mnemonic (_("E_nable All"));
   g_signal_connect (item, "activate", G_CALLBACK (enable_all_menu_cb), view);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-  item = gtk_menu_item_new_with_mnemonic (_("_Disable All"));
+  item = ctk_menu_item_new_with_mnemonic (_("_Disable All"));
   g_signal_connect (item, "activate", G_CALLBACK (disable_all_menu_cb), view);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
   g_signal_emit (view, signals[POPULATE_POPUP], 0, menu);
 
-  gtk_widget_show_all (menu);
+  ctk_widget_show_all (menu);
 
   return menu;
 }
@@ -390,24 +390,24 @@ get_selected_area (GtkTreeView  *tree_view,
   GtkTreeSelection *selection;
   GtkTreeIter iter;
 
-  selection = gtk_tree_view_get_selection (tree_view);
+  selection = ctk_tree_view_get_selection (tree_view);
 
-  if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+  if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
       GtkTreeModel *model;
       GtkTreePath *path;
 
-      model = gtk_tree_view_get_model (tree_view);
-      path = gtk_tree_model_get_path (model, &iter);
-      gtk_tree_view_get_cell_area (tree_view,
+      model = ctk_tree_view_get_model (tree_view);
+      path = ctk_tree_model_get_path (model, &iter);
+      ctk_tree_view_get_cell_area (tree_view,
                                    path,
-                                   gtk_tree_view_get_column (tree_view, 0),
+                                   ctk_tree_view_get_column (tree_view, 0),
                                    area);
-      gtk_tree_path_free (path);
+      ctk_tree_path_free (path);
     }
   else
     {
-      gtk_widget_get_allocation (GTK_WIDGET (tree_view), area);
+      ctk_widget_get_allocation (GTK_WIDGET (tree_view), area);
     }
 }
 
@@ -423,32 +423,32 @@ menu_position_under_tree_view (GtkMenu     *menu,
   GtkTreeIter iter;
   GdkWindow *window;
 
-  selection = gtk_tree_view_get_selection (tree_view);
+  selection = ctk_tree_view_get_selection (tree_view);
 
-  window = gtk_widget_get_window (GTK_WIDGET (tree_view));
+  window = ctk_widget_get_window (GTK_WIDGET (tree_view));
   gdk_window_get_origin (window, x, y);
 
-  if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+  if (ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
       GtkTreeModel *model;
       GtkTreePath *path;
       GdkRectangle rect;
 
-      model = gtk_tree_view_get_model (tree_view);
-      path = gtk_tree_model_get_path (model, &iter);
-      gtk_tree_view_get_cell_area (tree_view,
+      model = ctk_tree_view_get_model (tree_view);
+      path = ctk_tree_model_get_path (model, &iter);
+      ctk_tree_view_get_cell_area (tree_view,
                                    path,
-                                   gtk_tree_view_get_column (tree_view, 0), /* FIXME 0 for RTL ? */
+                                   ctk_tree_view_get_column (tree_view, 0), /* FIXME 0 for RTL ? */
                                    &rect);
-      gtk_tree_path_free (path);
+      ctk_tree_path_free (path);
 
       *x += rect.x;
       *y += rect.y + rect.height;
 
-      if (gtk_widget_get_direction (GTK_WIDGET (tree_view)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (GTK_WIDGET (tree_view)) == GTK_TEXT_DIR_RTL)
         {
           GtkRequisition requisition;
-          gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition,
+          ctk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition,
                                          NULL);
           *x += rect.width - requisition.width;
         }
@@ -457,16 +457,16 @@ menu_position_under_tree_view (GtkMenu     *menu,
     {
       GtkAllocation allocation;
 
-      gtk_widget_get_allocation (GTK_WIDGET (tree_view), &allocation);
+      ctk_widget_get_allocation (GTK_WIDGET (tree_view), &allocation);
 
       *x += allocation.x;
       *y += allocation.y;
 
-      if (gtk_widget_get_direction (GTK_WIDGET (tree_view)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (GTK_WIDGET (tree_view)) == GTK_TEXT_DIR_RTL)
         {
           GtkRequisition requisition;
 
-          gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition,
+          ctk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition,
                                          NULL);
 
           *x += allocation.width - requisition.width;
@@ -485,24 +485,24 @@ show_popup_menu (GtkTreeView              *tree_view,
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
   if (priv->popup_menu)
-    gtk_widget_destroy (priv->popup_menu);
+    ctk_widget_destroy (priv->popup_menu);
 
   priv->popup_menu = create_popup_menu (view);
 
   if (priv->popup_menu == NULL)
     return FALSE;
 
-  gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
+  ctk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
                              GTK_WIDGET (view),
                              (GtkMenuDetachFunc) popup_menu_detach);
 
   if (event != NULL)
     {
 #if GTK_CHECK_VERSION(3, 22, 0)
-      gtk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu),
+      ctk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu),
                                 (const GdkEvent *)event);
 #else
-      gtk_menu_popup (GTK_MENU (priv->popup_menu), NULL, NULL,
+      ctk_menu_popup (GTK_MENU (priv->popup_menu), NULL, NULL,
                       NULL, NULL, event->button, event->time);
 #endif
     }
@@ -513,20 +513,20 @@ show_popup_menu (GtkTreeView              *tree_view,
 
       get_selected_area (GTK_TREE_VIEW (view), &cell_area);
 
-      gtk_menu_popup_at_rect (GTK_MENU (priv->popup_menu),
-                              gtk_widget_get_window (GTK_WIDGET (view)),
+      ctk_menu_popup_at_rect (GTK_MENU (priv->popup_menu),
+                              ctk_widget_get_window (GTK_WIDGET (view)),
                               &cell_area,
                               GDK_GRAVITY_SOUTH_WEST,
                               GDK_GRAVITY_NORTH_WEST,
                               (const GdkEvent *)event);
 
 #else
-      gtk_menu_popup (GTK_MENU (priv->popup_menu), NULL, NULL,
+      ctk_menu_popup (GTK_MENU (priv->popup_menu), NULL, NULL,
                       (GtkMenuPositionFunc) menu_position_under_tree_view,
-                      view, 0, gtk_get_current_event_time ());
+                      view, 0, ctk_get_current_event_time ());
 #endif
 
-      gtk_menu_shell_select_first (GTK_MENU_SHELL (priv->popup_menu),
+      ctk_menu_shell_select_first (GTK_MENU_SHELL (priv->popup_menu),
                                    FALSE);
     }
 
@@ -542,7 +542,7 @@ plugin_icon_data_func (GtkTreeViewColumn *column,
   GIcon *icon_gicon;
   gchar *icon_stock_id;
 
-  gtk_tree_model_get (model, iter,
+  ctk_tree_model_get (model, iter,
     BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_GICON_COLUMN, &icon_gicon,
     BEAN_GTK_PLUGIN_MANAGER_STORE_ICON_STOCK_ID_COLUMN, &icon_stock_id,
     -1);
@@ -561,24 +561,24 @@ plugin_icon_data_func (GtkTreeViewColumn *column,
 }
 
 static void
-bean_gtk_plugin_manager_view_init (BeanGtkPluginManagerView *view)
+bean_ctk_plugin_manager_view_init (BeanGtkPluginManagerView *view)
 {
   GtkTreeViewColumn *column;
   GtkCellRenderer *cell;
 
-  gtk_widget_set_has_tooltip (GTK_WIDGET (view), TRUE);
+  ctk_widget_set_has_tooltip (GTK_WIDGET (view), TRUE);
 
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (view), FALSE);
+  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (view), FALSE);
 
   /* first column */
-  column = gtk_tree_view_column_new ();
-  gtk_tree_view_column_set_title (column, _("Enabled"));
-  gtk_tree_view_column_set_resizable (column, FALSE);
+  column = ctk_tree_view_column_new ();
+  ctk_tree_view_column_set_title (column, _("Enabled"));
+  ctk_tree_view_column_set_resizable (column, FALSE);
 
-  cell = gtk_cell_renderer_toggle_new ();
-  gtk_tree_view_column_pack_start (column, cell, FALSE);
+  cell = ctk_cell_renderer_toggle_new ();
+  ctk_tree_view_column_pack_start (column, cell, FALSE);
   g_object_set (cell, "xpad", 6, NULL);
-  gtk_tree_view_column_set_attributes (column, cell,
+  ctk_tree_view_column_set_attributes (column, cell,
                                        "active", BEAN_GTK_PLUGIN_MANAGER_STORE_ENABLED_COLUMN,
                                        "activatable", BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,
                                        "sensitive", BEAN_GTK_PLUGIN_MANAGER_STORE_CAN_ENABLE_COLUMN,
@@ -589,49 +589,49 @@ bean_gtk_plugin_manager_view_init (BeanGtkPluginManagerView *view)
                     G_CALLBACK (enabled_toggled_cb),
                     view);
 
-  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (view), column);
 
   /* second column */
-  column = gtk_tree_view_column_new ();
-  gtk_tree_view_column_set_title (column, _("Plugin"));
-  gtk_tree_view_column_set_resizable (column, FALSE);
+  column = ctk_tree_view_column_new ();
+  ctk_tree_view_column_set_title (column, _("Plugin"));
+  ctk_tree_view_column_set_resizable (column, FALSE);
 
-  cell = gtk_cell_renderer_pixbuf_new ();
-  gtk_tree_view_column_pack_start (column, cell, FALSE);
+  cell = ctk_cell_renderer_pixbuf_new ();
+  ctk_tree_view_column_pack_start (column, cell, FALSE);
   g_object_set (cell, "stock-size", GTK_ICON_SIZE_SMALL_TOOLBAR, NULL);
-  gtk_tree_view_column_set_cell_data_func (column, cell,
+  ctk_tree_view_column_set_cell_data_func (column, cell,
                                            (GtkTreeCellDataFunc) plugin_icon_data_func,
                                            NULL, NULL);
 
-  cell = gtk_cell_renderer_text_new ();
-  gtk_tree_view_column_pack_start (column, cell, TRUE);
+  cell = ctk_cell_renderer_text_new ();
+  ctk_tree_view_column_pack_start (column, cell, TRUE);
   g_object_set (cell, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-  gtk_tree_view_column_set_attributes (column, cell,
+  ctk_tree_view_column_set_attributes (column, cell,
                                        "sensitive", BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_SENSITIVE_COLUMN,
                                        "markup", BEAN_GTK_PLUGIN_MANAGER_STORE_INFO_COLUMN,
                                        NULL);
 
-  gtk_tree_view_column_set_spacing (column, 6);
-  gtk_tree_view_append_column (GTK_TREE_VIEW (view), column);
+  ctk_tree_view_column_set_spacing (column, 6);
+  ctk_tree_view_append_column (GTK_TREE_VIEW (view), column);
 
   /* Enable search for our non-string column */
-  gtk_tree_view_set_search_column (GTK_TREE_VIEW (view),
+  ctk_tree_view_set_search_column (GTK_TREE_VIEW (view),
                                    BEAN_GTK_PLUGIN_MANAGER_STORE_PLUGIN_COLUMN);
-  gtk_tree_view_set_search_equal_func (GTK_TREE_VIEW (view),
+  ctk_tree_view_set_search_equal_func (GTK_TREE_VIEW (view),
                                        (GtkTreeViewSearchEqualFunc) name_search_cb,
                                        view,
                                        NULL);
 }
 
 static gboolean
-bean_gtk_plugin_manager_view_button_press_event (GtkWidget      *tree_view,
+bean_ctk_plugin_manager_view_button_press_event (GtkWidget      *tree_view,
                                                  GdkEventButton *event)
 {
   BeanGtkPluginManagerView *view = BEAN_GTK_PLUGIN_MANAGER_VIEW (tree_view);
   GtkWidgetClass *widget_class;
   gboolean handled;
 
-  widget_class = GTK_WIDGET_CLASS (bean_gtk_plugin_manager_view_parent_class);
+  widget_class = GTK_WIDGET_CLASS (bean_ctk_plugin_manager_view_parent_class);
 
   /* The selection must by updated */
   handled = widget_class->button_press_event (tree_view, event);
@@ -643,7 +643,7 @@ bean_gtk_plugin_manager_view_button_press_event (GtkWidget      *tree_view,
 }
 
 static gboolean
-bean_gtk_plugin_manager_view_popup_menu (GtkWidget *tree_view)
+bean_ctk_plugin_manager_view_popup_menu (GtkWidget *tree_view)
 {
   BeanGtkPluginManagerView *view = BEAN_GTK_PLUGIN_MANAGER_VIEW (tree_view);
 
@@ -651,7 +651,7 @@ bean_gtk_plugin_manager_view_popup_menu (GtkWidget *tree_view)
 }
 
 static gboolean
-bean_gtk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
+bean_ctk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
                                             gint        x,
                                             gint        y,
                                             gboolean    keyboard_mode,
@@ -665,7 +665,7 @@ bean_gtk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
   gchar *to_bold, *error_msg, *message;
   GError *error = NULL;
 
-  is_row = gtk_tree_view_get_tooltip_context (GTK_TREE_VIEW (widget),
+  is_row = ctk_tree_view_get_tooltip_context (GTK_TREE_VIEW (widget),
                                               &x, &y, keyboard_mode,
                                               NULL, NULL, &iter);
 
@@ -674,7 +674,7 @@ bean_gtk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
 
   convert_iter_to_child_iter (view, &iter);
 
-  info = bean_gtk_plugin_manager_store_get_plugin (priv->store, &iter);
+  info = bean_ctk_plugin_manager_store_get_plugin (priv->store, &iter);
 
   if (bean_plugin_info_is_available (info, &error))
     return FALSE;
@@ -690,7 +690,7 @@ bean_gtk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
 
   message = g_strconcat ("<b>", to_bold, "</b>\n", error_msg, NULL);
 
-  gtk_tooltip_set_markup (tooltip, message);
+  ctk_tooltip_set_markup (tooltip, message);
 
   g_free (message);
   g_free (error_msg);
@@ -701,7 +701,7 @@ bean_gtk_plugin_manager_view_query_tooltip (GtkWidget  *widget,
 }
 
 static void
-bean_gtk_plugin_manager_view_row_activated (GtkTreeView       *tree_view,
+bean_ctk_plugin_manager_view_row_activated (GtkTreeView       *tree_view,
                                             GtkTreePath       *path,
                                             GtkTreeViewColumn *column)
 {
@@ -710,21 +710,21 @@ bean_gtk_plugin_manager_view_row_activated (GtkTreeView       *tree_view,
   GtkTreeIter iter;
   GtkTreeViewClass *tree_view_class;
 
-  if (!gtk_tree_model_get_iter (gtk_tree_view_get_model (tree_view), &iter, path))
+  if (!ctk_tree_model_get_iter (ctk_tree_view_get_model (tree_view), &iter, path))
     return;
 
   convert_iter_to_child_iter (view, &iter);
 
-  if (bean_gtk_plugin_manager_store_can_enable (priv->store, &iter))
+  if (bean_ctk_plugin_manager_store_can_enable (priv->store, &iter))
     toggle_enabled (view, &iter);
 
-  tree_view_class = GTK_TREE_VIEW_CLASS (bean_gtk_plugin_manager_view_parent_class);
+  tree_view_class = GTK_TREE_VIEW_CLASS (bean_ctk_plugin_manager_view_parent_class);
   if (tree_view_class->row_activated != NULL)
     tree_view_class->row_activated (tree_view, path, column);
 }
 
 static void
-bean_gtk_plugin_manager_view_set_property (GObject      *object,
+bean_ctk_plugin_manager_view_set_property (GObject      *object,
                                            guint         prop_id,
                                            const GValue *value,
                                            GParamSpec   *pspec)
@@ -738,7 +738,7 @@ bean_gtk_plugin_manager_view_set_property (GObject      *object,
       priv->engine = g_value_get_object (value);
       break;
     case PROP_SHOW_BUILTIN:
-      bean_gtk_plugin_manager_view_set_show_builtin (view,
+      bean_ctk_plugin_manager_view_set_show_builtin (view,
                                                      g_value_get_boolean (value));
       break;
     default:
@@ -748,7 +748,7 @@ bean_gtk_plugin_manager_view_set_property (GObject      *object,
 }
 
 static void
-bean_gtk_plugin_manager_view_get_property (GObject    *object,
+bean_ctk_plugin_manager_view_get_property (GObject    *object,
                                            guint       prop_id,
                                            GValue     *value,
                                            GParamSpec *pspec)
@@ -763,7 +763,7 @@ bean_gtk_plugin_manager_view_get_property (GObject    *object,
       break;
     case PROP_SHOW_BUILTIN:
       g_value_set_boolean (value,
-                           bean_gtk_plugin_manager_view_get_show_builtin (view));
+                           bean_ctk_plugin_manager_view_get_show_builtin (view));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -772,7 +772,7 @@ bean_gtk_plugin_manager_view_get_property (GObject    *object,
 }
 
 static void
-bean_gtk_plugin_manager_view_constructed (GObject *object)
+bean_ctk_plugin_manager_view_constructed (GObject *object)
 {
   BeanGtkPluginManagerView *view = BEAN_GTK_PLUGIN_MANAGER_VIEW (object);
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
@@ -782,11 +782,11 @@ bean_gtk_plugin_manager_view_constructed (GObject *object)
 
   g_object_ref (priv->engine);
 
-  priv->store = bean_gtk_plugin_manager_store_new (priv->engine);
+  priv->store = bean_ctk_plugin_manager_store_new (priv->engine);
 
   /* Properly set the model */
   priv->show_builtin = TRUE;
-  bean_gtk_plugin_manager_view_set_show_builtin (view, FALSE);
+  bean_ctk_plugin_manager_view_set_show_builtin (view, FALSE);
 
   g_signal_connect_object (priv->engine,
                            "notify::plugin-list",
@@ -794,41 +794,41 @@ bean_gtk_plugin_manager_view_constructed (GObject *object)
                            view,
                            0);
 
-  G_OBJECT_CLASS (bean_gtk_plugin_manager_view_parent_class)->constructed (object);
+  G_OBJECT_CLASS (bean_ctk_plugin_manager_view_parent_class)->constructed (object);
 }
 
 static void
-bean_gtk_plugin_manager_view_dispose (GObject *object)
+bean_ctk_plugin_manager_view_dispose (GObject *object)
 {
   BeanGtkPluginManagerView *view = BEAN_GTK_PLUGIN_MANAGER_VIEW (object);
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
-  g_clear_pointer (&priv->popup_menu, gtk_widget_destroy);
+  g_clear_pointer (&priv->popup_menu, ctk_widget_destroy);
 
   g_clear_object (&priv->engine);
   g_clear_object (&priv->store);
 
-  G_OBJECT_CLASS (bean_gtk_plugin_manager_view_parent_class)->dispose (object);
+  G_OBJECT_CLASS (bean_ctk_plugin_manager_view_parent_class)->dispose (object);
 }
 
 static void
-bean_gtk_plugin_manager_view_class_init (BeanGtkPluginManagerViewClass *klass)
+bean_ctk_plugin_manager_view_class_init (BeanGtkPluginManagerViewClass *klass)
 {
   GType the_type = G_TYPE_FROM_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GtkTreeViewClass *tree_view_class = GTK_TREE_VIEW_CLASS (klass);
 
-  object_class->set_property = bean_gtk_plugin_manager_view_set_property;
-  object_class->get_property = bean_gtk_plugin_manager_view_get_property;
-  object_class->constructed = bean_gtk_plugin_manager_view_constructed;
-  object_class->dispose = bean_gtk_plugin_manager_view_dispose;
+  object_class->set_property = bean_ctk_plugin_manager_view_set_property;
+  object_class->get_property = bean_ctk_plugin_manager_view_get_property;
+  object_class->constructed = bean_ctk_plugin_manager_view_constructed;
+  object_class->dispose = bean_ctk_plugin_manager_view_dispose;
 
-  widget_class->button_press_event = bean_gtk_plugin_manager_view_button_press_event;
-  widget_class->popup_menu = bean_gtk_plugin_manager_view_popup_menu;
-  widget_class->query_tooltip = bean_gtk_plugin_manager_view_query_tooltip;
+  widget_class->button_press_event = bean_ctk_plugin_manager_view_button_press_event;
+  widget_class->popup_menu = bean_ctk_plugin_manager_view_popup_menu;
+  widget_class->query_tooltip = bean_ctk_plugin_manager_view_query_tooltip;
 
-  tree_view_class->row_activated = bean_gtk_plugin_manager_view_row_activated;
+  tree_view_class->row_activated = bean_ctk_plugin_manager_view_row_activated;
 
   /**
    * BeanGtkPLuginManagerView:engine:
@@ -884,7 +884,7 @@ bean_gtk_plugin_manager_view_class_init (BeanGtkPluginManagerViewClass *klass)
 }
 
 /**
- * bean_gtk_plugin_manager_view_new:
+ * bean_ctk_plugin_manager_view_new:
  * @engine: (allow-none): A #BeanEngine, or %NULL.
  *
  * Creates a new plugin manager view for the given #BeanEngine.
@@ -894,7 +894,7 @@ bean_gtk_plugin_manager_view_class_init (BeanGtkPluginManagerViewClass *klass)
  * Returns: the new #BeanGtkPluginManagerView.
  */
 GtkWidget *
-bean_gtk_plugin_manager_view_new (BeanEngine *engine)
+bean_ctk_plugin_manager_view_new (BeanEngine *engine)
 {
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
 
@@ -904,7 +904,7 @@ bean_gtk_plugin_manager_view_new (BeanEngine *engine)
 }
 
 /**
- * bean_gtk_plugin_manager_view_set_show_builtin:
+ * bean_ctk_plugin_manager_view_set_show_builtin:
  * @view: A #BeanGtkPluginManagerView.
  * @show_builtin: If builtin plugins should be shown.
  *
@@ -913,7 +913,7 @@ bean_gtk_plugin_manager_view_new (BeanEngine *engine)
  * Deprecated: 1.2: Use hidden plugins instead.
  */
 void
-bean_gtk_plugin_manager_view_set_show_builtin (BeanGtkPluginManagerView *view,
+bean_ctk_plugin_manager_view_set_show_builtin (BeanGtkPluginManagerView *view,
                                                gboolean                  show_builtin)
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
@@ -928,11 +928,11 @@ bean_gtk_plugin_manager_view_set_show_builtin (BeanGtkPluginManagerView *view,
   if (priv->show_builtin == show_builtin)
     return;
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
   /* We must get the selected iter before setting if builtin
      plugins should be shown so the proper model is set */
-  iter_set = gtk_tree_selection_get_selected (selection, NULL, &iter);
+  iter_set = ctk_tree_selection_get_selected (selection, NULL, &iter);
 
   if (iter_set)
     convert_iter_to_child_iter (view, &iter);
@@ -941,33 +941,33 @@ bean_gtk_plugin_manager_view_set_show_builtin (BeanGtkPluginManagerView *view,
 
   if (show_builtin)
     {
-      gtk_tree_view_set_model (GTK_TREE_VIEW (view),
+      ctk_tree_view_set_model (GTK_TREE_VIEW (view),
                                GTK_TREE_MODEL (priv->store));
     }
   else
     {
       GtkTreeModel *model;
 
-      model = gtk_tree_model_filter_new (GTK_TREE_MODEL (priv->store), NULL);
-      gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (model),
+      model = ctk_tree_model_filter_new (GTK_TREE_MODEL (priv->store), NULL);
+      ctk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (model),
                                               (GtkTreeModelFilterVisibleFunc) filter_builtins_visible,
                                               view,
                                               NULL);
 
-      gtk_tree_view_set_model (GTK_TREE_VIEW (view), model);
+      ctk_tree_view_set_model (GTK_TREE_VIEW (view), model);
 
       g_object_unref (model);
     }
 
   if (iter_set && convert_child_iter_to_iter (view, &iter))
-    gtk_tree_selection_select_iter (selection, &iter);
+    ctk_tree_selection_select_iter (selection, &iter);
 
   g_object_notify_by_pspec (G_OBJECT (view),
                             properties[PROP_SHOW_BUILTIN]);
 }
 
 /**
- * bean_gtk_plugin_manager_view_get_show_builtin:
+ * bean_ctk_plugin_manager_view_get_show_builtin:
  * @view: A #BeanGtkPluginManagerView.
  *
  * Returns if builtin plugins should be shown.
@@ -977,7 +977,7 @@ bean_gtk_plugin_manager_view_set_show_builtin (BeanGtkPluginManagerView *view,
  * Deprecated: 1.2: Use hidden plugins instead.
  */
 gboolean
-bean_gtk_plugin_manager_view_get_show_builtin (BeanGtkPluginManagerView *view)
+bean_ctk_plugin_manager_view_get_show_builtin (BeanGtkPluginManagerView *view)
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
@@ -987,14 +987,14 @@ bean_gtk_plugin_manager_view_get_show_builtin (BeanGtkPluginManagerView *view)
 }
 
 /**
- * bean_gtk_plugin_manager_view_set_selected_plugin:
+ * bean_ctk_plugin_manager_view_set_selected_plugin:
  * @view: A #BeanGtkPluginManagerView.
  * @info: A #BeanPluginInfo.
  *
  * Selects the given plugin.
  */
 void
-bean_gtk_plugin_manager_view_set_selected_plugin (BeanGtkPluginManagerView *view,
+bean_ctk_plugin_manager_view_set_selected_plugin (BeanGtkPluginManagerView *view,
                                                   BeanPluginInfo           *info)
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
@@ -1004,18 +1004,18 @@ bean_gtk_plugin_manager_view_set_selected_plugin (BeanGtkPluginManagerView *view
   g_return_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_VIEW (view));
   g_return_if_fail (info != NULL);
 
-  g_return_if_fail (bean_gtk_plugin_manager_store_get_iter_from_plugin (priv->store,
+  g_return_if_fail (bean_ctk_plugin_manager_store_get_iter_from_plugin (priv->store,
                                                                         &iter, info));
 
   if (!convert_child_iter_to_iter (view, &iter))
     return;
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
-  gtk_tree_selection_select_iter (selection, &iter);
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  ctk_tree_selection_select_iter (selection, &iter);
 }
 
 /**
- * bean_gtk_plugin_manager_view_get_selected_plugin:
+ * bean_ctk_plugin_manager_view_get_selected_plugin:
  * @view: A #BeanGtkPluginManagerView.
  *
  * Returns the currently selected plugin, or %NULL if a plugin is not selected.
@@ -1023,7 +1023,7 @@ bean_gtk_plugin_manager_view_set_selected_plugin (BeanGtkPluginManagerView *view
  * Returns: (transfer none): the selected plugin.
  */
 BeanPluginInfo *
-bean_gtk_plugin_manager_view_get_selected_plugin (BeanGtkPluginManagerView *view)
+bean_ctk_plugin_manager_view_get_selected_plugin (BeanGtkPluginManagerView *view)
 {
   BeanGtkPluginManagerViewPrivate *priv = GET_PRIV (view);
   GtkTreeSelection *selection;
@@ -1032,16 +1032,16 @@ bean_gtk_plugin_manager_view_get_selected_plugin (BeanGtkPluginManagerView *view
 
   g_return_val_if_fail (BEAN_GTK_IS_PLUGIN_MANAGER_VIEW (view), NULL);
 
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (view));
 
-  /* Since gtk+ 3.4 gtk_tree_view_get_selection() can in practice return NULL
+  /* Since ctk+ 3.4 ctk_tree_view_get_selection() can in practice return NULL
    * here because 'cursor-changed' is emitted during 'destroy' (it wasn't
    * the case previously and is not properly documented as of today).
    */
-  if (selection != NULL && gtk_tree_selection_get_selected (selection, NULL, &iter))
+  if (selection != NULL && ctk_tree_selection_get_selected (selection, NULL, &iter))
     {
       convert_iter_to_child_iter (view, &iter);
-      info = bean_gtk_plugin_manager_store_get_plugin (priv->store, &iter);
+      info = bean_ctk_plugin_manager_store_get_plugin (priv->store, &iter);
     }
 
   return info;

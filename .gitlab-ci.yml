@@ -12,12 +12,12 @@ stages:
       gcc
       ccache
       gettext
-      gtk-doc
+      ctk-doc
       meson
       ninja-build
       redhat-rpm-config
       glib2-devel
-      gtk3-devel
+      ctk3-devel
       gobject-introspection-devel
       python2-devel
       python3-devel
@@ -40,10 +40,10 @@ build bean:
     - 'meson -Dwidgetry=false -Dintrospection=true -Dvapi=true -Ddemos=false _build .'
     - 'ninja -C _build test'
 
-build bean-gtk:
+build bean-ctk:
   extends: '.build'
   script:
-    - 'meson -Dwidgetry=true -Dglade_catalog=true -Dintrospection=true -Dvapi=true -Dgtk_doc=true _build .'
+    - 'meson -Dwidgetry=true -Dglade_catalog=true -Dintrospection=true -Dvapi=true -Dctk_doc=true _build .'
     - 'xvfb-run -a -s "-screen 0 1024x768x24"  ninja -C _build test'
     - 'ninja -C _build libbean-doc'
   artifacts:
@@ -56,7 +56,7 @@ pages:
   stage: 'deploy'
   dependencies:
     - 'build bean'
-    - 'build bean-gtk'
+    - 'build bean-ctk'
   script:
     - 'mkdir -p public/'
     - 'mv _build/docs/reference/html/ public/libbean/'

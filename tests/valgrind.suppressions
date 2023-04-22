@@ -200,28 +200,28 @@
 
 
 {
-  gtk_init_check
+  ctk_init_check
   Memcheck:Leak
   ...
-  fun:gtk_init_check
+  fun:ctk_init_check
 }
 {
-  gtk_css_provider_get_default
+  ctk_css_provider_get_default
   Memcheck:Leak
   ...
-  fun:gtk_css_provider_get_default
+  fun:ctk_css_provider_get_default
 }
 {
-  gtk_css_provider_get_named
+  ctk_css_provider_get_named
   Memcheck:Leak
   ...
-  fun:gtk_css_provider_get_named
+  fun:ctk_css_provider_get_named
 }
 {
-  gtk_theming_engine_load
+  ctk_theming_engine_load
   Memcheck:Leak
   ...
-  fun:gtk_theming_engine_load
+  fun:ctk_theming_engine_load
 }
 {
   ensure_valid_themes

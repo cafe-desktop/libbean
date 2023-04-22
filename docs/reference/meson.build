@@ -1,8 +1,8 @@
 glib_prefix = glib_dep.get_pkgconfig_variable('prefix')
-glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
+glib_docpath = join_paths(glib_prefix, 'share', 'ctk-doc', 'html')
 
-gtk_prefix = gtk_dep.get_pkgconfig_variable('prefix')
-gtk_docpath = join_paths(gtk_prefix, 'share', 'gtk-doc', 'html')
+ctk_prefix = ctk_dep.get_pkgconfig_variable('prefix')
+ctk_docpath = join_paths(ctk_prefix, 'share', 'ctk-doc', 'html')
 
 libbean_reference_ignored_h = [
   'gconstructor.h',
@@ -24,18 +24,18 @@ libbean_reference_srcdirs = [
   libbean_srcdir,
 ]
 
-if build_gtk_widgetry == true
+if build_ctk_widgetry == true
   libbean_reference_ignored_h += [
-    'bean-gtk-disable-plugins-dialog.h',
-    'bean-gtk-plugin-manager-store.h',
+    'bean-ctk-disable-plugins-dialog.h',
+    'bean-ctk-plugin-manager-store.h',
   ]
 
   libbean_reference_html_images += [
-    join_paths('images', 'bean-gtk-plugin-manager.png'),
+    join_paths('images', 'bean-ctk-plugin-manager.png'),
   ]
 
   libbean_reference_srcdirs += [
-    libbean_gtk_srcdir,
+    libbean_ctk_srcdir,
   ]
 endif
 
@@ -70,17 +70,17 @@ libbean_reference_mkdb_args = [
   '--output-format=xml',
 ]
 
-if build_gtk_widgetry == true
+if build_ctk_widgetry == true
   libbean_reference_deps += [
-    libbean_gtk_dep,
+    libbean_ctk_dep,
   ]
 
   libbean_reference_fixxref_args += [
-    '--extra-dir=@0@'.format(join_paths(gtk_docpath, 'gtk')),
+    '--extra-dir=@0@'.format(join_paths(ctk_docpath, 'ctk')),
   ]
 endif
 
-gnome.gtkdoc(
+gnome.ctkdoc(
   package_name,
   main_sgml: 'libbean-docs.sgml',
   gobject_typesfile: 'libbean.types',
@@ -92,7 +92,7 @@ gnome.gtkdoc(
   mkdb_args: libbean_reference_mkdb_args,
   install: true,
   install_dir: join_paths(
-    gtkdocdir,
+    ctkdocdir,
     'html',
     package_name,
   )

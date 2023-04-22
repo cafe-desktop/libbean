@@ -20,24 +20,24 @@ msgstr ""
 "X-Poedit-Language: Asturian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
-#: ../data/glade/libbean-gtk.xml.in.h:2
+#: ../data/glade/libbean-ctk.xml.in.h:2
 msgid "Plugin Manager"
 msgstr "Xestor de complementos"
 
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "Plugin Manager View"
 msgstr "Vista del xestor de complementos"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:5
+#: ../data/glade/libbean-ctk.xml.in.h:5
 msgid "Show Builtin"
 msgstr "Amosar incluyíos"
 
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "View"
 msgstr "Ver"
 
@@ -61,24 +61,24 @@ msgstr "Nun s'alcontró'l cargador de complementu «%s»"
 msgid "Failed to load"
 msgstr "Falló al cargar"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:88
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:88
 msgid "Additional plugins must be disabled"
 msgstr "Hai de desactivar complementos adicionales"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "Los siguientes complementos dependen de «%s» y tamién van desactivase:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:137
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:137
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:153
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:153
 msgid "An additional plugin must be disabled"
 msgstr "Hai de desactivar un complementu adicional"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:160
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:160
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -87,35 +87,35 @@ msgstr ""
 "El complementu «%s» depende del complementu «%s».\n"
 "Si desactives «%s» tamién vas desactivar «%s»."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:180
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:180
 msgid "Disable Plugins"
 msgstr "Desactivar complementos"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:179
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:179
 msgid "There was an error displaying the help."
 msgstr "Hebo un fallu al amosar l'ayuda."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:332
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:332
 msgid "_Enabled"
 msgstr "_Activáu"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:343
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:343
 msgid "E_nable All"
 msgstr "A_ctivar toos"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:347
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:347
 msgid "_Disable All"
 msgstr "_Desactivar toos"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:506
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:506
 msgid "Enabled"
 msgstr "Activáu"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:527
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:527
 msgid "Plugin"
 msgstr "Complementu"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:612
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:612
 #, c-format
 msgid ""
 "<b>The plugin '%s' could not be loaded</b>\n"

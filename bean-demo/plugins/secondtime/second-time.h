@@ -21,7 +21,7 @@
 #ifndef __BEANDEMO_SECOND_TIME_H__
 #define __BEANDEMO_SECOND_TIME_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean.h>
 
 G_BEGIN_DECLS

@@ -51,12 +51,12 @@ demo_window_init (DemoWindow *dw)
   DemoWindowClass *klass = DEMO_WINDOW_GET_CLASS (dw);
   gchar *label;
 
-  dw->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_box_set_homogeneous (GTK_BOX (dw->box), TRUE);
-  gtk_container_add (GTK_CONTAINER (dw), dw->box);
+  dw->box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  ctk_box_set_homogeneous (GTK_BOX (dw->box), TRUE);
+  ctk_container_add (GTK_CONTAINER (dw), dw->box);
 
   label = g_strdup_printf ("Bean Window %d", ++(klass->n_windows));
-  gtk_window_set_title (GTK_WINDOW (dw), label);
+  ctk_window_set_title (GTK_WINDOW (dw), label);
   g_free (label);
 
   dw->exten_set = bean_extension_set_new (bean_engine_get_default (),

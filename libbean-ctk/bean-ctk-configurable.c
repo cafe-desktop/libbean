@@ -1,5 +1,5 @@
 /*
- * bean-gtk-configurable.c
+ * bean-ctk-configurable.c
  * This file is part of libbean
  *
  * Copyright (C) 2009-2010 Steve Frécinaux
@@ -23,10 +23,10 @@
 #include <config.h>
 #endif
 
-#include "bean-gtk-configurable.h"
+#include "bean-ctk-configurable.h"
 
 /**
- * SECTION:bean-gtk-configurable
+ * SECTION:bean-ctk-configurable
  * @short_description: Interface for providing a plugin configuration UI.
  *
  * The #BeanGtkConfigurable interface will allow a plugin to provide a
@@ -40,15 +40,15 @@
  * BeanGtkConfigurableInterface.create_configure_widget() method.
  **/
 
-G_DEFINE_INTERFACE(BeanGtkConfigurable, bean_gtk_configurable, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(BeanGtkConfigurable, bean_ctk_configurable, G_TYPE_OBJECT)
 
 static void
-bean_gtk_configurable_default_init (BeanGtkConfigurableInterface *iface)
+bean_ctk_configurable_default_init (BeanGtkConfigurableInterface *iface)
 {
 }
 
 /**
- * bean_gtk_configurable_create_configure_widget:
+ * bean_ctk_configurable_create_configure_widget:
  * @configurable: A #BeanGtkConfigurable
  *
  * Creates the configure widget for the plugin. The returned widget
@@ -64,7 +64,7 @@ bean_gtk_configurable_default_init (BeanGtkConfigurableInterface *iface)
  * Returns: (transfer full): A #GtkWidget used for configuration.
  */
 GtkWidget *
-bean_gtk_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
+bean_ctk_configurable_create_configure_widget (BeanGtkConfigurable *configurable)
 {
   BeanGtkConfigurableInterface *iface;
 

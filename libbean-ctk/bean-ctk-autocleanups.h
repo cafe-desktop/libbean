@@ -1,5 +1,5 @@
 /*
- * bean-gtk-autocleanups.h
+ * bean-ctk-autocleanups.h
  * This file is part of libbean
  *
  * Copyright (C) 2015 - Garrett Regier
@@ -23,9 +23,9 @@
 #ifndef __BEAN_GTK_AUTOCLEANUPS_H__
 #define __BEAN_GTK_AUTOCLEANUPS_H__
 
-#include "bean-gtk-configurable.h"
-#include "bean-gtk-plugin-manager.h"
-#include "bean-gtk-plugin-manager-view.h"
+#include "bean-ctk-configurable.h"
+#include "bean-ctk-plugin-manager.h"
+#include "bean-ctk-plugin-manager-view.h"
 
 G_BEGIN_DECLS
 

@@ -38,24 +38,24 @@ msgstr "Pemuat pemalam \"%s\" tidak ditemui"
 msgid "Failed to load"
 msgstr "Gagal dimuatkan"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Pemalam tambahan perlu dilumpuhkan"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "Pemalam berikut bergantung pada \"%s\" dan juga dilumpuhkan:"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Pemalam"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Satu pemalam tambahan perlu dilumpuhkan"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
@@ -64,61 +64,61 @@ msgstr ""
 "Pemalam \"%s\" bergantung pada pemalam \"%s\".\n"
 "Jika anda lumpuhkan \"%s\", \"%s\" juga akan dilumpuhkan."
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Lumpuhkan Pemalam"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Terdapat satu ralat ketika memaparkan bantuan."
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "T_utup"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "K_eutamaan"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "Perih_al"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Keutamaan"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "Dib_enarkan"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "Be_narkan Semua"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Lumpukan Semua"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:575
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Dibenarkan"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:596
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Pemalam"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:683
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Pemalam \"%s\" tidak dapat dimuatkan"
@@ -126,7 +126,7 @@ msgstr "Pemalam \"%s\" tidak dapat dimuatkan"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:689
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Satu ralat berlaku: %s"
@@ -144,10 +144,10 @@ msgstr "_Keluar"
 msgid "— libbean demo application"
 msgstr "— aplikasi demo libbean"
 
-#: tests/libbean-gtk/plugin-manager.c:75
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "Perihal"
 
-#: tests/libbean-gtk/plugin-manager.c:80
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Keutamaan"

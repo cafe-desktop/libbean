@@ -593,7 +593,7 @@ bean_object_module_get_library (BeanObjectModule *module)
  * function @factory_func which will instantiate the extension when
  * requested.
  *
- * This method is primarily meant to be used by native bindings (like gtkmm),
+ * This method is primarily meant to be used by native bindings (like ctkmm),
  * creating native types which cannot be instantiated correctly using
  * g_object_new().  For other uses, you will usually prefer relying on
  * bean_object_module_register_extension_type().

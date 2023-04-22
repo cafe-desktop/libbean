@@ -41,25 +41,25 @@ msgstr "Завантажувач додатка «%s» не знайдено"
 msgid "Failed to load"
 msgstr "Не вдалось завантажити"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Додаткові додатки вимкнути"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 #| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "Додатки залежні від «%s» теж буде вимкнено:"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Додатки"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Додаткові додатки вимкнути"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 #| msgid ""
 #| "The '%s' plugin depends on the '%s' plugin.\n"
@@ -71,62 +71,62 @@ msgstr ""
 "Додаток «%s» залежить від «%s».\n"
 "Якщо вимкнути «%s», «%s» буде також вимкнено."
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Вимкнути додатки"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Помилка показу довідки."
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Закрити"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Довідка"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 #| msgid "_Preferences"
 msgid "Pr_eferences"
 msgstr "Н_алаштування"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Про програму"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Параметри"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Увімкнено"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "_Увімкнути всі"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Вимкнути всі"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:575
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Увімкнено"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:596
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Додаток"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:683
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 #| msgid ""
 #| "<b>The plugin '%s' could not be loaded</b>\n"
@@ -137,7 +137,7 @@ msgstr "Не вдалося завантажити додаток «%s»"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:689
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Сталася помилка: %s"
@@ -156,12 +156,12 @@ msgstr "Ви_йти"
 msgid "— libbean demo application"
 msgstr "— демонстраційна програма libbean"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 #| msgid "_About"
 msgid "About"
 msgstr "Про програму"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 #| msgid "_Preferences"
 msgid "Preferences"
 msgstr "Налаштування"

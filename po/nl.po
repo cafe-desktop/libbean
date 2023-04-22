@@ -39,26 +39,26 @@ msgstr "Plug-in-lader ‘%s’ niet gevonden"
 msgid "Failed to load"
 msgstr "Laden mislukt"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Aanvullende plug-ins moeten uitgeschakeld worden"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr ""
 "De volgende plug-ins zijn afhankelijk van ‘%s’ en zullen ook uitgeschakeld "
 "worden:"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Plug-ins"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Een aanvullende plug-in moet uitgeschakeld worden"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
@@ -67,61 +67,61 @@ msgstr ""
 "De plug-in ‘%s’ is afhankelijk van de plug-in ‘%s’.\n"
 "Als u ‘%s’ uitschakelt, zal ook ‘%s’ uitgeschakeld worden."
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Plug-ins uitschakelen"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Fout bij het weergeven van de hulp."
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_Hulp"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "Voork_euren"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Over"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Voorkeuren"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Ingeschakeld"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "Alles in_schakelen"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "Alles _uitschakelen"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Plug-in"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "De plug-in ‘%s’ kon niet geladen worden"
@@ -129,7 +129,7 @@ msgstr "De plug-in ‘%s’ kon niet geladen worden"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Er trad een fout op: %s"
@@ -147,11 +147,11 @@ msgstr "A_fsluiten"
 msgid "— libbean demo application"
 msgstr "— libbean-demotoepassing"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "Over"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Voorkeuren"
 

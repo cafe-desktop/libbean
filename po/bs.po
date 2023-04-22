@@ -14,25 +14,25 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-23 07:21+0000\n"
 "X-Generator: Launchpad (build 17203)\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "Menadžer priključaka"
 
 #. Translators: What BeanGtkPluginManagerView to usi
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "Pogled"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "Pogled menadžera dodataka"
 
 #. Translators: Whether builtin plugins should appear in the view (property nami)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "Prikaži ugrađene"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -56,24 +56,24 @@ msgstr "Učitavač dodataka '%s' nije nađen"
 msgid "Failed to load"
 msgstr "Neuspjelo učitavanje"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Dodatni priključci se moraju onemogućiti"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "Sljedeći priključci ovise o '%s' i biće takođe onemogućeni:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Priključci"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Dodatni priključak se mora onemogućiti"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -82,66 +82,66 @@ msgstr ""
 "Priključak '%s' ovisi o priključku '%s'.\n"
 "Ako onemogućite '%s', '%s' će takođe biti onemogućen."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Otkaži"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Onemogući priključke"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Došlo je do greške pri prikazivanju pomoći."
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "Po_moć"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "_Postavke"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_O programu"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Postavke"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Omogućeno"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "O_mogući sve"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Onemogući sve"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "Omogućen"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "Priključak"
 
 #. Avoid having markup in a translated string
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin '%s' could not be loaded"
 msgstr "Priključak '%s' se ne može učitati"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:638
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:638
 msgid "An error occurred: "
 msgstr "Desila se greška;"
 
@@ -158,10 +158,10 @@ msgstr "_Izađi"
 msgid "- libbean demo application"
 msgstr "- libbean demo program"
 
-#: ../tests/libbean-gtk/plugin-manager.c:77
+#: ../tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "O programu"
 
-#: ../tests/libbean-gtk/plugin-manager.c:82
+#: ../tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Postavke"

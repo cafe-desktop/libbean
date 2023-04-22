@@ -41,24 +41,24 @@ msgstr "Nalagalnika vstavka »%s« ni mogoče najti."
 msgid "Failed to load"
 msgstr "Ni mogoče naložiti"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Onemogočiti je treba tudi druge vstavke"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "Navedeni vstavki so odvisni od vstavka »%s«, zato bodo onemogočeni:"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Vstavki"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Onemogočiti je treba tudi drug vstavek"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
@@ -67,61 +67,61 @@ msgstr ""
 "Vstavek »%s« je odvisen od vstavka »%s«.\n"
 "V kolikor onemogočite »%s«, bo onemogočen tudi vstavek »%s«."
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Onemogoči vstavke"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Prišlo je do napake med prikazovanjem pomoči."
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Zapri"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "_Možnosti"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_O programu"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Omogočeno"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "Omogoči _vse"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "O_nemogoči vse"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:575
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Omogočeno"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:596
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Vstavek"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:683
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Vstavka »%s« ni mogoče naložiti."
@@ -129,7 +129,7 @@ msgstr "Vstavka »%s« ni mogoče naložiti."
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:689
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Prišlo je do napake: %s"
@@ -147,11 +147,11 @@ msgstr "_Končaj"
 msgid "— libbean demo application"
 msgstr "– preizkusni program libbean"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "O programu"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "Možnosti"
 

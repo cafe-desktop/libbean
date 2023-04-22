@@ -1,5 +1,5 @@
 /*
- * bean-gtk-configurable.h
+ * bean-ctk-configurable.h
  * This file is part of libbean
  *
  * Copyright (C) 2009 Steve Frécinaux
@@ -22,7 +22,7 @@
 #ifndef __BEAN_GTK_CONFIGURABLE_H__
 #define __BEAN_GTK_CONFIGURABLE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libbean/bean.h>
 
 G_BEGIN_DECLS
@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 /*
  * Type checking and casting macros
  */
-#define BEAN_GTK_TYPE_CONFIGURABLE            (bean_gtk_configurable_get_type ())
+#define BEAN_GTK_TYPE_CONFIGURABLE            (bean_ctk_configurable_get_type ())
 #define BEAN_GTK_CONFIGURABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanGtkConfigurable))
 #define BEAN_GTK_CONFIGURABLE_IFACE(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), BEAN_GTK_TYPE_CONFIGURABLE, BeanGtkConfigurableInterface))
 #define BEAN_GTK_IS_CONFIGURABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BEAN_GTK_TYPE_CONFIGURABLE))
@@ -59,9 +59,9 @@ struct _BeanGtkConfigurableInterface
 };
 
 BEAN_AVAILABLE_IN_ALL
-GType       bean_gtk_configurable_get_type                (void)  G_GNUC_CONST;
+GType       bean_ctk_configurable_get_type                (void)  G_GNUC_CONST;
 BEAN_AVAILABLE_IN_ALL
-GtkWidget  *bean_gtk_configurable_create_configure_widget (BeanGtkConfigurable  *configurable);
+GtkWidget  *bean_ctk_configurable_create_configure_widget (BeanGtkConfigurable  *configurable);
 
 G_END_DECLS
 

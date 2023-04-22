@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "প্লাগিন ব্যবস্থাপক"
 
 #. Translators: What BeanGtkPluginManagerView to use
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "প্রদর্শন"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "প্লাগিন ব্যবস্থাপক প্রদর্শন"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "নির্মিত প্রদর্শন করুন"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -61,25 +61,25 @@ msgstr "প্লাগিন লোডার '%s' পাওয়া যায�
 msgid "Failed to load"
 msgstr "লোড করা ব্যর্থ হয়েছে"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:91
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
 msgid "Additional plugins must be disabled"
 msgstr "অতিরিক্ত প্লাগিন নিষ্ক্রিয় করা আবশ্যক"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:98
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr ""
 "নিম্নলিখিত প্লাগিনগুলি '% s' উপর নির্ভর করে এবং তাই নিষ্ক্রিয় করা হবে:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:140
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
 msgid "Plugins"
 msgstr "প্লাগইনসমূহ"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:156
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
 msgid "An additional plugin must be disabled"
 msgstr "একটি অতিরিক্ত প্লাগিন নিষ্ক্রিয় করা আবশ্যক"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:163
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -88,61 +88,61 @@ msgstr ""
 "'%s' প্লাগিন '%s' প্লাগিনের উপর নির্ভর করে. \n"
 "যদি আপনি '%s' কে নিষ্ক্রিয় করেন, তাহলে '%s' কেও নিষ্ক্রিয় করা হবে।"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:181
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:181
 msgid "_Cancel"
 msgstr "বাতিল করুন (_C)"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:183
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
 msgid "Disable Plugins"
 msgstr "প্লাগইনসমূহ নিষ্ক্রিয় করুন"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:187
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:187
 msgid "There was an error displaying the help."
 msgstr " সাহায্য বার্তা প্রদর্শন করার সময় একটি ত্রুটি ঘটেছে।"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:244
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:244
 msgid "_Close"
 msgstr "বন্ধ করুন (_C)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:256
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:256
 msgid "_Help"
 msgstr "সাহায্য (_H)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 #| msgid "_Preferences"
 msgid "Pr_eferences"
 msgstr "বৈশিষ্ট্যাবলী (_e)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:382
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:382
 msgid "_About"
 msgstr "সম্পর্কে(_A)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:390
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:390
 msgid "_Preferences"
 msgstr "পছন্দসমূহ(_P)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:334
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
 msgid "_Enabled"
 msgstr "সক্রিয়(_E)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:345
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
 msgid "E_nable All"
 msgstr "সমস্ত সক্রিয় করুন(_n)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:349
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
 msgid "_Disable All"
 msgstr "সমস্ত নিষ্ক্রিয় করুন(_D)"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:509
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:509
 msgid "Enabled"
 msgstr "সক্রিয়"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:530
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:530
 msgid "Plugin"
 msgstr "প্লাগিন"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:615
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:615
 #, c-format
 msgid ""
 "<b>The plugin '%s' could not be loaded</b>\n"

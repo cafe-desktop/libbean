@@ -41,25 +41,25 @@ msgstr "找不到外掛載入程式「%s」"
 msgid "Failed to load"
 msgstr "無法載入"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "必須停用額外的外掛程式"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 #| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "下列依賴於「%s」的外掛程式也會被停用："
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "外掛程式"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "必須停用一個額外的外掛程式"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 #| msgid ""
 #| "The '%s' plugin depends on the '%s' plugin.\n"
@@ -71,61 +71,61 @@ msgstr ""
 "「%s」外掛程式依賴於「%s」外掛程式。\n"
 "如果您停用「%s」，「%s」也會被停用。"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "停用外掛程式"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "顯示說明文件時發生錯誤。"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "求助(_H)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "偏好設定(_E)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:328
-#: libbean-gtk/bean-gtk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "關於(_A)"
 
-#: libbean-gtk/bean-gtk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "已啟用(_E)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "全部啟用(_N)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "全部停用(_D)"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:575
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "已啟用"
 
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:596
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "外掛程式"
 
 #. Avoid having markup in a translated string
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:683
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 #| msgid "The plugin '%s' could not be loaded"
 msgid "The plugin “%s” could not be loaded"
@@ -134,7 +134,7 @@ msgstr "外掛程式「%s」無法載入"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-gtk/bean-gtk-plugin-manager-view.c:689
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "發生錯誤：%s"
@@ -153,11 +153,11 @@ msgstr "結束(_Q)"
 msgid "— libbean demo application"
 msgstr "— libbean 示範應用程式"
 
-#: tests/libbean-gtk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "關於"
 
-#: tests/libbean-gtk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "偏好設定"
 

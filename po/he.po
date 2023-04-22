@@ -22,25 +22,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/glade/libbean-gtk.xml.in.h:1
+#: ../data/glade/libbean-ctk.xml.in.h:1
 msgid "Plugin Manager"
 msgstr "מנהל התוספים"
 
 #. Translators: What BeanGtkPluginManagerView to use
-#: ../data/glade/libbean-gtk.xml.in.h:3
+#: ../data/glade/libbean-ctk.xml.in.h:3
 msgid "View"
 msgstr "הצגה"
 
-#: ../data/glade/libbean-gtk.xml.in.h:4
+#: ../data/glade/libbean-ctk.xml.in.h:4
 msgid "Plugin Manager View"
 msgstr "תצוגת ניהול תוספים"
 
 #. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-gtk.xml.in.h:6
+#: ../data/glade/libbean-ctk.xml.in.h:6
 msgid "Show Builtin"
 msgstr "הצגת מובנים"
 
-#: ../data/glade/libbean-gtk.xml.in.h:7
+#: ../data/glade/libbean-ctk.xml.in.h:7
 msgid "Bean Gtk"
 msgstr "Bean Gtk"
 
@@ -64,24 +64,24 @@ msgstr "Plugin loader '%s' was not found"
 msgid "Failed to load"
 msgstr "Failed to load"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:95
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "יש לנטרל תוספים נוספים"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:102
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
 msgid "The following plugins depend on '%s' and will also be disabled:"
 msgstr "התוספים הבאים תלויים ב־'%s' וינוטרלו גם הם:"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:144
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "תוספים"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:161
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "יש לנטרל תוסף נוסף"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:168
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
 "The '%s' plugin depends on the '%s' plugin.\n"
@@ -90,61 +90,61 @@ msgstr ""
 "התוסף '%s' תלוי בתוסף '%s'.\n"
 "אם התוסף '%s' ינוטרל אז ינוטרל גם התוסף '%s'."
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:182
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../libbean-gtk/bean-gtk-disable-plugins-dialog.c:184
+#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "נטרול תוספים"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:207
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "אירעה שגיאה בעת הצגת העזרה"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:253
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_סגירה"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:265
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:323
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "ה_עדפות"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:328
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:379
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "על _אודות:"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager.c:387
+#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "ה_עדפות"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:351
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "מופ_על"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:362
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "ה_פעלת הכול"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:366
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "נטרול ה_כול"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:526
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
 msgid "Enabled"
 msgstr "מופעל"
 
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:547
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
 msgid "Plugin"
 msgstr "תוסף"
 
 #. Avoid having markup in a translated string
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:634
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
 #, c-format
 msgid "The plugin '%s' could not be loaded"
 msgstr "לא ניתן לטעון את התוסף '%s'"
@@ -152,7 +152,7 @@ msgstr "לא ניתן לטעון את התוסף '%s'"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-gtk/bean-gtk-plugin-manager-view.c:640
+#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
 #, c-format
 msgid "An error occurred: %s"
 msgstr "אירעה שגיאה: %s"
@@ -170,11 +170,11 @@ msgstr "_יציאה"
 msgid "- libbean demo application"
 msgstr "- libbean demo application"
 
-#: ../tests/libbean-gtk/plugin-manager.c:77
+#: ../tests/libbean-ctk/plugin-manager.c:77
 msgid "About"
 msgstr "על אודות"
 
-#: ../tests/libbean-gtk/plugin-manager.c:82
+#: ../tests/libbean-ctk/plugin-manager.c:82
 msgid "Preferences"
 msgstr "העדפות"
 

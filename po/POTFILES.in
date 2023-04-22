@@ -6,8 +6,8 @@ libbean/bean-extension-set.c
 libbean/bean-object-module.c
 libbean/bean-plugin-info.c
 libbean/bean-plugin-loader.c
-libbean-gtk/bean-gtk-disable-plugins-dialog.c
-libbean-gtk/bean-gtk-plugin-manager.c
-libbean-gtk/bean-gtk-plugin-manager-view.c
+libbean-ctk/bean-ctk-disable-plugins-dialog.c
+libbean-ctk/bean-ctk-plugin-manager.c
+libbean-ctk/bean-ctk-plugin-manager-view.c
 bean-demo/bean-demo.c
-tests/libbean-gtk/plugin-manager.c
+tests/libbean-ctk/plugin-manager.c

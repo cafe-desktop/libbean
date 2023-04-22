@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<glade-catalog version="1.0" supports="gtkbuilder" name="libbean-gtk" library="bean-gtk-1.0" domain="@GETTEXT_PACKAGE@" depends="gtk+" book="libbean">
+<glade-catalog version="1.0" supports="ctkbuilder" name="libbean-ctk" library="bean-ctk-1.0" domain="@GETTEXT_PACKAGE@" depends="ctk+" book="libbean">
   <glade-widget-classes>
     <glade-widget-class name="BeanGtkPluginManager" title="Plugin Manager" generic-name="pluginmanager">
       <properties>
