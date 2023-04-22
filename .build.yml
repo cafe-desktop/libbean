@@ -9,7 +9,6 @@ requires:
     - cppcheck
     - expect #required for unbuffer
     - git
-    - gnome-common
     - gtk-doc-tools
     - intltool
     - libgirepository1.0-dev
