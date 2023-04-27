@@ -154,18 +154,3 @@ msgstr "Info"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Einstellungen"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Plugin-Verwaltung"
-
-#~ msgid "View"
-#~ msgstr "Ansicht"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Ansicht der Plugin-Verwaltung"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Eingebaute anzeigen"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

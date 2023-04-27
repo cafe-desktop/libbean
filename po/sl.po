@@ -154,36 +154,3 @@ msgstr "O programu"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Možnosti"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Upravljalnik vstavkov"
-
-#~ msgid "View"
-#~ msgstr "Pogled"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Pogled upravljalnika vstavkov"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Pokaži vgrajene"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "An error occurred: "
-#~ msgstr "Prišlo je do napake:"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_Nastavi"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Vstavki:"
-
-#~ msgid "A_ctivate"
-#~ msgstr "_Omogoči"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "Omogoči _vse"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "Omogočeni _vstavki:"

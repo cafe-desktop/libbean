@@ -155,24 +155,3 @@ msgstr "Despre"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferințe"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Manager de module"
-
-#~ msgid "View"
-#~ msgstr "Vizualizare"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Vizualizare manager de module"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Arată modulele integrate"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "C_onfigurează"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Module:"

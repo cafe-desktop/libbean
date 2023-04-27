@@ -152,24 +152,3 @@ msgstr "درباره"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "ترجیحات"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "مدیریت افزونه"
-
-#~ msgid "View"
-#~ msgstr "نما"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "نما مدیریت افزونه"
-
-#~ msgid "Show Builtin"
-#~ msgstr "نمایش توکارها"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_پیکربندی"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_افزونه‌ها:"

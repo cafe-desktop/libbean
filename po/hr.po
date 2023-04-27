@@ -151,18 +151,3 @@ msgstr "O programu"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Osobitosti"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Upravitelj priključcima"
-
-#~ msgid "View"
-#~ msgstr "Pogled"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Pogled upravitelja priključcima"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Pokaži ugrađene"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

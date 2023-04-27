@@ -151,24 +151,3 @@ msgstr "關於"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "偏好設定"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "外掛程式管理員"
-
-#~ msgid "View"
-#~ msgstr "檢視"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "外掛程式管理員檢視"
-
-#~ msgid "Show Builtin"
-#~ msgstr "顯示內建"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "設定(_o)"
-
-#~ msgid "_Plugins:"
-#~ msgstr "外掛程式(_P):"

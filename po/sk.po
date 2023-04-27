@@ -154,25 +154,3 @@ msgstr "O zásuvnom module"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Nastavenia"
-
-# widget title
-#~ msgid "Plugin Manager"
-#~ msgstr "Správca zásuvných modulov"
-
-# property name
-# https://bugzilla.gnome.org/show_bug.cgi?id=697452
-#~ msgid "View"
-#~ msgstr "Zobrazenie"
-
-# nieco ako list view alebo tree view
-# widget title
-#~ msgid "Plugin Manager View"
-#~ msgstr "Zobrazenie zásuvných modulov"
-
-# property name
-#~ msgid "Show Builtin"
-#~ msgstr "Zobraziť vstavané"
-
-# widget group title
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

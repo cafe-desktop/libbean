@@ -153,33 +153,3 @@ msgstr "Acerca de"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferencias"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Gestor de complementos"
-
-#~ msgid "View"
-#~ msgstr "Ver"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Vista del gestor de complementos"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Mostrar incluidos"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "C_onfigurar"
-
-#~ msgid "_Plugins:"
-#~ msgstr "Co_mplementos:"
-
-#~ msgid "A_ctivate"
-#~ msgstr "A_ctivar"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "Ac_tivar todos"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "Co_mplementos activos:"

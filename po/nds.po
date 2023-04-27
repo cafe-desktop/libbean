@@ -147,12 +147,3 @@ msgstr ""
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr ""
-
-#~ msgid "C_onfigure"
-#~ msgstr "K_onfigureren"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Plugins:"
-
-#~ msgid "- libbean demo application"
-#~ msgstr "- libbean Demonstratschoonsprogramm"

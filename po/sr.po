@@ -152,24 +152,3 @@ msgstr "О програму"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Поставке"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Управник прикључака"
-
-#~ msgid "View"
-#~ msgstr "Преглед"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Преглед управника прикључака"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Прикажи уграђенe"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Грашкo Гтк"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_Подеси"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Додаци:"

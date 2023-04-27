@@ -150,32 +150,3 @@ msgstr ""
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr ""
-
-#~ msgid "Plugin Manager"
-#~ msgstr "प्लगइन प्रबन्धक"
-
-#~ msgid "View"
-#~ msgstr "दृश्य"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "प्लगइन प्रबन्धक दृश्य"
-
-#, fuzzy
-#~ msgid "Show Builtin"
-#~ msgstr "ब्युल्टइन वस्तु"
-
-#, fuzzy
-#~ msgid "Bean Ctk"
-#~ msgstr "gtk-doc"
-
-#, fuzzy, c-format
-#~ msgid "Dependency '%s' failed to load"
-#~ msgstr "लोड असफल"
-
-#, fuzzy, c-format
-#~ msgid "Plugin loader '%s' was not found"
-#~ msgstr "GIF लोडर (%s) मा आन्तरिक त्रुटि"
-
-#, fuzzy
-#~ msgid "- libbean demo application"
-#~ msgstr "यो 'खोल्नुहोस्' प्रतिमा भएको प्रदर्शन बटन हो"

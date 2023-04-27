@@ -157,18 +157,3 @@ msgstr "Tietoja"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Asetukset"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Liitännäistenhallinta"
-
-#~ msgid "View"
-#~ msgstr "Näkymä"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Liitännäisten hallintanäkymä"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Näytä sisäänrakennetut"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

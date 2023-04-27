@@ -150,18 +150,3 @@ msgstr "_Informazions"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferencis"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Gjestôr dai Plugin"
-
-#~ msgid "View"
-#~ msgstr "Viôt"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Viodude Gjestôr Plugin"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Show Builtin"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

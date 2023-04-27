@@ -154,33 +154,3 @@ msgstr "Sobre"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferencias"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Xestor de engadidos"
-
-#~ msgid "View"
-#~ msgstr "Ver"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Vista do xestor de engadidos"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Mostrar incluídos"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "C_onfigurar"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Engadidos:"
-
-#~ msgid "A_ctivate"
-#~ msgstr "A_ctivar"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "Ac_tivar todo"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "Activar _complementos:"

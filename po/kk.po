@@ -150,18 +150,3 @@ msgstr "Осы туралы"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Баптаулар"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Плагиндер басқарушысы"
-
-#~ msgid "View"
-#~ msgstr "Көрініс"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Плагиндер басқарушысы көрінісі"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Құрамындағыны көрсету"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

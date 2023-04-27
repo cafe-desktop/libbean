@@ -153,18 +153,3 @@ msgstr "Tentang"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferensi"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Manajer Pengaya"
-
-#~ msgid "View"
-#~ msgstr "Tilikan"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Tilikan Manajer Pengaya"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Tampilkan Bawaan"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

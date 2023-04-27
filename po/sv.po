@@ -153,18 +153,3 @@ msgstr "Om"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Inställningar"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Instickshanterare"
-
-#~ msgid "View"
-#~ msgstr "Visa"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Vy för instickshanterare"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Visa inbyggda"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

@@ -155,29 +155,3 @@ msgstr "Om"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Indstillinger"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Håndtering af udvidelsesmoduler"
-
-#~ msgid "View"
-#~ msgstr "Vis"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Visning af udvidelsesmodulhåndtering"
-
-# skulle engelsk have været Built-in?
-# In computing, a shell builtin is a command or a function, 
-# called from a shell, that is executed directly in the 
-# shell itself, instead of an external executable program 
-# which the shell would load and execute.
-#~ msgid "Show Builtin"
-#~ msgstr "Vis builtin"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_Konfigurer"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Udvidelsesmoduler:"

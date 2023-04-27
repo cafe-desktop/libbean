@@ -151,18 +151,3 @@ msgstr "Par"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Iestatījumi"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Spraudņu pārvaldnieks"
-
-#~ msgid "View"
-#~ msgstr "Skats"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Spraudņu pārvaldnieka skats"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Rādīt iebūvētos"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"

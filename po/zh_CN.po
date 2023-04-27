@@ -153,33 +153,3 @@ msgstr "关于"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "首选项"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "插件管理器"
-
-#~ msgid "View"
-#~ msgstr "查看"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "插件管理器视图"
-
-#~ msgid "Show Builtin"
-#~ msgstr "显示内置插件"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "配置(_O)"
-
-#~ msgid "_Plugins:"
-#~ msgstr "插件(_P)："
-
-#~ msgid "A_ctivate"
-#~ msgstr "激活(_C)"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "全部激活(_T)"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "活动插件(_P)："

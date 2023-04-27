@@ -152,24 +152,3 @@ msgstr "Honi buruz"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Hobespenak"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Pluginen kudeatzailea"
-
-#~ msgid "View"
-#~ msgstr "Ikusi"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Pluginen kudeatzailearen ikuspegia"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Erakutsi barnekoak"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_Konfiguratu"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Pluginak:"

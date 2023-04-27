@@ -158,24 +158,3 @@ msgstr "Hakkında"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Tercihler"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Eklenti Yöneticisi"
-
-#~ msgid "View"
-#~ msgstr "Görünüm"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Eklenti Yöneticisi Görünümü"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Yerleşik Eklentileri Göster"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
-
-#~ msgid "C_onfigure"
-#~ msgstr "_Yapılandır"
-
-#~ msgid "_Plugins:"
-#~ msgstr "_Eklentiler:"

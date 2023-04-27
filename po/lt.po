@@ -153,18 +153,3 @@ msgstr "Apie"
 #: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Nuostatos"
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Įskiepių tvarkytuvė"
-
-#~ msgid "View"
-#~ msgstr "Rodinys"
-
-#~ msgid "Plugin Manager View"
-#~ msgstr "Įskiepių tvarkytuvės rodinys"
-
-#~ msgid "Show Builtin"
-#~ msgstr "Rodyti integruotus"
-
-#~ msgid "Bean Ctk"
-#~ msgstr "Bean Ctk"
