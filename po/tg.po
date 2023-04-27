@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tajik Gnome\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libbean&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-14 12:02+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2013-06-05 14:23+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: \n"
@@ -18,123 +17,186 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "Мудири плагинҳо"
-
-#: ../data/glade/libbean-ctk.xml.in.h:2
-msgid "View"
-msgstr "Намоиш"
-
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "Plugin Manager View"
-msgstr "Намуди мудири плагинҳо"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:5
-msgid "Show Builtin"
-msgstr "Намоиши дарунсохт"
-
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Bean Ctk"
-msgstr "Нахӯди Ctk"
-
-#: ../libbean/bean-engine.c:818
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "Вобастагии '%s' ёфт нашуд"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:828
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "Боргирии вобастагии '%s' қатъ шудааст"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:843
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "Боркунандаи плагини '%s' ёфт нашуд"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:855
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Боркунӣ қатъ шуд"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Плагинҳои иловагӣ бояд ғайрифаъол карда шаванд"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr ""
-"Плагинҳои зерин аз '%s' вобаста ҳастанд ва инчунин ғайрифаъол карда мешаванд:"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Плагинҳо"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Плагини иловагӣ бояд ғайрифаъол карда шавад"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"Плагини '%s' аз плагини '%s' вобаста аст.\n"
-"Агар шумо '%s'-ро ғайрифаъол кунед, '%s' инчунин ғайрифаъол мешавад."
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+msgid "_Cancel"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Ғайрифаъол кардани плагинҳо"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:182
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Ҳангоми намоиши кӯмак хатогӣ ба вуҷуд омад."
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
+msgid "_Close"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
+msgid "_Help"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
+msgid "Pr_eferences"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Дар бораи барнома"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:395
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Хусусиятҳо"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Фаъол"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "_Фаъол кардани плагинҳо"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Ғайрифаъол кардани ҳама"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:510
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Фаъол"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:531
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Плагин"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:621
+#. Avoid having markup in a translated string
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid ""
-"<b>The plugin '%s' could not be loaded</b>\n"
-"An error occurred: %s"
+msgid "The plugin “%s” could not be loaded"
 msgstr ""
-"<b>Плагини '%s' бор намешавад</b>\n"
-"Хатогие ба вуҷуд омад: %s"
 
-#: ../bean-demo/bean-demo.c:40
+#. Keep separate because some translations do special things
+#. * for the ':' and might accidentally not keep the space after it
+#.
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
+#, c-format
+msgid "An error occurred: %s"
+msgstr ""
+
+#. Translators: The directory in which the demo program was compiled at
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Иҷро кардан аз директорияи сохт"
 
-#: ../bean-demo/bean-demo.c:100
-msgid "- libbean demo application"
-msgstr "- барномаи намоишии libbean"
+#: bean-demo/bean-demo.c:94
+msgid "_Quit"
+msgstr ""
+
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:75
+msgid "About"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:80
+msgid "Preferences"
+msgstr ""
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Мудири плагинҳо"
+
+#~ msgid "View"
+#~ msgstr "Намоиш"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "Намуди мудири плагинҳо"
+
+#~ msgid "Show Builtin"
+#~ msgstr "Намоиши дарунсохт"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Нахӯди Ctk"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "Вобастагии '%s' ёфт нашуд"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "Боргирии вобастагии '%s' қатъ шудааст"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "Боркунандаи плагини '%s' ёфт нашуд"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr ""
+#~ "Плагинҳои зерин аз '%s' вобаста ҳастанд ва инчунин ғайрифаъол карда "
+#~ "мешаванд:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "Плагини '%s' аз плагини '%s' вобаста аст.\n"
+#~ "Агар шумо '%s'-ро ғайрифаъол кунед, '%s' инчунин ғайрифаъол мешавад."
+
+#, c-format
+#~ msgid ""
+#~ "<b>The plugin '%s' could not be loaded</b>\n"
+#~ "An error occurred: %s"
+#~ msgstr ""
+#~ "<b>Плагини '%s' бор намешавад</b>\n"
+#~ "Хатогие ба вуҷуд омад: %s"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- барномаи намоишии libbean"

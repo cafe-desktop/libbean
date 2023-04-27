@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-08-20 20:07+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -22,22 +22,22 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
 msgid "Dependency “%s” was not found"
 msgstr "Riippuvuutta “%s” ei löytynyt"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
 msgid "Dependency “%s” failed to load"
 msgstr "Riippuvuuden “%s” lataaminen epäonnistui"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
 msgid "Plugin loader “%s” was not found"
 msgstr "Liitännäislatainta “%s” ei löytynyt"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Lataaminen epäonnistui"
@@ -115,16 +115,16 @@ msgstr "_Ota kaikki käyttöön"
 msgid "_Disable All"
 msgstr "_Kytke kaikki pois käytöstä"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Käytössä"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Liitännäinen"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Liitännäistä “%s” ei voitu ladata"
@@ -132,29 +132,29 @@ msgstr "Liitännäistä “%s” ei voitu ladata"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Tapahtui virhe: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Suorita käännöshakemistosta"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: bean-demo/bean-demo.c:108
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean-demosovellus"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "Tietoja"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Asetukset"
 

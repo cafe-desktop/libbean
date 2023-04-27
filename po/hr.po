@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-09-03 18:13+0200\n"
 "Last-Translator: gogo <linux.hr@protonmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-04-10 15:12+0000\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
 msgid "Dependency “%s” was not found"
 msgstr "Zavisnost “%s” nije pronađena"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
 msgid "Dependency “%s” failed to load"
 msgstr "Zavisnost “%s” se nije učitala"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
 msgid "Plugin loader “%s” was not found"
 msgstr "Učitač priključka “%s” nije pronađen"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Neuspjelo učitavanje"
@@ -109,16 +109,16 @@ msgstr "O_mogući sve"
 msgid "_Disable All"
 msgstr "_Onemogući sve"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Priključak"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Priključak “%s” ne može biti učitan"
@@ -126,29 +126,29 @@ msgstr "Priključak “%s” ne može biti učitan"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Pojavila se greška: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Pokreni iz direktorija građenja"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Izlaz"
 
-#: bean-demo/bean-demo.c:108
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean demo aplikacija"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "O programu"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Osobitosti"
 

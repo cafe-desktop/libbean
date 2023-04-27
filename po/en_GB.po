@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-08-25 01:17+0100\n"
 "Last-Translator: Zander Brown <zbrown@gnome.org>\n"
 "Language-Team: English - United Kingdom <en_GB@li.org>\n"
@@ -19,25 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 3.32.1\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
-#| msgid "Dependency '%s' was not found"
 msgid "Dependency “%s” was not found"
 msgstr "Dependency “%s” was not found"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
-#| msgid "Dependency '%s' failed to load"
 msgid "Dependency “%s” failed to load"
 msgstr "Dependency “%s” failed to load"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
-#| msgid "Plugin loader '%s' was not found"
 msgid "Plugin loader “%s” was not found"
 msgstr "Plugin loader “%s” was not found"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Failed to load"
@@ -48,7 +45,6 @@ msgstr "Additional plugins must be disabled"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-#| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "The following plugins depend on “%s” and will also be disabled:"
 
@@ -62,9 +58,6 @@ msgstr "An additional plugin must be disabled"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
-#| msgid ""
-#| "The '%s' plugin depends on the '%s' plugin.\n"
-#| "If you disable '%s', '%s' will also be disabled."
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
 "If you disable “%s”, “%s” will also be disabled."
@@ -117,48 +110,46 @@ msgstr "E_nable All"
 msgid "_Disable All"
 msgstr "_Disable All"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Enabled"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Plugin"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-#| msgid "The plugin '%s' could not be loaded"
 msgid "The plugin “%s” could not be loaded"
 msgstr "The plugin “%s” could not be loaded"
 
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "An error occurred: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Run from build directory"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Quit"
 
-#: bean-demo/bean-demo.c:108
-#| msgid "- libbean demo application"
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean demo application"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "About"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferences"
 

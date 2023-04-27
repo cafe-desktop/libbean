@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 20:48+0300\n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2016-08-09 20:48+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
@@ -22,161 +22,183 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "מנהל התוספים"
-
-#. Translators: What BeanCtkPluginManagerView to use
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "View"
-msgstr "הצגה"
-
-#: ../data/glade/libbean-ctk.xml.in.h:4
-msgid "Plugin Manager View"
-msgstr "תצוגת ניהול תוספים"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Show Builtin"
-msgstr "הצגת מובנים"
-
-#: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Ctk"
-msgstr "Bean Ctk"
-
-#: ../libbean/bean-engine.c:1115
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "Dependency '%s' was not found"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1125
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "Dependency '%s' failed to load"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1139
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "Plugin loader '%s' was not found"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1151
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Failed to load"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "יש לנטרל תוספים נוספים"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
-msgstr "התוספים הבאים תלויים ב־'%s' וינוטרלו גם הם:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
+msgstr ""
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "תוספים"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "יש לנטרל תוסף נוסף"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"התוסף '%s' תלוי בתוסף '%s'.\n"
-"אם התוסף '%s' ינוטרל אז ינוטרל גם התוסף '%s'."
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "נטרול תוספים"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "אירעה שגיאה בעת הצגת העזרה"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_סגירה"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "ה_עדפות"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "על _אודות:"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "ה_עדפות"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "מופ_על"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "ה_פעלת הכול"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "נטרול ה_כול"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "מופעל"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "תוסף"
 
 #. Avoid having markup in a translated string
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid "The plugin '%s' could not be loaded"
-msgstr "לא ניתן לטעון את התוסף '%s'"
+msgid "The plugin “%s” could not be loaded"
+msgstr ""
 
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "אירעה שגיאה: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: ../bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Run from build directory"
 
-#: ../bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_יציאה"
 
-#: ../bean-demo/bean-demo.c:108
-msgid "- libbean demo application"
-msgstr "- libbean demo application"
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
 
-#: ../tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "על אודות"
 
-#: ../tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "העדפות"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "מנהל התוספים"
+
+#~ msgid "View"
+#~ msgstr "הצגה"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "תצוגת ניהול תוספים"
+
+#~ msgid "Show Builtin"
+#~ msgstr "הצגת מובנים"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "Dependency '%s' was not found"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "Dependency '%s' failed to load"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "Plugin loader '%s' was not found"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr "התוספים הבאים תלויים ב־'%s' וינוטרלו גם הם:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "התוסף '%s' תלוי בתוסף '%s'.\n"
+#~ "אם התוסף '%s' ינוטרל אז ינוטרל גם התוסף '%s'."
+
+#, c-format
+#~ msgid "The plugin '%s' could not be loaded"
+#~ msgstr "לא ניתן לטעון את התוסף '%s'"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- libbean demo application"
 
 #~ msgid "C_onfigure"
 #~ msgstr "ה_גדרה"

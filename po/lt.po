@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-08-19 23:02+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
@@ -16,29 +16,26 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Gtranslator 3.32.1\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
-#| msgid "Dependency '%s' was not found"
 msgid "Dependency “%s” was not found"
 msgstr "Priklausomybė „%s“ nerasta"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
-#| msgid "Dependency '%s' failed to load"
 msgid "Dependency “%s” failed to load"
 msgstr "Nepavyko įkelti priklausomybės „%s“"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
-#| msgid "Plugin loader '%s' was not found"
 msgid "Plugin loader “%s” was not found"
 msgstr "Įskiepių įkėlėjas „%s“ nerastas"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Nepavyko įkelti"
@@ -49,7 +46,6 @@ msgstr "Reikia išjungti papildomus įskiepius"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-#| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "Šie įskiepiai priklauso nuo „%s“ ir taip pat bus išjungti:"
 
@@ -63,9 +59,6 @@ msgstr "Papildomas įskiepis turi būti išjungtas"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
-#| msgid ""
-#| "The '%s' plugin depends on the '%s' plugin.\n"
-#| "If you disable '%s', '%s' will also be disabled."
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
 "If you disable “%s”, “%s” will also be disabled."
@@ -118,48 +111,46 @@ msgstr "Įjungti _visus"
 msgid "_Disable All"
 msgstr "_Išjungti visus"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Įjungtas"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Įskiepis"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-#| msgid "The plugin '%s' could not be loaded"
 msgid "The plugin “%s” could not be loaded"
 msgstr "Įskiepis „%s“ negali būti įkeltas"
 
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Įvyko klaida: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Vykdyti iš kūrimo katalogo"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Išeiti"
 
-#: bean-demo/bean-demo.c:108
-#| msgid "- libbean demo application"
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "– libbean pavyzdinė programa"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "Apie"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Nuostatos"
 

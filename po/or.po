@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libbean&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-15 09:43+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2014-09-17 16:48+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <oriya-it@googlegroups.com>\n"
@@ -18,148 +17,184 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "ପ୍ଲଗ-ଇନ ପରିଚାଳକ"
-
-#. Translators: What BeanCtkPluginManagerView to use
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "View"
-msgstr "ଦୃଶ୍ଯ"
-
-#: ../data/glade/libbean-ctk.xml.in.h:4
-msgid "Plugin Manager View"
-msgstr "ପ୍ଲଗ-ଇନ ପରିଚାଳକ ଦୃଶ୍ୟ"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Show Builtin"
-msgstr "ସୁନିର୍ମିତ ଦର୍ଶାନ୍ତୁ"
-
-#: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Ctk"
-msgstr "Bean Ctk"
-
-#: ../libbean/bean-engine.c:856
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "ନିର୍ଭୋରୋକ '%s' ମିଳିଲା ନାହିଁ"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:866
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "ନିର୍ଭୋରୋକ '%s' ଧାରଣ କରିବାରେ ବିଫଳ"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:880
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "ପ୍ଲଗଇନ ଧାରଣକର୍ତ୍ତା '%s' ମିଳିଲା ନାହିଁ"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:892
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "ଧାରଣ କରିବାରେ ଅସଫଳ"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "ଅତିରିକ୍ତ ପ୍ଲଗଇନକୁ ନିଶ୍ଚିତ ଭାବରେ ନିଷ୍କ୍ରିୟ କରିବା ଉଚିତ"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr ""
-"'%s' ଉପରେ ନିର୍ଭର କରୁଥିବା ନିମ୍ନଲିଖିତ ପ୍ଲଗଇନଗୁଡ଼ିକୁ ମଧ୍ଯ ନିଷ୍କ୍ରିୟ କରାଯିବ:"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "ପ୍ଲଗଇନଗୁଡ଼ିକ"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "ଗୋଟିଏ ଅତିରିକ୍ତ ପ୍ଲଗଇନକୁ ନିଶ୍ଚିତ ଭାବରେ ନିଷ୍କ୍ରିୟ କରିବା ଉଚିତ"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"'%s' ପ୍ଲଗଇନ '%s' ପ୍ଲଗଇନ ଉପରେ ନିର୍ଭର କରିଥାଏ।\n"
-"ଯଦି ଆପଣ '%s' କୁ ନିଷ୍କ୍ରିୟ କରନ୍ତି, ତେବେ '%s' ମଧ୍ଯ ନିଷ୍କ୍ରିୟ ହୋଇଯିବ।"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:181
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "ବାତିଲ କରନ୍ତୁ (_C)"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "ପ୍ଲଗଇନଗୁଡ଼ିକୁ ନିଷ୍କ୍ରିୟ କରନ୍ତୁ"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:187
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "ସହାୟତାକୁ ପ୍ରଦର୍ଶନ କରିବା ସମୟରେ ଗୋଟିଏ ତ୍ରୁଟି ପରିଲିଖିତ ହେଲା।"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:244
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "ବନ୍ଦ କରନ୍ତୁ (_C)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:256
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "ସହାୟତା (_H)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
-#| msgid "_Preferences"
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "ପସନ୍ଦ (_e)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:382
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "ବିବରଣୀ (_A)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:390
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "ପସନ୍ଦ (_P)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "ସକ୍ରିୟ (_E)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "ସମସ୍ତଙ୍କୁ ସକ୍ରିୟ କରନ୍ତୁ (_n)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "ସମସ୍ତଙ୍କୁ ନିଷ୍କ୍ରିୟ କରନ୍ତୁ (_D)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:509
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "ସକ୍ରିୟ"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:530
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "ପ୍ଲଗଇନ"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:615
+#. Avoid having markup in a translated string
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid ""
-"<b>The plugin '%s' could not be loaded</b>\n"
-"An error occurred: %s"
+msgid "The plugin “%s” could not be loaded"
 msgstr ""
-"<b>ପ୍ଲଗଇନ '%s' କୁ ଧାରଣ କରାଯାଇପାରିଲା ନାହିଁ</b>\n"
-"ଗୋଟିଏ ତ୍ରୁଟି ଦେଖା ଦେଲା: %s"
+
+#. Keep separate because some translations do special things
+#. * for the ':' and might accidentally not keep the space after it
+#.
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
+#, c-format
+msgid "An error occurred: %s"
+msgstr ""
 
 #. Translators: The directory in which the demo program was compiled at
-#: ../bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "ନିର୍ମାଣ ଡିରେକ୍ଟୋରୀରୁ ଚଲାନ୍ତୁ"
 
-#: ../bean-demo/bean-demo.c:83
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "ବିଦାୟ ନିଅନ୍ତୁ (_Q)"
 
-#: ../bean-demo/bean-demo.c:99
-msgid "- libbean demo application"
-msgstr "- libbean ପ୍ରଦର୍ଶନ ପ୍ରୟୋଗ"
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
 
+#: tests/libbean-ctk/plugin-manager.c:75
+msgid "About"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:80
+msgid "Preferences"
+msgstr ""
+
+#~ msgid "Plugin Manager"
+#~ msgstr "ପ୍ଲଗ-ଇନ ପରିଚାଳକ"
+
+#~ msgid "View"
+#~ msgstr "ଦୃଶ୍ଯ"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "ପ୍ଲଗ-ଇନ ପରିଚାଳକ ଦୃଶ୍ୟ"
+
+#~ msgid "Show Builtin"
+#~ msgstr "ସୁନିର୍ମିତ ଦର୍ଶାନ୍ତୁ"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "ନିର୍ଭୋରୋକ '%s' ମିଳିଲା ନାହିଁ"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "ନିର୍ଭୋରୋକ '%s' ଧାରଣ କରିବାରେ ବିଫଳ"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "ପ୍ଲଗଇନ ଧାରଣକର୍ତ୍ତା '%s' ମିଳିଲା ନାହିଁ"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr "'%s' ଉପରେ ନିର୍ଭର କରୁଥିବା ନିମ୍ନଲିଖିତ ପ୍ଲଗଇନଗୁଡ଼ିକୁ ମଧ୍ଯ ନିଷ୍କ୍ରିୟ କରାଯିବ:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "'%s' ପ୍ଲଗଇନ '%s' ପ୍ଲଗଇନ ଉପରେ ନିର୍ଭର କରିଥାଏ।\n"
+#~ "ଯଦି ଆପଣ '%s' କୁ ନିଷ୍କ୍ରିୟ କରନ୍ତି, ତେବେ '%s' ମଧ୍ଯ ନିଷ୍କ୍ରିୟ ହୋଇଯିବ।"
+
+#, c-format
+#~ msgid ""
+#~ "<b>The plugin '%s' could not be loaded</b>\n"
+#~ "An error occurred: %s"
+#~ msgstr ""
+#~ "<b>ପ୍ଲଗଇନ '%s' କୁ ଧାରଣ କରାଯାଇପାରିଲା ନାହିଁ</b>\n"
+#~ "ଗୋଟିଏ ତ୍ରୁଟି ଦେଖା ଦେଲା: %s"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- libbean ପ୍ରଦର୍ଶନ ପ୍ରୟୋଗ"

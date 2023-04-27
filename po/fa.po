@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-09-25 10:34+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-09-29 13:59+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
@@ -133,23 +133,23 @@ msgid "An error occurred: %s"
 msgstr "خطایی رخ داد: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "اجرا از شاخهٔ ساخت"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_خروج"
 
-#: bean-demo/bean-demo.c:108
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— برنامه نمایشی libbean"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "درباره"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "ترجیحات"
 

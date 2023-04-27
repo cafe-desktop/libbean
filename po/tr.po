@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-09-05 20:29+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -24,22 +24,22 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-POOTLE-MTIME: 1433229099.000000\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
 msgid "Dependency “%s” was not found"
 msgstr "“%s” bağımlılığı bulunamadı"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
 msgid "Dependency “%s” failed to load"
 msgstr "“%s” bağımlılığı yüklenemedi"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
 msgid "Plugin loader “%s” was not found"
 msgstr "Eklenti yükleyicisi “%s” bulunamadı"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Yükleme başarısız"
@@ -68,7 +68,8 @@ msgid ""
 "If you disable “%s”, “%s” will also be disabled."
 msgstr ""
 "“%s” eklentisi “%s” eklentisine bağlı.\n"
-"Eğer “%s” eklentisini devre dışı bırakırsanız, “%s” eklentisi de devre dışı kalacak."
+"Eğer “%s” eklentisini devre dışı bırakırsanız, “%s” eklentisi de devre dışı "
+"kalacak."
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
@@ -115,16 +116,16 @@ msgstr "_Tümünü Etkinleştir"
 msgid "_Disable All"
 msgstr "Tü_münü Devre Dışı Bırak"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Etkinleştirildi"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Eklenti"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "“%s” eklentisi yüklenemedi"
@@ -132,29 +133,29 @@ msgstr "“%s” eklentisi yüklenemedi"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Bir hata oluştu: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "İnşa dizininden çalıştır"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Çık"
 
-#: bean-demo/bean-demo.c:108
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean deneme uygulaması"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "Hakkında"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Tercihler"
 

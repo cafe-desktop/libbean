@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2020-06-26 03:39+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2020-09-11 21:12-0300\n"
 "Last-Translator: Juliano de Souza Camargo <julianosc@protonmail.com>\n"
 "Language-Team: Portuguese <>\n"
@@ -24,19 +24,16 @@ msgstr ""
 
 #: libbean/bean-engine.c:1116
 #, c-format
-#| msgid "Dependency '%s' was not found"
 msgid "Dependency “%s” was not found"
 msgstr "Não foi encontrada a dependência “%s”"
 
 #: libbean/bean-engine.c:1126
 #, c-format
-#| msgid "Dependency '%s' failed to load"
 msgid "Dependency “%s” failed to load"
 msgstr "Falha ao carregar a dependência “%s”"
 
 #: libbean/bean-engine.c:1140
 #, c-format
-#| msgid "Plugin loader '%s' was not found"
 msgid "Plugin loader “%s” was not found"
 msgstr "O carregador de extensões “%s” não foi encontrado"
 
@@ -51,7 +48,6 @@ msgstr "É necessário desativar extensões adicionais"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-#| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "As seguintes extensões dependem de “%s” e também serão desativadas:"
 
@@ -65,9 +61,6 @@ msgstr "É necessário desativar mais uma extensão"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
-#| msgid ""
-#| "The '%s' plugin depends on the '%s' plugin.\n"
-#| "If you disable '%s', '%s' will also be disabled."
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
 "If you disable “%s”, “%s” will also be disabled."
@@ -131,7 +124,6 @@ msgstr "Extensão"
 #. Avoid having markup in a translated string
 #: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-#| msgid "The plugin '%s' could not be loaded"
 msgid "The plugin “%s” could not be loaded"
 msgstr "Não foi possível carregar a extensão “%s”"
 
@@ -153,7 +145,6 @@ msgid "_Quit"
 msgstr "_Sair"
 
 #: bean-demo/bean-demo.c:119
-#| msgid "- libbean demo application"
 msgid "— libbean demo application"
 msgstr "— aplicação de demonstração de libbean"
 

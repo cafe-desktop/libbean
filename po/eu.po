@@ -6,9 +6,10 @@
 # Asier Sarasua Garmendia  <asier.sarasua@gmail.com>, 2019.
 #
 msgid ""
-msgstr "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-08-06 00:27+0000\n"
+msgstr ""
+"Project-Id-Version: libbean master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-08-11 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -18,22 +19,22 @@ msgstr "Project-Id-Version: libbean master\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
 msgid "Dependency “%s” was not found"
 msgstr "Ez da “%s” mendekotasuna aurkitu"
 
-#: libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
 msgid "Dependency “%s” failed to load"
 msgstr "Huts egin du “%s” mendekotasuna kargatzeak"
 
-#: libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
 msgid "Plugin loader “%s” was not found"
 msgstr "Ez da “%s” pluginen kargatzailea aurkitu"
 
-#: libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Huts egin du kargatzean"
@@ -60,7 +61,8 @@ msgstr "Plugin gehigarri bat desgaitu egin behar da"
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
 "If you disable “%s”, “%s” will also be disabled."
-msgstr "“%s” plugina “%s” pluginaren mendekoa da.\n"
+msgstr ""
+"“%s” plugina “%s” pluginaren mendekoa da.\n"
 "“%s” desgaitzen baduzu, “%s” ere desgaituko da."
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
@@ -108,16 +110,16 @@ msgstr "_Gaitu denak"
 msgid "_Disable All"
 msgstr "_Desgaitu denak"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Gaituta"
 
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Plugina"
 
 #. Avoid having markup in a translated string
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
 msgid "The plugin “%s” could not be loaded"
 msgstr "Ezin izan da “%s” plugina kargatu"
@@ -125,29 +127,29 @@ msgstr "Ezin izan da “%s” plugina kargatu"
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Errorea gertatu da: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Exekutatu konpilazioko direktoriotik"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "I_rten"
 
-#: bean-demo/bean-demo.c:108
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean erakusketako aplikazioa"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "Honi buruz"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Hobespenak"
 

@@ -7,9 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libbean&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 20:11+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2016-05-05 21:48+0200\n"
 "Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot En Òc\n"
@@ -21,161 +20,184 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "Gestionari d'empeutons"
-
-#. Translators: What BeanCtkPluginManagerView to use
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "View"
-msgstr "Afichatge"
-
-#: ../data/glade/libbean-ctk.xml.in.h:4
-msgid "Plugin Manager View"
-msgstr "Afichatge del gestionari d'empeutons"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Show Builtin"
-msgstr "Afichar los empeutons intèrnes"
-
-#: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Ctk"
-msgstr "Bean Ctk"
-
-#: ../libbean/bean-engine.c:1115
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "Dependéncia « %s » introbabla"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1125
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "La dependéncia « %s » a pas pogut èsser cargada"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1139
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "Lo cargador d'empeuton « %s » es pas estat trobat"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1151
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Fracàs de cargament"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "D'empeutons suplementaris devon èsser desactivats"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
-msgstr "Los empeutons seguents dependon de « %s » e seràn desactivats tanben :"
+msgid "The following plugins depend on “%s” and will also be disabled:"
+msgstr ""
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Empeutons"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Un empeuton suplementari deu èsser desactivat"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"L'empeuton « %s » depend de l'empeuton « %s ».\n"
-"Se desactivatz « %s », « %s » serà desactivat tanben."
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Desactivar los empeutons"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Una error s'es produita pendent l'afichatge de l'ajuda."
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "_Tampar"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "A_juda"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "P_referéncias"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "A _prepaus"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Preferéncias"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Activat"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "Activar _tot"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Desactivar tot"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Activat"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Empeuton"
 
 #. Avoid having markup in a translated string
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid "The plugin '%s' could not be loaded"
-msgstr "L'empeuton « %s » a pas pogut èsser cargat"
+msgid "The plugin “%s” could not be loaded"
+msgstr ""
 
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "Una error s'es produita : %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: ../bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Aviar a partir del repertòri de compilacion"
 
-#: ../bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "_Quitar"
 
-#: ../bean-demo/bean-demo.c:108
-msgid "- libbean demo application"
-msgstr "- aplicacion demo libbean"
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
 
-#: ../tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "A prepaus"
 
-#: ../tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "Preferéncias"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Gestionari d'empeutons"
+
+#~ msgid "View"
+#~ msgstr "Afichatge"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "Afichatge del gestionari d'empeutons"
+
+#~ msgid "Show Builtin"
+#~ msgstr "Afichar los empeutons intèrnes"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "Dependéncia « %s » introbabla"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "La dependéncia « %s » a pas pogut èsser cargada"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "Lo cargador d'empeuton « %s » es pas estat trobat"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr ""
+#~ "Los empeutons seguents dependon de « %s » e seràn desactivats tanben :"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "L'empeuton « %s » depend de l'empeuton « %s ».\n"
+#~ "Se desactivatz « %s », « %s » serà desactivat tanben."
+
+#, c-format
+#~ msgid "The plugin '%s' could not be loaded"
+#~ msgstr "L'empeuton « %s » a pas pogut èsser cargat"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- aplicacion demo libbean"
 
 #~ msgid ""
 #~ "<b>The plugin '%s' could not be loaded</b>\n"

@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libbean&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-17 07:46+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2012-03-21 09:16+0700\n"
 "Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -18,125 +17,187 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "Trình quản lý phần bổ sung"
-
-#: ../data/glade/libbean-ctk.xml.in.h:2
-msgid "View"
-msgstr "Khung xem"
-
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "Plugin Manager View"
-msgstr "Cửa sổ trình quản lý phần bổ sung"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:5
-msgid "Show Builtin"
-msgstr "Hiện dựng sẵn"
-
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Bean Ctk"
-msgstr "Bean Ctk"
-
-#: ../libbean/bean-engine.c:789
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "Không tìm thấy phụ thuộc '%s'"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:799
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "Lỗi nạp phụ thuộc '%s'"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:814
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "Không tìm thấy trình nạp phần bổ sung '%s'"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:826
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Lỗi nạp"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:91
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Phần bổ sung thêm phải được tắt"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:98
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
-msgstr "Những phần bổ sung sau phụ thuộc '%s' và cũng phải được tắt:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
+msgstr ""
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:140
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Phần bổ sung"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:156
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Phần bổ sung thêm phải được tắt"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:163
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"Phần bổ sung '%s' phụ thuộc '%s'.\n"
-"Nếu bạn tắt '%s', '%s' cũng sẽ bị tắt."
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:183
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+msgid "_Cancel"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Tắt phần bổ sung"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:182
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Lỗi hiển thị trợ giúp"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
+msgid "_Close"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
+msgid "_Help"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
+msgid "Pr_eferences"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "_Giới thiệu"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:395
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "_Tuỳ thích"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:334
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Bật"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:345
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "_Bật tất cả"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:349
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Tắt tất cả"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:508
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Bật"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:529
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Phần bổ sung"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:619
+#. Avoid having markup in a translated string
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid ""
-"<b>The plugin '%s' could not be loaded</b>\n"
-"An error occurred: %s"
+msgid "The plugin “%s” could not be loaded"
 msgstr ""
-"<b>Không thể nạp phần bổ sung '%s'</b>\n"
-"Xảy ra lỗi: %s"
 
-#: ../bean-demo/bean-demo.c:40
+#. Keep separate because some translations do special things
+#. * for the ':' and might accidentally not keep the space after it
+#.
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
+#, c-format
+msgid "An error occurred: %s"
+msgstr ""
+
+#. Translators: The directory in which the demo program was compiled at
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Chạy từ thư mục biên dịch"
 
-#: ../bean-demo/bean-demo.c:100
-msgid "- libbean demo application"
-msgstr "- ứng dụng minh hoạ libbean"
+#: bean-demo/bean-demo.c:94
+msgid "_Quit"
+msgstr ""
+
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:75
+msgid "About"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:80
+msgid "Preferences"
+msgstr ""
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Trình quản lý phần bổ sung"
+
+#~ msgid "View"
+#~ msgstr "Khung xem"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "Cửa sổ trình quản lý phần bổ sung"
+
+#~ msgid "Show Builtin"
+#~ msgstr "Hiện dựng sẵn"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "Không tìm thấy phụ thuộc '%s'"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "Lỗi nạp phụ thuộc '%s'"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "Không tìm thấy trình nạp phần bổ sung '%s'"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr "Những phần bổ sung sau phụ thuộc '%s' và cũng phải được tắt:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "Phần bổ sung '%s' phụ thuộc '%s'.\n"
+#~ "Nếu bạn tắt '%s', '%s' cũng sẽ bị tắt."
+
+#, c-format
+#~ msgid ""
+#~ "<b>The plugin '%s' could not be loaded</b>\n"
+#~ "An error occurred: %s"
+#~ msgstr ""
+#~ "<b>Không thể nạp phần bổ sung '%s'</b>\n"
+#~ "Xảy ra lỗi: %s"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- ứng dụng minh hoạ libbean"
 
 #~ msgid "C_onfigure"
 #~ msgstr "_Cấu hình"

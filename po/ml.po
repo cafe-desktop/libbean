@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2018-06-10 15:00+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2018-10-28 22:24+0800\n"
 "Last-Translator: Manilal K M <libregeek@gmail.com>\n"
 "Language-Team: Malayalam <discuss@lists.smc.org.in>\n"
@@ -17,161 +17,183 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Plugin Manager"
-msgstr "സംയോജക പാലകന്‍"
-
-#. Translators: What BeanCtkPluginManagerView to use
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "View"
-msgstr "ദൃശ്യം"
-
-#: ../data/glade/libbean-ctk.xml.in.h:4
-msgid "Plugin Manager View"
-msgstr "സംയോജക പാലകന്റെ കാഴ്ചപ്പാടു്"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "Show Builtin"
-msgstr "നേരത്തെയുള്ളതു കാണിക്കുക"
-
-#: ../data/glade/libbean-ctk.xml.in.h:7
-msgid "Bean Ctk"
-msgstr "പീസ് ജിടികെ"
-
-#: ../libbean/bean-engine.c:1118
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "'%s' എന്ന ആശ്രയത്വം കാണുന്നില്ല"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1128
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "'%s' എന്ന ആശ്രയത്വം എടുക്കുന്നതു പരാജയപ്പെട്ടു"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1142
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "'%s' എന്ന സംയോജക ലോഡറിനെ കാണുന്നില്ല"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:1154
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "എടുക്കുന്നതില്‍ പരാജയപ്പെട്ടു"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "അധികമുള്ള സംയോജകങ്ങള്‍ നിര്‍വീര്യമാക്കണം"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
-msgstr "ഇനി പറയുന്ന സംയോജകങ്ങള്‍ '%s' നെ ആശ്രയിക്കുന്നതിനാല്‍ അവയും നിര്‍വീര്യമാക്കപ്പെടും:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
+msgstr ""
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "സംയോജകങ്ങള്‍"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "അധികമുള്ള ഒരു സംയോജകം നിര്‍വീര്യമാക്കണം"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"'%s' എന്ന സംയോജകം '%s' എന്ന സംയോജകത്തിനെ ആശ്രയിച്ചിരിക്കുന്നു.\n"
-"താങ്കള്‍ '%s' നിര്‍വീര്യമാക്കിയാല്‍ '%s' നിര്‍വീര്യമാക്കപ്പെടും."
 
 # _റദ്ദാക്കുക
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
 msgid "_Cancel"
 msgstr "റദ്ദാക്കുക (_C)"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "സംയോജകങ്ങള്‍ നിര്‍വീര്യമാക്കൂ"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:207
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "സഹായം കാണിക്കുന്നതില്‍ ഒരു പിശക്."
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:253
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
 msgid "_Close"
 msgstr "അടയ്ക്കുക (_C)"
 
 # _സഹായം
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:265
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
 msgid "_Help"
 msgstr "സഹായം (_H)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:323
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
 msgid "Pr_eferences"
 msgstr "മുന്‍ഗണനകള്‍ (_e)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:328
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
 msgid "_About"
 msgstr "സംബന്ധിച്ചു് (_A)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
 msgid "_Preferences"
 msgstr "മുന്‍ഗണനകള്‍ (_P)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:351
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "പ്രവര്‍ത്തന സജ്ജം (_E)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:362
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "എല്ലാം പ്രവര്‍ത്തന സജ്ജമാക്കുക (_n)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:366
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "എല്ലാം നിര്‍വീര്യമാക്കുക (_D)"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:526
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "പ്രവര്‍ത്തന സജ്ജം"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:547
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "സംയോജകം"
 
 #. Avoid having markup in a translated string
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:634
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid "The plugin '%s' could not be loaded"
-msgstr "'%s' എന്ന സംയോജകം എടുത്തുവയ്ക്കുവാന്‍ സാധിച്ചില്ല"
+msgid "The plugin “%s” could not be loaded"
+msgstr ""
 
 #. Keep separate because some translations do special things
 #. * for the ':' and might accidentally not keep the space after it
 #.
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:640
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
 #, c-format
 msgid "An error occurred: %s"
 msgstr "ഒരു പിശക് സംഭവിച്ചു: %s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: ../bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "ബില്‍ഡ് ചെയ്യുന്ന അറയില്‍ നിന്നും ഓടിക്കുക"
 
 # _പുറത്തുകടക്കുക
-#: ../bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "പുറത്തിറങ്ങൂ (_Q)"
 
-#: ../bean-demo/bean-demo.c:108
-msgid "- libbean demo application"
-msgstr "- ലിബ്പീസ് മാതൃക പ്രയോഗം"
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
 
-#: ../tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "സംബന്ധിച്ചു് (_A)"
 
-#: ../tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "മുന്‍ഗണനകള്‍ (_P)"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "സംയോജക പാലകന്‍"
+
+#~ msgid "View"
+#~ msgstr "ദൃശ്യം"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "സംയോജക പാലകന്റെ കാഴ്ചപ്പാടു്"
+
+#~ msgid "Show Builtin"
+#~ msgstr "നേരത്തെയുള്ളതു കാണിക്കുക"
+
+#~ msgid "Bean Ctk"
+#~ msgstr "പീസ് ജിടികെ"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "'%s' എന്ന ആശ്രയത്വം കാണുന്നില്ല"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "'%s' എന്ന ആശ്രയത്വം എടുക്കുന്നതു പരാജയപ്പെട്ടു"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "'%s' എന്ന സംയോജക ലോഡറിനെ കാണുന്നില്ല"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr "ഇനി പറയുന്ന സംയോജകങ്ങള്‍ '%s' നെ ആശ്രയിക്കുന്നതിനാല്‍ അവയും നിര്‍വീര്യമാക്കപ്പെടും:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "'%s' എന്ന സംയോജകം '%s' എന്ന സംയോജകത്തിനെ ആശ്രയിച്ചിരിക്കുന്നു.\n"
+#~ "താങ്കള്‍ '%s' നിര്‍വീര്യമാക്കിയാല്‍ '%s' നിര്‍വീര്യമാക്കപ്പെടും."
+
+#, c-format
+#~ msgid "The plugin '%s' could not be loaded"
+#~ msgstr "'%s' എന്ന സംയോജകം എടുത്തുവയ്ക്കുവാന്‍ സാധിച്ചില്ല"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- ലിബ്പീസ് മാതൃക പ്രയോഗം"

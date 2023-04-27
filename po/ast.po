@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libpea"
-"s&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-09-16 07:08+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2011-09-17 19:06+0200\n"
 "Last-Translator: Xandru Armesto <xandru@softastur.org>\n"
 "Language-Team: Softastur <alministradores@softastur.org>\n"
@@ -20,123 +19,191 @@ msgstr ""
 "X-Poedit-Language: Asturian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../data/glade/libbean-ctk.xml.in.h:1
-msgid "Bean Ctk"
-msgstr "Bean Ctk"
-
-#: ../data/glade/libbean-ctk.xml.in.h:2
-msgid "Plugin Manager"
-msgstr "Xestor de complementos"
-
-#: ../data/glade/libbean-ctk.xml.in.h:3
-msgid "Plugin Manager View"
-msgstr "Vista del xestor de complementos"
-
-#. Translators: Whether builtin plugins should appear in the view (property name)
-#: ../data/glade/libbean-ctk.xml.in.h:5
-msgid "Show Builtin"
-msgstr "Amosar incluyíos"
-
-#: ../data/glade/libbean-ctk.xml.in.h:6
-msgid "View"
-msgstr "Ver"
-
-#: ../libbean/bean-engine.c:788
+#: libbean/bean-engine.c:1116
 #, c-format
-msgid "Dependency '%s' was not found"
-msgstr "Nun s'alcontró la dependencia «%s»"
+msgid "Dependency “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:798
+#: libbean/bean-engine.c:1126
 #, c-format
-msgid "Dependency '%s' failed to load"
-msgstr "Falló al cargar la dependencia «%s»"
+msgid "Dependency “%s” failed to load"
+msgstr ""
 
-#: ../libbean/bean-engine.c:813
+#: libbean/bean-engine.c:1140
 #, c-format
-msgid "Plugin loader '%s' was not found"
-msgstr "Nun s'alcontró'l cargador de complementu «%s»"
+msgid "Plugin loader “%s” was not found"
+msgstr ""
 
-#: ../libbean/bean-engine.c:825
+#: libbean/bean-engine.c:1152
 #, c-format
 msgid "Failed to load"
 msgstr "Falló al cargar"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:88
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
 msgid "Additional plugins must be disabled"
 msgstr "Hai de desactivar complementos adicionales"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:95
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-msgid "The following plugins depend on '%s' and will also be disabled:"
-msgstr "Los siguientes complementos dependen de «%s» y tamién van desactivase:"
+msgid "The following plugins depend on “%s” and will also be disabled:"
+msgstr ""
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:137
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:144
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:153
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:161
 msgid "An additional plugin must be disabled"
 msgstr "Hai de desactivar un complementu adicional"
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:160
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
 msgid ""
-"The '%s' plugin depends on the '%s' plugin.\n"
-"If you disable '%s', '%s' will also be disabled."
+"The “%s” plugin depends on the “%s” plugin.\n"
+"If you disable “%s”, “%s” will also be disabled."
 msgstr ""
-"El complementu «%s» depende del complementu «%s».\n"
-"Si desactives «%s» tamién vas desactivar «%s»."
 
-#: ../libbean-ctk/bean-ctk-disable-plugins-dialog.c:180
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:182
+msgid "_Cancel"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-disable-plugins-dialog.c:184
 msgid "Disable Plugins"
 msgstr "Desactivar complementos"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager.c:179
+#: libbean-ctk/bean-ctk-plugin-manager.c:207
 msgid "There was an error displaying the help."
 msgstr "Hebo un fallu al amosar l'ayuda."
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:332
+#: libbean-ctk/bean-ctk-plugin-manager.c:253
+msgid "_Close"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:265
+msgid "_Help"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:323
+msgid "Pr_eferences"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:328
+#: libbean-ctk/bean-ctk-plugin-manager.c:379
+msgid "_About"
+msgstr "Tocante _a"
+
+#: libbean-ctk/bean-ctk-plugin-manager.c:387
+msgid "_Preferences"
+msgstr ""
+
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:351
 msgid "_Enabled"
 msgstr "_Activáu"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:343
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:362
 msgid "E_nable All"
 msgstr "A_ctivar toos"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:347
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:366
 msgid "_Disable All"
 msgstr "_Desactivar toos"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:506
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:575
 msgid "Enabled"
 msgstr "Activáu"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:527
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:596
 msgid "Plugin"
 msgstr "Complementu"
 
-#: ../libbean-ctk/bean-ctk-plugin-manager-view.c:612
+#. Avoid having markup in a translated string
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-msgid ""
-"<b>The plugin '%s' could not be loaded</b>\n"
-"An error occurred: %s"
+msgid "The plugin “%s” could not be loaded"
 msgstr ""
-"<b>Nun pudo cargase'l complementu «%s»</b>\n"
-"Hebo un fallu: %s"
 
-#: ../bean-demo/bean-demo.c:40
+#. Keep separate because some translations do special things
+#. * for the ':' and might accidentally not keep the space after it
+#.
+#: libbean-ctk/bean-ctk-plugin-manager-view.c:689
+#, c-format
+msgid "An error occurred: %s"
+msgstr ""
+
+#. Translators: The directory in which the demo program was compiled at
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "Executar dende la carpeta de construcción"
 
-#: ../bean-demo/bean-demo.c:100
-msgid "- libbean demo application"
-msgstr "- libbean aplicación de demostración"
+#: bean-demo/bean-demo.c:94
+msgid "_Quit"
+msgstr ""
+
+#: bean-demo/bean-demo.c:119
+msgid "— libbean demo application"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:75
+msgid "About"
+msgstr ""
+
+#: tests/libbean-ctk/plugin-manager.c:80
+msgid "Preferences"
+msgstr ""
+
+#~ msgid "Bean Ctk"
+#~ msgstr "Bean Ctk"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Xestor de complementos"
+
+#~ msgid "Plugin Manager View"
+#~ msgstr "Vista del xestor de complementos"
+
+#~ msgid "Show Builtin"
+#~ msgstr "Amosar incluyíos"
+
+#~ msgid "View"
+#~ msgstr "Ver"
+
+#, c-format
+#~ msgid "Dependency '%s' was not found"
+#~ msgstr "Nun s'alcontró la dependencia «%s»"
+
+#, c-format
+#~ msgid "Dependency '%s' failed to load"
+#~ msgstr "Falló al cargar la dependencia «%s»"
+
+#, c-format
+#~ msgid "Plugin loader '%s' was not found"
+#~ msgstr "Nun s'alcontró'l cargador de complementu «%s»"
+
+#, c-format
+#~ msgid "The following plugins depend on '%s' and will also be disabled:"
+#~ msgstr ""
+#~ "Los siguientes complementos dependen de «%s» y tamién van desactivase:"
+
+#, c-format
+#~ msgid ""
+#~ "The '%s' plugin depends on the '%s' plugin.\n"
+#~ "If you disable '%s', '%s' will also be disabled."
+#~ msgstr ""
+#~ "El complementu «%s» depende del complementu «%s».\n"
+#~ "Si desactives «%s» tamién vas desactivar «%s»."
+
+#, c-format
+#~ msgid ""
+#~ "<b>The plugin '%s' could not be loaded</b>\n"
+#~ "An error occurred: %s"
+#~ msgstr ""
+#~ "<b>Nun pudo cargase'l complementu «%s»</b>\n"
+#~ "Hebo un fallu: %s"
+
+#~ msgid "- libbean demo application"
+#~ msgstr "- libbean aplicación de demostración"
 
 #~ msgid "C_onfigure"
 #~ msgstr "C_onfigurar"
-
-#~ msgid "_About"
-#~ msgstr "Tocante _a"
 
 #~ msgid "_Plugins:"
 #~ msgstr "Co_mplementos:"

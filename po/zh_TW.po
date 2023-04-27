@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libbean 0.7.5\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libbean/issues\n"
-"POT-Creation-Date: 2019-11-14 18:43+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-11-23 14:34+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -20,19 +20,16 @@ msgstr ""
 
 #: libbean/bean-engine.c:1116
 #, c-format
-#| msgid "Dependency '%s' was not found"
 msgid "Dependency “%s” was not found"
 msgstr "找不到依賴「%s」"
 
 #: libbean/bean-engine.c:1126
 #, c-format
-#| msgid "Dependency '%s' failed to load"
 msgid "Dependency “%s” failed to load"
 msgstr "無法載入依賴「%s」"
 
 #: libbean/bean-engine.c:1140
 #, c-format
-#| msgid "Plugin loader '%s' was not found"
 msgid "Plugin loader “%s” was not found"
 msgstr "找不到外掛載入程式「%s」"
 
@@ -47,7 +44,6 @@ msgstr "必須停用額外的外掛程式"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:102
 #, c-format
-#| msgid "The following plugins depend on '%s' and will also be disabled:"
 msgid "The following plugins depend on “%s” and will also be disabled:"
 msgstr "下列依賴於「%s」的外掛程式也會被停用："
 
@@ -61,9 +57,6 @@ msgstr "必須停用一個額外的外掛程式"
 
 #: libbean-ctk/bean-ctk-disable-plugins-dialog.c:168
 #, c-format
-#| msgid ""
-#| "The '%s' plugin depends on the '%s' plugin.\n"
-#| "If you disable '%s', '%s' will also be disabled."
 msgid ""
 "The “%s” plugin depends on the “%s” plugin.\n"
 "If you disable “%s”, “%s” will also be disabled."
@@ -127,7 +120,6 @@ msgstr "外掛程式"
 #. Avoid having markup in a translated string
 #: libbean-ctk/bean-ctk-plugin-manager-view.c:683
 #, c-format
-#| msgid "The plugin '%s' could not be loaded"
 msgid "The plugin “%s” could not be loaded"
 msgstr "外掛程式「%s」無法載入"
 
@@ -140,24 +132,23 @@ msgid "An error occurred: %s"
 msgstr "發生錯誤：%s"
 
 #. Translators: The directory in which the demo program was compiled at
-#: bean-demo/bean-demo.c:41
+#: bean-demo/bean-demo.c:43
 msgid "Run from build directory"
 msgstr "從組建目錄執行"
 
-#: bean-demo/bean-demo.c:92
+#: bean-demo/bean-demo.c:94
 msgid "_Quit"
 msgstr "結束(_Q)"
 
-#: bean-demo/bean-demo.c:108
-#| msgid "- libbean demo application"
+#: bean-demo/bean-demo.c:119
 msgid "— libbean demo application"
 msgstr "— libbean 示範應用程式"
 
-#: tests/libbean-ctk/plugin-manager.c:77
+#: tests/libbean-ctk/plugin-manager.c:75
 msgid "About"
 msgstr "關於"
 
-#: tests/libbean-ctk/plugin-manager.c:82
+#: tests/libbean-ctk/plugin-manager.c:80
 msgid "Preferences"
 msgstr "偏好設定"
 
