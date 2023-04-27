@@ -4,7 +4,7 @@
 # Rudolfs <rudolfs.mazurs@gmail.com>, 2011, 2012, 2014, 2016, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2019-08-24 19:34+0200\n"

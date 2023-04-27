@@ -5,7 +5,7 @@
 # Michael Kotsarinis <mk73628@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: libbean 1.0\n"
+"Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2015-08-28 21:57+0300\n"

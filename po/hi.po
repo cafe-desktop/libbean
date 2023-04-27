@@ -7,7 +7,7 @@
 # rajesh <rajesh>, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: libbean.po.master.hi\n"
+"Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-27 09:53+0200\n"
 "PO-Revision-Date: 2014-09-21 08:14+0630\n"
