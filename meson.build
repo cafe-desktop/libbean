@@ -1,6 +1,6 @@
 project(
   'libbean', 'c',
-  version: '1.28.0',
+  version: '1.29.0',
   license: 'LGPLv2.1+',
   meson_version: '>= 0.49.0',
   default_options: [
