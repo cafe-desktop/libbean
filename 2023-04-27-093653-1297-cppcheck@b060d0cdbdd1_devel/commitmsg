@@ -1,0 +1,4 @@
+tests: Explicitly depend on the GIR and typelib
+
+based in debian patch from libpeas MR:
+https://gitlab.gnome.org/GNOME/libpeas/-/merge_requests/29
