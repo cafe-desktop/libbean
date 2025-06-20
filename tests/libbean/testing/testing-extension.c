@@ -50,8 +50,8 @@ static gchar *loader = NULL;
 static gchar *extension_plugin = NULL;
 
 static void
-test_setup (TestFixture    *fixture,
-            gconstpointer  data)
+test_setup (TestFixture   *fixture,
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
   bean_engine_enable_loader (fixture->engine, loader);
@@ -60,8 +60,8 @@ test_setup (TestFixture    *fixture,
 }
 
 static void
-test_teardown (TestFixture    *fixture,
-               gconstpointer  data)
+test_teardown (TestFixture   *fixture,
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   testing_engine_free (fixture->engine);
 }
@@ -424,7 +424,7 @@ run_in_multiple_threads (GFunc    func,
 }
 
 static void
-multiple_threads_loaders_in_thread (guint    nth_thread,
+multiple_threads_loaders_in_thread (guint    nth_thread G_GNUC_UNUSED,
                                     gboolean use_nonglobal_loaders)
 {
   gint i, j;
@@ -459,23 +459,23 @@ multiple_threads_loaders_in_thread (guint    nth_thread,
 }
 
 static void
-test_extension_multiple_threads_global_loaders (BeanEngine     *engine,
-                                                BeanPluginInfo *info)
+test_extension_multiple_threads_global_loaders (BeanEngine     *engine G_GNUC_UNUSED,
+						BeanPluginInfo *info G_GNUC_UNUSED)
 {
   run_in_multiple_threads ((GFunc) multiple_threads_loaders_in_thread,
                            GINT_TO_POINTER (FALSE));
 }
 
 static void
-test_extension_multiple_threads_nonglobal_loaders (BeanEngine     *engine,
-                                                   BeanPluginInfo *info)
+test_extension_multiple_threads_nonglobal_loaders (BeanEngine     *engine G_GNUC_UNUSED,
+						   BeanPluginInfo *info G_GNUC_UNUSED)
 {
   run_in_multiple_threads ((GFunc) multiple_threads_loaders_in_thread,
                            GINT_TO_POINTER (TRUE));
 }
 
 static void
-multiple_threads_callbacks_in_thread (guint            nth_thread,
+multiple_threads_callbacks_in_thread (guint            nth_thread G_GNUC_UNUSED,
                                       BeanActivatable *activatable)
 {
   gint i;

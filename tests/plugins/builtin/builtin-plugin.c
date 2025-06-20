@@ -96,17 +96,17 @@ testing_builtin_plugin_get_property (GObject    *object,
 }
 
 static void
-testing_builtin_plugin_init (TestingBuiltinPlugin *plugin)
+testing_builtin_plugin_init (TestingBuiltinPlugin *plugin G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_builtin_plugin_activate (BeanActivatable *activatable)
+testing_builtin_plugin_activate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_builtin_plugin_deactivate (BeanActivatable *activatable)
+testing_builtin_plugin_deactivate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
@@ -129,7 +129,7 @@ bean_activatable_iface_init (BeanActivatableInterface *iface)
 }
 
 static void
-testing_builtin_plugin_class_finalize (TestingBuiltinPluginClass *klass)
+testing_builtin_plugin_class_finalize (TestingBuiltinPluginClass *klass G_GNUC_UNUSED)
 {
 }
 

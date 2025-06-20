@@ -39,14 +39,14 @@ struct _TestFixture {
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
 }
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   testing_engine_free (fixture->engine);
 }
@@ -296,7 +296,7 @@ test_engine_plugin_list (BeanEngine *engine)
 }
 
 static void
-load_plugin_cb (BeanEngine     *engine,
+load_plugin_cb (BeanEngine     *engine G_GNUC_UNUSED,
                 BeanPluginInfo *info,
                 gint           *loaded)
 {
@@ -306,17 +306,17 @@ load_plugin_cb (BeanEngine     *engine,
 }
 
 static void
-unload_plugin_cb (BeanEngine     *engine,
-                  BeanPluginInfo *info,
-                  gint           *loaded)
+unload_plugin_cb (BeanEngine     *engine G_GNUC_UNUSED,
+		  BeanPluginInfo *info G_GNUC_UNUSED,
+		  gint           *loaded)
 {
   --(*loaded);
 }
 
 static void
 notify_loaded_plugins_cb (BeanEngine   *engine,
-                          GParamSpec   *pspec,
-                          gchar      ***loaded_plugins)
+			  GParamSpec   *pspec G_GNUC_UNUSED,
+			  gchar      ***loaded_plugins)
 {
   if (*loaded_plugins != NULL)
     g_strfreev (*loaded_plugins);

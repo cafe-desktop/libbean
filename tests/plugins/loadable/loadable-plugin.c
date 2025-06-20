@@ -109,17 +109,17 @@ testing_loadable_plugin_get_property (GObject    *object,
 }
 
 static void
-testing_loadable_plugin_init (TestingLoadablePlugin *plugin)
+testing_loadable_plugin_init (TestingLoadablePlugin *plugin G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_loadable_plugin_activate (BeanActivatable *activatable)
+testing_loadable_plugin_activate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_loadable_plugin_deactivate (BeanActivatable *activatable)
+testing_loadable_plugin_deactivate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
@@ -151,7 +151,7 @@ bean_activatable_iface_init (BeanActivatableInterface *iface)
 }
 
 static void
-testing_loadable_plugin_class_finalize (TestingLoadablePluginClass *klass)
+testing_loadable_plugin_class_finalize (TestingLoadablePluginClass *klass G_GNUC_UNUSED)
 {
 }
 

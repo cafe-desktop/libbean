@@ -94,17 +94,17 @@ testing_embedded_plugin_get_property (GObject    *object,
 }
 
 static void
-testing_embedded_plugin_init (TestingEmbeddedPlugin *plugin)
+testing_embedded_plugin_init (TestingEmbeddedPlugin *plugin G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_embedded_plugin_activate (BeanActivatable *activatable)
+testing_embedded_plugin_activate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_embedded_plugin_deactivate (BeanActivatable *activatable)
+testing_embedded_plugin_deactivate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 

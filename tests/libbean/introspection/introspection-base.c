@@ -28,7 +28,7 @@
 G_DEFINE_INTERFACE(IntrospectionBase, introspection_base, G_TYPE_OBJECT)
 
 void
-introspection_base_default_init (IntrospectionBaseInterface *iface)
+introspection_base_default_init (IntrospectionBaseInterface *iface G_GNUC_UNUSED)
 {
 }
 

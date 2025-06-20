@@ -96,17 +96,17 @@ testing_self_dep_plugin_get_property (GObject    *object,
 }
 
 static void
-testing_self_dep_plugin_init (TestingSelfDepPlugin *plugin)
+testing_self_dep_plugin_init (TestingSelfDepPlugin *plugin G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_self_dep_plugin_activate (BeanActivatable *activatable)
+testing_self_dep_plugin_activate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_self_dep_plugin_deactivate (BeanActivatable *activatable)
+testing_self_dep_plugin_deactivate (BeanActivatable *activatable G_GNUC_UNUSED)
 {
 }
 
@@ -129,7 +129,7 @@ bean_activatable_iface_init (BeanActivatableInterface *iface)
 }
 
 static void
-testing_self_dep_plugin_class_finalize (TestingSelfDepPluginClass *klass)
+testing_self_dep_plugin_class_finalize (TestingSelfDepPluginClass *klass G_GNUC_UNUSED)
 {
 }
 

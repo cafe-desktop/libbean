@@ -42,17 +42,17 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingConfigurablePlugin,
                                                                bean_ctk_configurable_iface_init))
 
 static void
-testing_configurable_plugin_init (TestingConfigurablePlugin *configurable)
+testing_configurable_plugin_init (TestingConfigurablePlugin *configurable G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_configurable_plugin_class_init (TestingConfigurablePluginClass *klass)
+testing_configurable_plugin_class_init (TestingConfigurablePluginClass *klass G_GNUC_UNUSED)
 {
 }
 
 static CtkWidget *
-testing_configurable_plugin_create_configure_widget (BeanCtkConfigurable *configurable)
+testing_configurable_plugin_create_configure_widget (BeanCtkConfigurable *configurable G_GNUC_UNUSED)
 {
   return ctk_label_new ("Hello, World!");
 }
@@ -64,7 +64,7 @@ bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface)
 }
 
 static void
-testing_configurable_plugin_class_finalize (TestingConfigurablePluginClass *klass)
+testing_configurable_plugin_class_finalize (TestingConfigurablePluginClass *klass G_GNUC_UNUSED)
 {
 }
 

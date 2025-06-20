@@ -87,7 +87,7 @@ find_python_extension_type (GType     exten_type,
 }
 
 static gboolean
-bean_plugin_loader_python_provides_extension (BeanPluginLoader *loader,
+bean_plugin_loader_python_provides_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                               BeanPluginInfo   *info,
                                               GType             exten_type)
 {
@@ -102,7 +102,7 @@ bean_plugin_loader_python_provides_extension (BeanPluginLoader *loader,
 }
 
 static BeanExtension *
-bean_plugin_loader_python_create_extension (BeanPluginLoader *loader,
+bean_plugin_loader_python_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                             BeanPluginInfo   *info,
                                             GType             exten_type,
                                             guint             n_parameters,
@@ -203,7 +203,7 @@ bean_plugin_loader_python_unload (BeanPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_python_garbage_collect (BeanPluginLoader *loader)
+bean_plugin_loader_python_garbage_collect (BeanPluginLoader *loader G_GNUC_UNUSED)
 {
   PyGILState_STATE state = PyGILState_Ensure ();
 
@@ -299,7 +299,7 @@ python_init_error:
 }
 
 static void
-bean_plugin_loader_python_init (BeanPluginLoaderPython *pyloader)
+bean_plugin_loader_python_init (BeanPluginLoaderPython *pyloader G_GNUC_UNUSED)
 {
 }
 

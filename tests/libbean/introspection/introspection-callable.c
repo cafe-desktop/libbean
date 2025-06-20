@@ -28,7 +28,7 @@
 G_DEFINE_INTERFACE(IntrospectionCallable, introspection_callable, G_TYPE_OBJECT)
 
 void
-introspection_callable_default_init (IntrospectionCallableInterface *iface)
+introspection_callable_default_init (IntrospectionCallableInterface *iface G_GNUC_UNUSED)
 {
 }
 

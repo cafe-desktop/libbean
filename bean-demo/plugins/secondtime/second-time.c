@@ -88,7 +88,7 @@ beandemo_second_time_get_property (GObject    *object,
 
 
 static void
-beandemo_second_time_init (BeanDemoSecondTime *plugin)
+beandemo_second_time_init (BeanDemoSecondTime *plugin G_GNUC_UNUSED)
 {
   g_debug ("%s", G_STRFUNC);
 }
@@ -155,7 +155,7 @@ bean_activatable_iface_init (BeanActivatableInterface *iface)
 }
 
 static void
-beandemo_second_time_class_finalize (BeanDemoSecondTimeClass *klass)
+beandemo_second_time_class_finalize (BeanDemoSecondTimeClass *klass G_GNUC_UNUSED)
 {
 }
 

@@ -56,9 +56,9 @@ G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkDisablePluginsDialog,
 
 static gint
 model_name_sort_func (CtkListStore *store,
-                      CtkTreeIter  *iter1,
-                      CtkTreeIter  *iter2,
-                      gpointer      user_data)
+		      CtkTreeIter  *iter1,
+		      CtkTreeIter  *iter2 G_GNUC_UNUSED,
+		      gpointer      user_data G_GNUC_UNUSED)
 {
   gchar *name1, *name2;
   gint retval;

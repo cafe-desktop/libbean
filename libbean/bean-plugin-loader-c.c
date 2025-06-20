@@ -93,7 +93,7 @@ bean_plugin_loader_c_load (BeanPluginLoader *loader,
 }
 
 static void
-bean_plugin_loader_c_unload (BeanPluginLoader *loader,
+bean_plugin_loader_c_unload (BeanPluginLoader *loader G_GNUC_UNUSED,
                              BeanPluginInfo   *info)
 {
   /* Don't bother unloading the plugin's
@@ -103,7 +103,7 @@ bean_plugin_loader_c_unload (BeanPluginLoader *loader,
 }
 
 static gboolean
-bean_plugin_loader_c_provides_extension  (BeanPluginLoader *loader,
+bean_plugin_loader_c_provides_extension  (BeanPluginLoader *loader G_GNUC_UNUSED,
                                           BeanPluginInfo   *info,
                                           GType             exten_type)
 {
@@ -111,7 +111,7 @@ bean_plugin_loader_c_provides_extension  (BeanPluginLoader *loader,
 }
 
 static BeanExtension *
-bean_plugin_loader_c_create_extension (BeanPluginLoader *loader,
+bean_plugin_loader_c_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                        BeanPluginInfo   *info,
                                        GType             exten_type,
                                        guint             n_parameters,

@@ -34,17 +34,17 @@ G_DEFINE_DYNAMIC_TYPE (TestingExtensionCAbstract,
                        INTROSPECTION_TYPE_ABSTRACT)
 
 static void
-testing_extension_c_abstract_init (TestingExtensionCAbstract *abstract)
+testing_extension_c_abstract_init (TestingExtensionCAbstract *abstract G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_extension_c_abstract_class_init (TestingExtensionCAbstractClass *klass)
+testing_extension_c_abstract_class_init (TestingExtensionCAbstractClass *klass G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_extension_c_abstract_class_finalize (TestingExtensionCAbstractClass *klass)
+testing_extension_c_abstract_class_finalize (TestingExtensionCAbstractClass *klass G_GNUC_UNUSED)
 {
 }
 

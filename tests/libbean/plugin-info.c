@@ -38,14 +38,14 @@ struct _TestFixture {
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
 }
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   testing_engine_free (fixture->engine);
 }

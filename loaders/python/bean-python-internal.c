@@ -34,7 +34,7 @@ static PyObject *FailedError = NULL;
 
 
 static PyObject *
-failed_fn (PyObject *self,
+failed_fn (PyObject *self G_GNUC_UNUSED,
            PyObject *args)
 {
   const gchar *msg;

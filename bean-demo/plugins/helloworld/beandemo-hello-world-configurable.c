@@ -43,13 +43,13 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
                                                                bean_ctk_configurable_iface_init))
 
 static void
-beandemo_hello_world_configurable_init (BeanDemoHelloWorldConfigurable *plugin)
+beandemo_hello_world_configurable_init (BeanDemoHelloWorldConfigurable *plugin G_GNUC_UNUSED)
 {
   g_debug ("%s", G_STRFUNC);
 }
 
 static CtkWidget *
-beandemo_hello_world_configurable_create_configure_widget (BeanCtkConfigurable *configurable)
+beandemo_hello_world_configurable_create_configure_widget (BeanCtkConfigurable *configurable G_GNUC_UNUSED)
 {
   g_debug ("%s", G_STRFUNC);
 
@@ -57,7 +57,7 @@ beandemo_hello_world_configurable_create_configure_widget (BeanCtkConfigurable *
 }
 
 static void
-beandemo_hello_world_configurable_class_init (BeanDemoHelloWorldConfigurableClass *klass)
+beandemo_hello_world_configurable_class_init (BeanDemoHelloWorldConfigurableClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -68,7 +68,7 @@ bean_ctk_configurable_iface_init (BeanCtkConfigurableInterface *iface)
 }
 
 static void
-beandemo_hello_world_configurable_class_finalize (BeanDemoHelloWorldConfigurableClass *klass)
+beandemo_hello_world_configurable_class_finalize (BeanDemoHelloWorldConfigurableClass *klass G_GNUC_UNUSED)
 {
 }
 

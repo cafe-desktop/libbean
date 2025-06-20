@@ -27,10 +27,10 @@
 
 
 static void
-debug_log_handler (const gchar    *log_domain,
-                   GLogLevelFlags  log_level,
-                   const gchar    *message,
-                   gpointer        user_data)
+debug_log_handler (const gchar    *log_domain G_GNUC_UNUSED,
+		   GLogLevelFlags  log_level G_GNUC_UNUSED,
+		   const gchar    *message G_GNUC_UNUSED,
+		   gpointer        user_data G_GNUC_UNUSED)
 {
 }
 

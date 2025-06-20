@@ -460,7 +460,7 @@ bean_engine_prepend_search_path (BeanEngine  *engine,
 }
 
 static void
-default_engine_weak_notify (gpointer    unused,
+default_engine_weak_notify (gpointer    unused G_GNUC_UNUSED,
                             BeanEngine *engine)
 {
   g_warn_if_fail (g_atomic_pointer_compare_and_exchange (&default_engine,

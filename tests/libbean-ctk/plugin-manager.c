@@ -43,16 +43,16 @@ struct _TestFixture {
 };
 
 static void
-notify_model_cb (CtkTreeView *view,
-                 GParamSpec  *pspec,
-                 TestFixture *fixture)
+notify_model_cb (CtkTreeView *view G_GNUC_UNUSED,
+		 GParamSpec  *pspec G_GNUC_UNUSED,
+		 TestFixture *fixture)
 {
   fixture->model = ctk_tree_view_get_model (CTK_TREE_VIEW (fixture->view));
 }
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
   fixture->window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -84,7 +84,7 @@ test_setup (TestFixture   *fixture,
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   ctk_widget_destroy (CTK_WIDGET (fixture->window));
 

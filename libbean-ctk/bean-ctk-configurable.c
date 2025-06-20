@@ -43,7 +43,7 @@
 G_DEFINE_INTERFACE(BeanCtkConfigurable, bean_ctk_configurable, G_TYPE_OBJECT)
 
 static void
-bean_ctk_configurable_default_init (BeanCtkConfigurableInterface *iface)
+bean_ctk_configurable_default_init (BeanCtkConfigurableInterface *iface G_GNUC_UNUSED)
 {
 }
 

@@ -130,7 +130,7 @@ update_button_sensitivity (BeanCtkPluginManager *pm,
 }
 
 static void
-show_about_cb (CtkWidget            *widget,
+show_about_cb (CtkWidget            *widget G_GNUC_UNUSED,
                BeanCtkPluginManager *pm)
 {
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
@@ -221,7 +221,7 @@ help_button_cb (CtkWidget      *button,
 }
 
 static void
-show_configure_cb (CtkWidget            *widget,
+show_configure_cb (CtkWidget            *widget G_GNUC_UNUSED,
                    BeanCtkPluginManager *pm)
 {
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
@@ -279,7 +279,7 @@ show_configure_cb (CtkWidget            *widget,
 }
 
 static void
-plugin_loaded_toggled_cb (BeanEngine           *engine,
+plugin_loaded_toggled_cb (BeanEngine           *engine G_GNUC_UNUSED,
                           BeanPluginInfo       *info,
                           BeanCtkPluginManager *pm)
 {
