@@ -66,7 +66,7 @@ enum {
 static GParamSpec *properties[N_PROPERTIES] = { NULL };
 
 static void
-testing_extension_c_plugin_init (TestingExtensionCPlugin *plugin)
+testing_extension_c_plugin_init (TestingExtensionCPlugin *plugin G_GNUC_UNUSED)
 {
 }
 
@@ -87,25 +87,25 @@ testing_extension_c_plugin_get_settings (IntrospectionBase *base)
 }
 
 static void
-testing_extension_c_plugin_call_no_args (IntrospectionCallable *callable)
+testing_extension_c_plugin_call_no_args (IntrospectionCallable *callable G_GNUC_UNUSED)
 {
 }
 
 static gchar *
-testing_extension_c_plugin_call_with_return (IntrospectionCallable *callable)
+testing_extension_c_plugin_call_with_return (IntrospectionCallable *callable G_GNUC_UNUSED)
 {
   return g_strdup ("Hello, World!");
 }
 
 static void
-testing_extension_c_plugin_call_single_arg (IntrospectionCallable *callable,
+testing_extension_c_plugin_call_single_arg (IntrospectionCallable *callable G_GNUC_UNUSED,
                                             gboolean              *called)
 {
   *called = TRUE;
 }
 
 static void
-testing_extension_c_plugin_call_multi_args (IntrospectionCallable *callable,
+testing_extension_c_plugin_call_multi_args (IntrospectionCallable *callable G_GNUC_UNUSED,
                                             gint                   in,
                                             gint                  *out,
                                             gint                  *inout)
@@ -165,12 +165,12 @@ introspection_extension_c_iface_init (IntrospectionCallableInterface *iface)
 }
 
 static void
-introspection_has_prerequisite_iface_init (IntrospectionHasPrerequisiteInterface *iface)
+introspection_has_prerequisite_iface_init (IntrospectionHasPrerequisiteInterface *iface G_GNUC_UNUSED)
 {
 }
 
 static void
-testing_extension_c_plugin_class_finalize (TestingExtensionCPluginClass *klass)
+testing_extension_c_plugin_class_finalize (TestingExtensionCPluginClass *klass G_GNUC_UNUSED)
 {
 }
 

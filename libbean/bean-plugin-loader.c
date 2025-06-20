@@ -34,7 +34,7 @@ bean_plugin_loader_finalize (GObject *object)
 }
 
 static void
-bean_plugin_loader_init (BeanPluginLoader *loader)
+bean_plugin_loader_init (BeanPluginLoader *loader G_GNUC_UNUSED)
 {
 }
 

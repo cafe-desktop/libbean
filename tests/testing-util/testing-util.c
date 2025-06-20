@@ -216,8 +216,8 @@ testing_util_init (void)
 }
 
 static void
-engine_weak_notify (gpointer    unused,
-                    BeanEngine *engine)
+engine_weak_notify (gpointer    unused G_GNUC_UNUSED,
+		    BeanEngine *engine G_GNUC_UNUSED)
 {
   /* Cannot use NULL because testing_util_engine_free() must be called */
   g_private_set (&engine_key, DEAD_ENGINE);

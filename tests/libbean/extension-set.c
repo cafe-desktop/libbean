@@ -43,19 +43,19 @@ static const gchar *loadable_plugins[] = {
 };
 
 static void
-extension_added_cb (BeanExtensionSet *extension_set,
-                    BeanPluginInfo   *info,
-                    BeanExtension    *extension,
-                    gint             *active)
+extension_added_cb (BeanExtensionSet *extension_set G_GNUC_UNUSED,
+		    BeanPluginInfo   *info G_GNUC_UNUSED,
+		    BeanExtension    *extension G_GNUC_UNUSED,
+		    gint             *active)
 {
   ++(*active);
 }
 
 static void
-extension_removed_cb (BeanExtensionSet *extension_set,
-                      BeanPluginInfo   *info,
-                      BeanExtension    *extension,
-                      gint             *active)
+extension_removed_cb (BeanExtensionSet *extension_set G_GNUC_UNUSED,
+		      BeanPluginInfo   *info G_GNUC_UNUSED,
+		      BeanExtension    *extension G_GNUC_UNUSED,
+		      gint             *active)
 {
   --(*active);
 }
@@ -115,14 +115,14 @@ testing_extension_set_new (BeanEngine *engine,
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
 }
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   testing_engine_free (fixture->engine);
 }
@@ -148,10 +148,10 @@ test_extension_set_create_valid (BeanEngine *engine)
 }
 
 static void
-valid_extension_added_cb (BeanExtensionSet *extension_set,
-                          BeanPluginInfo   *info,
-                          BeanExtension    *extension,
-                          GObject          **obj_ptr)
+valid_extension_added_cb (BeanExtensionSet *extension_set G_GNUC_UNUSED,
+			  BeanPluginInfo   *info G_GNUC_UNUSED,
+			  BeanExtension    *extension,
+			  GObject          **obj_ptr)
 {
   g_object_get (BEAN_ACTIVATABLE (extension), "object", obj_ptr, NULL);
 }
@@ -386,10 +386,10 @@ test_extension_set_foreach (BeanEngine *engine)
 }
 
 static void
-ordering_cb (BeanExtensionSet  *set,
-             BeanPluginInfo    *info,
-             BeanExtension     *extension,
-             GList            **order)
+ordering_cb (BeanExtensionSet  *set G_GNUC_UNUSED,
+	     BeanPluginInfo    *info,
+	     BeanExtension     *extension G_GNUC_UNUSED,
+	     GList            **order)
 {
   const gchar *order_module_name = (const gchar *) (*order)->data;
 

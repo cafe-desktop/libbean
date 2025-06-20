@@ -28,19 +28,19 @@
 G_DEFINE_TYPE (DemoWindow, demo_window, CTK_TYPE_WINDOW)
 
 static void
-on_extension_added (BeanExtensionSet *set,
-                    BeanPluginInfo   *info,
-                    BeanExtension    *exten,
-                    DemoWindow       *dw)
+on_extension_added (BeanExtensionSet *set G_GNUC_UNUSED,
+		    BeanPluginInfo   *info G_GNUC_UNUSED,
+		    BeanExtension    *exten,
+		    DemoWindow       *dw G_GNUC_UNUSED)
 {
   bean_activatable_activate (BEAN_ACTIVATABLE (exten));
 }
 
 static void
-on_extension_removed (BeanExtensionSet *set,
-                      BeanPluginInfo   *info,
-                      BeanExtension    *exten,
-                      DemoWindow       *dw)
+on_extension_removed (BeanExtensionSet *set G_GNUC_UNUSED,
+		      BeanPluginInfo   *info G_GNUC_UNUSED,
+		      BeanExtension    *exten,
+		      DemoWindow       *dw G_GNUC_UNUSED)
 {
   bean_activatable_deactivate (BEAN_ACTIVATABLE (exten));
 }

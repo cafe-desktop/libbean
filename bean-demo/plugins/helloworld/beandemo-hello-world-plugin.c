@@ -90,7 +90,7 @@ beandemo_hello_world_plugin_get_property (GObject    *object,
 
 
 static void
-beandemo_hello_world_plugin_init (BeanDemoHelloWorldPlugin *plugin)
+beandemo_hello_world_plugin_init (BeanDemoHelloWorldPlugin *plugin G_GNUC_UNUSED)
 {
   g_debug ("%s", G_STRFUNC);
 }
@@ -157,7 +157,7 @@ bean_activatable_iface_init (BeanActivatableInterface *iface)
 }
 
 static void
-beandemo_hello_world_plugin_class_finalize (BeanDemoHelloWorldPluginClass *klass)
+beandemo_hello_world_plugin_class_finalize (BeanDemoHelloWorldPluginClass *klass G_GNUC_UNUSED)
 {
 }
 

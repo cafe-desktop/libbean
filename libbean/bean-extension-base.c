@@ -104,7 +104,7 @@ bean_extension_base_set_property (GObject      *object,
 }
 
 static void
-bean_extension_base_init (BeanExtensionBase *extbase)
+bean_extension_base_init (BeanExtensionBase *extbase G_GNUC_UNUSED)
 {
 }
 

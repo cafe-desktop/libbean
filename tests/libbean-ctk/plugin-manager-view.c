@@ -42,9 +42,9 @@ struct _TestFixture {
 };
 
 static void
-notify_model_cb (CtkTreeView *view,
-                 GParamSpec  *pspec,
-                 TestFixture *fixture)
+notify_model_cb (CtkTreeView *view G_GNUC_UNUSED,
+		 GParamSpec  *pspec G_GNUC_UNUSED,
+		 TestFixture *fixture)
 {
   fixture->model = ctk_tree_view_get_model (fixture->tree_view);
 
@@ -61,7 +61,7 @@ notify_model_cb (CtkTreeView *view,
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
   fixture->tree_view = CTK_TREE_VIEW (bean_ctk_plugin_manager_view_new (NULL));
@@ -81,7 +81,7 @@ test_setup (TestFixture   *fixture,
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   ctk_widget_destroy (CTK_WIDGET (fixture->tree_view));
   g_object_unref (fixture->tree_view);

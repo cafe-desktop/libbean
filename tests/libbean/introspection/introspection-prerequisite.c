@@ -106,6 +106,6 @@ introspection_prerequisite_class_init (IntrospectionPrerequisiteClass *klass)
 }
 
 static void
-introspection_prerequisite_init (IntrospectionPrerequisite *prereq)
+introspection_prerequisite_init (IntrospectionPrerequisite *prereq G_GNUC_UNUSED)
 {
 }

@@ -201,9 +201,9 @@ toggle_enabled (BeanCtkPluginManagerView *view,
 }
 
 static void
-plugin_list_changed_cb (BeanEngine               *engine,
-                        GParamSpec               *pspec,
-                        BeanCtkPluginManagerView *view)
+plugin_list_changed_cb (BeanEngine               *engine G_GNUC_UNUSED,
+			GParamSpec               *pspec G_GNUC_UNUSED,
+			BeanCtkPluginManagerView *view)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
   BeanPluginInfo *info;
@@ -236,7 +236,7 @@ filter_builtins_visible (BeanCtkPluginManagerStore *store,
 }
 
 static void
-enabled_toggled_cb (CtkCellRendererToggle    *cell,
+enabled_toggled_cb (CtkCellRendererToggle    *cell G_GNUC_UNUSED,
                     gchar                    *path_str,
                     BeanCtkPluginManagerView *view)
 {
@@ -258,11 +258,11 @@ enabled_toggled_cb (CtkCellRendererToggle    *cell,
 
 /* Callback used as the interactive search comparison function */
 static gboolean
-name_search_cb (CtkTreeModel             *model,
-                gint                      column,
-                const gchar              *key,
-                CtkTreeIter              *iter,
-                BeanCtkPluginManagerView *view)
+name_search_cb (CtkTreeModel             *model G_GNUC_UNUSED,
+		gint                      column G_GNUC_UNUSED,
+		const gchar              *key,
+		CtkTreeIter              *iter,
+		BeanCtkPluginManagerView *view)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
   CtkTreeIter child_iter = *iter;
@@ -301,7 +301,7 @@ name_search_cb (CtkTreeModel             *model,
 }
 
 static void
-enabled_menu_cb (CtkMenu                  *menu,
+enabled_menu_cb (CtkMenu                  *menu G_GNUC_UNUSED,
                  BeanCtkPluginManagerView *view)
 {
   CtkTreeIter iter;
@@ -317,7 +317,7 @@ enabled_menu_cb (CtkMenu                  *menu,
 }
 
 static void
-enable_all_menu_cb (CtkMenu                  *menu,
+enable_all_menu_cb (CtkMenu                  *menu G_GNUC_UNUSED,
                     BeanCtkPluginManagerView *view)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
@@ -326,8 +326,8 @@ enable_all_menu_cb (CtkMenu                  *menu,
 }
 
 static void
-disable_all_menu_cb (CtkMenu                  *menu,
-                     BeanCtkPluginManagerView *view)
+disable_all_menu_cb (CtkMenu                  *menu G_GNUC_UNUSED,
+		     BeanCtkPluginManagerView *view)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
@@ -376,7 +376,7 @@ create_popup_menu (BeanCtkPluginManagerView *view)
 
 static void
 popup_menu_detach (BeanCtkPluginManagerView *view,
-                   CtkMenu                  *menu)
+		   CtkMenu                  *menu G_GNUC_UNUSED)
 {
   BeanCtkPluginManagerViewPrivate *priv = GET_PRIV (view);
 
@@ -478,7 +478,7 @@ menu_position_under_tree_view (CtkMenu     *menu,
 #endif
 
 static gboolean
-show_popup_menu (CtkTreeView              *tree_view,
+show_popup_menu (CtkTreeView              *tree_view G_GNUC_UNUSED,
                  BeanCtkPluginManagerView *view,
                  CdkEventButton           *event)
 {
@@ -534,7 +534,7 @@ show_popup_menu (CtkTreeView              *tree_view,
 }
 
 static void
-plugin_icon_data_func (CtkTreeViewColumn *column,
+plugin_icon_data_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
                        CtkCellRenderer   *cell,
                        CtkTreeModel      *model,
                        CtkTreeIter       *iter)

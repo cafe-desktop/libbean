@@ -173,7 +173,7 @@ update_plugin (BeanCtkPluginManagerStore *store,
 }
 
 static void
-plugin_loaded_toggled_cb (BeanEngine                *engine,
+plugin_loaded_toggled_cb (BeanEngine                *engine G_GNUC_UNUSED,
                           BeanPluginInfo            *info,
                           BeanCtkPluginManagerStore *store)
 {
@@ -185,9 +185,9 @@ plugin_loaded_toggled_cb (BeanEngine                *engine,
 
 static gint
 model_name_sort_func (BeanCtkPluginManagerStore *store,
-                      CtkTreeIter               *iter1,
-                      CtkTreeIter               *iter2,
-                      gpointer                   user_data)
+		      CtkTreeIter               *iter1,
+		      CtkTreeIter               *iter2,
+		      gpointer                   user_data G_GNUC_UNUSED)
 {
   BeanPluginInfo *info1;
   BeanPluginInfo *info2;

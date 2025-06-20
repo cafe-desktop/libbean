@@ -30,7 +30,7 @@
 G_DEFINE_INTERFACE(IntrospectionUnimplemented, introspection_unimplemented, G_TYPE_OBJECT)
 
 void
-introspection_unimplemented_default_init (IntrospectionUnimplementedInterface *iface)
+introspection_unimplemented_default_init (IntrospectionUnimplementedInterface *iface G_GNUC_UNUSED)
 {
   /* AFAIK there is no way to make this unimplemented but
    * in the tests no one will implement it so its fine.

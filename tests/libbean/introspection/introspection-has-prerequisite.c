@@ -38,6 +38,6 @@ G_DEFINE_INTERFACE_WITH_CODE(IntrospectionHasPrerequisite,
                                                                 INTROSPECTION_TYPE_CALLABLE);)
 
 void
-introspection_has_prerequisite_default_init (IntrospectionHasPrerequisiteInterface *iface)
+introspection_has_prerequisite_default_init (IntrospectionHasPrerequisiteInterface *iface G_GNUC_UNUSED)
 {
 }

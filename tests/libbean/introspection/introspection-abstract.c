@@ -106,7 +106,7 @@ introspection_abstract_class_init (IntrospectionAbstractClass *klass)
 }
 
 static void
-introspection_abstract_init (IntrospectionAbstract *prereq)
+introspection_abstract_init (IntrospectionAbstract *prereq G_GNUC_UNUSED)
 {
 }
 

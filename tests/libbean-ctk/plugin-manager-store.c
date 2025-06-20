@@ -42,7 +42,7 @@ struct _TestFixture {
 
 static void
 test_setup (TestFixture   *fixture,
-            gconstpointer  data)
+	    gconstpointer  data G_GNUC_UNUSED)
 {
   fixture->engine = testing_engine_new ();
   fixture->store = bean_ctk_plugin_manager_store_new (fixture->engine);
@@ -51,7 +51,7 @@ test_setup (TestFixture   *fixture,
 
 static void
 test_teardown (TestFixture   *fixture,
-               gconstpointer  data)
+	       gconstpointer  data G_GNUC_UNUSED)
 {
   g_object_unref (fixture->store);
 
