@@ -31,12 +31,11 @@
 
 #include "loadable-plugin.h"
 
+
+
 typedef struct {
   GObject *object;
 } TestingLoadablePluginPrivate;
-
-/* Used by the local linkage test */
-G_MODULE_EXPORT gpointer global_symbol_clash;
 
 static void bean_activatable_iface_init (BeanActivatableInterface *iface);
 

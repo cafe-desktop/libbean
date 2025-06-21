@@ -38,8 +38,7 @@
 #include "extension-c-abstract.h"
 #include "extension-c-plugin.h"
 
-/* Used by the local linkage test */
-G_MODULE_EXPORT gpointer global_symbol_clash;
+
 
 static void introspection_base_iface_init (IntrospectionBaseInterface *iface);
 static void introspection_extension_c_iface_init (IntrospectionCallableInterface *iface);
