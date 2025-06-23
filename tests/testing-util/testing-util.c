@@ -209,7 +209,7 @@ testing_util_init (void)
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/libbean",
-                                 "Bean", "1.0", 0, &error);
+                                 "Bean", "2.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;

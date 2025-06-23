@@ -50,7 +50,7 @@ testing_init (gint    *argc,
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/tests/libbean/introspection",
-                                 "Introspection", "1.0", 0, &error);
+                                 "Introspection", "2.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;

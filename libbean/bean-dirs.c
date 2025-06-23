@@ -60,12 +60,12 @@ bean_dirs_get_data_dir (void)
 
   win32_dir = g_win32_get_package_installation_directory_of_module (libbean_dll);
 
-  data_dir = g_build_filename (win32_dir, "share", "libbean-1.0", NULL);
+  data_dir = g_build_filename (win32_dir, "share", "libbean-2.0", NULL);
   g_free (win32_dir);
 #elif defined (OS_OSX)
   data_dir = bean_dirs_os_x_get_data_dir ();
 #else
-  data_dir = g_build_filename (DATADIR, "libbean-1.0", NULL);
+  data_dir = g_build_filename (DATADIR, "libbean-2.0", NULL);
 #endif
 
   return data_dir;
@@ -81,12 +81,12 @@ bean_dirs_get_lib_dir (void)
 
   win32_dir = g_win32_get_package_installation_directory_of_module (libbean_dll);
 
-  lib_dir = g_build_filename (win32_dir, "lib", "libbean-1.0", NULL);
+  lib_dir = g_build_filename (win32_dir, "lib", "libbean-2.0", NULL);
   g_free (win32_dir);
 #elif defined (OS_OSX)
   lib_dir = bean_dirs_os_x_get_lib_dir ();
 #else
-  lib_dir = g_build_filename (LIBDIR, "libbean-1.0", NULL);
+  lib_dir = g_build_filename (LIBDIR, "libbean-2.0", NULL);
 #endif
 
   return lib_dir;

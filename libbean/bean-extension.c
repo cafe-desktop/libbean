@@ -42,7 +42,7 @@
  *
  * |[
  * g_irepository_require (g_irepository_get_default (),
- *                        "Bean", "1.0", 0, NULL);
+ *                        "Bean", "2.0", 0, NULL);
  * ]|
  *
  * You should proceed the same way for any namespace which provides types

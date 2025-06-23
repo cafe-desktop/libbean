@@ -53,7 +53,7 @@ testing_init (gint    *argc,
 
   g_irepository_require_private (g_irepository_get_default (),
                                  BUILDDIR "/libbean-ctk",
-                                 "BeanCtk", "1.0", 0, &error);
+                                 "BeanCtk", "2.0", 0, &error);
   g_assert_no_error (error);
 
   initialized = TRUE;

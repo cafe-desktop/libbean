@@ -343,7 +343,7 @@ bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
   /* If we are using a BeanCtkPluginManager, we know for sure we will be using
      libbean-ctk, so let's load the typelib for it here. */
   g_irepository_require (g_irepository_get_default (),
-                         "BeanCtk", "1.0", 0, NULL);
+                         "BeanCtk", "2.0", 0, NULL);
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (pm),
                                   CTK_ORIENTATION_VERTICAL);

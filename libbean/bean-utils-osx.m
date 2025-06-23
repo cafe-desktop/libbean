@@ -76,11 +76,11 @@ bean_dirs_os_x_get_resource_dir (const gchar *subdir,
 
   if (res_dir == NULL)
     {
-      ret = g_build_filename (default_dir, "libbean-1.0", NULL);
+      ret = g_build_filename (default_dir, "libbean-2.0", NULL);
     }
   else
     {
-      ret = g_build_filename (res_dir, subdir, "libbean-1.0", NULL);
+      ret = g_build_filename (res_dir, subdir, "libbean-2.0", NULL);
       g_free (res_dir);
     }
 
