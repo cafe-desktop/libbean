@@ -43,7 +43,6 @@ typedef struct _BeanObjectModule         BeanObjectModule;
 typedef struct _BeanObjectModuleClass    BeanObjectModuleClass;
 typedef struct _BeanObjectModulePrivate  BeanObjectModulePrivate;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /**
  * BeanFactoryFunc:
  * @n_parameters: The number of paramteters.
@@ -60,7 +59,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 typedef GObject *(*BeanFactoryFunc)   (guint          n_parameters,
                                        GParameter    *parameters,
                                        gpointer       user_data);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * BeanObjectModule:
@@ -102,13 +100,11 @@ BEAN_AVAILABLE_IN_ALL
 BeanObjectModule   *bean_object_module_new_embedded           (const gchar      *module_name,
                                                                const gchar      *symbol);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 BEAN_AVAILABLE_IN_ALL
 GObject            *bean_object_module_create_object          (BeanObjectModule *module,
                                                                GType             exten_type,
                                                                guint             n_parameters,
                                                                GParameter       *parameters);
-G_GNUC_END_IGNORE_DEPRECATIONS
 BEAN_AVAILABLE_IN_ALL
 gboolean            bean_object_module_provides_object        (BeanObjectModule *module,
                                                                GType             exten_type);

@@ -43,7 +43,6 @@ struct _BeanPluginLoader {
   GObject parent;
 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 struct _BeanPluginLoaderClass {
   GObjectClass parent;
 
@@ -65,7 +64,6 @@ struct _BeanPluginLoaderClass {
 
   void           (*garbage_collect)       (BeanPluginLoader *loader);
 };
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 BEAN_AVAILABLE_IN_ALL
 GType         bean_plugin_loader_get_type             (void)  G_GNUC_CONST;
@@ -86,14 +84,12 @@ BEAN_AVAILABLE_IN_ALL
 gboolean      bean_plugin_loader_provides_extension   (BeanPluginLoader *loader,
                                                        BeanPluginInfo   *info,
                                                        GType             ext_type);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 BEAN_AVAILABLE_IN_ALL
 BeanExtension *bean_plugin_loader_create_extension    (BeanPluginLoader *loader,
                                                        BeanPluginInfo   *info,
                                                        GType             ext_type,
                                                        guint             n_parameters,
                                                        GParameter       *parameters);
-G_GNUC_END_IGNORE_DEPRECATIONS
 BEAN_AVAILABLE_IN_ALL
 void          bean_plugin_loader_garbage_collect      (BeanPluginLoader *loader);
 

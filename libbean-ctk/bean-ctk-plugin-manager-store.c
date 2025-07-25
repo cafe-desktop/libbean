@@ -141,7 +141,6 @@ update_plugin (BeanCtkPluginManagerStore *store,
 
               g_clear_object (&icon_gicon);
 
-              G_GNUC_BEGIN_IGNORE_DEPRECATIONS
               if (ctk_stock_lookup (icon_name, &stock_item))
                 {
                   icon_stock_id = icon_name;
@@ -150,7 +149,6 @@ update_plugin (BeanCtkPluginManagerStore *store,
                 {
                   icon_gicon = g_themed_icon_new ("libbean-plugin");
                 }
-              G_GNUC_END_IGNORE_DEPRECATIONS
             }
         }
 

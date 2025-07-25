@@ -141,13 +141,11 @@ BEAN_AVAILABLE_IN_ALL
 BeanExtension     *bean_extension_set_get_extension (BeanExtensionSet *set,
                                                      BeanPluginInfo   *info);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 BEAN_AVAILABLE_IN_ALL
 BeanExtensionSet  *bean_extension_set_newv        (BeanEngine       *engine,
                                                    GType             exten_type,
                                                    guint             n_parameters,
                                                    GParameter       *parameters);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 BEAN_AVAILABLE_IN_1_24
 BeanExtensionSet  *bean_extension_set_new_with_properties (BeanEngine    *engine,

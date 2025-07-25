@@ -27,7 +27,6 @@
 #define BEAN_UTILS_C_LOADER_ID  0
 #define BEAN_UTILS_N_LOADERS    4
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 gboolean     bean_utils_properties_array_to_parameter_list (GType          exten_type,
                                                             guint          n_properties,
                                                             const gchar  **prop_names,
@@ -38,7 +37,6 @@ gboolean     bean_utils_valist_to_parameter_list           (GType          exten
                                                             va_list        var_args,
                                                             GParameter   **params,
                                                             guint         *n_params);
-G_GNUC_END_IGNORE_DEPRECATIONS
 gint         bean_utils_get_loader_id                      (const gchar   *loader) G_GNUC_CONST;
 const gchar *bean_utils_get_loader_from_id                 (gint           loader_id) G_GNUC_CONST;
 const gchar *bean_utils_get_loader_module_from_id          (gint           loader_id) G_GNUC_CONST;
