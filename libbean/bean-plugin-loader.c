@@ -119,7 +119,9 @@ bean_plugin_loader_create_extension (BeanPluginLoader *loader,
                                      BeanPluginInfo   *info,
                                      GType             ext_type,
                                      guint             n_parameters,
-                                     GParameter       *parameters)
+//                                     GParameter       *parameters)
+                                     const char **names,
+                                     GValue *values)
 {
   BeanPluginLoaderClass *klass;
 
@@ -127,7 +129,8 @@ bean_plugin_loader_create_extension (BeanPluginLoader *loader,
 
   klass = BEAN_PLUGIN_LOADER_GET_CLASS (loader);
   return klass->create_extension (loader, info, ext_type,
-                                  n_parameters, parameters);
+//                                  n_parameters, parameters);
+                                  n_parameters, names, values);
 }
 
 void

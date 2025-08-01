@@ -115,9 +115,14 @@ bean_plugin_loader_c_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                        BeanPluginInfo   *info,
                                        GType             exten_type,
                                        guint             n_parameters,
-                                       GParameter       *parameters)
+//                                       GParameter       *parameters)
+                                       const char **names,
+                                       GValue *values)
 {
-  GParameter *exten_parameters;
+//  GParameter *exten_parameters;
+  const char **exten_names;
+  GValue *exten_values;
+  
   gpointer instance;
 
   /* We want to add a "plugin-info" property so we can pass it to
@@ -125,24 +130,41 @@ bean_plugin_loader_c_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
    * actually "duplicate" the GValues, a memcpy is sufficient as the
    * source GValues are longer lived than our local copy.
    */
-  exten_parameters = g_newa (GParameter, n_parameters + 1);
-  memcpy (exten_parameters, parameters, sizeof (GParameter) * n_parameters);
+//  exten_parameters = g_newa (GParameter, n_parameters + 1);
+  exten_names = g_newa (const char *, n_parameters + 1);
+  exten_values = g_newa (GValue, n_parameters + 1);
+  
+  
+//  memcpy (exten_parameters, parameters, sizeof (GParameter) * n_parameters);
+  memcpy (exten_names, names, sizeof (const char *) * n_parameters);
+  memcpy (exten_values, values, sizeof (GValue) * n_parameters);
 
   /* Initialize our additional property.
    * If the instance does not have a plugin-info property
    * then BeanObjectModule will remove the property.
    */
-  exten_parameters[n_parameters].name = intern_plugin_info;
-  memset (&exten_parameters[n_parameters].value, 0, sizeof (GValue));
-  g_value_init (&exten_parameters[n_parameters].value, BEAN_TYPE_PLUGIN_INFO);
-  g_value_set_boxed (&exten_parameters[n_parameters].value, info);
+//  exten_parameters[n_parameters].name = intern_plugin_info;
+  exten_names[n_parameters] = intern_plugin_info;
+//  memset (&exten_parameters[n_parameters].value, 0, sizeof (GValue));
+  memset (&exten_values[n_parameters], 0, sizeof (GValue));
+//  g_value_init (&exten_parameters[n_parameters].value, BEAN_TYPE_PLUGIN_INFO);
+  g_value_init (&exten_values[n_parameters], BEAN_TYPE_PLUGIN_INFO);
+//  g_value_set_boxed (&exten_parameters[n_parameters].value, info);
+  g_value_set_boxed (&exten_values[n_parameters], info);
+
+/*  instance = bean_object_module_create_object (info->loader_data,
+                                               exten_type,
+                                               n_parameters + 1,
+                                               exten_parameters);*/
 
   instance = bean_object_module_create_object (info->loader_data,
                                                exten_type,
                                                n_parameters + 1,
-                                               exten_parameters);
+                                               exten_names,
+                                               exten_values);
 
-  g_value_unset (&exten_parameters[n_parameters].value);
+//  g_value_unset (&exten_parameters[n_parameters].value);
+  g_value_unset (&exten_values[n_parameters]);
 
   if (instance == NULL)
     return NULL;

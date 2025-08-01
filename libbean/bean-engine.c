@@ -1325,7 +1325,9 @@ bean_engine_create_extensionv (BeanEngine     *engine,
                                BeanPluginInfo *info,
                                GType           extension_type,
                                guint           n_parameters,
-                               GParameter     *parameters)
+//                               GParameter     *parameters)
+                               const char **names,
+                               GValue *values)
 {
   BeanPluginLoader *loader;
   BeanExtension *extension;
@@ -1338,7 +1340,8 @@ bean_engine_create_extensionv (BeanEngine     *engine,
 
   loader = get_plugin_loader (engine, info->loader_id);
   extension = bean_plugin_loader_create_extension (loader, info, extension_type,
-                                                   n_parameters, parameters);
+//                                                   n_parameters, parameters);
+                                                   n_parameters, names, values);
 
   if (!G_TYPE_CHECK_INSTANCE_TYPE (extension, extension_type))
     {
@@ -1384,7 +1387,9 @@ bean_engine_create_extension_with_properties (BeanEngine     *engine,
 {
   BeanPluginLoader *loader;
   BeanExtension *extension;
-  GParameter *parameters = NULL;
+//  GParameter *parameters = NULL;
+  const char **names = NULL;
+  GValue *values = NULL;
 
   g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
@@ -1396,22 +1401,28 @@ bean_engine_create_extension_with_properties (BeanEngine     *engine,
 
   if (n_properties > 0)
     {
-      parameters = g_new (GParameter, n_properties);
+//      parameters = g_new (GParameter, n_properties);
+        names = g_newa (const char *, n_properties);
+        values = g_newa (GValue, n_properties);
+
       if (!bean_utils_properties_array_to_parameter_list (extension_type,
                                                           n_properties,
                                                           prop_names,
                                                           prop_values,
-                                                          parameters))
+                                                          names, values))
         {
           /* Already warned */
-          g_free (parameters);
+//          g_free (parameters);
+          g_free (names);
+          g_free (values);
           return NULL;
         }
     }
 
   loader = get_plugin_loader (engine, info->loader_id);
   extension = bean_plugin_loader_create_extension (loader, info, extension_type,
-                                                   n_properties, parameters);
+//                                                   n_properties, parameters);
+                                                   n_properties, names, values);
 
   while (n_properties-- > 0)
     g_value_unset (&parameters[n_properties].value);
@@ -1456,7 +1467,9 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
                                      const gchar    *first_property,
                                      va_list         var_args)
 {
-  GParameter *parameters;
+//  GParameter *parameters;
+  const char **names;
+  GValue *values;
 
   BeanExtension *exten;
   guint n_parameters;
@@ -1468,7 +1481,8 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
 
   if (!bean_utils_valist_to_parameter_list (extension_type, first_property,
-                                            var_args, &parameters,
+//                                            var_args, &parameters,
+                                            var_args, &names, &values,
                                             &n_parameters))
     {
       /* Already warned */
@@ -1476,11 +1490,14 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
     }
 
   exten = bean_engine_create_extensionv (engine, info, extension_type,
-                                         n_parameters, parameters);
+//                                         n_parameters, parameters);
+                                         n_parameters, names, values);
 
   while (n_parameters-- > 0)
-    g_value_unset (&parameters[n_parameters].value);
-  g_free (parameters);
+//    g_value_unset (&parameters[n_parameters].value);
+    g_value_unset (&values[n_parameters]);
+  g_free (names);
+  g_free (values);
 
   return exten;
 }
