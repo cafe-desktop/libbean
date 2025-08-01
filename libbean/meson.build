@@ -17,6 +17,8 @@ bean_version_h = configure_file(
 )
 
 libbean_public_h = files(
+  'cparamspecs.h',
+  'cparam.h',
   'bean-activatable.h',
   'bean-autocleanups.h',
   'bean-engine.h',
@@ -30,6 +32,8 @@ libbean_public_h = files(
 )
 
 libbean_sources = files(
+  'cparamspecs.c',
+  'cparam.c',
   'bean-activatable.c',
   'bean-debug.c',
   'bean-dirs.c',
