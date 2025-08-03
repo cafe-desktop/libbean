@@ -28,14 +28,14 @@ G_BEGIN_DECLS
 #define C_TYPE_PARAM			G_TYPE_MAKE_FUNDAMENTAL (19)
 
 /* --- standard type macros --- */
-/**
+/*
  * C_TYPE_IS_PARAM:
  * @type: a #GType ID
  * 
  * Checks whether @type "is a" %C_TYPE_PARAM.
  */
 #define C_TYPE_IS_PARAM(type)		(G_TYPE_FUNDAMENTAL (type) == C_TYPE_PARAM)
-/**
+/*
  * C_PARAM_SPEC:
  * @pspec: a valid #CParamSpec
  * 
@@ -43,7 +43,7 @@ G_BEGIN_DECLS
  * a #CParamSpec object.
  */
 #define C_PARAM_SPEC(pspec)		(G_TYPE_CHECK_INSTANCE_CAST ((pspec), C_TYPE_PARAM, CParamSpec))
-/**
+/*
  * C_IS_PARAM_SPEC:
  * @pspec: a #CParamSpec
  * 
@@ -55,14 +55,14 @@ G_BEGIN_DECLS
 #else
 #define C_IS_PARAM_SPEC(pspec)		(G_TYPE_CHECK_INSTANCE_TYPE ((pspec), C_TYPE_PARAM))
 #endif
-/**
+/*
  * C_PARAM_SPEC_CLASS:
  * @pclass: a valid #CParamSpecClass
  * 
  * Casts a derived #CParamSpecClass structure into a #CParamSpecClass structure.
  */
 #define C_PARAM_SPEC_CLASS(pclass)      (G_TYPE_CHECK_CLASS_CAST ((pclass), C_TYPE_PARAM, CParamSpecClass))
-/**
+/*
  * C_IS_PARAM_SPEC_CLASS:
  * @pclass: a #CParamSpecClass
  * 
@@ -70,7 +70,7 @@ G_BEGIN_DECLS
  * %C_TYPE_PARAM or derived.
  */
 #define C_IS_PARAM_SPEC_CLASS(pclass)   (G_TYPE_CHECK_CLASS_TYPE ((pclass), C_TYPE_PARAM))
-/**
+/*
  * C_PARAM_SPEC_GET_CLASS:
  * @pspec: a valid #CParamSpec
  * 
@@ -80,28 +80,28 @@ G_BEGIN_DECLS
 
 
 /* --- convenience macros --- */
-/**
+/*
  * C_PARAM_SPEC_TYPE:
  * @pspec: a valid #CParamSpec
  * 
  * Retrieves the #GType of this @pspec.
  */
 #define C_PARAM_SPEC_TYPE(pspec)	(G_TYPE_FROM_INSTANCE (pspec))
-/**
+/*
  * C_PARAM_SPEC_TYPE_NAME:
  * @pspec: a valid #CParamSpec
  * 
  * Retrieves the #GType name of this @pspec.
  */
 #define C_PARAM_SPEC_TYPE_NAME(pspec)	(g_type_name (C_PARAM_SPEC_TYPE (pspec)))
-/**
+/*
  * C_PARAM_SPEC_VALUE_TYPE:
  * @pspec: a valid #CParamSpec
  * 
  * Retrieves the #GType to initialize a #GValue for this parameter.
  */
 #define	C_PARAM_SPEC_VALUE_TYPE(pspec)	(C_PARAM_SPEC (pspec)->value_type)
-/**
+/*
  * C_VALUE_HOLDS_PARAM:
  * @value: a valid #GValue structure
  * 
@@ -113,7 +113,7 @@ G_BEGIN_DECLS
        
 
 /* --- flags --- */
-/**
+/*
  * CParamFlags:
  * @C_PARAM_READABLE: the parameter is readable
  * @C_PARAM_WRITABLE: the parameter is writable
@@ -169,7 +169,7 @@ typedef enum
   C_PARAM_DEPRECATED          = (gint)(1u << 31)
 } CParamFlags;
 
-/**
+/*
  * C_PARAM_STATIC_STRINGS:
  * 
  * #CParamFlags value alias for %C_PARAM_STATIC_NAME | %C_PARAM_STATIC_NICK | %C_PARAM_STATIC_BLURB.
@@ -184,13 +184,13 @@ typedef enum
  */
 #define	C_PARAM_STATIC_STRINGS (C_PARAM_STATIC_NAME | C_PARAM_STATIC_NICK | C_PARAM_STATIC_BLURB)
 /* bits in the range 0xffffff00 are reserved for 3rd party usage */
-/**
+/*
  * C_PARAM_MASK:
  * 
  * Mask containing the bits of #CParamSpec.flags which are reserved for GLib.
  */
 #define	C_PARAM_MASK		(0x000000ff)
-/**
+/*
  * C_PARAM_USER_SHIFT:
  * 
  * Minimum shift count to be used for user defined flags, to be stored in
@@ -220,7 +220,7 @@ struct _CParamSpec
   guint          ref_count;
   guint		 param_id;	/* sort-criteria */
 };
-/**
+/*
  * CParamSpecClass:
  * @g_type_class: the parent class
  * @value_type: the #GValue type for this parameter
@@ -265,7 +265,7 @@ struct _CParamSpecClass
   /*< private >*/
   gpointer	  dummy[3];
 };
-/**
+/*
  * CParameter:
  * @name: the parameter name
  * @value: the parameter value
@@ -359,7 +359,7 @@ GQuark          c_param_spec_get_name_quark     (CParamSpec    *pspec);
 
 /* --- convenience functions --- */
 typedef struct _CParamSpecTypeInfo CParamSpecTypeInfo;
-/**
+/*
  * CParamSpecTypeInfo:
  * @instance_size: Size of the instance (object) structure.
  * @n_preallocs: Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10, it is ignored, since instances are allocated with the [slice allocator][glib-Memory-Slices] now.
