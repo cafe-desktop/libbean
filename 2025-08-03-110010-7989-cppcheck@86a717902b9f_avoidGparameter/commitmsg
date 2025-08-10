@@ -1,0 +1,21 @@
+cparam: avoid multiple comment blocks
+
+Fixes the warnings:
+
+../libbean/cparam.h:31: Warning: Bean: multiple comment blocks documenting 'C_TYPE_IS_PARAM:' identifier (already seen at cparam.h:31).
+../libbean/cparam.h:38: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC:' identifier (already seen at cparam.h:38).
+../libbean/cparam.h:46: Warning: Bean: multiple comment blocks documenting 'C_IS_PARAM_SPEC:' identifier (already seen at cparam.h:46).
+../libbean/cparam.h:58: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC_CLASS:' identifier (already seen at cparam.h:58).
+../libbean/cparam.h:65: Warning: Bean: multiple comment blocks documenting 'C_IS_PARAM_SPEC_CLASS:' identifier (already seen at cparam.h:65).
+../libbean/cparam.h:73: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC_GET_CLASS:' identifier (already seen at cparam.h:73).
+../libbean/cparam.h:83: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC_TYPE:' identifier (already seen at cparam.h:83).
+../libbean/cparam.h:90: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC_TYPE_NAME:' identifier (already seen at cparam.h:90).
+../libbean/cparam.h:97: Warning: Bean: multiple comment blocks documenting 'C_PARAM_SPEC_VALUE_TYPE:' identifier (already seen at cparam.h:97).
+../libbean/cparam.h:104: Warning: Bean: multiple comment blocks documenting 'C_VALUE_HOLDS_PARAM:' identifier (already seen at cparam.h:104).
+../libbean/cparam.h:116: Warning: Bean: multiple comment blocks documenting 'CParamFlags:' identifier (already seen at cparam.h:116).
+../libbean/cparam.h:172: Warning: Bean: multiple comment blocks documenting 'C_PARAM_STATIC_STRINGS:' identifier (already seen at cparam.h:172).
+../libbean/cparam.h:187: Warning: Bean: multiple comment blocks documenting 'C_PARAM_MASK:' identifier (already seen at cparam.h:187).
+../libbean/cparam.h:193: Warning: Bean: multiple comment blocks documenting 'C_PARAM_USER_SHIFT:' identifier (already seen at cparam.h:193).
+../libbean/cparam.h:223: Warning: Bean: multiple comment blocks documenting 'CParamSpecClass:' identifier (already seen at cparam.h:223).
+../libbean/cparam.h:268: Warning: Bean: multiple comment blocks documenting 'CParameter:' identifier (already seen at cparam.h:268).
+../libbean/cparam.h:362: Warning: Bean: multiple comment blocks documenting 'CParamSpecTypeInfo:' identifier (already seen at cparam.h:362).
