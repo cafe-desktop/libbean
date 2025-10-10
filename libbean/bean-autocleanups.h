@@ -32,7 +32,6 @@
 G_BEGIN_DECLS
 
 #ifndef __GI_SCANNER__
-#if GLIB_CHECK_VERSION (2, 44, 0)
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanActivatable, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanEngine, g_object_unref)
@@ -41,7 +40,6 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanExtensionBase, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanExtensionSet, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanObjectModule, g_object_unref)
 
-#endif /* GLIB_CHECK_VERSION (2, 44, 0) */
 #endif /* __GI_SCANNER__ */
 
 G_END_DECLS

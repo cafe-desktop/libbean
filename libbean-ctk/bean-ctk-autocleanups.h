@@ -30,13 +30,11 @@
 G_BEGIN_DECLS
 
 #ifndef __GI_SCANNER__
-#if GLIB_CHECK_VERSION (2, 44, 0)
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanCtkConfigurable, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanCtkPluginManager, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (BeanCtkPluginManagerView, g_object_unref)
 
-#endif /* GLIB_CHECK_VERSION (2, 44, 0) */
 #endif /* __GI_SCANNER__ */
 
 G_END_DECLS
