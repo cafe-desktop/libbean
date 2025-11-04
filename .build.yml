@@ -13,6 +13,7 @@ requires:
     - intltool
 #    - libgirepository1.0-dev
 #    - libgirepository1.0-doc
+    - gobject-introspection
     - libglib2.0-dev
     - libglib2.0-doc
     - meson
