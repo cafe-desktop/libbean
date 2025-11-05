@@ -27,7 +27,8 @@
 #endif
 
 #include <string.h>
-#include <girepository.h>
+
+#include <girepository/girepository.h>
 
 #ifdef OS_OSX
 #include "bean-utils-osx.h"
@@ -342,7 +343,7 @@ bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
 
   /* If we are using a BeanCtkPluginManager, we know for sure we will be using
      libbean-ctk, so let's load the typelib for it here. */
-  g_irepository_require (g_irepository_get_default (),
+  gi_repository_require (gi_repository_dup_default (),
                          "BeanCtk", "2.0", 0, NULL);
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (pm),

@@ -26,7 +26,7 @@
 #include <stdlib.h>
 
 #include <glib.h>
-#include <girepository.h>
+#include <girepository/girepository.h>
 #include <testing-util.h>
 
 #include "testing.h"
@@ -51,8 +51,7 @@ testing_init (gint    *argc,
    */
   testing_util_init ();
 
-  g_irepository_require_private (g_irepository_get_default (),
-                                 BUILDDIR "/libbean-ctk",
+  gi_repository_require (gi_repository_dup_default (),
                                  "BeanCtk", "2.0", 0, &error);
   g_assert_no_error (error);
 
