@@ -321,25 +321,6 @@ bean_extension_set_dispose (GObject *object)
   G_OBJECT_CLASS (bean_extension_set_parent_class)->dispose (object);
 }
 
-static gboolean
-bean_extension_set_call_real (BeanExtensionSet *set,
-                              const gchar      *method_name,
-                              GIArgument       *args)
-{
-  BeanExtensionSetPrivate *priv = GET_PRIV (set);
-  gboolean ret = TRUE;
-  GList *l;
-  GIArgument dummy;
-
-  for (l = priv->extensions.head; l != NULL; l = l->next)
-    {
-      ExtensionItem *item = (ExtensionItem *) l->data;
-      ret = bean_extension_callv (item->exten, method_name, args, &dummy) && ret;
-    }
-
-  return ret;
-}
-
 static void
 bean_extension_set_class_init (BeanExtensionSetClass *klass)
 {
@@ -350,8 +331,6 @@ bean_extension_set_class_init (BeanExtensionSetClass *klass)
   object_class->get_property = bean_extension_set_get_property;
   object_class->constructed = bean_extension_set_constructed;
   object_class->dispose = bean_extension_set_dispose;
-
-  klass->call = bean_extension_set_call_real;
 
   /**
    * BeanExtensionSet::extension-added:
@@ -466,113 +445,6 @@ bean_extension_set_get_extension (BeanExtensionSet *set,
     }
 
   return NULL;
-}
-
-/**
- * bean_extension_set_call:
- * @set: A #BeanExtensionSet.
- * @method_name: the name of the method that should be called.
- * @...: arguments for the method.
- *
- * Call a method on all the #BeanExtension instances contained in @set.
- *
- * See bean_extension_call() for more information.
- *
- * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
- *
- * Return value: %TRUE on successful call.
- */
-gboolean
-bean_extension_set_call (BeanExtensionSet *set,
-                         const gchar      *method_name,
-                         ...)
-{
-  va_list args;
-  gboolean result;
-
-  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
-  g_return_val_if_fail (method_name != NULL, FALSE);
-
-  va_start (args, method_name);
-  result = bean_extension_set_call_valist (set, method_name, args);
-  va_end (args);
-
-  return result;
-}
-
-/**
- * bean_extension_set_call_valist:
- * @set: A #BeanExtensionSet.
- * @method_name: the name of the method that should be called.
- * @va_args: the arguments for the method.
- *
- * Call a method on all the #BeanExtension instances contained in @set.
- *
- * See bean_extension_call_valist() for more information.
- *
- * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
- *
- * Return value: %TRUE on successful call.
- */
-gboolean
-bean_extension_set_call_valist (BeanExtensionSet *set,
-                                const gchar      *method_name,
-                                va_list           va_args)
-{
-  BeanExtensionSetPrivate *priv = GET_PRIV (set);
-  GICallableInfo *callable_info;
-  GIArgument *args;
-  gint n_args;
-
-  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
-  g_return_val_if_fail (method_name != NULL, FALSE);
-
-  callable_info = bean_gi_get_method_info (priv->exten_type, method_name);
-
-  if (callable_info == NULL)
-    {
-      g_warning ("Method '%s.%s' was not found",
-                 g_type_name (priv->exten_type), method_name);
-      return FALSE;
-    }
-
-  n_args = g_callable_info_get_n_args (callable_info);
-  g_return_val_if_fail (n_args >= 0, FALSE);
-
-  args = g_newa (GIArgument, n_args);
-  bean_gi_valist_to_arguments (callable_info, va_args, args, NULL);
-
-  g_base_info_unref ((GIBaseInfo *) callable_info);
-
-  return bean_extension_set_callv (set, method_name, args);
-}
-
-/**
- * bean_extension_set_callv:
- * @set: A #BeanExtensionSet.
- * @method_name: the name of the method that should be called.
- * @args: the arguments for the method.
- *
- * Call a method on all the #BeanExtension instances contained in @set.
- *
- * See bean_extension_callv() for more information.
- *
- * Return value: %TRUE on successful call.
- *
- * Deprecated: 1.2: Use bean_extension_set_foreach() instead.
- */
-gboolean
-bean_extension_set_callv (BeanExtensionSet *set,
-                          const gchar      *method_name,
-                          GIArgument       *args)
-{
-  BeanExtensionSetClass *klass;
-
-  g_return_val_if_fail (BEAN_IS_EXTENSION_SET (set), FALSE);
-  g_return_val_if_fail (method_name != NULL, FALSE);
-
-  klass = BEAN_EXTENSION_SET_GET_CLASS (set);
-  return klass->call (set, method_name, args);
 }
 
 /**

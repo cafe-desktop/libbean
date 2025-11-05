@@ -58,7 +58,6 @@ struct _BeanExtensionSet {
 /**
  * BeanExtensionSetClass:
  * @parent_class: The parent class.
- * @call: The VFunc for bean_extension_set_call().
  * @extension_added: Signal class handler for the
  *                   #BeanExtensionSet::extension-added signal.
  * @extension_removed: Signal class handler for the
@@ -68,16 +67,6 @@ struct _BeanExtensionSet {
  */
 struct _BeanExtensionSetClass {
   GObjectClass parent_class;
-
-  /* Virtual public methods */
-#ifndef BEAN_DISABLE_DEPRECATED
-  gboolean   (*call)                      (BeanExtensionSet *set,
-                                           const gchar      *method_name,
-                                           GIArgument       *args);
-#else
-  /*< private >*/
-  gpointer __DEPRECATED_call;
-#endif
 
   /*< public >*/
   /* Signals */
@@ -114,23 +103,6 @@ typedef void (*BeanExtensionSetForeachFunc) (BeanExtensionSet *set,
  */
 BEAN_AVAILABLE_IN_ALL
 GType              bean_extension_set_get_type    (void)  G_GNUC_CONST;
-
-#ifndef __GI_SCANNER__
-#ifndef BEAN_DISABLE_DEPRECATED
-BEAN_AVAILABLE_IN_ALL
-gboolean           bean_extension_set_call        (BeanExtensionSet *set,
-                                                   const gchar      *method_name,
-                                                   ...);
-BEAN_AVAILABLE_IN_ALL
-gboolean           bean_extension_set_call_valist (BeanExtensionSet *set,
-                                                   const gchar      *method_name,
-                                                   va_list           va_args);
-BEAN_AVAILABLE_IN_ALL
-gboolean           bean_extension_set_callv       (BeanExtensionSet *set,
-                                                   const gchar      *method_name,
-                                                   GIArgument       *args);
-#endif
-#endif
 
 BEAN_AVAILABLE_IN_ALL
 void               bean_extension_set_foreach     (BeanExtensionSet *set,
