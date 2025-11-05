@@ -29,15 +29,13 @@
 G_BEGIN_DECLS
 
 void testing_extension_basic      (const gchar   *loader);
-void testing_extension_callable   (const gchar   *loader);
 void testing_extension_add        (const gchar   *path,
                                    GTestDataFunc  func);
 
 int testing_extension_run_tests   (void);
 
 #define testing_extension_all(loader) \
-  testing_extension_basic (loader); \
-  testing_extension_callable (loader);
+  testing_extension_basic (loader);
 
 /* These macros are here to add loader-specific tests. */
 #define EXTENSION_TEST_NAME(loader, path) \

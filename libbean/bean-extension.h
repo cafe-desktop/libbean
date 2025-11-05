@@ -23,7 +23,6 @@
 #define __BEAN_EXTENSION_H__
 
 #include <glib-object.h>
-#include <girepository.h>
 
 #include "bean-version-macros.h"
 
@@ -42,36 +41,6 @@ G_BEGIN_DECLS
  * A proxy class to access the actual plugin.
  */
 typedef GObject BeanExtension;
-
-/*
- * All the public methods of BeanExtension are deprecated and should not be
- * used. Due to gi-scanner's touchiness, we also hide these legacy API from
- * GI to avoid hairy issues.
- */
-#ifndef __GI_SCANNER__
-#ifndef BEAN_DISABLE_DEPRECATED
-BEAN_AVAILABLE_IN_ALL
-GType        bean_extension_get_type        (void)  G_GNUC_CONST;
-
-BEAN_AVAILABLE_IN_ALL
-GType        bean_extension_get_extension_type
-                                            (BeanExtension *exten);
-
-BEAN_AVAILABLE_IN_ALL
-gboolean     bean_extension_call            (BeanExtension *exten,
-                                             const gchar   *method_name,
-                                             ...);
-BEAN_AVAILABLE_IN_ALL
-gboolean     bean_extension_call_valist     (BeanExtension *exten,
-                                             const gchar   *method_name,
-                                             va_list        args);
-BEAN_AVAILABLE_IN_ALL
-gboolean     bean_extension_callv           (BeanExtension *exten,
-                                             const gchar   *method_name,
-                                             GIArgument    *args,
-                                             GIArgument    *return_value);
-#endif
-#endif
 
 G_END_DECLS
 
