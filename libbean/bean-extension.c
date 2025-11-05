@@ -57,27 +57,3 @@
  *
  * See bean_extension_call() for more information.
  **/
-GType
-bean_extension_get_type (void)
-{
-  return G_TYPE_OBJECT;
-}
-
-static G_DEFINE_QUARK (bean-extension-type, extension_type)
-
-/**
- * bean_extension_get_extension_type:
- * @exten: A #BeanExtension.
- *
- * Get the #GType of the extension proxied by @exten.
- *
- * Return value: The #GType proxied by @exten.
- *
- * Deprecated: 1.2.
- */
-GType
-bean_extension_get_extension_type (BeanExtension *exten)
-{
-  return GPOINTER_TO_SIZE (g_object_get_qdata (G_OBJECT (exten),
-                                               extension_type_quark ()));
-}

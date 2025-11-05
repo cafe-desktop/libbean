@@ -26,7 +26,6 @@
 #include "bean-extension-set.h"
 
 #include "bean-i18n-priv.h"
-#include "bean-introspection.h"
 #include "bean-plugin-info.h"
 #include "bean-marshal.h"
 #include "bean-utils.h"

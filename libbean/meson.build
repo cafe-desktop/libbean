@@ -38,7 +38,6 @@ libbean_sources = files(
   'bean-extension-base.c',
   'bean-extension-set.c',
   'bean-i18n.c',
-  'bean-introspection.c',
   'bean-object-module.c',
   'bean-plugin-info.c',
   'bean-plugin-loader.c',
@@ -59,7 +58,6 @@ libbean_deps = [
   gobject_dep,
   gmodule_dep,
   gio_dep,
-  introspection_dep,
 ]
 
 libbean_c_args = [
@@ -162,7 +160,6 @@ libbean_pc_reqs = [
   'gobject-2.0 @0@'.format(glib_req),
   'gmodule-2.0 @0@'.format(glib_req),
   'gio-2.0 @0@'.format(glib_req),
-  'gobject-introspection-1.0 @0@'.format(introspection_req),
 ]
 
 libbean_pc = pkg.generate(
