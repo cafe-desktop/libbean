@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include <girepository.h>
+#include <girepository/girepository.h>
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
 #include <locale.h>
@@ -134,8 +134,8 @@ main (int    argc,
       g_debug ("Running from build directory: %s", BEAN_BUILDDIR);
 
       /* Use the uninstalled typelibs */
-      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean");
-      g_irepository_prepend_search_path (BEAN_BUILDDIR "/libbean-ctk");
+      gi_repository_prepend_search_path (gi_repository_dup_default (), BEAN_BUILDDIR "/libbean");
+      gi_repository_prepend_search_path (gi_repository_dup_default (), BEAN_BUILDDIR "/libbean-ctk");
 
       /* Use the uninstalled plugin loaders */
       g_setenv ("BEAN_PLUGIN_LOADERS_DIR", BEAN_BUILDDIR "/loaders", TRUE);
