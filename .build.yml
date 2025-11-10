@@ -11,8 +11,7 @@ requires:
     - git
     - gtk-doc-tools
     - intltool
-    - libgirepository1.0-dev
-    - libgirepository1.0-doc
+    - libgirepository-2.0-dev
     - libglib2.0-dev
     - libglib2.0-doc
     - meson
