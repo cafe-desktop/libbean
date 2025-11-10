@@ -123,7 +123,7 @@ if generate_gir == true
     'GObject-2.0',
     'GModule-2.0',
     'Gio-2.0',
-    'GIRepository-2.0'
+    'GIRepository-3.0'
   ]
 
   libbean_gir = gnome.generate_gir(
@@ -162,7 +162,7 @@ libbean_pc_reqs = [
   'gobject-2.0 @0@'.format(glib_req),
   'gmodule-2.0 @0@'.format(glib_req),
   'gio-2.0 @0@'.format(glib_req),
-  'gobject-introspection-1.0 @0@'.format(introspection_req),
+  'girepository-2.0 @0@'.format(glib_req),
 ]
 
 libbean_pc = pkg.generate(

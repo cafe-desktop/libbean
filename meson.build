@@ -86,10 +86,9 @@ config_h.set_quoted('GETTEXT_PACKAGE', package_string)
 # Dependencies
 cc = meson.get_compiler('c')
 
-glib_req_version = '2.44.0'
+glib_req_version = '2.85.0'
 
 glib_req = '>= @0@'.format(glib_req_version)
-introspection_req = '>= 1.39.0'
 ctk_req = '>= 3.0.0'
 gtk_doc_req = '>= 1.11'
 python2_req = '>= 2.5.2'
@@ -103,7 +102,7 @@ glib_dep = dependency('glib-2.0', version: glib_req)
 gobject_dep = dependency('gobject-2.0', version: glib_req)
 gmodule_dep = dependency('gmodule-2.0', version: glib_req)
 gio_dep = dependency('gio-2.0', version: glib_req)
-introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req)
+introspection_dep = dependency('girepository-2.0', version: glib_req)
 ctk_dep = dependency('ctk+-3.0', version: ctk_req, required: false)
 
 gtk_doc_dep = dependency('gtk-doc', version: gtk_doc_req, required: false)
@@ -149,8 +148,11 @@ if (luajit_dep.found() and luajit_prg.found()) or (lua51_dep.found() and lua51_p
 endif
 
 glib_version_arr = glib_req_version.split('.')
-glib_major_version = glib_version_arr[0]
-glib_minor_version = glib_version_arr[1]
+glib_major_version = glib_version_arr[0].to_int()
+glib_minor_version = glib_version_arr[1].to_int()
+if glib_minor_version % 2 == 1
+  glib_minor_version = glib_minor_version + 1
+endif
 
 module_suffix = []
 if build_machine.system() == 'darwin'

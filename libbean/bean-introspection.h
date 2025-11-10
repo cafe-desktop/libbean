@@ -23,7 +23,7 @@
 #define __BEAN_INTROSPECTION_H__
 
 #include <glib-object.h>
-#include <girepository.h>
+#include <girepository/girepository.h>
 
 G_BEGIN_DECLS
 
