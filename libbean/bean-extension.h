@@ -23,7 +23,7 @@
 #define __BEAN_EXTENSION_H__
 
 #include <glib-object.h>
-#include <girepository.h>
+#include <girepository/girepository.h>
 
 #include "bean-version-macros.h"
 

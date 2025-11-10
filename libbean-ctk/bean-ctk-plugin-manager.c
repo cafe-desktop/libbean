@@ -27,7 +27,7 @@
 #endif
 
 #include <string.h>
-#include <girepository.h>
+#include <girepository/girepository.h>
 
 #ifdef OS_OSX
 #include "bean-utils-osx.h"
@@ -334,6 +334,7 @@ static void
 bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
 {
   BeanCtkPluginManagerPrivate *priv = bean_ctk_plugin_manager_get_instance_private (pm);
+  GIRepository *repository;
   CtkWidget *toolbar;
   CtkStyleContext *context;
   CtkToolItem *toolitem;
@@ -342,8 +343,9 @@ bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
 
   /* If we are using a BeanCtkPluginManager, we know for sure we will be using
      libbean-ctk, so let's load the typelib for it here. */
-  g_irepository_require (g_irepository_get_default (),
-                         "BeanCtk", "2.0", 0, NULL);
+  repository = gi_repository_dup_default ();
+  gi_repository_require (repository, "BeanCtk", "2.0", 0, NULL);
+
 
   ctk_orientable_set_orientation (CTK_ORIENTABLE (pm),
                                   CTK_ORIENTATION_VERTICAL);
@@ -399,6 +401,8 @@ bean_ctk_plugin_manager_init (BeanCtkPluginManager *pm)
                     "clicked",
                     G_CALLBACK (show_configure_cb),
                     pm);
+
+  g_clear_object (&repository);
 }
 
 static void
