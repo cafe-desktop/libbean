@@ -37,6 +37,5 @@ else
   aptitude -f -y install
   dpkg -i *.deb
 fi
-unbuffer lintian -i -EIL+pedantic *.changes > lintianlog || echo lintian error!
-cat lintianlog|grep -E '^[EWIXP]'
+lintian -i -EIL+pedantic *.changes | grep -E '^[EWIXP]' || echo lintian error!
 mv *deb *buildinfo *changes debian.tar.xz deb_packages.tar.xz .${START_DIR}/html-report
