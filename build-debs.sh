@@ -38,5 +38,5 @@ else
   dpkg -i *.deb
 fi
 unbuffer lintian -i -EIL+pedantic *.changes > lintianlog || echo lintian error!
-cat lintianlog
+cat lintianlog|grep -E '^[EWIXP]'
 mv *deb *buildinfo *changes debian.tar.xz deb_packages.tar.xz .${START_DIR}/html-report
