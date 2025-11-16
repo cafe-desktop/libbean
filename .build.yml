@@ -35,7 +35,7 @@ build_scripts:
 #  - ./before-build
 #  - ./make-scanbuild meson 'setup'
 #  - ./after-build
-  - ./build-debs
+  - ./build-debs.sh
 
 after_scripts:
   - ./gen-index -l 20
