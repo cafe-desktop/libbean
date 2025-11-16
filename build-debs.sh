@@ -37,5 +37,6 @@ else
   aptitude -f -y install
   dpkg -i *.deb
 fi
-lintian -i -EIL+pedantic *.changes || echo lintian error!
+unbuffer lintian -i -EIL+pedantic *.changes > lintianlog || echo lintian error!
+cat lintianlog
 mv *deb *buildinfo *changes debian.tar.xz deb_packages.tar.xz .${START_DIR}/html-report
