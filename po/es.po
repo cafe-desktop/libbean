@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:53+0200\n"
+"POT-Creation-Date: 2025-12-21 01:49+0100\n"
 "PO-Revision-Date: 2019-08-20 12:21+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
@@ -91,11 +91,11 @@ msgid "Pr_eferences"
 msgstr "Prefere_ncias"
 
 #: libbean-ctk/bean-ctk-plugin-manager.c:328
-#: libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:381
 msgid "_About"
 msgstr "Acerca _de"
 
-#: libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:389
 msgid "_Preferences"
 msgstr "_Preferencias"
 

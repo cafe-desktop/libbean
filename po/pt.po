@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:53+0200\n"
+"POT-Creation-Date: 2025-12-21 01:49+0100\n"
 "PO-Revision-Date: 2020-09-11 21:12-0300\n"
 "Last-Translator: Juliano de Souza Camargo <julianosc@protonmail.com>\n"
 "Language-Team: Portuguese <>\n"
@@ -93,11 +93,11 @@ msgid "Pr_eferences"
 msgstr "_Preferências"
 
 #: libbean-ctk/bean-ctk-plugin-manager.c:328
-#: libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:381
 msgid "_About"
 msgstr "_Sobre"
 
-#: libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:389
 msgid "_Preferences"
 msgstr "_Preferências"
 

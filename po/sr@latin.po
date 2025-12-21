@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:53+0200\n"
+"POT-Creation-Date: 2025-12-21 01:49+0100\n"
 "PO-Revision-Date: 2015-09-23 00:24+0200\n"
-"Last-Translator: Marko M. Kostić (Marko M. Kostić) <marko.m.kostic@gmail."
-"com>\n"
+"Last-Translator: Marko M. Kostić (Marko M. Kostić) "
+"<marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
@@ -89,11 +89,11 @@ msgid "Pr_eferences"
 msgstr "_Postavke"
 
 #: libbean-ctk/bean-ctk-plugin-manager.c:328
-#: libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:381
 msgid "_About"
 msgstr "_O programu"
 
-#: libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:389
 msgid "_Preferences"
 msgstr "_Postavke"
 

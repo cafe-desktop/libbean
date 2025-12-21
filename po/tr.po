@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:53+0200\n"
+"POT-Creation-Date: 2025-12-21 01:49+0100\n"
 "PO-Revision-Date: 2019-09-05 20:29+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -96,11 +96,11 @@ msgid "Pr_eferences"
 msgstr "T_ercihler"
 
 #: libbean-ctk/bean-ctk-plugin-manager.c:328
-#: libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:381
 msgid "_About"
 msgstr "_Hakkında"
 
-#: libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:389
 msgid "_Preferences"
 msgstr "_Tercihler"
 

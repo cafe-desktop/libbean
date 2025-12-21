@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libbean master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 09:53+0200\n"
+"POT-Creation-Date: 2025-12-21 01:49+0100\n"
 "PO-Revision-Date: 2020-06-27 11:21-0400\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -91,11 +91,11 @@ msgid "Pr_eferences"
 msgstr "首选项(_P)"
 
 #: libbean-ctk/bean-ctk-plugin-manager.c:328
-#: libbean-ctk/bean-ctk-plugin-manager.c:379
+#: libbean-ctk/bean-ctk-plugin-manager.c:381
 msgid "_About"
 msgstr "关于(_A)"
 
-#: libbean-ctk/bean-ctk-plugin-manager.c:387
+#: libbean-ctk/bean-ctk-plugin-manager.c:389
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
