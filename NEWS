@@ -1,9 +1,21 @@
+Overview of Changes in libbean 2.1.0
+=====================================
+
+* don't hide deprecations
+* meson: remove project arguments to enable deprecated warnings
+* ci: some improvements
+* require glib 2.85.0
+* Port to libgirepository-2.0
+* update translations
+
+
 Overview of Changes in libbean 2.0.0
 =====================================
 
 * ci: add debian sid build
 * add G_GNUC_UNUSED in unused parameters
 * Fix [-Wredundant-decls] warnings
+
 
 Overview of Changes in libbean 1.29.0
 =====================================
