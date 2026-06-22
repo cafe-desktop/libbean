@@ -114,35 +114,44 @@ static BeanExtension *
 bean_plugin_loader_c_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                        BeanPluginInfo   *info,
                                        GType             exten_type,
-                                       guint             n_parameters,
-                                       GParameter       *parameters)
+                                       guint             n_properties,
+                                       const gchar     **prop_names,
+                                       GValue           *prop_values)
 {
-  GParameter *exten_parameters;
+  const gchar **exten_names;
+  GValue *exten_values;
   gpointer instance;
 
   /* We want to add a "plugin-info" property so we can pass it to
    * the extension if it inherits from BeanExtensionBase. No need to
-   * actually "duplicate" the GValues, a memcpy is sufficient as the
+   * actually "duplicate" the data, a memcpy is sufficient as the
    * source GValues are longer lived than our local copy.
    */
-  exten_parameters = g_newa (GParameter, n_parameters + 1);
-  memcpy (exten_parameters, parameters, sizeof (GParameter) * n_parameters);
+  exten_names = g_newa (const gchar *, n_properties + 1);
+  exten_values = g_newa (GValue, n_properties + 1);
 
-  /* Initialize our additional property.
+  if (n_properties > 0)
+    {
+      memcpy (exten_names, prop_names, sizeof (gchar *) * n_properties);
+      memcpy (exten_values, prop_values, sizeof (GValue) * n_properties);
+    }
+
+  /* Append our additional property.
    * If the instance does not have a plugin-info property
    * then BeanObjectModule will remove the property.
    */
-  exten_parameters[n_parameters].name = intern_plugin_info;
-  memset (&exten_parameters[n_parameters].value, 0, sizeof (GValue));
-  g_value_init (&exten_parameters[n_parameters].value, BEAN_TYPE_PLUGIN_INFO);
-  g_value_set_boxed (&exten_parameters[n_parameters].value, info);
+  exten_names[n_properties] = intern_plugin_info;
+  memset (&exten_values[n_properties], 0, sizeof (GValue));
+  g_value_init (&exten_values[n_properties], BEAN_TYPE_PLUGIN_INFO);
+  g_value_set_boxed (&exten_values[n_properties], info);
 
   instance = bean_object_module_create_object (info->loader_data,
                                                exten_type,
-                                               n_parameters + 1,
-                                               exten_parameters);
+                                               n_properties + 1,
+                                               exten_names,
+                                               exten_values);
 
-  g_value_unset (&exten_parameters[n_parameters].value);
+  g_value_unset (&exten_values[n_properties]);
 
   if (instance == NULL)
     return NULL;

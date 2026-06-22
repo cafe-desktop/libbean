@@ -56,11 +56,12 @@ struct _BeanPluginLoaderClass {
   gboolean       (*provides_extension)    (BeanPluginLoader *loader,
                                            BeanPluginInfo   *info,
                                            GType             ext_type);
-  BeanExtension *(*create_extension)      (BeanPluginLoader *loader,
-                                           BeanPluginInfo   *info,
-                                           GType             ext_type,
-                                           guint             n_parameters,
-                                           GParameter       *parameters);
+  BeanExtension *(*create_extension)      (BeanPluginLoader  *loader,
+                                           BeanPluginInfo    *info,
+                                           GType              ext_type,
+                                           guint              n_properties,
+                                           const gchar      **prop_names,
+                                           GValue            *prop_values);
 
   void           (*garbage_collect)       (BeanPluginLoader *loader);
 };
@@ -88,8 +89,9 @@ BEAN_AVAILABLE_IN_ALL
 BeanExtension *bean_plugin_loader_create_extension    (BeanPluginLoader *loader,
                                                        BeanPluginInfo   *info,
                                                        GType             ext_type,
-                                                       guint             n_parameters,
-                                                       GParameter       *parameters);
+                                                       guint             n_properties,
+                                                       const gchar     **prop_names,
+                                                       GValue           *prop_values);
 BEAN_AVAILABLE_IN_ALL
 void          bean_plugin_loader_garbage_collect      (BeanPluginLoader *loader);
 
