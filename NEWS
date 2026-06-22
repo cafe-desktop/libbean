@@ -1,32 +1,35 @@
-Overview of Changes in libbean 2.1.0
-=====================================
+### libbean 2.2.0
 
-* don't hide deprecations
-* meson: remove project arguments to enable deprecated warnings
-* ci: some improvements
-* require glib 2.85.0
-* Port to libgirepository-2.0
-* update translations
+  * avoid deprecated GParameter
+  * extension-py: Fix test-extension-py
 
 
-Overview of Changes in libbean 2.0.0
-=====================================
+### libbean 2.1.0
 
-* ci: add debian sid build
-* add G_GNUC_UNUSED in unused parameters
-* Fix [-Wredundant-decls] warnings
+  * don't hide deprecations
+  * meson: remove project arguments to enable deprecated warnings
+  * ci: some improvements
+  * require glib 2.85.0
+  * Port to libgirepository-2.0
+  * update translations
 
 
-Overview of Changes in libbean 1.29.0
-=====================================
+### libbean 2.0.0
 
-* libpeas 1.28.0 fork
-* add FUNDING.yml
-* update AUTHORS
-* ci: enable Github Actions
-* rename peas -> bean
-* port from GTK to CTK
-* bean-plugin-loader-python: avoid deprecated 'PyEval_InitThreads'
-* Update translations
-* update README
-* tests: Explicitly depend on the GIR and typelib
+  * ci: add debian sid build
+  * add G_GNUC_UNUSED in unused parameters
+  * Fix [-Wredundant-decls] warnings
+
+
+### libbean 1.29.0
+
+  * libpeas 1.28.0 fork
+  * add FUNDING.yml
+  * update AUTHORS
+  * ci: enable Github Actions
+  * rename peas -> bean
+  * port from GTK to CTK
+  * bean-plugin-loader-python: avoid deprecated 'PyEval_InitThreads'
+  * Update translations
+  * update README
+  * tests: Explicitly depend on the GIR and typelib
