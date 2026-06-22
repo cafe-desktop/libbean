@@ -37,4 +37,4 @@ build_scripts:
   - ./after-build
 
 after_scripts:
-  - ./gen-index -l 20
+  - ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/${REPO_NAME}/raw/master/data/icons/16x16/libbean-plugin.png
