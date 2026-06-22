@@ -1,0 +1,1303 @@
+Checking bean-demo/bean-demo-window.c ...
+Checking bean-demo/bean-demo-window.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+1/58 files checked 0% done
+Checking bean-demo/bean-demo.c ...
+Checking bean-demo/bean-demo.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+2/58 files checked 1% done
+Checking bean-demo/plugins/helloworld/beandemo-hello-world-configurable.c ...
+bean-demo/plugins/helloworld/beandemo-hello-world-configurable.c:38:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_DYNAMIC_TYPE_EXTENDED is a macro then please configure it. [unknownMacro]
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (BeanDemoHelloWorldConfigurable,
+^
+Checking bean-demo/plugins/helloworld/beandemo-hello-world-configurable.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+3/58 files checked 2% done
+Checking bean-demo/plugins/helloworld/beandemo-hello-world-plugin.c ...
+Checking bean-demo/plugins/helloworld/beandemo-hello-world-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+4/58 files checked 3% done
+Checking bean-demo/plugins/secondtime/second-time.c ...
+Checking bean-demo/plugins/secondtime/second-time.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+5/58 files checked 4% done
+Checking libbean-ctk/bean-ctk-configurable.c ...
+Checking libbean-ctk/bean-ctk-configurable.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+6/58 files checked 4% done
+Checking libbean-ctk/bean-ctk-disable-plugins-dialog.c ...
+libbean-ctk/bean-ctk-disable-plugins-dialog.c:50:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it. [unknownMacro]
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkDisablePluginsDialog,
+^
+Checking libbean-ctk/bean-ctk-disable-plugins-dialog.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+7/58 files checked 6% done
+Checking libbean-ctk/bean-ctk-plugin-manager-store.c ...
+libbean-ctk/bean-ctk-plugin-manager-store.c:62:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it. [unknownMacro]
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManagerStore,
+^
+Checking libbean-ctk/bean-ctk-plugin-manager-store.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+8/58 files checked 10% done
+Checking libbean-ctk/bean-ctk-plugin-manager-view.c ...
+libbean-ctk/bean-ctk-plugin-manager-view.c:414:2: error: failed to evaluate #if condition, undefined function-like macro invocation: CTK_CHECK_VERSION( ... ) [syntaxError]
+#if !CTK_CHECK_VERSION(3, 22, 0)
+ ^
+Checking libbean-ctk/bean-ctk-plugin-manager-view.c: CTK_CHECK_VERSION=0...
+libbean-ctk/bean-ctk-plugin-manager-view.c:82:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it. [unknownMacro]
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManagerView,
+^
+9/58 files checked 17% done
+Checking libbean-ctk/bean-ctk-plugin-manager.c ...
+libbean-ctk/bean-ctk-plugin-manager.c:82:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it. [unknownMacro]
+G_DEFINE_TYPE_WITH_PRIVATE (BeanCtkPluginManager,
+^
+Checking libbean-ctk/bean-ctk-plugin-manager.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking libbean-ctk/bean-ctk-plugin-manager.c: OS_OSX=OS_OSX...
+10/58 files checked 21% done
+Checking libbean/bean-activatable.c ...
+libbean/bean-version-macros.h:99:3: error: failed to evaluate #if condition, undefined function-like macro invocation: G_ENCODE_VERSION( ... ) [syntaxError]
+# if BEAN_VERSION_MIN_REQUIRED > BEAN_VERSION_PREV_STABLE
+  ^
+libbean/bean-activatable.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+11/58 files checked 21% done
+Checking libbean/bean-debug.c ...
+Checking libbean/bean-debug.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+12/58 files checked 22% done
+Checking libbean/bean-dirs.c ...
+Checking libbean/bean-dirs.c: DLL_EXPORT=DLL_EXPORT;G_OS_WIN32=G_OS_WIN32...
+Checking libbean/bean-dirs.c: G_OS_WIN32=G_OS_WIN32...
+Checking libbean/bean-dirs.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking libbean/bean-dirs.c: OS_OSX=OS_OSX...
+13/58 files checked 22% done
+Checking libbean/bean-engine.c ...
+libbean/bean-engine.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+14/58 files checked 33% done
+Checking libbean/bean-extension-base.c ...
+libbean/bean-extension-base.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+15/58 files checked 34% done
+Checking libbean/bean-extension-set.c ...
+libbean/bean-extension-set.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+16/58 files checked 39% done
+Checking libbean/bean-extension.c ...
+libbean/bean-extension.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+17/58 files checked 41% done
+Checking libbean/bean-i18n.c ...
+Checking libbean/bean-i18n.c: G_DEFINE_CONSTRUCTOR_NEEDS_PRAGMA=G_DEFINE_CONSTRUCTOR_NEEDS_PRAGMA;G_HAS_CONSTRUCTORS=G_HAS_CONSTRUCTORS...
+Checking libbean/bean-i18n.c: G_HAS_CONSTRUCTORS=G_HAS_CONSTRUCTORS...
+Checking libbean/bean-i18n.c: _MSC_VER=1500;_MSC_VER=_MSC_VER...
+Checking libbean/bean-i18n.c: _MSC_VER=_MSC_VER...
+Checking libbean/bean-i18n.c: __GNUC_MINOR__=7;__GNUC__=2;__GNUC__=3...
+Checking libbean/bean-i18n.c: __SUNPRO_C=__SUNPRO_C...
+18/58 files checked 41% done
+Checking libbean/bean-introspection.c ...
+libbean/bean-introspection.c:37:15: style: The scope of the variable 'cur_arg' can be reduced. [variableScope]
+  GIArgument *cur_arg;
+              ^
+libbean/bean-introspection.c:147:53: style: Parameter 'args' can be declared as pointer to const [constParameterPointer]
+                                    GIArgument     *args,
+                                                    ^
+libbean/bean-introspection.c:182:46: style: Parameter 'arg' can be declared as pointer to const [constParameterPointer]
+                             GIArgument     *arg,
+                                             ^
+Checking libbean/bean-introspection.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+19/58 files checked 43% done
+Checking libbean/bean-object-module.c ...
+libbean/bean-object-module.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+20/58 files checked 47% done
+Checking libbean/bean-plugin-info.c ...
+libbean/bean-plugin-info.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+21/58 files checked 52% done
+Checking libbean/bean-plugin-loader-c.c ...
+libbean/bean-plugin-loader-c.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+22/58 files checked 53% done
+Checking libbean/bean-plugin-loader.c ...
+libbean/bean-plugin-loader.c:0:0: information: This file is not analyzed. No working configuration could be extracted. Use -v for more details. [noValidConfiguration]
+
+^
+23/58 files checked 54% done
+Checking libbean/bean-utils.c ...
+libbean/bean-utils.c:207:19: style: Variable 'pspec' can be declared as pointer to const [constVariablePointer]
+      GParamSpec *pspec;
+                  ^
+Checking libbean/bean-utils.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+24/58 files checked 56% done
+Checking loaders/lua5.1/bean-lua-internal.c ...
+Checking loaders/lua5.1/bean-lua-internal.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+25/58 files checked 57% done
+Checking loaders/lua5.1/bean-lua-utils.c ...
+Checking loaders/lua5.1/bean-lua-utils.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+26/58 files checked 58% done
+Checking loaders/lua5.1/bean-plugin-loader-lua.c ...
+loaders/lua5.1/bean-plugin-loader-lua.c:80:39: error: syntax error [syntaxError]
+      g_assert_cmpint (lua_gettop (NL), ==, 0);
+                                      ^
+Checking loaders/lua5.1/bean-plugin-loader-lua.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+27/58 files checked 60% done
+Checking loaders/python/bean-plugin-loader-python.c ...
+loaders/python/bean-plugin-loader-python.c:46:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_TYPE_WITH_PRIVATE is a macro then please configure it. [unknownMacro]
+G_DEFINE_TYPE_WITH_PRIVATE (BeanPluginLoaderPython,
+^
+Checking loaders/python/bean-plugin-loader-python.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking loaders/python/bean-plugin-loader-python.c: PY_VERSION_HEX=50331647...
+28/58 files checked 62% done
+Checking loaders/python/bean-python-internal.c ...
+Checking loaders/python/bean-python-internal.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking loaders/python/bean-python-internal.c: PY_MAJOR_VERSION=2...
+29/58 files checked 64% done
+Checking tests/libbean-ctk/plugin-manager-store.c ...
+tests/libbean-ctk/plugin-manager-store.c:87:25: error: syntax error [syntaxError]
+                       <, 0);
+                        ^
+Checking tests/libbean-ctk/plugin-manager-store.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+30/58 files checked 66% done
+Checking tests/libbean-ctk/plugin-manager-view.c ...
+tests/libbean-ctk/plugin-manager-view.c:141:19: style: Variable 'info' can be declared as pointer to const [constVariablePointer]
+  BeanPluginInfo *info;
+                  ^
+tests/libbean-ctk/plugin-manager-view.c:174:19: style: Variable 'removed_info' can be declared as pointer to const [constVariablePointer]
+  BeanPluginInfo *removed_info, *selected_info;
+                  ^
+tests/libbean-ctk/plugin-manager-view.c:174:34: style: Variable 'selected_info' can be declared as pointer to const [constVariablePointer]
+  BeanPluginInfo *removed_info, *selected_info;
+                                 ^
+Checking tests/libbean-ctk/plugin-manager-view.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+31/58 files checked 67% done
+Checking tests/libbean-ctk/plugin-manager.c ...
+tests/libbean-ctk/plugin-manager.c:200:76: error: syntax error [syntaxError]
+      g_assert_cmpint (ctk_widget_get_sensitive (fixture->configure_button),
+                                                                           ^
+32/58 files checked 70% done
+Checking tests/libbean-ctk/plugins/builtin-configurable/builtin-configurable.c ...
+tests/libbean-ctk/plugins/builtin-configurable/builtin-configurable.c:37:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_DYNAMIC_TYPE_EXTENDED is a macro then please configure it. [unknownMacro]
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingBuiltinConfigurable,
+^
+Checking tests/libbean-ctk/plugins/builtin-configurable/builtin-configurable.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+33/58 files checked 70% done
+Checking tests/libbean-ctk/plugins/configurable/configurable-plugin.c ...
+tests/libbean-ctk/plugins/configurable/configurable-plugin.c:37:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_DYNAMIC_TYPE_EXTENDED is a macro then please configure it. [unknownMacro]
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (TestingConfigurablePlugin,
+^
+Checking tests/libbean-ctk/plugins/configurable/configurable-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+34/58 files checked 71% done
+Checking tests/libbean-ctk/testing/testing.c ...
+tests/libbean-ctk/testing/testing.c:107:61: style: Parameter 'info' can be declared as pointer to const [constParameterPointer]
+                                  BeanPluginInfo           *info,
+                                                            ^
+tests/libbean-ctk/testing/testing.c:133:36: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'delete_event_cb' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+delete_event_cb (CtkWidget *window G_GNUC_UNUSED,
+                                   ^
+tests/libbean-ctk/testing/testing.c:167:33: note: You might need to cast the function pointer here
+                    G_CALLBACK (delete_event_cb),
+                                ^
+tests/libbean-ctk/testing/testing.c:133:36: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+delete_event_cb (CtkWidget *window G_GNUC_UNUSED,
+                                   ^
+tests/libbean-ctk/testing/testing.c:134:21: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'delete_event_cb' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+   CdkEvent  *event G_GNUC_UNUSED,
+                    ^
+tests/libbean-ctk/testing/testing.c:167:33: note: You might need to cast the function pointer here
+                    G_CALLBACK (delete_event_cb),
+                                ^
+tests/libbean-ctk/testing/testing.c:134:21: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+   CdkEvent  *event G_GNUC_UNUSED,
+                    ^
+tests/libbean-ctk/testing/testing.c:135:22: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'delete_event_cb' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+   CtkWidget *widget G_GNUC_UNUSED)
+                     ^
+tests/libbean-ctk/testing/testing.c:167:33: note: You might need to cast the function pointer here
+                    G_CALLBACK (delete_event_cb),
+                                ^
+tests/libbean-ctk/testing/testing.c:135:22: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+   CtkWidget *widget G_GNUC_UNUSED)
+                     ^
+Checking tests/libbean-ctk/testing/testing.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+35/58 files checked 72% done
+Checking tests/libbean/engine.c ...
+tests/libbean/engine.c:283:33: error: syntax error [syntaxError]
+  g_assert_cmpint (builtin_index, !=, -1);
+                                ^
+Checking tests/libbean/engine.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+36/58 files checked 75% done
+Checking tests/libbean/extension-c.c ...
+tests/libbean/extension-c.c:48:59: error: syntax error [syntaxError]
+  g_assert_cmpstr (bean_plugin_info_get_module_name (info), ==, "embedded");
+                                                          ^
+Checking tests/libbean/extension-c.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+37/58 files checked 76% done
+Checking tests/libbean/extension-lua.c ...
+tests/libbean/extension-lua.c:83:40: error: syntax error [syntaxError]
+  g_assert_cmpint (extension->ref_count, ==, 2);
+                                       ^
+Checking tests/libbean/extension-lua.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+38/58 files checked 77% done
+Checking tests/libbean/extension-py.c ...
+tests/libbean/extension-py.c:62:40: error: syntax error [syntaxError]
+  g_assert_cmpint (extension->ref_count, ==, 1);
+                                       ^
+Checking tests/libbean/extension-py.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking tests/libbean/extension-py.c: PY_VERSION_HEX=50331647...
+39/58 files checked 79% done
+Checking tests/libbean/extension-set.c ...
+tests/libbean/extension-set.c:101:31: error: syntax error [syntaxError]
+      g_assert_cmpint (*active, ==, i);
+                              ^
+Checking tests/libbean/extension-set.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+40/58 files checked 82% done
+Checking tests/libbean/introspection/introspection-abstract.c ...
+tests/libbean/introspection/introspection-abstract.c:116:33: style: Variable 'priv' can be declared as pointer to const [constVariablePointer]
+  IntrospectionAbstractPrivate *priv = GET_PRIV (abstract);
+                                ^
+Checking tests/libbean/introspection/introspection-abstract.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+41/58 files checked 82% done
+Checking tests/libbean/introspection/introspection-base.c ...
+Checking tests/libbean/introspection/introspection-base.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+42/58 files checked 83% done
+Checking tests/libbean/introspection/introspection-callable.c ...
+Checking tests/libbean/introspection/introspection-callable.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+43/58 files checked 83% done
+Checking tests/libbean/introspection/introspection-has-prerequisite.c ...
+tests/libbean/introspection/introspection-has-prerequisite.c:32:1: error: There is an unknown macro here somewhere. Configuration is required. If G_DEFINE_INTERFACE_WITH_CODE is a macro then please configure it. [unknownMacro]
+G_DEFINE_INTERFACE_WITH_CODE(IntrospectionHasPrerequisite,
+^
+Checking tests/libbean/introspection/introspection-has-prerequisite.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+44/58 files checked 84% done
+Checking tests/libbean/introspection/introspection-prerequisite.c ...
+Checking tests/libbean/introspection/introspection-prerequisite.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+45/58 files checked 84% done
+Checking tests/libbean/introspection/introspection-unimplemented.c ...
+Checking tests/libbean/introspection/introspection-unimplemented.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+46/58 files checked 85% done
+Checking tests/libbean/plugin-info.c ...
+tests/libbean/plugin-info.c:74:59: error: syntax error [syntaxError]
+  g_assert_cmpstr (bean_plugin_info_get_module_name (info), ==, "full-info");
+                                                          ^
+Checking tests/libbean/plugin-info.c: G_OS_WIN32=G_OS_WIN32...
+Checking tests/libbean/plugin-info.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+Checking tests/libbean/plugin-info.c: OS_OSX=OS_OSX...
+47/58 files checked 86% done
+Checking tests/libbean/plugins/embedded/embedded-plugin.c ...
+tests/libbean/plugins/embedded/embedded-plugin.c:42:25: error: There is an unknown macro here somewhere. Configuration is required. If G_ADD_PRIVATE is a macro then please configure it. [unknownMacro]
+                        G_ADD_PRIVATE (TestingEmbeddedPlugin)
+                        ^
+Checking tests/libbean/plugins/embedded/embedded-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+48/58 files checked 87% done
+Checking tests/libbean/plugins/extension-c/extension-c-abstract.c ...
+Checking tests/libbean/plugins/extension-c/extension-c-abstract.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+49/58 files checked 87% done
+Checking tests/libbean/plugins/extension-c/extension-c-missing-symbol-plugin.c ...
+50/58 files checked 87% done
+Checking tests/libbean/plugins/extension-c/extension-c-plugin.c ...
+tests/libbean/plugins/extension-c/extension-c-plugin.c:51:33: error: There is an unknown macro here somewhere. Configuration is required. If G_IMPLEMENT_INTERFACE_DYNAMIC is a macro then please configure it. [unknownMacro]
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (INTROSPECTION_TYPE_BASE,
+                                ^
+Checking tests/libbean/plugins/extension-c/extension-c-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+51/58 files checked 89% done
+Checking tests/libbean/testing/testing-extension.c ...
+tests/libbean/testing/testing-extension.c:92:37: error: syntax error [syntaxError]
+  g_assert_cmpstr (loaded_plugins[0], ==, NULL);
+                                    ^
+Checking tests/libbean/testing/testing-extension.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+52/58 files checked 93% done
+Checking tests/libbean/testing/testing.c ...
+tests/libbean/testing/testing.c:83:31: error: There is an unknown macro here somewhere. Configuration is required. If BUILDDIR is a macro then please configure it. [unknownMacro]
+                              BUILDDIR "*/embedded*.plugin': "
+                              ^
+Checking tests/libbean/testing/testing.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+53/58 files checked 94% done
+Checking tests/plugins/builtin/builtin-plugin.c ...
+tests/plugins/builtin/builtin-plugin.c:44:33: error: There is an unknown macro here somewhere. Configuration is required. If G_ADD_PRIVATE_DYNAMIC is a macro then please configure it. [unknownMacro]
+                                G_ADD_PRIVATE_DYNAMIC (TestingBuiltinPlugin)
+                                ^
+Checking tests/plugins/builtin/builtin-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+54/58 files checked 95% done
+Checking tests/plugins/has-dep/has-dep-plugin.c ...
+tests/plugins/has-dep/has-dep-plugin.c:44:33: error: There is an unknown macro here somewhere. Configuration is required. If G_ADD_PRIVATE_DYNAMIC is a macro then please configure it. [unknownMacro]
+                                G_ADD_PRIVATE_DYNAMIC (TestingHasDepPlugin)
+                                ^
+Checking tests/plugins/has-dep/has-dep-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+55/58 files checked 96% done
+Checking tests/plugins/loadable/loadable-plugin.c ...
+tests/plugins/loadable/loadable-plugin.c:46:33: error: There is an unknown macro here somewhere. Configuration is required. If G_ADD_PRIVATE_DYNAMIC is a macro then please configure it. [unknownMacro]
+                                G_ADD_PRIVATE_DYNAMIC (TestingLoadablePlugin)
+                                ^
+Checking tests/plugins/loadable/loadable-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+56/58 files checked 97% done
+Checking tests/plugins/self-dep/self-dep-plugin.c ...
+tests/plugins/self-dep/self-dep-plugin.c:44:33: error: There is an unknown macro here somewhere. Configuration is required. If G_ADD_PRIVATE_DYNAMIC is a macro then please configure it. [unknownMacro]
+                                G_ADD_PRIVATE_DYNAMIC (TestingSelfDepPlugin)
+                                ^
+Checking tests/plugins/self-dep/self-dep-plugin.c: HAVE_CONFIG_H=HAVE_CONFIG_H...
+57/58 files checked 97% done
+Checking tests/testing-util/testing-util.c ...
+tests/testing-util/testing-util.c:78:46: error: syntax error [syntaxError]
+      g_assert_cmpuint (log_hooks->hooks->len, ==, 0);
+                                             ^
+58/58 files checked 100% done
+libbean/bean-dirs.c:75:1: style: The function 'bean_dirs_get_lib_dir' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+bean_dirs_get_lib_dir (void)
+^
+loaders/python/bean-python-internal.c:193:1: style: The function 'bean_python_internal_call' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+bean_python_internal_call (const gchar  *name,
+^
+nofile:0:0: information: Active checkers: There was critical errors (use --checkers-report=<filename> to see details) [checkersReport]
+
+scan-build: Using '/usr/lib/llvm-21/bin/clang' for static analysis
+The Meson build system
+Version: 1.11.1
+Source dir: /rootdir
+Build dir: /rootdir/_build
+Build type: native build
+Project name: libbean
+Project version: 2.1.0
+C compiler for the host machine: /usr/share/clang/scan-build-21/bin/../libexec/ccc-analyzer (gcc 15.3.0 "gcc (Debian 15.3.0-1) 15.3.0")
+C linker for the host machine: /usr/share/clang/scan-build-21/bin/../libexec/ccc-analyzer ld.bfd 2.46.50.20260608
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Found pkg-config: YES (/usr/bin/pkg-config) 2.5.1
+Run-time dependency glib-2.0 found: YES 2.88.1
+Run-time dependency gobject-2.0 found: YES 2.88.1
+Run-time dependency gmodule-2.0 found: YES 2.88.1
+Run-time dependency gio-2.0 found: YES 2.88.1
+Run-time dependency girepository-2.0 found: YES 2.88.1
+Run-time dependency ctk+-3.0 found: YES 3.26.0
+Run-time dependency gtk-doc found: YES 1.36.1
+Did not find CMake 'cmake'
+Found CMake: NO
+Run-time dependency gladeui-2.0 found: NO  (tried pkg-config and cmake)
+Run-time dependency python3-embed found: YES 3.13
+Run-time dependency python2 found: NO  (tried pkg-config and cmake)
+Run-time dependency pygobject-3.0 found: YES 3.56.2
+Run-time dependency lua51 found: NO  (tried pkg-config and cmake)
+Run-time dependency lua-5.1 found: NO  (tried pkg-config and cmake)
+Run-time dependency luajit found: NO  (tried pkg-config and cmake)
+Program lua5.1 found: NO
+Program lua51 found: NO
+Program luajit found: NO
+Program xmllint found: NO
+Compiler for C supports arguments -fvisibility=hidden: YES 
+Configuring config.h using configuration
+Configuring bean-version.h using configuration
+Dependency glib-2.0 for build machine found: YES 2.88.1 (cached)
+Program /usr/bin/glib-genmarshal found: YES (/usr/bin/glib-genmarshal)
+Run-time dependency gobject-introspection-1.0 found: YES 1.86.0
+Dependency gobject-introspection-1.0 for host machine found: YES 1.86.0 (cached)
+Program /usr/bin/x86_64-linux-gnu-g-ir-scanner found: YES (/usr/bin/x86_64-linux-gnu-g-ir-scanner)
+Dependency gobject-introspection-1.0 for host machine found: YES 1.86.0 (cached)
+Program /usr/bin/x86_64-linux-gnu-g-ir-compiler found: YES (/usr/bin/x86_64-linux-gnu-g-ir-compiler)
+Found pkg-config: YES (/usr/bin/pkg-config) 2.5.1
+Program msgfmt found: YES (/usr/bin/msgfmt)
+Program msginit found: YES (/usr/bin/msginit)
+Program msgmerge found: YES (/usr/bin/msgmerge)
+Program xgettext found: YES (/usr/bin/xgettext)
+Dependency gio-2.0 for build machine found: YES 2.88.1 (cached)
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Dependency gio-2.0 for build machine found: YES 2.88.1 (cached)
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Configuring extension-python.gschema.xml using configuration
+Configuring extension-python.plugin using configuration
+Configuring extension-python.py using configuration
+Configuring extension-python3.gschema.xml using configuration
+Configuring extension-python3.plugin using configuration
+Configuring extension-python3.py using configuration
+Message: 
+------
+libbean 2.1.0 (2.0)
+
+             Demos: true
+     Documentation: false
+     Glade catalog: false
+     CTK+ widgetry: true
+     Introspection: true
+   Lua 5.1 support: false
+  Python 2 support: false
+  Python 3 support: true
+
+Directories:
+            prefix: /usr/local
+        includedir: /usr/local/include
+            libdir: /usr/local/lib/x86_64-linux-gnu
+           datadir: /usr/local/share
+------
+Build targets in project: 128
+
+Found ninja-1.13.2 at /usr/bin/ninja
+scan-build: Analysis run complete.
+scan-build: Removing directory '/tmp/scan-build-2026-06-22-145527-9810-1' because it contains no reports.
+scan-build: No bugs found.
+scan-build: Using '/usr/lib/llvm-21/bin/clang' for static analysis
+ninja: Entering directory `_build'
+[0/194] Generating glib marshaller header libbean/bean-marshal_h[0/194] Generating tests/libbean/plugins/embedded/embedded-resources_c with a custom command[0/194] Generating tests/libbean/plugins/embedded/embedded-resources_h with a custom command[0/194] Generating loaders/python3/bean-python2-resources_c with a custom command[0/194] Generating loaders/python3/bean-python2-resources_h with a custom command[0/194] Building translation po/an/LC_MESSAGES/libbean-2.0-an.mo[1/194] Generating tests/libbean/plugins/embedded/embedded-resources_c with a custom command[1/194] Building translation po/ar/LC_MESSAGES/libbean-2.0-ar.mo[2/194] Generating tests/libbean/plugins/embedded/embedded-resources_h with a custom command[2/194] Building translation po/as/LC_MESSAGES/libbean-2.0-as.mo[3/194] Building translation po/an/LC_MESSAGES/libbean-2.0-an.mo[3/194] Building translation po/ast/LC_MESSAGES/libbean-2.0-ast.mo[4/194] Generating loaders/python3/bean-python2-resources_c with a custom command[4/194] Building translation po/be/LC_MESSAGES/libbean-2.0-be.mo[5/194] Generating loaders/python3/bean-python2-resources_h with a custom command[5/194] Building translation po/bg/LC_MESSAGES/libbean-2.0-bg.mo[6/194] Building translation po/ast/LC_MESSAGES/libbean-2.0-ast.mo[6/194] Building translation po/bn_IN/LC_MESSAGES/libbean-2.0-bn_IN.mo[7/194] Building translation po/be/LC_MESSAGES/libbean-2.0-be.mo[7/194] Building translation po/bs/LC_MESSAGES/libbean-2.0-bs.mo[8/194] Building translation po/bg/LC_MESSAGES/libbean-2.0-bg.mo[8/194] Building translation po/ca/LC_MESSAGES/libbean-2.0-ca.mo[9/194] Building translation po/as/LC_MESSAGES/libbean-2.0-as.mo[9/194] Building translation po/ca@valencia/LC_MESSAGES/libbean-2.0-ca@valencia.mo[10/194] Building translation po/ar/LC_MESSAGES/libbean-2.0-ar.mo[10/194] Building translation po/cs/LC_MESSAGES/libbean-2.0-cs.mo[11/194] Building translation po/bs/LC_MESSAGES/libbean-2.0-bs.mo[11/194] Building translation po/da/LC_MESSAGES/libbean-2.0-da.mo[12/194] Building translation po/bn_IN/LC_MESSAGES/libbean-2.0-bn_IN.mo[12/194] Building translation po/de/LC_MESSAGES/libbean-2.0-de.mo[13/194] Building translation po/ca/LC_MESSAGES/libbean-2.0-ca.mo[13/194] Building translation po/el/LC_MESSAGES/libbean-2.0-el.mo[14/194] Building translation po/ca@valencia/LC_MESSAGES/libbean-2.0-ca@valencia.mo[14/194] Building translation po/en_GB/LC_MESSAGES/libbean-2.0-en_GB.mo[15/194] Building translation po/da/LC_MESSAGES/libbean-2.0-da.mo[15/194] Building translation po/eo/LC_MESSAGES/libbean-2.0-eo.mo[16/194] Building translation po/cs/LC_MESSAGES/libbean-2.0-cs.mo[16/194] Building translation po/es/LC_MESSAGES/libbean-2.0-es.mo[17/194] Building translation po/de/LC_MESSAGES/libbean-2.0-de.mo[17/194] Building translation po/et/LC_MESSAGES/libbean-2.0-et.mo[18/194] Building translation po/el/LC_MESSAGES/libbean-2.0-el.mo[18/194] Building translation po/eu/LC_MESSAGES/libbean-2.0-eu.mo[19/194] Building translation po/en_GB/LC_MESSAGES/libbean-2.0-en_GB.mo[19/194] Building translation po/fa/LC_MESSAGES/libbean-2.0-fa.mo[20/194] Building translation po/eo/LC_MESSAGES/libbean-2.0-eo.mo[20/194] Building translation po/fi/LC_MESSAGES/libbean-2.0-fi.mo[21/194] Building translation po/et/LC_MESSAGES/libbean-2.0-et.mo[21/194] Building translation po/fr/LC_MESSAGES/libbean-2.0-fr.mo[22/194] Building translation po/es/LC_MESSAGES/libbean-2.0-es.mo[22/194] Building translation po/fur/LC_MESSAGES/libbean-2.0-fur.mo[23/194] Building translation po/eu/LC_MESSAGES/libbean-2.0-eu.mo[23/194] Building translation po/gl/LC_MESSAGES/libbean-2.0-gl.mo[24/194] Building translation po/fa/LC_MESSAGES/libbean-2.0-fa.mo[24/194] Building translation po/gu/LC_MESSAGES/libbean-2.0-gu.mo[25/194] Building translation po/fr/LC_MESSAGES/libbean-2.0-fr.mo[25/194] Building translation po/he/LC_MESSAGES/libbean-2.0-he.mo[26/194] Building translation po/gl/LC_MESSAGES/libbean-2.0-gl.mo[26/194] Building translation po/hr/LC_MESSAGES/libbean-2.0-hr.mo[27/194] Building translation po/fur/LC_MESSAGES/libbean-2.0-fur.mo[27/194] Building translation po/hu/LC_MESSAGES/libbean-2.0-hu.mo[28/194] Building translation po/fi/LC_MESSAGES/libbean-2.0-fi.mo[28/194] Building translation po/hi/LC_MESSAGES/libbean-2.0-hi.mo[29/194] Building translation po/he/LC_MESSAGES/libbean-2.0-he.mo[29/194] Building translation po/id/LC_MESSAGES/libbean-2.0-id.mo[30/194] Building translation po/gu/LC_MESSAGES/libbean-2.0-gu.mo[30/194] Building translation po/is/LC_MESSAGES/libbean-2.0-is.mo[31/194] Building translation po/hr/LC_MESSAGES/libbean-2.0-hr.mo[31/194] Building translation po/it/LC_MESSAGES/libbean-2.0-it.mo[32/194] Building translation po/hu/LC_MESSAGES/libbean-2.0-hu.mo[32/194] Building translation po/ja/LC_MESSAGES/libbean-2.0-ja.mo[33/194] Building translation po/hi/LC_MESSAGES/libbean-2.0-hi.mo[33/194] Building translation po/kk/LC_MESSAGES/libbean-2.0-kk.mo[34/194] Building translation po/id/LC_MESSAGES/libbean-2.0-id.mo[34/194] Building translation po/kn/LC_MESSAGES/libbean-2.0-kn.mo[35/194] Building translation po/it/LC_MESSAGES/libbean-2.0-it.mo[35/194] Building translation po/ko/LC_MESSAGES/libbean-2.0-ko.mo[36/194] Building translation po/ja/LC_MESSAGES/libbean-2.0-ja.mo[36/194] Building translation po/lt/LC_MESSAGES/libbean-2.0-lt.mo[37/194] Generating glib marshaller header libbean/bean-marshal_h[37/194] Generating glib marshaller source libbean/bean-marshal_c[38/194] Building translation po/is/LC_MESSAGES/libbean-2.0-is.mo[38/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-activatable.c.o[39/194] Building translation po/kk/LC_MESSAGES/libbean-2.0-kk.mo[39/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-debug.c.o[40/194] Building translation po/ko/LC_MESSAGES/libbean-2.0-ko.mo[40/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-dirs.c.o[41/194] Building translation po/lt/LC_MESSAGES/libbean-2.0-lt.mo[41/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-engine.c.o[42/194] Building translation po/kn/LC_MESSAGES/libbean-2.0-kn.mo[42/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension.c.o[43/194] Generating glib marshaller source libbean/bean-marshal_c[43/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/meson-generated_.._bean-marshal.c.o[44/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-dirs.c.o[44/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension-base.c.o[45/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-debug.c.o[45/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension-set.c.o[46/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/meson-generated_.._bean-marshal.c.o
+libbean/bean-marshal.c:32:9: warning: macro 'g_marshal_value_peek_char' is not used [-Wunused-macros]
+   32 | #define g_marshal_value_peek_char(v)     (v)->data[0].v_int
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:44:9: warning: macro 'g_marshal_value_peek_string' is not used [-Wunused-macros]
+   44 | #define g_marshal_value_peek_string(v)   (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:47:9: warning: macro 'g_marshal_value_peek_pointer' is not used [-Wunused-macros]
+   47 | #define g_marshal_value_peek_pointer(v)  (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:49:9: warning: macro 'g_marshal_value_peek_variant' is not used [-Wunused-macros]
+   49 | #define g_marshal_value_peek_variant(v)  (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:39:9: warning: macro 'g_marshal_value_peek_uint64' is not used [-Wunused-macros]
+   39 | #define g_marshal_value_peek_uint64(v)   (v)->data[0].v_uint64
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:37:9: warning: macro 'g_marshal_value_peek_ulong' is not used [-Wunused-macros]
+   37 | #define g_marshal_value_peek_ulong(v)    (v)->data[0].v_ulong
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:38:9: warning: macro 'g_marshal_value_peek_int64' is not used [-Wunused-macros]
+   38 | #define g_marshal_value_peek_int64(v)    (v)->data[0].v_int64
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:35:9: warning: macro 'g_marshal_value_peek_uint' is not used [-Wunused-macros]
+   35 | #define g_marshal_value_peek_uint(v)     (v)->data[0].v_uint
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:31:9: warning: macro 'g_marshal_value_peek_boolean' is not used [-Wunused-macros]
+   31 | #define g_marshal_value_peek_boolean(v)  (v)->data[0].v_int
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:34:9: warning: macro 'g_marshal_value_peek_int' is not used [-Wunused-macros]
+   34 | #define g_marshal_value_peek_int(v)      (v)->data[0].v_int
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:33:9: warning: macro 'g_marshal_value_peek_uchar' is not used [-Wunused-macros]
+   33 | #define g_marshal_value_peek_uchar(v)    (v)->data[0].v_uint
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:43:9: warning: macro 'g_marshal_value_peek_double' is not used [-Wunused-macros]
+   43 | #define g_marshal_value_peek_double(v)   (v)->data[0].v_double
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:36:9: warning: macro 'g_marshal_value_peek_long' is not used [-Wunused-macros]
+   36 | #define g_marshal_value_peek_long(v)     (v)->data[0].v_long
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:40:9: warning: macro 'g_marshal_value_peek_enum' is not used [-Wunused-macros]
+   40 | #define g_marshal_value_peek_enum(v)     (v)->data[0].v_long
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:42:9: warning: macro 'g_marshal_value_peek_float' is not used [-Wunused-macros]
+   42 | #define g_marshal_value_peek_float(v)    (v)->data[0].v_float
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:45:9: warning: macro 'g_marshal_value_peek_param' is not used [-Wunused-macros]
+   45 | #define g_marshal_value_peek_param(v)    (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+libbean/bean-marshal.c:41:9: warning: macro 'g_marshal_value_peek_flags' is not used [-Wunused-macros]
+   41 | #define g_marshal_value_peek_flags(v)    (v)->data[0].v_ulong
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[46/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-i18n.c.o[47/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension.c.o
+In file included from /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:9,
+                 from /usr/include/glib-2.0/glib/gtypes.h:34,
+                 from /usr/include/glib-2.0/glib/galloca.h:34,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/gobject/gbinding.h:30,
+                 from /usr/include/glib-2.0/glib-object.h:24,
+                 from ../libbean/bean-extension.h:25,
+                 from ../libbean/bean-extension.c:24:
+../libbean/bean-extension.c: In function 'bean_extension_get_extension_type':
+/usr/include/glib-2.0/glib/gmacros.h:997:34: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  997 | #define GPOINTER_TO_SIZE(p)     ((gsize) (p))
+      |                                  ^
+../libbean/bean-extension.c:127:10: note: in expansion of macro 'GPOINTER_TO_SIZE'
+  127 |   return GPOINTER_TO_SIZE (g_object_get_qdata (G_OBJECT (exten),
+      |          ^~~~~~~~~~~~~~~~
+[47/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-introspection.c.o[48/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-activatable.c.o[48/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-object-module.c.o[49/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-i18n.c.o[49/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-info.c.o[50/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension-base.c.o[50/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-loader.c.o[51/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-introspection.c.o[51/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-loader-c.c.o[52/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-extension-set.c.o[52/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-utils.c.o[53/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-object-module.c.o
+../libbean/bean-object-module.c: In function 'bean_object_module_load':
+../libbean/bean-object-module.c:112:7: warning: 'g_module_build_path' is deprecated [-Wdeprecated-declarations]
+  112 |       path = g_module_build_path (priv->path, priv->module_name);
+      |       ^~~~
+In file included from ../libbean/bean-object-module.h:29,
+                 from ../libbean/bean-object-module.c:30:
+/usr/include/glib-2.0/gmodule.h:142:23: note: declared here
+  142 | gchar*                g_module_build_path    (const gchar  *directory,
+      |                       ^~~~~~~~~~~~~~~~~~~
+../libbean/bean-object-module.c:183:11: warning: Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption [alpha.core.CastToStruct]
+  183 |   impls = (ExtensionImplementation *) priv->implementations->data;
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../libbean/bean-object-module.c:467:11: warning: Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption [alpha.core.CastToStruct]
+  467 |   impls = (ExtensionImplementation *) priv->implementations->data;
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../libbean/bean-object-module.c:501:11: warning: Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption [alpha.core.CastToStruct]
+  501 |   impls = (ExtensionImplementation *) priv->implementations->data;
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+[53/194] Compiling C object tests/testing-util/libtesting-util-2.0.so.p/testing-util.c.o[54/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-loader.c.o[54/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-abstract.c.o[55/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-loader-c.c.o[55/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-base.c.o[56/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-abstract.c.o[56/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-callable.c.o[57/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-base.c.o[57/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-has-prerequisite.c.o[58/194] Compiling C object tests/testing-util/libtesting-util-2.0.so.p/testing-util.c.o[58/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-prerequisite.c.o[59/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-callable.c.o[59/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-unimplemented.c.o[60/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-has-prerequisite.c.o[60/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-configurable.c.o[61/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-prerequisite.c.o[61/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-disable-plugins-dialog.c.o[62/194] Compiling C object tests/libbean/introspection/libintrospection-2.0.so.p/introspection-unimplemented.c.o[62/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager.c.o[63/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-disable-plugins-dialog.c.o[63/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager-store.c.o[64/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-configurable.c.o[64/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager-view.c.o[65/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager.c.o[65/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-configurable.c.o[66/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-plugin-info.c.o[66/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-disable-plugins-dialog.c.o[67/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-utils.c.o
+../libbean/bean-utils.c: In function 'bean_utils_get_loader_id':
+../libbean/bean-utils.c:332:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'gsize' {aka 'long unsigned int'} [-Wsign-compare]
+  332 |   for (i = 0; i < len; ++i)
+      |                 ^
+../libbean/bean-utils.c:337:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'long unsigned int' [-Wsign-compare]
+  337 |   for (i = 0; i < G_N_ELEMENTS (all_plugin_loaders); ++i)
+      |                 ^
+../libbean/bean-utils.c:283:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  283 |           n_allocated_params += 16;
+      |           ^~~~~~~~~~~~~~~~~~
+1 warning generated.
+[67/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager.c.o[68/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-configurable.c.o[68/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager-store.c.o[69/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-disable-plugins-dialog.c.o[69/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager-view.c.o[70/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager.c.o[70/194] Compiling C object tests/libbean/testing/liblibbean-testing-2.0.so.p/testing.c.o[71/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager-store.c.o[71/194] Compiling C object tests/libbean/testing/liblibbean-testing-2.0.so.p/testing-extension.c.o[72/194] Compiling C object libbean-ctk/libean-ctk-2.0.a.p/bean-ctk-plugin-manager-view.c.o
+../libbean-ctk/bean-ctk-plugin-manager-view.c: In function 'bean_ctk_plugin_manager_view_init':
+../libbean-ctk/bean-ctk-plugin-manager-view.c:603:44: warning: cast between incompatible function types from 'void (*)(CtkTreeViewColumn *, CtkCellRenderer *, CtkTreeModel *, CtkTreeIter *)' {aka 'void (*)(struct _CtkTreeViewColumn *, struct _CtkCellRenderer *, struct _CtkTreeModel *, struct _CtkTreeIter *)'} to 'void (*)(CtkTreeViewColumn *, CtkCellRenderer *, CtkTreeModel *, CtkTreeIter *, void *)' {aka 'void (*)(struct _CtkTreeViewColumn *, struct _CtkCellRenderer *, struct _CtkTreeModel *, struct _CtkTreeIter *, void *)'} [-Wcast-function-type]
+  603 |                                            (CtkTreeCellDataFunc) plugin_icon_data_func,
+      |                                            ^
+[72/194] Linking static target libbean-ctk/libean-ctk-2.0.a[73/194] Linking static target libbean-ctk/libean-ctk-2.0.a[73/194] Compiling C object tests/libbean/plugins/embedded/libembedded.so.p/meson-generated_.._embedded-resources.c.o[74/194] Compiling C object tests/libbean/testing/liblibbean-testing-2.0.so.p/testing.c.o[74/194] Compiling C object tests/libbean/plugins/embedded/libembedded.so.p/embedded-plugin.c.o[75/194] Compiling C object tests/libbean/plugins/embedded/libembedded.so.p/meson-generated_.._embedded-resources.c.o[75/194] Compiling C object tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so.p/testing.c.o[76/194] Compiling C object tests/libbean/plugins/embedded/libembedded.so.p/embedded-plugin.c.o[76/194] Compiling C object loaders/python3/libpython3loader.so.p/meson-generated_.._bean-python2-resources.c.o[77/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager-store.c.o[77/194] Compiling C object loaders/python3/libpython3loader.so.p/.._python_bean-plugin-loader-python.c.o[78/194] Compiling C object tests/libbean/testing/liblibbean-testing-2.0.so.p/testing-extension.c.o
+../tests/libbean/testing/testing-extension.c: In function 'test_extension_multiple_threads_global_loaders':
+../tests/libbean/testing/testing-extension.c:465:28: warning: cast between incompatible function types from 'void (*)(guint,  gboolean)' {aka 'void (*)(unsigned int,  int)'} to 'void (*)(void *, void *)' [-Wcast-function-type]
+  465 |   run_in_multiple_threads ((GFunc) multiple_threads_loaders_in_thread,
+      |                            ^
+../tests/libbean/testing/testing-extension.c: In function 'test_extension_multiple_threads_nonglobal_loaders':
+../tests/libbean/testing/testing-extension.c:473:28: warning: cast between incompatible function types from 'void (*)(guint,  gboolean)' {aka 'void (*)(unsigned int,  int)'} to 'void (*)(void *, void *)' [-Wcast-function-type]
+  473 |   run_in_multiple_threads ((GFunc) multiple_threads_loaders_in_thread,
+      |                            ^
+../tests/libbean/testing/testing-extension.c: In function 'test_extension_multiple_threads_callbacks':
+../tests/libbean/testing/testing-extension.c:498:40: warning: cast between incompatible function types from 'void (*)(guint,  BeanActivatable *)' {aka 'void (*)(unsigned int,  struct _BeanActivatable *)'} to 'void (*)(void *, void *)' [-Wcast-function-type]
+  498 |   n_threads = run_in_multiple_threads ((GFunc) multiple_threads_callbacks_in_thread,
+      |                                        ^
+../tests/libbean/testing/testing-extension.c: In function 'testing_extension_callable':
+../tests/libbean/testing/testing-extension.c:715:42: warning: declaration of 'loader' shadows a global declaration [-Wshadow]
+  715 | testing_extension_callable (const gchar *loader)
+      |                             ~~~~~~~~~~~~~^~~~~~
+../tests/libbean/testing/testing-extension.c:49:15: note: shadowed declaration is here
+   49 | static gchar *loader = NULL;
+      |               ^~~~~~
+[78/194] Compiling C object loaders/python3/libpython3loader.so.p/.._python_bean-python-internal.c.o[79/194] Compiling C object libbean-ctk/libean-ctk-2.0.so.0.100.0.p/bean-ctk-plugin-manager-view.c.o
+../libbean-ctk/bean-ctk-plugin-manager-view.c: In function 'bean_ctk_plugin_manager_view_init':
+../libbean-ctk/bean-ctk-plugin-manager-view.c:603:44: warning: cast between incompatible function types from 'void (*)(CtkTreeViewColumn *, CtkCellRenderer *, CtkTreeModel *, CtkTreeIter *)' {aka 'void (*)(struct _CtkTreeViewColumn *, struct _CtkCellRenderer *, struct _CtkTreeModel *, struct _CtkTreeIter *)'} to 'void (*)(CtkTreeViewColumn *, CtkCellRenderer *, CtkTreeModel *, CtkTreeIter *, void *)' {aka 'void (*)(struct _CtkTreeViewColumn *, struct _CtkCellRenderer *, struct _CtkTreeModel *, struct _CtkTreeIter *, void *)'} [-Wcast-function-type]
+  603 |                                            (CtkTreeCellDataFunc) plugin_icon_data_func,
+      |                                            ^
+[79/194] Compiling C object bean-demo/bean-demo.p/bean-demo-window.c.o[80/194] Compiling C object loaders/python3/libpython3loader.so.p/meson-generated_.._bean-python2-resources.c.o
+loaders/python3/bean-python2-resources.c:478:9: warning: macro '__G_CONSTRUCTOR_H__' is not used [-Wunused-macros]
+  478 | #define __G_CONSTRUCTOR_H__
+      |         ^~~~~~~~~~~~~~~~~~~
+[80/194] Compiling C object bean-demo/bean-demo.p/bean-demo.c.o[81/194] Compiling C object tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so.p/testing.c.o[81/194] Compiling C object bean-demo/plugins/helloworld/libhelloworld.so.p/beandemo-hello-world-configurable.c.o[82/194] Compiling C object loaders/python3/libpython3loader.so.p/.._python_bean-plugin-loader-python.c.o[82/194] Compiling C object bean-demo/plugins/helloworld/libhelloworld.so.p/beandemo-hello-world-plugin.c.o[83/194] Compiling C object loaders/python3/libpython3loader.so.p/.._python_bean-python-internal.c.o[83/194] Compiling C object bean-demo/plugins/secondtime/libsecondtime.so.p/second-time.c.o[84/194] Compiling C object bean-demo/bean-demo.p/bean-demo-window.c.o[84/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c.so.p/extension-c-abstract.c.o[85/194] Compiling C object bean-demo/bean-demo.p/bean-demo.c.o[85/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c.so.p/extension-c-plugin.c.o[86/194] Compiling C object bean-demo/plugins/helloworld/libhelloworld.so.p/beandemo-hello-world-configurable.c.o[86/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c-missing-symbol.so.p/extension-c-missing-symbol-plugin.c.o[87/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c-missing-symbol.so.p/extension-c-missing-symbol-plugin.c.o[87/194] Compiling C object tests/libbean/engine.p/engine.c.o[88/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c.so.p/extension-c-abstract.c.o[88/194] Compiling C object tests/libbean/extension-c.p/extension-c.c.o[89/194] Compiling C object bean-demo/plugins/secondtime/libsecondtime.so.p/second-time.c.o[89/194] Compiling C object tests/libbean/extension-set.p/extension-set.c.o[90/194] Compiling C object bean-demo/plugins/helloworld/libhelloworld.so.p/beandemo-hello-world-plugin.c.o[90/194] Compiling C object tests/libbean/plugin-info.p/plugin-info.c.o[91/194] Compiling C object tests/libbean/plugins/extension-c/libextension-c.so.p/extension-c-plugin.c.o[91/194] Compiling C object tests/libbean/extension-py.p/extension-py.c.o[92/194] Compiling C object libbean/libean-2.0.so.0.100.0.p/bean-engine.c.o
+../libbean/bean-engine.c: In function 'bean_engine_garbage_collect':
+../libbean/bean-engine.c:525:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'long unsigned int' [-Wsign-compare]
+  525 |   for (i = 0; i < G_N_ELEMENTS (loaders); ++i)
+      |                 ^
+../libbean/bean-engine.c: In function 'bean_engine_dispose':
+../libbean/bean-engine.c:607:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'long unsigned int' [-Wsign-compare]
+  607 |   for (i = 0; i < G_N_ELEMENTS (priv->loaders); ++i)
+      |                 ^
+../libbean/bean-engine.c: In function '_bean_engine_shutdown':
+../libbean/bean-engine.c:1731:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'long unsigned int' [-Wsign-compare]
+ 1731 |   for (i = 0; i < G_N_ELEMENTS (loaders); ++i)
+      |                 ^
+[92/194] Linking target libbean/libean-2.0.so.0.100.0[93/194] Linking target libbean/libean-2.0.so.0.100.0[93/194] Generating symbol file libbean/libean-2.0.so.0.100.0.p/libean-2.0.so.0.100.0.symbols[94/194] Generating symbol file libbean/libean-2.0.so.0.100.0.p/libean-2.0.so.0.100.0.symbols[94/194] Linking target tests/testing-util/libtesting-util-2.0.so[95/194] Compiling C object tests/libbean/extension-c.p/extension-c.c.o
+In file included from ../tests/libbean/extension-c.c:29:
+../tests/libbean/extension-c.c: In function 'main':
+../tests/libbean/testing/testing-extension.h:48:26: warning: cast between incompatible function types from 'void (*)(BeanEngine *, BeanPluginInfo *)' {aka 'void (*)(struct _BeanEngine *, struct _BeanPluginInfo *)'} to 'void (*)(const void *)' [-Wcast-function-type]
+   48 |                          (GTestDataFunc) test_extension_##loader##_##func)
+      |                          ^
+../tests/libbean/extension-c.c:196:3: note: in expansion of macro 'EXTENSION_TEST'
+  196 |   EXTENSION_TEST (c, "instance-refcount", instance_refcount);
+      |   ^~~~~~~~~~~~~~
+../tests/libbean/testing/testing-extension.h:48:26: warning: cast between incompatible function types from 'void (*)(BeanEngine *, BeanPluginInfo *)' {aka 'void (*)(struct _BeanEngine *, struct _BeanPluginInfo *)'} to 'void (*)(const void *)' [-Wcast-function-type]
+   48 |                          (GTestDataFunc) test_extension_##loader##_##func)
+      |                          ^
+../tests/libbean/extension-c.c:198:3: note: in expansion of macro 'EXTENSION_TEST'
+  198 |   EXTENSION_TEST (c, "local-linkage", local_linkage);
+      |   ^~~~~~~~~~~~~~
+[95/194] Linking target tests/libbean/introspection/libintrospection-2.0.so[96/194] Compiling C object tests/libbean/engine.p/engine.c.o
+../tests/libbean/engine.c: In function 'test_engine_get_default':
+../tests/libbean/engine.c:117:45: warning: cast between incompatible function types from 'BeanEngine * (*)(void)' {aka 'struct _BeanEngine * (*)(void)'} to 'void (*)(GTypeInstance *, void *)' {aka 'void (*)(struct _GTypeInstance *, void *)'} [-Wcast-function-type]
+  117 |                                             (GInstanceInitFunc) bean_engine_get_default,
+      |                                             ^
+[96/194] Generating libbean/Bean-2.0.gir with a custom command (wrapped by meson to set env)[97/194] Linking target tests/libbean/introspection/libintrospection-2.0.so[97/194] Generating symbol file tests/libbean/introspection/libintrospection-2.0.so.p/libintrospection-2.0.so.symbols[98/194] Linking target tests/testing-util/libtesting-util-2.0.so[98/194] Generating symbol file tests/testing-util/libtesting-util-2.0.so.p/libtesting-util-2.0.so.symbols[99/194] Generating symbol file tests/libbean/introspection/libintrospection-2.0.so.p/libintrospection-2.0.so.symbols[99/194] Linking target libbean-ctk/libean-ctk-2.0.so.0.100.0[100/194] Generating symbol file tests/testing-util/libtesting-util-2.0.so.p/libtesting-util-2.0.so.symbols[100/194] Linking target tests/libbean/testing/liblibbean-testing-2.0.so[101/194] Compiling C object tests/libbean/plugin-info.p/plugin-info.c.o[101/194] Linking target tests/libbean/plugins/embedded/libembedded.so[102/194] Linking target libbean-ctk/libean-ctk-2.0.so.0.100.0[102/194] Linking target tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so[103/194] Compiling C object tests/libbean/extension-set.p/extension-set.c.o
+../tests/libbean/extension-set.c: In function 'testing_extension_set_new':
+../tests/libbean/extension-set.c:99:17: warning: comparison of integer expressions of different signedness: 'gint' {aka 'int'} and 'long unsigned int' [-Wsign-compare]
+   99 |   for (i = 0; i < G_N_ELEMENTS (loadable_plugins); ++i)
+      |                 ^
+[103/194] Generating symbol file libbean-ctk/libean-ctk-2.0.so.0.100.0.p/libean-ctk-2.0.so.0.100.0.symbols[104/194] Linking target tests/libbean/testing/liblibbean-testing-2.0.so[104/194] Generating symbol file tests/libbean/testing/liblibbean-testing-2.0.so.p/liblibbean-testing-2.0.so.symbols[105/194] Linking target tests/libbean/plugins/embedded/libembedded.so[105/194] Generating symbol file tests/libbean/plugins/embedded/libembedded.so.p/libembedded.so.symbols[106/194] Generating symbol file libbean-ctk/libean-ctk-2.0.so.0.100.0.p/libean-ctk-2.0.so.0.100.0.symbols[106/194] Compiling C object tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable.so.p/builtin-configurable.c.o[107/194] Generating symbol file tests/libbean/plugins/embedded/libembedded.so.p/libembedded.so.symbols[107/194] Compiling C object tests/libbean-ctk/plugins/configurable/libconfigurable.so.p/configurable-plugin.c.o[108/194] Linking target tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so[108/194] Generating symbol file tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so.p/liblibbean-ctk-testing-2.0.so.symbols[109/194] Generating symbol file tests/libbean/testing/liblibbean-testing-2.0.so.p/liblibbean-testing-2.0.so.symbols[109/194] Compiling C object tests/libbean-ctk/plugin-manager.p/plugin-manager.c.o[110/194] Generating symbol file tests/libbean-ctk/testing/liblibbean-ctk-testing-2.0.so.p/liblibbean-ctk-testing-2.0.so.symbols[110/194] Compiling C object tests/libbean-ctk/plugin-manager-store.p/plugin-manager-store.c.o[111/194] Compiling C object tests/libbean/extension-py.p/extension-py.c.o
+../tests/libbean/extension-py.c:41:9: warning: macro 'ALT_PY_LOADER' is not used [-Wunused-macros]
+   41 | #define ALT_PY_LOADER   python
+      |         ^~~~~~~~~~~~~
+../tests/libbean/extension-py.c:45:9: warning: macro 'ALT_PY_LOADER_STR' is not used [-Wunused-macros]
+   45 | #define ALT_PY_LOADER_STR   G_STRINGIFY (ALT_PY_LOADER)
+      |         ^~~~~~~~~~~~~~~~~
+[111/194] Compiling C object tests/libbean-ctk/plugin-manager-view.p/plugin-manager-view.c.o[112/194] Compiling C object tests/libbean-ctk/plugins/configurable/libconfigurable.so.p/configurable-plugin.c.o[112/194] Compiling C object tests/plugins/builtin/libbuiltin.so.p/builtin-plugin.c.o[113/194] Compiling C object tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable.so.p/builtin-configurable.c.o[113/194] Compiling C object tests/plugins/has-dep/libhas-dep.so.p/has-dep-plugin.c.o[114/194] Compiling C object tests/libbean-ctk/plugin-manager-view.p/plugin-manager-view.c.o[114/194] Compiling C object tests/plugins/loadable/libloadable.so.p/loadable-plugin.c.o[115/194] Compiling C object tests/libbean-ctk/plugin-manager-store.p/plugin-manager-store.c.o[115/194] Compiling C object tests/plugins/self-dep/libself-dep.so.p/self-dep-plugin.c.o[116/194] Compiling C object tests/plugins/builtin/libbuiltin.so.p/builtin-plugin.c.o[116/194] Building translation po/lv/LC_MESSAGES/libbean-2.0-lv.mo[117/194] Building translation po/lv/LC_MESSAGES/libbean-2.0-lv.mo[117/194] Building translation po/ml/LC_MESSAGES/libbean-2.0-ml.mo[118/194] Building translation po/ml/LC_MESSAGES/libbean-2.0-ml.mo[118/194] Building translation po/mr/LC_MESSAGES/libbean-2.0-mr.mo[119/194] Building translation po/mr/LC_MESSAGES/libbean-2.0-mr.mo[119/194] Building translation po/ms/LC_MESSAGES/libbean-2.0-ms.mo[120/194] Building translation po/ms/LC_MESSAGES/libbean-2.0-ms.mo[120/194] Building translation po/nb/LC_MESSAGES/libbean-2.0-nb.mo[121/194] Building translation po/nb/LC_MESSAGES/libbean-2.0-nb.mo[121/194] Building translation po/nds/LC_MESSAGES/libbean-2.0-nds.mo[122/194] Building translation po/nds/LC_MESSAGES/libbean-2.0-nds.mo[122/194] Building translation po/ne/LC_MESSAGES/libbean-2.0-ne.mo[123/194] Building translation po/ne/LC_MESSAGES/libbean-2.0-ne.mo[123/194] Building translation po/nl/LC_MESSAGES/libbean-2.0-nl.mo[124/194] Building translation po/nl/LC_MESSAGES/libbean-2.0-nl.mo[124/194] Building translation po/oc/LC_MESSAGES/libbean-2.0-oc.mo[125/194] Building translation po/oc/LC_MESSAGES/libbean-2.0-oc.mo[125/194] Building translation po/or/LC_MESSAGES/libbean-2.0-or.mo[126/194] Building translation po/or/LC_MESSAGES/libbean-2.0-or.mo[126/194] Building translation po/pa/LC_MESSAGES/libbean-2.0-pa.mo[127/194] Building translation po/pa/LC_MESSAGES/libbean-2.0-pa.mo[127/194] Building translation po/pl/LC_MESSAGES/libbean-2.0-pl.mo[128/194] Building translation po/pl/LC_MESSAGES/libbean-2.0-pl.mo[128/194] Building translation po/pt/LC_MESSAGES/libbean-2.0-pt.mo[129/194] Building translation po/pt/LC_MESSAGES/libbean-2.0-pt.mo[129/194] Building translation po/pt_BR/LC_MESSAGES/libbean-2.0-pt_BR.mo[130/194] Compiling C object tests/plugins/has-dep/libhas-dep.so.p/has-dep-plugin.c.o[130/194] Building translation po/ro/LC_MESSAGES/libbean-2.0-ro.mo[131/194] Building translation po/pt_BR/LC_MESSAGES/libbean-2.0-pt_BR.mo[131/194] Building translation po/ru/LC_MESSAGES/libbean-2.0-ru.mo[132/194] Building translation po/ro/LC_MESSAGES/libbean-2.0-ro.mo[132/194] Building translation po/sl/LC_MESSAGES/libbean-2.0-sl.mo[133/194] Building translation po/ru/LC_MESSAGES/libbean-2.0-ru.mo[133/194] Building translation po/sk/LC_MESSAGES/libbean-2.0-sk.mo[134/194] Building translation po/sl/LC_MESSAGES/libbean-2.0-sl.mo[134/194] Building translation po/sr/LC_MESSAGES/libbean-2.0-sr.mo[135/194] Building translation po/sk/LC_MESSAGES/libbean-2.0-sk.mo[135/194] Building translation po/sr@latin/LC_MESSAGES/libbean-2.0-sr@latin.mo[136/194] Building translation po/sr/LC_MESSAGES/libbean-2.0-sr.mo[136/194] Building translation po/sv/LC_MESSAGES/libbean-2.0-sv.mo[137/194] Building translation po/sv/LC_MESSAGES/libbean-2.0-sv.mo[137/194] Building translation po/ta/LC_MESSAGES/libbean-2.0-ta.mo[138/194] Building translation po/sr@latin/LC_MESSAGES/libbean-2.0-sr@latin.mo[138/194] Building translation po/te/LC_MESSAGES/libbean-2.0-te.mo[139/194] Building translation po/ta/LC_MESSAGES/libbean-2.0-ta.mo[139/194] Building translation po/tg/LC_MESSAGES/libbean-2.0-tg.mo[140/194] Building translation po/te/LC_MESSAGES/libbean-2.0-te.mo[140/194] Building translation po/th/LC_MESSAGES/libbean-2.0-th.mo[141/194] Building translation po/tg/LC_MESSAGES/libbean-2.0-tg.mo[141/194] Building translation po/tr/LC_MESSAGES/libbean-2.0-tr.mo[142/194] Building translation po/th/LC_MESSAGES/libbean-2.0-th.mo[142/194] Building translation po/ug/LC_MESSAGES/libbean-2.0-ug.mo[143/194] Building translation po/tr/LC_MESSAGES/libbean-2.0-tr.mo[143/194] Building translation po/uk/LC_MESSAGES/libbean-2.0-uk.mo[144/194] Building translation po/ug/LC_MESSAGES/libbean-2.0-ug.mo[144/194] Building translation po/vi/LC_MESSAGES/libbean-2.0-vi.mo[145/194] Building translation po/vi/LC_MESSAGES/libbean-2.0-vi.mo[145/194] Building translation po/zh_CN/LC_MESSAGES/libbean-2.0-zh_CN.mo[146/194] Building translation po/zh_CN/LC_MESSAGES/libbean-2.0-zh_CN.mo[146/194] Building translation po/zh_HK/LC_MESSAGES/libbean-2.0-zh_HK.mo[147/194] Building translation po/uk/LC_MESSAGES/libbean-2.0-uk.mo[147/194] Building translation po/zh_TW/LC_MESSAGES/libbean-2.0-zh_TW.mo[148/194] Building translation po/zh_HK/LC_MESSAGES/libbean-2.0-zh_HK.mo[148/194] Linking target loaders/python3/libpython3loader.so[149/194] Building translation po/zh_TW/LC_MESSAGES/libbean-2.0-zh_TW.mo[149/194] Linking target bean-demo/bean-demo[150/194] Linking target loaders/python3/libpython3loader.so[150/194] Linking target bean-demo/plugins/helloworld/libhelloworld.so[151/194] Compiling C object tests/libbean-ctk/plugin-manager.p/plugin-manager.c.o[151/194] Generating bean-demo/plugins/helloworld/libhelloworld-data with a custom command[152/194] Generating bean-demo/plugins/helloworld/libhelloworld-data with a custom command[152/194] Generating bean-demo/plugins/pythonhello/pythonhello-data with a custom command[153/194] Generating bean-demo/plugins/pythonhello/pythonhello-data with a custom command[153/194] Linking target bean-demo/plugins/secondtime/libsecondtime.so[154/194] Linking target bean-demo/plugins/helloworld/libhelloworld.so[154/194] Generating bean-demo/plugins/secondtime/libsecondtime-data with a custom command[155/194] Generating bean-demo/plugins/secondtime/libsecondtime-data with a custom command[155/194] Generating tests/libbean/plugins/libbean-test-data with a custom command[156/194] Generating tests/libbean/plugins/libbean-test-data with a custom command[156/194] Generating tests/libbean/plugins/embedded/embedded-data with a custom command[157/194] Generating tests/libbean/plugins/embedded/embedded-data with a custom command[157/194] Linking target tests/libbean/plugins/extension-c/libextension-c.so[158/194] Linking target bean-demo/bean-demo[158/194] Generating tests/libbean/plugins/extension-c/libextension-c-data with a custom command[159/194] Generating tests/libbean/plugins/extension-c/libextension-c-data with a custom command[159/194] Linking target tests/libbean/plugins/extension-c/libextension-c-missing-symbol.so[160/194] Linking target tests/libbean/plugins/extension-c/libextension-c.so[160/194] Generating tests/libbean/plugins/extension-c/libextension-c-missing-symbol-data with a custom command[161/194] Generating tests/libbean/plugins/extension-c/libextension-c-missing-symbol-data with a custom command[161/194] Linking target tests/libbean/engine[162/194] Linking target bean-demo/plugins/secondtime/libsecondtime.so[162/194] Linking target tests/libbean/extension-c[163/194] Linking target tests/libbean/plugins/extension-c/libextension-c-missing-symbol.so[163/194] Linking target tests/libbean/extension-set[164/194] Linking target tests/libbean/engine[164/194] Linking target tests/libbean/plugin-info[165/194] Linking target tests/libbean/extension-c[165/194] Linking target tests/libbean/extension-py[166/194] Compiling C object tests/plugins/loadable/libloadable.so.p/loadable-plugin.c.o[166/194] Generating tests/libbean-ctk/plugins/libbean-ctk-test-data with a custom command[167/194] Generating tests/libbean-ctk/plugins/libbean-ctk-test-data with a custom command[167/194] Linking target tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable.so[168/194] Linking target tests/libbean/extension-set[168/194] Generating tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable-data with a custom command[169/194] Generating tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable-data with a custom command[169/194] Linking target tests/libbean-ctk/plugins/configurable/libconfigurable.so[170/194] Compiling C object tests/plugins/self-dep/libself-dep.so.p/self-dep-plugin.c.o[170/194] Generating tests/libbean-ctk/plugins/configurable/libconfigurable-data with a custom command[171/194] Generating tests/libbean-ctk/plugins/configurable/libconfigurable-data with a custom command[171/194] Generating tests/libbean-ctk/plugins/valid-custom-icon/valid-custom-icon-data with a custom command[172/194] Generating tests/libbean-ctk/plugins/valid-custom-icon/valid-custom-icon-data with a custom command[172/194] Linking target tests/libbean-ctk/plugin-manager[173/194] Linking target tests/libbean/extension-py[173/194] Linking target tests/libbean-ctk/plugin-manager-store[174/194] Linking target tests/libbean/plugin-info[174/194] Linking target tests/libbean-ctk/plugin-manager-view[175/194] Linking target tests/libbean-ctk/plugins/configurable/libconfigurable.so[175/194] Generating tests/plugins/generic-data with a custom command[176/194] Generating tests/plugins/generic-data with a custom command[176/194] Linking target tests/plugins/builtin/libbuiltin.so[177/194] Linking target tests/libbean-ctk/plugins/builtin-configurable/libbuiltin-configurable.so[177/194] Generating tests/plugins/builtin/libbuiltin-data with a custom command[178/194] Generating tests/plugins/builtin/libbuiltin-data with a custom command[178/194] Linking target tests/plugins/has-dep/libhas-dep.so[179/194] Linking target tests/plugins/builtin/libbuiltin.so[179/194] Generating tests/plugins/has-dep/libhas-dep-data with a custom command[180/194] Generating tests/plugins/has-dep/libhas-dep-data with a custom command[180/194] Linking target tests/plugins/loadable/libloadable.so[181/194] Linking target tests/libbean-ctk/plugin-manager[181/194] Generating tests/plugins/loadable/libloadable-data with a custom command[182/194] Generating tests/plugins/loadable/libloadable-data with a custom command[182/194] Linking target tests/plugins/self-dep/libself-dep.so[183/194] Linking target tests/libbean-ctk/plugin-manager-store[183/194] Generating tests/plugins/self-dep/libself-dep-data with a custom command[184/194] Generating tests/plugins/self-dep/libself-dep-data with a custom command[185/194] Linking target tests/plugins/has-dep/libhas-dep.so[186/194] Linking target tests/plugins/loadable/libloadable.so[187/194] Linking target tests/plugins/self-dep/libself-dep.so[188/194] Linking target tests/libbean-ctk/plugin-manager-view[189/194] Generating libbean/Bean-2.0.gir with a custom command (wrapped by meson to set env)
+/rootdir/_build/tmp-introspectbc8d19ag/Bean-2.0.c:89:13: warning: File position of the stream might be 'indeterminate' after a failed operation. Can cause undefined behavior [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspectbc8d19ag/Bean-2.0.c:89:13: warning: Read function called when stream is in EOF state. Function has no effect [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspectbc8d19ag/Bean-2.0.c:239:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  239 |           break;
+      |           ^~~~~
+/rootdir/_build/tmp-introspectbc8d19ag/Bean-2.0.c:246:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  246 |           break;
+      |           ^~~~~
+4 warnings generated.
+[189/194] Generating libbean-ctk/BeanCtk-2.0.gir with a custom command (wrapped by meson to set env)[189/194] Generating tests/libbean/introspection/Introspection-2.0.gir with a custom command (wrapped by meson to set env)[189/194] Generating libbean/Bean-2.0.typelib with a custom command[190/194] Generating libbean/Bean-2.0.typelib with a custom command[191/194] Generating tests/libbean/introspection/Introspection-2.0.gir with a custom command (wrapped by meson to set env)
+/rootdir/_build/tmp-introspect4hyhjc04/Introspection-2.0.c:89:13: warning: File position of the stream might be 'indeterminate' after a failed operation. Can cause undefined behavior [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspect4hyhjc04/Introspection-2.0.c:89:13: warning: Read function called when stream is in EOF state. Function has no effect [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspect4hyhjc04/Introspection-2.0.c:239:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  239 |           break;
+      |           ^~~~~
+/rootdir/_build/tmp-introspect4hyhjc04/Introspection-2.0.c:246:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  246 |           break;
+      |           ^~~~~
+4 warnings generated.
+[191/194] Generating tests/libbean/introspection/Introspection-2.0.typelib with a custom command[192/194] Generating tests/libbean/introspection/Introspection-2.0.typelib with a custom command[193/194] Generating libbean-ctk/BeanCtk-2.0.gir with a custom command (wrapped by meson to set env)
+/rootdir/_build/tmp-introspecthjzl46ml/BeanCtk-2.0.c:89:13: warning: File position of the stream might be 'indeterminate' after a failed operation. Can cause undefined behavior [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspecthjzl46ml/BeanCtk-2.0.c:89:13: warning: Read function called when stream is in EOF state. Function has no effect [unix.Stream]
+   89 |       ret = fread (&byte, 1, 1, input);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/rootdir/_build/tmp-introspecthjzl46ml/BeanCtk-2.0.c:239:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  239 |           break;
+      |           ^~~~~
+/rootdir/_build/tmp-introspecthjzl46ml/BeanCtk-2.0.c:246:11: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  246 |           break;
+      |           ^~~~~
+4 warnings generated.
+[193/194] Generating libbean-ctk/BeanCtk-2.0.typelib with a custom command[194/194] Generating libbean-ctk/BeanCtk-2.0.typelib with a custom command
+scan-build: Analysis run complete.
+scan-build: 7 bugs found.
+scan-build: Run 'scan-view /rootdir/html-report/2026-06-22-145529-9975-1' to examine bug reports.
+Listing... 0%Listing... 0%Listing... 0%              advaita-icon-theme/unknown,now 3.26.0-1 all [installed,automatic]
+apt/testing,now 3.3.1 amd64 [installed,automatic]
+aptitude-common/testing,now 0.8.13-8.1 all [installed,automatic]
+aptitude/testing,now 0.8.13-8.1 amd64 [installed]
+at-spi2-common/testing,now 2.60.3-1 all [installed,automatic]
+at-spi2-core/testing,now 2.60.3-1 amd64 [installed,automatic]
+autoconf/testing,now 2.73-2 all [installed,automatic]
+automake/testing,now 1:1.18.1-4 all [installed,automatic]
+autotools-dev/testing,now 20240727.1+nmu1 all [installed,automatic]
+base-files/testing,now 14.2 amd64 [installed,automatic]
+base-passwd/testing,now 3.6.8 amd64 [installed,automatic]
+bash/testing,now 5.3-3 amd64 [installed,automatic]
+binfmt-support/testing,now 2.2.2-8 amd64 [installed,automatic]
+binutils-common/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+binutils-x86-64-linux-gnu/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+binutils/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+bsdutils/testing,now 1:2.42.1-3 amd64 [installed,automatic]
+bubblewrap/testing,now 0.11.2-2 amd64 [installed,automatic]
+build-essential/testing,now 12.12 amd64 [installed,automatic]
+bzip2-doc/testing,now 1.0.8-6 all [installed,automatic]
+bzip2/testing,now 1.0.8-6+b2 amd64 [installed,automatic]
+ca-certificates/testing,now 20260601 all [installed,automatic]
+clang-21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+clang-tools-21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+clang-tools/testing,now 1:21.1.6-71+b1 amd64 [installed]
+coreutils/testing,now 9.10-1 amd64 [installed,automatic]
+cpp-15-x86-64-linux-gnu/testing,now 15.3.0-1 amd64 [installed,automatic]
+cpp-15/testing,now 15.3.0-1 amd64 [installed,automatic]
+cpp-x86-64-linux-gnu/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+cpp/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+cppcheck/testing,now 2.20.0-2 amd64 [installed]
+ctk-update-icon-cache/unknown,now 3.26.0-1 amd64 [installed,automatic]
+dash/testing,now 0.5.12-12 amd64 [installed,automatic]
+dbus-bin/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+dbus-daemon/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+dbus-session-bus-common/testing,now 1.16.2-5 all [installed,automatic]
+dbus-system-bus-common/testing,now 1.16.2-5 all [installed,automatic]
+dbus-user-session/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+dbus/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+dconf-gsettings-backend/testing,now 0.49.0-4+b1 amd64 [installed,automatic]
+dconf-service/testing,now 0.49.0-4+b1 amd64 [installed,automatic]
+debconf/testing,now 1.5.92 all [installed,automatic]
+debian-archive-keyring/testing,now 2025.1 all [installed,automatic]
+debianutils/testing,now 5.23.2 amd64 [installed,automatic]
+diffutils/testing,now 1:3.12-1 amd64 [installed,automatic]
+dmsetup/testing,now 2:1.02.205-2+b2 amd64 [installed,automatic]
+docbook-to-man/testing,now 1:2.0.0-50 amd64 [installed,automatic]
+docbook-xml/testing,now 4.5-13 all [installed,automatic]
+docbook-xsl/testing,now 1.79.2+dfsg-8 all [installed,automatic]
+docbook/testing,now 4.5-11 all [installed,automatic]
+dpkg-dev/testing,now 1.23.7 all [installed,automatic]
+dpkg/testing,now 1.23.7 amd64 [installed,automatic]
+expect/testing,now 5.45.4-7 amd64 [installed]
+fakeroot/testing,now 1.38.1-1 amd64 [installed,automatic]
+file/testing,now 1:5.47-4 amd64 [installed,automatic]
+findutils/testing,now 4.10.0-4 amd64 [installed,automatic]
+fontconfig-config/testing,now 2.17.1-5 amd64 [installed,automatic]
+fontconfig/testing,now 2.17.1-5 amd64 [installed,automatic]
+fonts-dejavu-core/testing,now 2.37-9 all [installed,automatic]
+fonts-dejavu-mono/testing,now 2.37-9 all [installed,automatic]
+g++-15-x86-64-linux-gnu/testing,now 15.3.0-1 amd64 [installed,automatic]
+g++-15/testing,now 15.3.0-1 amd64 [installed,automatic]
+g++-x86-64-linux-gnu/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+g++/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+gcc-15-base/testing,now 15.3.0-1 amd64 [installed,automatic]
+gcc-15-x86-64-linux-gnu/testing,now 15.3.0-1 amd64 [installed,automatic]
+gcc-15/testing,now 15.3.0-1 amd64 [installed,automatic]
+gcc-16-base/testing,now 16.1.0-1 amd64 [installed,automatic]
+gcc-x86-64-linux-gnu/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+gcc/testing,now 4:15.2.0-5 amd64 [installed,automatic]
+gettext-base/testing,now 1.0-1 amd64 [installed,automatic]
+gettext/testing,now 1.0-1 amd64 [installed,automatic]
+gir1.2-atk-1.0/testing,now 2.60.3-1 amd64 [installed,automatic]
+gir1.2-atspi-2.0/testing,now 2.60.3-1 amd64 [installed,automatic]
+gir1.2-cdkpixbuf-2.0/unknown,now 2.45.1-1 amd64 [installed,automatic]
+gir1.2-ctk-3.0/unknown,now 3.26.0-1 amd64 [installed]
+gir1.2-freedesktop-dev/testing,now 1.86.0-6+b1 amd64 [installed,automatic]
+gir1.2-freedesktop/testing,now 1.86.0-6+b1 amd64 [installed,automatic]
+gir1.2-girepository-3.0-dev/testing,now 2.88.1-2 amd64 [installed]
+gir1.2-girepository-3.0/testing,now 2.88.1-2 amd64 [installed,automatic]
+gir1.2-glib-2.0-dev/testing,now 2.88.1-2 amd64 [installed,automatic]
+gir1.2-glib-2.0/testing,now 2.88.1-2 amd64 [installed,automatic]
+gir1.2-harfbuzz-0.0/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+gir1.2-pango-1.0/testing,now 1.57.1-2 amd64 [installed,automatic]
+girepository-tools/testing,now 2.88.1-2 amd64 [installed,automatic]
+git-man/testing,now 1:2.53.0-1 all [installed,automatic]
+git/testing,now 1:2.53.0-1 amd64 [installed]
+glycin-loaders/testing,now 2.1.2+ds-2 amd64 [installed,automatic]
+glycin-thumbnailers/testing,now 2.1.2+ds-2 amd64 [installed,automatic]
+gobject-introspection-bin/testing,now 1.86.0-6+b1 amd64 [installed,automatic]
+gobject-introspection/testing,now 1.86.0-6+b1 amd64 [installed]
+grep/testing,now 3.12-1 amd64 [installed,automatic]
+gsettings-desktop-schemas/testing,now 50.1-2 all [installed,automatic]
+gtk-doc-tools/testing,now 1.36.1-1 all [installed]
+gzip/testing,now 1.13-1 amd64 [installed,automatic]
+hicolor-icon-theme/testing,now 0.18-2 all [installed,automatic]
+hostname/testing,now 3.25 amd64 [installed,automatic]
+icu-devtools/testing,now 78.3-2 amd64 [installed,automatic]
+init-system-helpers/testing,now 1.69 all [installed,automatic]
+intltool/testing,now 0.51.0-7 all [installed]
+krb5-locales/testing,now 1.22.1-2.1 all [installed,automatic]
+less/testing,now 668-1 amd64 [installed,automatic]
+lib32gcc-s1/testing,now 16.1.0-1 amd64 [installed,automatic]
+lib32stdc++6/testing,now 16.1.0-1 amd64 [installed,automatic]
+libacl1/testing,now 2.3.2-3 amd64 [installed,automatic]
+libalgorithm-diff-perl/testing,now 1.201-1 all [installed,automatic]
+libalgorithm-diff-xs-perl/testing,now 0.04-9 amd64 [installed,automatic]
+libalgorithm-merge-perl/testing,now 0.08-5 all [installed,automatic]
+libaom3/testing,now 3.13.1-2+b1 amd64 [installed,automatic]
+libapparmor1/testing,now 4.1.7-4 amd64 [installed,automatic]
+libapt-pkg7.0/testing,now 3.3.1 amd64 [installed,automatic]
+libasan8/testing,now 16.1.0-1 amd64 [installed,automatic]
+libatk-bridge2.0-0t64/testing,now 2.60.3-1 amd64 [installed,automatic]
+libatk-bridge2.0-dev/testing,now 2.60.3-1 amd64 [installed,automatic]
+libatk1.0-0t64/testing,now 2.60.3-1 amd64 [installed,automatic]
+libatk1.0-dev/testing,now 2.60.3-1 amd64 [installed,automatic]
+libatk1.0-doc/testing,now 2.60.3-1 all [installed,automatic]
+libatomic1/testing,now 16.1.0-1 amd64 [installed,automatic]
+libatspi2.0-0t64/testing,now 2.60.3-1 amd64 [installed,automatic]
+libatspi2.0-dev/testing,now 2.60.3-1 amd64 [installed,automatic]
+libattr1/testing,now 1:2.5.2-4 amd64 [installed,automatic]
+libaudit-common/testing,now 1:4.1.2-1 all [installed,automatic]
+libaudit1/testing,now 1:4.1.2-1+b1 amd64 [installed,automatic]
+libauthen-sasl-perl/testing,now 2.2000-1 all [installed,automatic]
+libavahi-client3/testing,now 0.8-18 amd64 [installed,automatic]
+libavahi-common-data/testing,now 0.8-18 amd64 [installed,automatic]
+libavahi-common3/testing,now 0.8-18 amd64 [installed,automatic]
+libbinutils/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+libblkid-dev/testing,now 2.42.1-3 amd64 [installed,automatic]
+libblkid1/testing,now 2.42.1-3 amd64 [installed,automatic]
+libboost-iostreams1.90.0/testing,now 1.90.0-6 amd64 [installed,automatic]
+libbrotli-dev/testing,now 1.2.0-3 amd64 [installed,automatic]
+libbrotli1/testing,now 1.2.0-3 amd64 [installed,automatic]
+libbsd0/testing,now 0.12.2-3 amd64 [installed,automatic]
+libbz2-1.0/testing,now 1.0.8-6+b2 amd64 [installed,automatic]
+libbz2-dev/testing,now 1.0.8-6+b2 amd64 [installed,automatic]
+libc-bin/testing,now 2.42-16 amd64 [installed,automatic]
+libc-dev-bin/testing,now 2.42-16 amd64 [installed,automatic]
+libc-gconv-modules-extra/testing,now 2.42-16 amd64 [installed,automatic]
+libc6-dev/testing,now 2.42-16 amd64 [installed,automatic]
+libc6-i386/testing,now 2.42-16 amd64 [installed,automatic]
+libc6/testing,now 2.42-16 amd64 [installed,automatic]
+libcairo-gobject2/testing,now 1.18.4-3+b1 amd64 [installed,automatic]
+libcairo-script-interpreter2/testing,now 1.18.4-3+b1 amd64 [installed,automatic]
+libcairo2-dev/testing,now 1.18.4-3+b1 amd64 [installed,automatic]
+libcairo2/testing,now 1.18.4-3+b1 amd64 [installed,automatic]
+libcap-ng0/testing,now 0.9.3-1 amd64 [installed,automatic]
+libcap2/testing,now 1:2.78-1 amd64 [installed,automatic]
+libcbor0.10/testing,now 0.10.2-2.1+b1 amd64 [installed,automatic]
+libcc1-0/testing,now 16.1.0-1 amd64 [installed,automatic]
+libcdk-pixbuf-2.0-0/unknown,now 2.45.1-1 amd64 [installed,automatic]
+libcdk-pixbuf-2.0-dev/unknown,now 2.45.1-1 amd64 [installed,automatic]
+libcdk-pixbuf2.0-bin/unknown,now 2.45.1-1 amd64 [installed,automatic]
+libcdk-pixbuf2.0-common/unknown,now 2.45.1-1 all [installed,automatic]
+libclang-common-21-dev/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+libclang-cpp21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+libclang-rt-21-dev/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+libclang1-21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+libclone-perl/testing,now 0.50-1 amd64 [installed,automatic]
+libcolord2/testing,now 1.4.8-3 amd64 [installed,automatic]
+libcom-err2/testing,now 1.47.4-1 amd64 [installed,automatic]
+libcrypt-urandom-perl/testing,now 0.55-1 amd64 [installed,automatic]
+libcrypt1/testing,now 1:4.5.1-1+b1 amd64 [installed,automatic]
+libcryptsetup12/testing,now 2:2.8.6-2 amd64 [installed,automatic]
+libctf-nobfd0/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+libctf0/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+libctk-3-0/unknown,now 3.26.0-1 amd64 [installed]
+libctk-3-bin/unknown,now 3.26.0-1 amd64 [installed,automatic]
+libctk-3-common/unknown,now 3.26.0-1 all [installed]
+libctk-3-dev/unknown,now 3.26.0-1 amd64 [installed]
+libctk-3-doc/unknown,now 3.26.0-1 all [installed]
+libcups2t64/testing,now 2.4.18-1 amd64 [installed,automatic]
+libcurl3t64-gnutls/testing,now 8.20.0-5 amd64 [installed,automatic]
+libcurl4-gnutls/testing,now 8.20.0-5 amd64 [installed,automatic]
+libcurl4t64/testing,now 8.20.0-5 amd64 [installed,automatic]
+libcwidget4/testing,now 0.5.18-6+b3 amd64 [installed,automatic]
+libdata-dump-perl/testing,now 1.25-1 all [installed,automatic]
+libdatrie-dev/testing,now 0.2.14-1+b1 amd64 [installed,automatic]
+libdatrie1/testing,now 0.2.14-1+b1 amd64 [installed,automatic]
+libdav1d7/testing,now 1.5.3-1+b2 amd64 [installed,automatic]
+libdb5.3t64/testing,now 5.3.28+dfsg2-11+b1 amd64 [installed,automatic]
+libdbus-1-3/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+libdbus-1-dev/testing,now 1.16.2-5+b1 amd64 [installed,automatic]
+libdconf1/testing,now 0.49.0-4+b1 amd64 [installed,automatic]
+libde265-0/testing,now 1.0.18-1 amd64 [installed,automatic]
+libdebconfclient0/testing,now 0.283 amd64 [installed,automatic]
+libdeflate-dev/testing,now 1.25-1 amd64 [installed,automatic]
+libdeflate0/testing,now 1.25-1 amd64 [installed,automatic]
+libdevmapper1.02.1/testing,now 2:1.02.205-2+b2 amd64 [installed,automatic]
+libdisplay-info3/testing,now 0.3.0-1+b1 amd64 [installed,automatic]
+libdpkg-perl/testing,now 1.23.7 all [installed,automatic]
+libdrm-amdgpu1/testing,now 2.4.134-1 amd64 [installed,automatic]
+libdrm-common/testing,now 2.4.134-1 all [installed,automatic]
+libdrm-intel1/testing,now 2.4.134-1 amd64 [installed,automatic]
+libdrm2/testing,now 2.4.134-1 amd64 [installed,automatic]
+libedit2/testing,now 3.1-20260512-1 amd64 [installed,automatic]
+libegl-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libegl-mesa0/testing,now 26.1.2-1 amd64 [installed,automatic]
+libegl1-mesa-dev/testing,now 26.1.2-1 amd64 [installed,automatic]
+libegl1/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libelf1t64/testing,now 0.195-1 amd64 [installed,automatic]
+libencode-locale-perl/testing,now 1.05-3 all [installed,automatic]
+libepoxy-dev/testing,now 1.5.10-2+b2 amd64 [installed,automatic]
+libepoxy0/testing,now 1.5.10-2+b2 amd64 [installed,automatic]
+liberror-perl/testing,now 0.17030-1 all [installed,automatic]
+libexpat1-dev/testing,now 2.8.1-1 amd64 [installed,automatic]
+libexpat1/testing,now 2.8.1-1 amd64 [installed,automatic]
+libfakeroot/testing,now 1.38.1-1 amd64 [installed,automatic]
+libffi-dev/testing,now 3.5.2-4 amd64 [installed,automatic]
+libffi8/testing,now 3.5.2-4 amd64 [installed,automatic]
+libfido2-1/testing,now 1.17.0-1 amd64 [installed,automatic]
+libfile-fcntllock-perl/testing,now 0.22-4+b4 amd64 [installed,automatic]
+libfile-listing-perl/testing,now 6.16-1 all [installed,automatic]
+libfont-afm-perl/testing,now 1.20-4 all [installed,automatic]
+libfontconfig-dev/testing,now 2.17.1-5 amd64 [installed,automatic]
+libfontconfig1/testing,now 2.17.1-5 amd64 [installed,automatic]
+libfontenc1/testing,now 1:1.1.8-1+b3 amd64 [installed,automatic]
+libfreetype-dev/testing,now 2.14.3+dfsg-1 amd64 [installed,automatic]
+libfreetype6/testing,now 2.14.3+dfsg-1 amd64 [installed,automatic]
+libfribidi-dev/testing,now 1.0.16-5+b1 amd64 [installed,automatic]
+libfribidi0/testing,now 1.0.16-5+b1 amd64 [installed,automatic]
+libgbm1/testing,now 26.1.2-1 amd64 [installed,automatic]
+libgc1/testing,now 1:8.2.12-1 amd64 [installed,automatic]
+libgcc-15-dev/testing,now 15.3.0-1 amd64 [installed,automatic]
+libgcc-s1/testing,now 16.1.0-1 amd64 [installed,automatic]
+libgcrypt20/testing,now 1.12.2-1 amd64 [installed,automatic]
+libgdbm-compat4t64/testing,now 1.26-1+b2 amd64 [installed,automatic]
+libgdbm6t64/testing,now 1.26-1+b2 amd64 [installed,automatic]
+libgdk-pixbuf-2.0-0/testing,now 2.44.6+dfsg-2 amd64 [installed,automatic]
+libgdk-pixbuf2.0-common/testing,now 2.44.6+dfsg-2 all [installed,automatic]
+libgio-2.0-dev-bin/testing,now 2.88.1-2 amd64 [installed,automatic]
+libgio-2.0-dev/testing,now 2.88.1-2 amd64 [installed,automatic]
+libgirepository-1.0-1/testing,now 1.86.0-6+b1 amd64 [installed,automatic]
+libgirepository-2.0-0/testing,now 2.88.1-2 amd64 [installed,automatic]
+libgirepository-2.0-dev/testing,now 2.88.1-2 amd64 [installed]
+libgl-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libgl1-mesa-dri/testing,now 26.1.2-1 amd64 [installed,automatic]
+libgl1/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libgles-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libgles1/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libgles2/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglib2.0-0t64/testing,now 2.88.1-2 amd64 [installed,automatic]
+libglib2.0-bin/testing,now 2.88.1-2 amd64 [installed,automatic]
+libglib2.0-data/testing,now 2.88.1-2 all [installed,automatic]
+libglib2.0-dev-bin/testing,now 2.88.1-2 amd64 [installed,automatic]
+libglib2.0-dev/testing,now 2.88.1-2 amd64 [installed]
+libglib2.0-doc/testing,now 2.88.1-2 all [installed]
+libglvnd-core-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglvnd-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglvnd0/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglx-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglx-mesa0/testing,now 26.1.2-1 amd64 [installed,automatic]
+libglx0/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libglycin-2-0/testing,now 2.1.2+ds-2 amd64 [installed,automatic]
+libgmp10/testing,now 2:6.3.0+dfsg-5+b2 amd64 [installed,automatic]
+libgnutls30t64/testing,now 3.8.13-1 amd64 [installed,automatic]
+libgomp1/testing,now 16.1.0-1 amd64 [installed,automatic]
+libgpg-error-l10n/testing,now 1.59-4 all [installed,automatic]
+libgpg-error0/testing,now 1.59-4 amd64 [installed,automatic]
+libgpm2/testing,now 1.20.7-12+b2 amd64 [installed,automatic]
+libgprofng0/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+libgraphite2-3/testing,now 1.3.15-2 amd64 [installed,automatic]
+libgraphite2-dev/testing,now 1.3.15-2 amd64 [installed,automatic]
+libgssapi-krb5-2/testing,now 1.22.1-2.1 amd64 [installed,automatic]
+libharfbuzz-cairo0/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libharfbuzz-dev/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libharfbuzz-gobject0/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libharfbuzz-icu0/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libharfbuzz-subset0/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libharfbuzz0b/testing,now 12.3.2-2+b2 amd64 [installed,automatic]
+libheif-plugin-aomenc/testing,now 1.21.2-4 amd64 [installed,automatic]
+libheif-plugin-dav1d/testing,now 1.21.2-4 amd64 [installed,automatic]
+libheif-plugin-libde265/testing,now 1.21.2-4 amd64 [installed,automatic]
+libheif-plugin-x265/testing,now 1.21.2-4 amd64 [installed,automatic]
+libheif1/testing,now 1.21.2-4 amd64 [installed,automatic]
+libhogweed6t64/testing,now 3.10.2-1+b1 amd64 [installed,automatic]
+libhtml-form-perl/testing,now 6.13-1 all [installed,automatic]
+libhtml-format-perl/testing,now 2.16-2 all [installed,automatic]
+libhtml-parser-perl/testing,now 3.83-2 amd64 [installed,automatic]
+libhtml-tagset-perl/testing,now 3.24-1 all [installed,automatic]
+libhtml-tree-perl/testing,now 5.07-3 all [installed,automatic]
+libhttp-cookies-perl/testing,now 6.11-1 all [installed,automatic]
+libhttp-daemon-perl/testing,now 6.17-1 all [installed,automatic]
+libhttp-date-perl/testing,now 6.06-1 all [installed,automatic]
+libhttp-message-perl/testing,now 7.02-1 all [installed,automatic]
+libhttp-negotiate-perl/testing,now 6.01-2 all [installed,automatic]
+libhwasan0/testing,now 16.1.0-1 amd64 [installed,automatic]
+libhwy1t64/testing,now 1.3.0-2+b1 amd64 [installed,automatic]
+libice-dev/testing,now 2:1.1.1-1+b2 amd64 [installed,automatic]
+libice6/testing,now 2:1.1.1-1+b2 amd64 [installed,automatic]
+libicu-dev/testing,now 78.3-2 amd64 [installed,automatic]
+libicu78/testing,now 78.3-2 amd64 [installed,automatic]
+libidn2-0/testing,now 2.3.8-5 amd64 [installed,automatic]
+libio-compress-brotli-perl/testing,now 0.019000-1 amd64 [installed,automatic]
+libio-html-perl/testing,now 1.004-3 all [installed,automatic]
+libio-socket-ssl-perl/testing,now 2.098-1 all [installed,automatic]
+libisl23/testing,now 0.27-2 amd64 [installed,automatic]
+libitm1/testing,now 16.1.0-1 amd64 [installed,automatic]
+libjansson4/testing,now 2.14-2+b4 amd64 [installed,automatic]
+libjbig-dev/testing,now 2.1-6.1+b3 amd64 [installed,automatic]
+libjbig0/testing,now 2.1-6.1+b3 amd64 [installed,automatic]
+libjpeg-dev/testing,now 1:3.1.3-4 amd64 [installed,automatic]
+libjpeg62-turbo-dev/testing,now 1:3.1.3-4 amd64 [installed,automatic]
+libjpeg62-turbo/testing,now 1:3.1.3-4 amd64 [installed,automatic]
+libjs-sphinxdoc/testing,now 9.1.0-4 all [installed,automatic]
+libjson-c5/testing,now 0.18+ds-3 amd64 [installed,automatic]
+libjxl0.11/testing,now 0.11.2-5 amd64 [installed,automatic]
+libk5crypto3/testing,now 1.22.1-2.1 amd64 [installed,automatic]
+libkeyutils1/testing,now 1.6.3-6+b2 amd64 [installed,automatic]
+libkmod2/testing,now 34.2-2+b2 amd64 [installed,automatic]
+libkrb5-3/testing,now 1.22.1-2.1 amd64 [installed,automatic]
+libkrb5support0/testing,now 1.22.1-2.1 amd64 [installed,automatic]
+liblcms2-2/testing,now 2.19.1-1 amd64 [installed,automatic]
+libldap-common/testing,now 2.6.10+dfsg-1 all [installed,automatic]
+libldap2/testing,now 2.6.10+dfsg-1+b2 amd64 [installed,automatic]
+liblerc-dev/testing,now 4.1.0+ds-1 amd64 [installed,automatic]
+liblerc4/testing,now 4.1.0+ds-1 amd64 [installed,automatic]
+libllvm21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+liblocale-gettext-perl/testing,now 1.07-10 amd64 [installed,automatic]
+liblsan0/testing,now 16.1.0-1 amd64 [installed,automatic]
+liblwp-mediatypes-perl/testing,now 6.04-2 all [installed,automatic]
+liblwp-protocol-https-perl/testing,now 6.15-1 all [installed,automatic]
+liblz4-1/testing,now 1.10.0-10 amd64 [installed,automatic]
+liblzma-dev/testing,now 5.8.3-1 amd64 [installed,automatic]
+liblzma5/testing,now 5.8.3-1 amd64 [installed,automatic]
+liblzo2-2/testing,now 2.10-3+b2 amd64 [installed,automatic]
+libmagic-mgc/testing,now 1:5.47-4 amd64 [installed,automatic]
+libmagic1t64/testing,now 1:5.47-4 amd64 [installed,automatic]
+libmailtools-perl/testing,now 2.22-1 all [installed,automatic]
+libmd0/testing,now 1.2.0-2 amd64 [installed,automatic]
+libmount-dev/testing,now 2.42.1-3 amd64 [installed,automatic]
+libmount1/testing,now 2.42.1-3 amd64 [installed,automatic]
+libmpc3/testing,now 1.3.1-3 amd64 [installed,automatic]
+libmpfr6/testing,now 4.2.2-3 amd64 [installed,automatic]
+libncurses-dev/testing,now 6.6+20251231-1+b1 amd64 [installed,automatic]
+libncurses6/testing,now 6.6+20251231-1+b1 amd64 [installed,automatic]
+libncursesw6/testing,now 6.6+20251231-1+b1 amd64 [installed,automatic]
+libnet-http-perl/testing,now 6.24-1 all [installed,automatic]
+libnet-smtp-ssl-perl/testing,now 1.04-2 all [installed,automatic]
+libnet-ssleay-perl/testing,now 1.96-1 amd64 [installed,automatic]
+libnettle8t64/testing,now 3.10.2-1+b1 amd64 [installed,automatic]
+libnghttp2-14/testing,now 1.69.0-1 amd64 [installed,automatic]
+libnghttp3-9/testing,now 1.15.0-1 amd64 [installed,automatic]
+libngtcp2-16/testing,now 1.22.1-1 amd64 [installed,automatic]
+libngtcp2-crypto-gnutls8/testing,now 1.22.1-1 amd64 [installed,automatic]
+libngtcp2-crypto-ossl0/testing,now 1.22.1-1 amd64 [installed,automatic]
+libnss-systemd/testing,now 260.1-1 amd64 [installed,automatic]
+libnuma1/testing,now 2.0.19-1+b2 amd64 [installed,automatic]
+libobjc-15-dev/testing,now 15.3.0-1 amd64 [installed,automatic]
+libobjc4/testing,now 16.1.0-1 amd64 [installed,automatic]
+libopengl-dev/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libopengl0/testing,now 1.7.0-3+b1 amd64 [installed,automatic]
+libosp5/testing,now 1.5.2-15.2 amd64 [installed,automatic]
+libp11-kit0/testing,now 0.26.2-3 amd64 [installed,automatic]
+libpam-modules-bin/testing,now 1.7.0-6 amd64 [installed,automatic]
+libpam-modules/testing,now 1.7.0-6 amd64 [installed,automatic]
+libpam-runtime/testing,now 1.7.0-6 all [installed,automatic]
+libpam-systemd/testing,now 260.1-1 amd64 [installed,automatic]
+libpam0g/testing,now 1.7.0-6 amd64 [installed,automatic]
+libpango-1.0-0/testing,now 1.57.1-2 amd64 [installed,automatic]
+libpango1.0-dev/testing,now 1.57.1-2 amd64 [installed,automatic]
+libpango1.0-doc/testing,now 1.57.1-2 all [installed,automatic]
+libpangocairo-1.0-0/testing,now 1.57.1-2 amd64 [installed,automatic]
+libpangoft2-1.0-0/testing,now 1.57.1-2 amd64 [installed,automatic]
+libpangoxft-1.0-0/testing,now 1.57.1-2 amd64 [installed,automatic]
+libpciaccess0/testing,now 0.17-3+b4 amd64 [installed,automatic]
+libpcre2-16-0/testing,now 10.46-1+b2 amd64 [installed,automatic]
+libpcre2-32-0/testing,now 10.46-1+b2 amd64 [installed,automatic]
+libpcre2-8-0/testing,now 10.46-1+b2 amd64 [installed,automatic]
+libpcre2-dev/testing,now 10.46-1+b2 amd64 [installed,automatic]
+libpcre2-posix3/testing,now 10.46-1+b2 amd64 [installed,automatic]
+libperl5.40/testing,now 5.40.1-8 amd64 [installed,automatic]
+libpfm4/testing,now 4.13.0+git106-g3e4031b-1+b2 amd64 [installed,automatic]
+libpipeline1/testing,now 1.5.8-3 amd64 [installed,automatic]
+libpixman-1-0/testing,now 0.46.4-1+b2 amd64 [installed,automatic]
+libpixman-1-dev/testing,now 0.46.4-1+b2 amd64 [installed,automatic]
+libpkgconf7/testing,now 2.5.1-4 amd64 [installed,automatic]
+libpng-dev/testing,now 1.6.58-1 amd64 [installed,automatic]
+libpng-tools/testing,now 1.6.58-1 amd64 [installed,automatic]
+libpng16-16t64/testing,now 1.6.58-1 amd64 [installed,automatic]
+libproc2-0/testing,now 2:4.0.4-9+b2 amd64 [installed,automatic]
+libpsl5t64/testing,now 0.21.5-1 amd64 [installed,automatic]
+libpython3-dev/testing,now 3.13.9-3+b1 amd64 [installed,automatic]
+libpython3-stdlib/testing,now 3.13.9-3+b1 amd64 [installed,automatic]
+libpython3.13-dev/testing,now 3.13.14-1 amd64 [installed,automatic]
+libpython3.13-minimal/testing,now 3.13.14-1 amd64 [installed,automatic]
+libpython3.13-stdlib/testing,now 3.13.14-1 amd64 [installed,automatic]
+libpython3.13/testing,now 3.13.14-1 amd64 [installed,automatic]
+libquadmath0/testing,now 16.1.0-1 amd64 [installed,automatic]
+libreadline8t64/testing,now 8.3-4 amd64 [installed,automatic]
+librsvg2-2/testing,now 2.62.1+dfsg-1 amd64 [installed,automatic]
+librsvg2-common/testing,now 2.62.1+dfsg-1 amd64 [installed,automatic]
+libsasl2-2/testing,now 2.1.28+dfsg1-11 amd64 [installed,automatic]
+libsasl2-modules-db/testing,now 2.1.28+dfsg1-11 amd64 [installed,automatic]
+libsasl2-modules/testing,now 2.1.28+dfsg1-11 amd64 [installed,automatic]
+libseccomp2/testing,now 2.6.0-2+b1 amd64 [installed,automatic]
+libselinux-dev/testing,now 3.10-1 amd64 [installed,automatic]
+libselinux1/testing,now 3.10-1 amd64 [installed,automatic]
+libsemanage-common/testing,now 3.10-1 all [installed,automatic]
+libsemanage2/testing,now 3.10-1 amd64 [installed,automatic]
+libsensors-config/testing,now 1:3.6.2-2 all [installed,automatic]
+libsensors5/testing,now 1:3.6.2-2+b2 amd64 [installed,automatic]
+libsepol-dev/testing,now 3.10-1 amd64 [installed,automatic]
+libsepol2/testing,now 3.10-1 amd64 [installed,automatic]
+libsframe3/testing,now 2.46.50.20260608-1 amd64 [installed,automatic]
+libsharpyuv-dev/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libsharpyuv0/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libsigc++-2.0-0v5/testing,now 2.12.1-4+b1 amd64 [installed,automatic]
+libsm-dev/testing,now 2:1.2.6-1+b2 amd64 [installed,automatic]
+libsm6/testing,now 2:1.2.6-1+b2 amd64 [installed,automatic]
+libsmartcols1/testing,now 2.42.1-3 amd64 [installed,automatic]
+libsqlite3-0/testing,now 3.46.1-9+b1 amd64 [installed,automatic]
+libssh2-1t64/testing,now 1.11.1-3 amd64 [installed,automatic]
+libssl3t64/testing,now 3.6.3-1 amd64 [installed,automatic]
+libstdc++-15-dev/testing,now 15.3.0-1 amd64 [installed,automatic]
+libstdc++6/testing,now 16.1.0-1 amd64 [installed,automatic]
+libsysprof-capture-4-dev/testing,now 50.0-3 amd64 [installed,automatic]
+libsystemd-dev/testing,now 260.1-1 amd64 [installed,automatic]
+libsystemd-shared/testing,now 260.1-1 amd64 [installed,automatic]
+libsystemd0/testing,now 260.1-1 amd64 [installed,automatic]
+libtasn1-6/testing,now 4.21.0-2+b1 amd64 [installed,automatic]
+libtcl8.6/testing,now 8.6.18+dfsg-1 amd64 [installed,automatic]
+libtcl9.0/testing,now 9.0.3+dfsg-1+b1 amd64 [installed,automatic]
+libthai-data/testing,now 0.1.30-1 all [installed,automatic]
+libthai-dev/testing,now 0.1.30-1+b1 amd64 [installed,automatic]
+libthai0/testing,now 0.1.30-1+b1 amd64 [installed,automatic]
+libtiff-dev/testing,now 4.7.1-3 amd64 [installed,automatic]
+libtiff6/testing,now 4.7.1-3 amd64 [installed,automatic]
+libtiffxx6/testing,now 4.7.1-3 amd64 [installed,automatic]
+libtimedate-perl/testing,now 2.3500-1 all [installed,automatic]
+libtinfo6/testing,now 6.6+20251231-1+b1 amd64 [installed,automatic]
+libtinyxml2-11/testing,now 11.0.0+dfsg-1+b3 amd64 [installed,automatic]
+libtommath1/testing,now 1.3.0-1+b2 amd64 [installed,automatic]
+libtry-tiny-perl/testing,now 0.32-1 all [installed,automatic]
+libtsan2/testing,now 16.1.0-1 amd64 [installed,automatic]
+libubsan1/testing,now 16.1.0-1 amd64 [installed,automatic]
+libudev1/testing,now 260.1-1 amd64 [installed,automatic]
+libunistring5/testing,now 1.4.2-1 amd64 [installed,automatic]
+libunwind8/testing,now 1.8.1-0.4 amd64 [installed,automatic]
+liburi-perl/testing,now 5.35-1 all [installed,automatic]
+libuuid1/testing,now 2.42.1-3 amd64 [installed,automatic]
+libvulkan1/testing,now 1.4.341.0-1 amd64 [installed,automatic]
+libwayland-bin/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwayland-client0/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwayland-cursor0/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwayland-dev/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwayland-egl1/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwayland-server0/testing,now 1.24.0-2+b2 amd64 [installed,automatic]
+libwebp-dev/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libwebp7/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libwebpdecoder3/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libwebpdemux2/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libwebpmux3/testing,now 1.5.0-0.1+b2 amd64 [installed,automatic]
+libwww-perl/testing,now 6.83-1 all [installed,automatic]
+libwww-robotrules-perl/testing,now 6.03-1 all [installed,automatic]
+libx11-6/testing,now 2:1.8.13-1 amd64 [installed,automatic]
+libx11-data/testing,now 2:1.8.13-1 all [installed,automatic]
+libx11-dev/testing,now 2:1.8.13-1 amd64 [installed,automatic]
+libx11-xcb1/testing,now 2:1.8.13-1 amd64 [installed,automatic]
+libx265-215/testing,now 4.1-4+b2 amd64 [installed,automatic]
+libxapian30/testing,now 1.4.31-2 amd64 [installed,automatic]
+libxau-dev/testing,now 1:1.0.11-1+b2 amd64 [installed,automatic]
+libxau6/testing,now 1:1.0.11-1+b2 amd64 [installed,automatic]
+libxaw7/testing,now 2:1.0.16-1+b2 amd64 [installed,automatic]
+libxcb-dri3-0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-glx0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-present0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-randr0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-render0-dev/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-render0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-shm0-dev/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-shm0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-sync1/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb-xfixes0/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb1-dev/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcb1/testing,now 1.17.0-2+b2 amd64 [installed,automatic]
+libxcomposite-dev/testing,now 1:0.4.6-1+b2 amd64 [installed,automatic]
+libxcomposite1/testing,now 1:0.4.6-1+b2 amd64 [installed,automatic]
+libxcursor-dev/testing,now 1:1.2.3-1+b2 amd64 [installed,automatic]
+libxcursor1/testing,now 1:1.2.3-1+b2 amd64 [installed,automatic]
+libxdamage-dev/testing,now 1:1.1.7-1+b1 amd64 [installed,automatic]
+libxdamage1/testing,now 1:1.1.7-1+b1 amd64 [installed,automatic]
+libxdmcp-dev/testing,now 1:1.1.5-2+b1 amd64 [installed,automatic]
+libxdmcp6/testing,now 1:1.1.5-2+b1 amd64 [installed,automatic]
+libxext-dev/testing,now 2:1.3.4-1+b4 amd64 [installed,automatic]
+libxext6/testing,now 2:1.3.4-1+b4 amd64 [installed,automatic]
+libxfixes-dev/testing,now 1:6.0.0-2+b5 amd64 [installed,automatic]
+libxfixes3/testing,now 1:6.0.0-2+b5 amd64 [installed,automatic]
+libxfont2/testing,now 1:2.0.6-2+b1 amd64 [installed,automatic]
+libxft-dev/testing,now 2.3.6-1+b5 amd64 [installed,automatic]
+libxft2/testing,now 2.3.6-1+b5 amd64 [installed,automatic]
+libxi-dev/testing,now 2:1.8.2-2+b1 amd64 [installed,automatic]
+libxi6/testing,now 2:1.8.2-2+b1 amd64 [installed,automatic]
+libxinerama-dev/testing,now 2:1.1.4-3+b5 amd64 [installed,automatic]
+libxinerama1/testing,now 2:1.1.4-3+b5 amd64 [installed,automatic]
+libxkbcommon-dev/testing,now 1.13.1-1 amd64 [installed,automatic]
+libxkbcommon0/testing,now 1.13.1-1 amd64 [installed,automatic]
+libxkbfile1/testing,now 1:1.1.0-1+b5 amd64 [installed,automatic]
+libxml-parser-perl/testing,now 2.47-2 amd64 [installed,automatic]
+libxml2-16/testing,now 2.15.3+dfsg-1 amd64 [installed,automatic]
+libxml2-dev/testing,now 2.15.3+dfsg-1 amd64 [installed,automatic]
+libxmu6/testing,now 2:1.1.3-4+b1 amd64 [installed,automatic]
+libxmuu1/testing,now 2:1.1.3-4+b1 amd64 [installed,automatic]
+libxpm4/testing,now 1:3.5.19-1 amd64 [installed,automatic]
+libxrandr-dev/testing,now 2:1.5.4-1+b4 amd64 [installed,automatic]
+libxrandr2/testing,now 2:1.5.4-1+b4 amd64 [installed,automatic]
+libxrender-dev/testing,now 1:0.9.12-1+b2 amd64 [installed,automatic]
+libxrender1/testing,now 1:0.9.12-1+b2 amd64 [installed,automatic]
+libxres-dev/testing,now 2:1.2.1-2 amd64 [installed,automatic]
+libxres1/testing,now 2:1.2.1-2 amd64 [installed,automatic]
+libxshmfence1/testing,now 1.3.3-1+b2 amd64 [installed,automatic]
+libxslt1.1/testing,now 1.1.45-0.1 amd64 [installed,automatic]
+libxt6t64/testing,now 1:1.2.1-1.3+b2 amd64 [installed,automatic]
+libxtst-dev/testing,now 2:1.2.5-1+b2 amd64 [installed,automatic]
+libxtst6/testing,now 2:1.2.5-1+b2 amd64 [installed,automatic]
+libxxf86vm1/testing,now 1:1.1.4-2+b1 amd64 [installed,automatic]
+libxxhash0/testing,now 0.8.3-2+b2 amd64 [installed,automatic]
+libyaml-0-2/testing,now 0.2.5-2+b1 amd64 [installed,automatic]
+libz3-4/testing,now 4.13.3-1.1 amd64 [installed,automatic]
+libz3-dev/testing,now 4.13.3-1.1 amd64 [installed,automatic]
+libzstd-dev/testing,now 1.5.7+dfsg-3+b2 amd64 [installed,automatic]
+libzstd1/testing,now 1.5.7+dfsg-3+b2 amd64 [installed,automatic]
+linux-libc-dev/testing,now 7.0.12-2 all [installed,automatic]
+linux-sysctl-defaults/testing,now 4.15 all [installed,automatic]
+llvm-21-dev/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+llvm-21-linker-tools/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+llvm-21-runtime/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+llvm-21-tools/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+llvm-21/testing,now 1:21.1.8-7+b1 amd64 [installed,automatic]
+login.defs/testing,now 1:4.19.3-2 all [installed,automatic]
+login/testing,now 1:4.16.0-2+really2.42.1-3 amd64 [installed,automatic]
+m4/testing,now 1.4.21-1 amd64 [installed,automatic]
+make/testing,now 4.4.1-3 amd64 [installed,automatic]
+manpages-dev/testing,now 6.18-1 all [installed,automatic]
+manpages/testing,now 6.18-1 all [installed,automatic]
+mawk/testing,now 1.3.4.20260302-1 amd64 [installed,automatic]
+media-types/testing,now 14.0.0 all [installed,automatic]
+mesa-libgallium/testing,now 26.1.2-1 amd64 [installed,automatic]
+mesa-vulkan-drivers/testing,now 26.1.2-1 amd64 [installed,automatic]
+meson/testing,now 1.11.1-2 all [installed]
+mount/testing,now 2.42.1-3 amd64 [installed,automatic]
+native-architecture/testing,now 0.2.6 all [installed,automatic]
+ncurses-base/testing,now 6.6+20251231-1 all [installed,automatic]
+ncurses-bin/testing,now 6.6+20251231-1+b1 amd64 [installed,automatic]
+netbase/testing,now 6.5 all [installed,automatic]
+ninja-build/testing,now 1.13.2-1 amd64 [installed,automatic]
+opensp/testing,now 1.5.2-15.2 amd64 [installed,automatic]
+openssh-client/testing,now 1:10.3p1-4 amd64 [installed,automatic]
+openssl-provider-legacy/testing,now 3.6.3-1 amd64 [installed,automatic]
+openssl/testing,now 3.6.3-1 amd64 [installed,automatic]
+pango1.0-tools/testing,now 1.57.1-2 amd64 [installed,automatic]
+passwd/testing,now 1:4.19.3-2 amd64 [installed,automatic]
+patch/testing,now 2.8-2 amd64 [installed,automatic]
+perl-base/testing,now 5.40.1-8 amd64 [installed,automatic]
+perl-modules-5.40/testing,now 5.40.1-8 all [installed,automatic]
+perl-openssl-defaults/testing,now 7+b2 amd64 [installed,automatic]
+perl/testing,now 5.40.1-8 amd64 [installed,automatic]
+pkgconf-bin/testing,now 2.5.1-4 amd64 [installed,automatic]
+pkgconf/testing,now 2.5.1-4 amd64 [installed,automatic]
+procps/testing,now 2:4.0.4-9+b2 amd64 [installed,automatic]
+psmisc/testing,now 23.7-2 amd64 [installed,automatic]
+publicsuffix/testing,now 20260428.1050-1 all [installed,automatic]
+python-gi-dev/testing,now 3.56.2-1 amd64 [installed]
+python3-autocommand/testing,now 2.2.2-4 all [installed,automatic]
+python3-bs4/testing,now 4.15.0-1 all [installed,automatic]
+python3-chardet/testing,now 5.2.0+dfsg-2 all [installed,automatic]
+python3-cssselect/testing,now 1.4.0-1 all [installed,automatic]
+python3-dev/testing,now 3.13.9-3+b1 amd64 [installed]
+python3-gi/testing,now 3.56.2-1 amd64 [installed]
+python3-html5lib/testing,now 1.2-3 all [installed,automatic]
+python3-inflect/testing,now 7.5.0-1 all [installed,automatic]
+python3-jaraco.context/testing,now 6.0.1-2 all [installed,automatic]
+python3-jaraco.functools/testing,now 4.1.0-1 all [installed,automatic]
+python3-jaraco.text/testing,now 4.0.0-1 all [installed,automatic]
+python3-lxml/testing,now 6.1.0-1 amd64 [installed,automatic]
+python3-mako/testing,now 1.3.10-3 all [installed,automatic]
+python3-markdown/testing,now 3.10.2-1 all [installed,automatic]
+python3-markupsafe/testing,now 3.0.3-1+b1 amd64 [installed,automatic]
+python3-minimal/testing,now 3.13.9-3+b1 amd64 [installed,automatic]
+python3-more-itertools/testing,now 10.8.0-1 all [installed,automatic]
+python3-packaging/testing,now 26.2-1 all [installed,automatic]
+python3-pkg-resources/testing,now 78.1.1-0.1 all [installed,automatic]
+python3-pygments/testing,now 2.19.2+dfsg-1 all [installed,automatic]
+python3-setuptools/testing,now 78.1.1-0.1 all [installed,automatic]
+python3-soupsieve/testing,now 2.8.4-1 all [installed,automatic]
+python3-typeguard/testing,now 4.4.4-2 all [installed,automatic]
+python3-typing-extensions/testing,now 4.15.0-2 all [installed,automatic]
+python3-webencodings/testing,now 0.5.1-5 all [installed,automatic]
+python3-yaml/testing,now 6.0.3-1 amd64 [installed,automatic]
+python3-zipp/testing,now 3.23.0-1 all [installed,automatic]
+python3.13-dev/testing,now 3.13.14-1 amd64 [installed,automatic]
+python3.13-minimal/testing,now 3.13.14-1 amd64 [installed,automatic]
+python3.13/testing,now 3.13.14-1 amd64 [installed,automatic]
+python3/testing,now 3.13.9-3+b1 amd64 [installed,automatic]
+readline-common/testing,now 8.3-4 all [installed,automatic]
+rpcsvc-proto/testing,now 1.4.4-1 amd64 [installed,automatic]
+sed/testing,now 4.9-3 amd64 [installed,automatic]
+sensible-utils/testing,now 0.0.26 all [installed,automatic]
+sgml-base/testing,now 1.31+nmu1 all [installed,automatic]
+sgml-data/testing,now 2.0.11+nmu1 all [installed,automatic]
+shared-mime-info/testing,now 2.4-5+b3 amd64 [installed,automatic]
+sq/testing,now 1.3.1-10 amd64 [installed,automatic]
+sqv/testing,now 1.3.0-5+b2 amd64 [installed,automatic]
+systemd-cryptsetup/testing,now 260.1-1 amd64 [installed,automatic]
+systemd-sysv/testing,now 260.1-1 amd64 [installed,automatic]
+systemd-timesyncd/testing,now 260.1-1 amd64 [installed,automatic]
+systemd-userdbd/testing,now 260.1-1 amd64 [installed,automatic]
+systemd/testing,now 260.1-1 amd64 [installed,automatic]
+sysvinit-utils/testing,now 3.18-1 amd64 [installed,automatic]
+tar/testing,now 1.35+dfsg-4 amd64 [installed,automatic]
+tcl-expect/testing,now 5.45.4-7 amd64 [installed,automatic]
+tcl8.6/testing,now 8.6.18+dfsg-1 amd64 [installed,automatic]
+tcl9.0/testing,now 9.0.3+dfsg-1+b1 amd64 [installed,automatic]
+tzdata/testing,now 2026b-1 all [installed,automatic]
+user-session-migration/testing,now 0.5.2 amd64 [installed,automatic]
+util-linux/testing,now 2.42.1-3 amd64 [installed,automatic]
+uuid-dev/testing,now 2.42.1-3 amd64 [installed,automatic]
+wayland-protocols/testing,now 1.48-1 all [installed,automatic]
+wget/testing,now 1.25.0-2 amd64 [installed]
+x11-common/testing,now 1:7.7+26 all [installed,automatic]
+x11-xkb-utils/testing,now 7.7+9 amd64 [installed,automatic]
+x11proto-dev/testing,now 2025.1-1 all [installed,automatic]
+xauth/testing,now 1:1.1.2-1.1 amd64 [installed]
+xdg-user-dirs/testing,now 0.20-1 amd64 [installed,automatic]
+xfonts-base/testing,now 1:1.0.5+nmu1 all [installed,automatic]
+xfonts-encodings/testing,now 1:1.0.4-2.2 all [installed,automatic]
+xfonts-utils/testing,now 1:7.7+7 amd64 [installed,automatic]
+xkb-data/testing,now 2.47-1 all [installed,automatic]
+xml-core/testing,now 0.20 all [installed,automatic]
+xorg-sgml-doctools/testing,now 1:1.12.1-1 all [installed,automatic]
+xserver-common/testing,now 2:21.1.23-1 all [installed,automatic]
+xsltproc/testing,now 1.1.45-0.1 amd64 [installed,automatic]
+xtrans-dev/testing,now 1.6.0-1 all [installed,automatic]
+xvfb/testing,now 2:21.1.23-1 amd64 [installed]
+xz-utils/testing,now 5.8.3-1 amd64 [installed,automatic]
+zlib1g-dev/testing,now 1:1.3.dfsg+really1.3.2-3 amd64 [installed,automatic]
+zlib1g/testing,now 1:1.3.dfsg+really1.3.2-3 amd64 [installed,automatic]
+Errors detected in the build 0
+Warnings detected in the logs 58
+cppcheck defects detected in the logs 53
+TOTAL warnings detected in the logs 111
