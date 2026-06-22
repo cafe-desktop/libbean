@@ -144,8 +144,9 @@ BeanExtension     *bean_extension_set_get_extension (BeanExtensionSet *set,
 BEAN_AVAILABLE_IN_ALL
 BeanExtensionSet  *bean_extension_set_newv        (BeanEngine       *engine,
                                                    GType             exten_type,
-                                                   guint             n_parameters,
-                                                   GParameter       *parameters);
+                                                   guint             n_properties,
+                                                   const gchar     **prop_names,
+                                                   GValue           *prop_values);
 
 BEAN_AVAILABLE_IN_1_24
 BeanExtensionSet  *bean_extension_set_new_with_properties (BeanEngine    *engine,

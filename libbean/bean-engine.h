@@ -131,8 +131,9 @@ BEAN_AVAILABLE_IN_ALL
 BeanExtension    *bean_engine_create_extensionv   (BeanEngine      *engine,
                                                    BeanPluginInfo  *info,
                                                    GType            extension_type,
-                                                   guint            n_parameters,
-                                                   GParameter      *parameters);
+                                                   guint            n_properties,
+                                                   const gchar    **prop_names,
+                                                   GValue          *prop_values);
 
 BEAN_AVAILABLE_IN_1_24
 BeanExtension    *bean_engine_create_extension_with_properties

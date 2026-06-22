@@ -105,8 +105,9 @@ static BeanExtension *
 bean_plugin_loader_python_create_extension (BeanPluginLoader *loader G_GNUC_UNUSED,
                                             BeanPluginInfo   *info,
                                             GType             exten_type,
-                                            guint             n_parameters,
-                                            GParameter       *parameters)
+                                            guint             n_properties,
+                                            const gchar     **prop_names,
+                                            GValue           *prop_values)
 {
   PyObject *pymodule = info->loader_data;
   GType the_type;
@@ -119,7 +120,9 @@ bean_plugin_loader_python_create_extension (BeanPluginLoader *loader G_GNUC_UNUS
   if (the_type == G_TYPE_INVALID)
     goto out;
 
-  object = g_object_newv (the_type, n_parameters, parameters);
+  object = g_object_new_with_properties (the_type, n_properties,
+                                         prop_names, prop_values);
+
   if (object == NULL)
     goto out;
 

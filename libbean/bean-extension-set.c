@@ -89,9 +89,10 @@
 struct _BeanExtensionSetPrivate {
   BeanEngine *engine;
   GType exten_type;
-  guint n_parameters;
+  guint n_properties;
 
-  GParameter *parameters;
+  const gchar **prop_names;
+  GValue *prop_values;
 
   GQueue extensions;
 };
@@ -102,10 +103,11 @@ typedef struct {
 } ExtensionItem;
 
 typedef struct {
-  guint n_parameters;
+  guint n_properties;
 
-  GParameter *parameters;
-} BeanParameterArray;
+  const gchar **names;
+  GValue *values;
+} BeanPropertyArray;
 
 /* Signals */
 enum {
@@ -135,20 +137,21 @@ G_DEFINE_TYPE_WITH_PRIVATE (BeanExtensionSet,
 
 static void
 set_construct_properties (BeanExtensionSet   *set,
-                          BeanParameterArray *array)
+                          BeanPropertyArray  *array)
 {
   BeanExtensionSetPrivate *priv = GET_PRIV (set);
   guint i;
 
-  priv->n_parameters = array->n_parameters;
+  priv->n_properties = array->n_properties;
 
-  priv->parameters = g_new0 (GParameter, array->n_parameters);
+  priv->prop_names = g_new (const gchar *, array->n_properties);
+  priv->prop_values = g_new0 (GValue, array->n_properties);
 
-  for (i = 0; i < array->n_parameters; i++)
+  for (i = 0; i < array->n_properties; i++)
     {
-      priv->parameters[i].name = g_intern_string (array->parameters[i].name);
-      g_value_init (&priv->parameters[i].value, G_VALUE_TYPE (&array->parameters[i].value));
-      g_value_copy (&array->parameters[i].value, &priv->parameters[i].value);
+      priv->prop_names[i] = g_intern_string (array->names[i]);
+      g_value_init (&priv->prop_values[i], G_VALUE_TYPE (&array->values[i]));
+      g_value_copy (&array->values[i], &priv->prop_values[i]);
     }
 }
 
@@ -217,8 +220,9 @@ add_extension (BeanExtensionSet *set,
 
   exten = bean_engine_create_extensionv (priv->engine, info,
                                          priv->exten_type,
-                                         priv->n_parameters,
-                                         priv->parameters);
+                                         priv->n_properties,
+                                         priv->prop_names,
+                                         priv->prop_values);
 
   item = g_slice_new (ExtensionItem);
   item->info = info;
@@ -308,13 +312,15 @@ bean_extension_set_dispose (GObject *object)
       g_queue_clear (&priv->extensions);
     }
 
-  if (priv->parameters != NULL)
+  if (priv->prop_values != NULL)
     {
-      while (priv->n_parameters-- > 0)
-        g_value_unset (&priv->parameters[priv->n_parameters].value);
+      for (guint i = 0; i < priv->n_properties; i++)
+        g_value_unset (&priv->prop_values[i]);
 
-      g_free (priv->parameters);
-      priv->parameters = NULL;
+      g_free (priv->prop_names);
+      g_free (priv->prop_values);
+      priv->prop_names = NULL;
+      priv->prop_values = NULL;
     }
 
   g_clear_object (&priv->engine);
@@ -609,8 +615,9 @@ bean_extension_set_foreach (BeanExtensionSet            *set,
  * bean_extension_set_newv: (skip)
  * @engine: (allow-none): A #BeanEngine, or %NULL.
  * @exten_type: the extension #GType.
- * @n_parameters: the length of the @parameters array.
- * @parameters: (array length=n_parameters): an array of #GParameter.
+ * @n_properties: the length of the @prop_names and @prop_values arrays.
+ * @prop_names: (array length=n_properties): an array of property names.
+ * @prop_values: (array length=n_properties): an array of #GValue.
  *
  * Create a new #BeanExtensionSet for the @exten_type extension type.
  *
@@ -626,10 +633,11 @@ bean_extension_set_foreach (BeanExtensionSet            *set,
 BeanExtensionSet *
 bean_extension_set_newv (BeanEngine *engine,
                          GType       exten_type,
-                         guint       n_parameters,
-                         GParameter *parameters)
+                         guint       n_properties,
+                         const gchar **prop_names,
+                         GValue       *prop_values)
 {
-  BeanParameterArray construct_properties = { n_parameters, parameters };
+  BeanPropertyArray construct_properties = { n_properties, prop_names, prop_values };
 
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
@@ -671,8 +679,8 @@ bean_extension_set_new_with_properties (BeanEngine    *engine,
                                         const GValue  *prop_values)
 {
   BeanExtensionSet *ret;
-  BeanParameterArray construct_properties;
-  GParameter *parameters = NULL;
+  const gchar **out_names = NULL;
+  GValue *out_values = NULL;
 
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
@@ -682,29 +690,26 @@ bean_extension_set_new_with_properties (BeanEngine    *engine,
 
   if (n_properties > 0)
     {
-      parameters = g_new0 (GParameter, n_properties);
-      if (!bean_utils_properties_array_to_parameter_list (exten_type,
-                                                          n_properties,
-                                                          prop_names,
-                                                          prop_values,
-                                                          parameters))
+      if (!bean_utils_properties_array_to_parameter_list (exten_type, n_properties,
+                                                          prop_names, prop_values,
+                                                          &out_names, &out_values))
         {
           /* Already warned */
-          g_free (parameters);
           return NULL;
         }
     }
 
-  construct_properties.n_parameters = n_properties;
-  construct_properties.parameters = parameters;
+  ret = bean_extension_set_newv (engine, exten_type, n_properties, out_names, out_values);
 
-  ret = g_object_new (BEAN_TYPE_EXTENSION_SET,
-                      "engine", engine,
-                      "extension-type", exten_type,
-                      "construct-properties", &construct_properties,
-                      NULL);
+  /* Free the arrays allocated by bean_utils_properties_array_to_parameter_list */
+  if (out_values != NULL)
+    {
+      for (guint i = 0; i < n_properties; i++)
+        g_value_unset (&out_values[i]);
+      g_free (out_names);
+      g_free (out_values);
+    }
 
-  g_free (parameters);
   return ret;
 }
 
@@ -733,27 +738,29 @@ bean_extension_set_new_valist (BeanEngine  *engine,
                                const gchar *first_property,
                                va_list      var_args)
 {
-  GParameter *parameters;
-  guint n_parameters;
+  const gchar **prop_names;
+  GValue *prop_values;
+  guint n_properties;
   BeanExtensionSet *set;
 
   g_return_val_if_fail (engine == NULL || BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (exten_type) ||
                         G_TYPE_IS_ABSTRACT (exten_type), NULL);
 
-  if (!bean_utils_valist_to_parameter_list (exten_type, first_property,
-                                            var_args, &parameters,
-                                            &n_parameters))
+  if (!bean_utils_valist_to_parameter_list (exten_type, first_property, var_args,
+                                            &prop_names, &prop_values, &n_properties))
     {
       /* Already warned */
       return NULL;
     }
 
-  set = bean_extension_set_newv (engine, exten_type, n_parameters, parameters);
+  set = bean_extension_set_newv (engine, exten_type, n_properties, prop_names, prop_values);
 
-  while (n_parameters-- > 0)
-    g_value_unset (&parameters[n_parameters].value);
-  g_free (parameters);
+  /* Free the arrays allocated by bean_utils_valist_to_parameter_list */
+  for (guint i = 0; i < n_properties; i++)
+    g_value_unset (&prop_values[i]);
+  g_free (prop_names);
+  g_free (prop_values);
 
   return set;
 }

@@ -159,8 +159,9 @@ static BeanExtension *
 bean_plugin_loader_lua_create_extension (BeanPluginLoader *loader,
                                          BeanPluginInfo   *info,
                                          GType             exten_type,
-                                         guint             n_parameters,
-                                         GParameter       *parameters)
+                                         guint             n_properties,
+                                         const gchar     **prop_names,
+                                         GValue           *prop_values)
 {
   BeanPluginLoaderLua *lua_loader = BEAN_PLUGIN_LOADER_LUA (loader);
   lua_State *L;
@@ -173,7 +174,9 @@ bean_plugin_loader_lua_create_extension (BeanPluginLoader *loader,
   if (the_type == G_TYPE_INVALID)
     goto out;
 
-  object = g_object_newv (the_type, n_parameters, parameters);
+  object = g_object_new_with_properties (the_type, n_properties,
+                                         prop_names, prop_values);
+
   if (object == NULL)
     goto out;
 

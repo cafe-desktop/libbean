@@ -845,7 +845,7 @@ create_plugin_loader (gint loader_id)
       loader = BEAN_PLUGIN_LOADER (
             bean_object_module_create_object (module,
                                               BEAN_TYPE_PLUGIN_LOADER,
-                                              0, NULL));
+                                              0, NULL, NULL));
     }
 
   if (loader == NULL || !bean_plugin_loader_initialize (loader))
@@ -1304,9 +1304,9 @@ bean_engine_provides_extension (BeanEngine     *engine,
  * @engine: A #BeanEngine.
  * @info: A loaded #BeanPluginInfo.
  * @extension_type: The implemented extension #GType.
- * @n_parameters: the length of the @parameters array.
- * @parameters: (allow-none) (array length=n_parameters):
- *   an array of #GParameter.
+ * @n_properties: the length of the @prop_names and @prop_values arrays.
+ * @prop_names: (allow-none) (array length=n_properties): an array of property names.
+ * @prop_values: (allow-none) (array length=n_properties): an array of #GValue.
  *
  * If the plugin identified by @info implements the @extension_type,
  * then this function will return a new instance of this implementation,
@@ -1324,8 +1324,9 @@ BeanExtension *
 bean_engine_create_extensionv (BeanEngine     *engine,
                                BeanPluginInfo *info,
                                GType           extension_type,
-                               guint           n_parameters,
-                               GParameter     *parameters)
+                               guint           n_properties,
+                               const gchar   **prop_names,
+                               GValue         *prop_values)
 {
   BeanPluginLoader *loader;
   BeanExtension *extension;
@@ -1338,7 +1339,7 @@ bean_engine_create_extensionv (BeanEngine     *engine,
 
   loader = get_plugin_loader (engine, info->loader_id);
   extension = bean_plugin_loader_create_extension (loader, info, extension_type,
-                                                   n_parameters, parameters);
+                                                   n_properties, prop_names, prop_values);
 
   if (!G_TYPE_CHECK_INSTANCE_TYPE (extension, extension_type))
     {
@@ -1382,9 +1383,9 @@ bean_engine_create_extension_with_properties (BeanEngine     *engine,
                                               const gchar   **prop_names,
                                               const GValue   *prop_values)
 {
-  BeanPluginLoader *loader;
   BeanExtension *extension;
-  GParameter *parameters = NULL;
+  const gchar **out_names = NULL;
+  GValue *out_values = NULL;
 
   g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
@@ -1396,26 +1397,25 @@ bean_engine_create_extension_with_properties (BeanEngine     *engine,
 
   if (n_properties > 0)
     {
-      parameters = g_new (GParameter, n_properties);
-      if (!bean_utils_properties_array_to_parameter_list (extension_type,
-                                                          n_properties,
-                                                          prop_names,
-                                                          prop_values,
-                                                          parameters))
+      if (!bean_utils_properties_array_to_parameter_list (extension_type, n_properties,
+                                                          prop_names, prop_values,
+                                                          &out_names, &out_values))
         {
           /* Already warned */
-          g_free (parameters);
           return NULL;
         }
     }
 
-  loader = get_plugin_loader (engine, info->loader_id);
-  extension = bean_plugin_loader_create_extension (loader, info, extension_type,
-                                                   n_properties, parameters);
+  extension = bean_engine_create_extensionv (engine, info, extension_type,
+                                             n_properties, out_names, out_values);
 
-  while (n_properties-- > 0)
-    g_value_unset (&parameters[n_properties].value);
-  g_free (parameters);
+  if (out_values != NULL)
+    {
+      for (guint i = 0; i < n_properties; i++)
+        g_value_unset (&out_values[i]);
+      g_free (out_names);
+      g_free (out_values);
+    }
 
   if (!G_TYPE_CHECK_INSTANCE_TYPE (extension, extension_type))
     {
@@ -1456,10 +1456,11 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
                                      const gchar    *first_property,
                                      va_list         var_args)
 {
-  GParameter *parameters;
+  const gchar **prop_names;
+  GValue *prop_values;
+  guint n_properties;
 
   BeanExtension *exten;
-  guint n_parameters;
 
   g_return_val_if_fail (BEAN_IS_ENGINE (engine), NULL);
   g_return_val_if_fail (info != NULL, NULL);
@@ -1467,20 +1468,20 @@ bean_engine_create_extension_valist (BeanEngine     *engine,
   g_return_val_if_fail (G_TYPE_IS_INTERFACE (extension_type) ||
                         G_TYPE_IS_ABSTRACT (extension_type), FALSE);
 
-  if (!bean_utils_valist_to_parameter_list (extension_type, first_property,
-                                            var_args, &parameters,
-                                            &n_parameters))
+  if (!bean_utils_valist_to_parameter_list (extension_type, first_property, var_args,
+                                            &prop_names, &prop_values, &n_properties))
     {
       /* Already warned */
       return NULL;
     }
 
   exten = bean_engine_create_extensionv (engine, info, extension_type,
-                                         n_parameters, parameters);
+                                         n_properties, prop_names, prop_values);
 
-  while (n_parameters-- > 0)
-    g_value_unset (&parameters[n_parameters].value);
-  g_free (parameters);
+  for (guint i = 0; i < n_properties; i++)
+    g_value_unset (&prop_values[i]);
+  g_free (prop_names);
+  g_free (prop_values);
 
   return exten;
 }

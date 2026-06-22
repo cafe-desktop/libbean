@@ -185,7 +185,8 @@ bean_utils_properties_array_to_parameter_list (GType          exten_type,
                                                guint          n_properties,
                                                const gchar  **prop_names,
                                                const GValue  *prop_values,
-                                               GParameter    *parameters)
+                                               const gchar  ***out_names,
+                                               GValue        **out_values)
 {
   guint i;
   gpointer *ifaces;
@@ -193,10 +194,14 @@ bean_utils_properties_array_to_parameter_list (GType          exten_type,
 
   g_return_val_if_fail (n_properties == 0 || prop_names != NULL, FALSE);
   g_return_val_if_fail (n_properties == 0 || prop_values != NULL, FALSE);
-  g_return_val_if_fail (n_properties == 0 || parameters != NULL, FALSE);
+  g_return_val_if_fail (n_properties == 0 || out_names != NULL, FALSE);
+  g_return_val_if_fail (n_properties == 0 || out_values != NULL, FALSE);
 
   ifaces = get_base_class_and_interfaces (exten_type, &base_class);
-  memset (parameters, 0, sizeof (GParameter) * n_properties);
+
+  *out_names = g_new (const gchar *, n_properties);
+  *out_values = g_new0 (GValue, n_properties);
+
   for (i = 0; i < n_properties; i++)
     {
       GParamSpec *pspec;
@@ -219,27 +224,29 @@ bean_utils_properties_array_to_parameter_list (GType          exten_type,
           goto error;
         }
 
-      parameters[i].name = prop_names[i];
+      (*out_names)[i] = prop_names[i];
 
-      g_value_init (&parameters[i].value,
+      g_value_init (&(*out_values)[i],
                     G_VALUE_TYPE (&prop_values[i]));
-      g_value_copy (&prop_values[i], &parameters[i].value);
+      g_value_copy (&prop_values[i], &(*out_values)[i]);
     }
   return TRUE;
 
 error:
-  n_properties = i;
-  for (i = 0; i < n_properties; i++)
-    g_value_unset (&parameters[i].value);
+  for (guint j = 0; j < i; j++)
+    g_value_unset (&(*out_values)[j]);
+  g_free (*out_names);
+  g_free (*out_values);
   return FALSE;
 }
 
 gboolean
-bean_utils_valist_to_parameter_list (GType         exten_type,
-                                     const gchar  *first_property,
-                                     va_list       args,
-                                     GParameter  **params,
-                                     guint        *n_params)
+bean_utils_valist_to_parameter_list (GType          exten_type,
+                                     const gchar   *first_property,
+                                     va_list        args,
+                                     const gchar ***out_names,
+                                     GValue       **out_values,
+                                     guint         *n_properties)
 {
   gpointer *ifaces;
   GObjectClass *base_class;
@@ -251,9 +258,10 @@ bean_utils_valist_to_parameter_list (GType         exten_type,
 
   ifaces = get_base_class_and_interfaces (exten_type, &base_class);
 
-  *n_params = 0;
+  *n_properties = 0;
   n_allocated_params = 16;
-  *params = g_new0 (GParameter, n_allocated_params);
+  *out_names = g_new (const gchar *, n_allocated_params);
+  *out_values = g_new0 (GValue, n_allocated_params);
 
   name = first_property;
   while (name)
@@ -270,19 +278,20 @@ bean_utils_valist_to_parameter_list (GType         exten_type,
           goto error;
         }
 
-      if (*n_params >= n_allocated_params)
+      if (*n_properties >= n_allocated_params)
         {
           n_allocated_params += 16;
-          *params = g_renew (GParameter, *params, n_allocated_params);
-          memset (*params + (n_allocated_params - 16),
-                  0, sizeof (GParameter) * 16);
+          *out_names = g_renew (const gchar *, *out_names, n_allocated_params);
+          *out_values = g_renew (GValue, *out_values, n_allocated_params);
+          memset (*out_values + (n_allocated_params - 16),
+                  0, sizeof (GValue) * 16);
         }
 
-      (*params)[*n_params].name = name;
-      G_VALUE_COLLECT_INIT (&(*params)[*n_params].value, pspec->value_type,
+      (*out_names)[*n_properties] = name;
+      G_VALUE_COLLECT_INIT (&(*out_values)[*n_properties], pspec->value_type,
                             args, 0, &error_msg);
 
-      (*n_params)++;
+      (*n_properties)++;
 
       if (error_msg)
         {
@@ -298,10 +307,12 @@ bean_utils_valist_to_parameter_list (GType         exten_type,
 
 error:
 
-  for (; *n_params > 0; --(*n_params))
-    g_value_unset (&(*params)[*n_params].value);
+  for (; *n_properties > 0; --(*n_properties))
+    g_value_unset (&(*out_values)[*n_properties]);
 
-  g_free (*params);
+  g_free (*out_names);
+  g_free (*out_values);
+
   return FALSE;
 }
 

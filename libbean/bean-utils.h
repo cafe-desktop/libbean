@@ -31,12 +31,14 @@ gboolean     bean_utils_properties_array_to_parameter_list (GType          exten
                                                             guint          n_properties,
                                                             const gchar  **prop_names,
                                                             const GValue  *prop_values,
-                                                            GParameter    *params);
+                                                            const gchar  ***out_names,
+                                                            GValue        **out_values);
 gboolean     bean_utils_valist_to_parameter_list           (GType          exten_type,
                                                             const gchar   *first_property,
                                                             va_list        var_args,
-                                                            GParameter   **params,
-                                                            guint         *n_params);
+                                                            const gchar ***out_names,
+                                                            GValue       **out_values,
+                                                            guint         *n_properties);
 gint         bean_utils_get_loader_id                      (const gchar   *loader) G_GNUC_CONST;
 const gchar *bean_utils_get_loader_from_id                 (gint           loader_id) G_GNUC_CONST;
 const gchar *bean_utils_get_loader_module_from_id          (gint           loader_id) G_GNUC_CONST;

@@ -435,8 +435,9 @@ bean_object_module_new_embedded (const gchar *module_name,
  * bean_object_module_create_object: (skip)
  * @module: A #BeanObjectModule.
  * @exten_type: The #GType of the extension.
- * @n_parameters: The number of paramteters.
- * @parameters: (array length=n_parameters): The parameters.
+ * @n_properties: The number of properties.
+ * @prop_names: (array length=n_properties): The property names.
+ * @prop_values: (array length=n_properties): The property values.
  *
  * Creates an object for the @exten_type passing @n_parameters
  * and @parameters to the #BeanFactoryFunc. If @module does
@@ -451,8 +452,9 @@ bean_object_module_new_embedded (const gchar *module_name,
 GObject *
 bean_object_module_create_object (BeanObjectModule *module,
                                   GType             exten_type,
-                                  guint             n_parameters,
-                                  GParameter       *parameters)
+                                  guint             n_properties,
+                                  const gchar     **prop_names,
+                                  GValue           *prop_values)
 {
   BeanObjectModulePrivate *priv = GET_PRIV (module);
   guint i;
@@ -466,7 +468,7 @@ bean_object_module_create_object (BeanObjectModule *module,
   for (i = 0; i < priv->implementations->len; ++i)
     {
       if (impls[i].exten_type == exten_type)
-        return impls[i].func (n_parameters, parameters, impls[i].user_data);
+        return impls[i].func (n_properties, prop_names, prop_values, impls[i].user_data);
     }
 
   return NULL;
@@ -623,33 +625,37 @@ bean_object_module_register_extension_factory (BeanObjectModule *module,
 }
 
 static GObject *
-create_gobject_from_type (guint       n_parameters,
-                          GParameter *parameters,
-                          gpointer    user_data)
+create_gobject_from_type (guint         n_properties,
+                          const gchar **prop_names,
+                          GValue       *prop_values,
+                          gpointer      user_data)
 {
   GType impl_type = GPOINTER_TO_SIZE (user_data);
 
   /* We should be called with a "plugin-info" property appended
    * to the parameters. Let's get rid of it if the actual type
    * doesn't have such a property as it would cause a warning.
+   *
+   * Note: prop_names are interned strings, so we can safely
+   * compare pointers directly instead of using strcmp().
    */
   if ((impl_type & TYPE_MISSING_PLUGIN_INFO_PROPERTY) != 0)
     {
       impl_type &= ~TYPE_MISSING_PLUGIN_INFO_PROPERTY;
 
-      if (n_parameters > 0)
+      if (n_properties > 0)
         {
-          GParameter *info_param = &parameters[n_parameters - 1];
+          const gchar *last_name = prop_names[n_properties - 1];
 
-          if (info_param->name == intern_plugin_info &&
-              G_VALUE_TYPE (&info_param->value) == BEAN_TYPE_PLUGIN_INFO)
+          if (last_name == intern_plugin_info &&
+              G_VALUE_TYPE (&prop_values[n_properties - 1]) == BEAN_TYPE_PLUGIN_INFO)
             {
-              n_parameters--;
+              n_properties--;
             }
         }
     }
 
-  return G_OBJECT (g_object_newv (impl_type, n_parameters, parameters));
+  return g_object_new_with_properties (impl_type, n_properties, prop_names, prop_values);
 }
 
 /**

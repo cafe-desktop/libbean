@@ -45,19 +45,21 @@ typedef struct _BeanObjectModulePrivate  BeanObjectModulePrivate;
 
 /**
  * BeanFactoryFunc:
- * @n_parameters: The number of paramteters.
- * @parameters: (array length=n_parameters): The parameters.
+ * @n_properties: The number of properties.
+ * @prop_names: (array length=n_properties): The property names.
+ * @prop_values: (array length=n_properties): The property values.
  * @user_data: Optional data to be passed to the function, or %NULL.
  *
  * A #BeanFactoryFunc is a factory function which will instanciate a new
- * extension of a given type. g_object_newv() is such a function.
+ * extension of a given type. g_object_new_with_properties() is such a function.
  *
  * It is used with bean_object_module_register_extension_factory().
  *
  * Return value: (transfer full): The created object.
  */
-typedef GObject *(*BeanFactoryFunc)   (guint          n_parameters,
-                                       GParameter    *parameters,
+typedef GObject *(*BeanFactoryFunc)   (guint          n_properties,
+                                       const gchar  **prop_names,
+                                       GValue        *prop_values,
                                        gpointer       user_data);
 
 /**
@@ -103,8 +105,9 @@ BeanObjectModule   *bean_object_module_new_embedded           (const gchar      
 BEAN_AVAILABLE_IN_ALL
 GObject            *bean_object_module_create_object          (BeanObjectModule *module,
                                                                GType             exten_type,
-                                                               guint             n_parameters,
-                                                               GParameter       *parameters);
+                                                               guint             n_properties,
+                                                               const gchar     **prop_names,
+                                                               GValue           *prop_values);
 BEAN_AVAILABLE_IN_ALL
 gboolean            bean_object_module_provides_object        (BeanObjectModule *module,
                                                                GType             exten_type);
